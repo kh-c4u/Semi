@@ -72,7 +72,7 @@
 			{
 				httpRequest = getXMLHttpRequest();
 				httpRequest.onreadystatechange = callback;
-				httpRequest.open("GET", "../MemberIdCheckAction.do?id="+id, true);	
+				httpRequest.open("GET", "${pageContext.request.contextPath}/MemberIdCheckAction.do?id="+id, true);	
 				httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
 				httpRequest.send(null);
 			}

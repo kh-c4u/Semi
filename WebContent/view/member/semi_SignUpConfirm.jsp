@@ -6,15 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="../resources/css/semi_menu_frame.css">
-    <link rel="stylesheet" href="../resources/css/semi_Signup_Confirm.css">
-    <link rel="stylesheet" href="../resources/css/semi_Signup.css">
+    <link rel="stylesheet" href="../../resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="../../resources/css/semi_Signup_Confirm.css">
+    <link rel="stylesheet" href="../../resources/css/semi_Signup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div id="main-header">
-        <div class="main-header-logo"><a href="#"><img src="../resources/images/semiLogosize.png" /></a></div>
+        <div class="main-header-logo"><a href="#"><img src="../../resources/images/semiLogosize.png" /></a></div>
         <ul id='BeforeLogin' class="main-header-login">
             <li><a href="#">로그인</a></li>
             <li><span>|</span><a href="/#">회원가입</a></li>
@@ -89,7 +89,7 @@
     </div>
     <div id="signUpCompleate">
         <div id="complete" >
-            <div class="signuplogo"><a href="#"><img src="../resources/images/semiLogosize.png" /></a>
+            <div class="signuplogo"><a href="#"><img src="../../resources/images/semiLogosize.png" /></a>
             </div>
             <div >
                 <h1>회원가입이 완료되었습니다.</h1><br>

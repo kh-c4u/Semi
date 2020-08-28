@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="../resources/css/semi_menu_frame.css">
-<link rel="stylesheet" href="../resources/css/semi_Signup.css">
+<link rel="stylesheet" href="../../resources/css/semi_menu_frame.css">
+<link rel="stylesheet" href="../../resources/css/semi_Signup.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -129,7 +129,7 @@
 <body>
 	<div id="main-header">
 		<div class="main-header-logo">
-			<a href="#"><img src="../resources/images/semiLogosize.png" /></a>
+			<a href="#"><img src="../../resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
 			<li><a href="#">로그인</a></li>
@@ -278,7 +278,7 @@
 	<div id="main-footer">
 		<div class="main-footer-wrap">
 			<div>
-				<img src="../resources/images/semiLogosize.png" />
+				<img src="../../resources/images/semiLogosize.png" />
 			</div>
 			<div>
 				<ul>
