@@ -184,8 +184,9 @@
 		</div>
 		<div class="paging-wrap">
 			<div class="writeBtn">
-			
-				<button onclick="location.href='views/board/boardInsertForm.jsp" id="writeB">글쓰기</button>
+			<% if(m != null){ %>
+				<button onclick="location.href='view/board/boardInsertForm.jsp" id="writeB">글쓰기</button>
+				<% } %>
 			</div>
 			<div class="pagination" id="paging-link">
 
