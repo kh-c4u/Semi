@@ -114,7 +114,7 @@
            
             <ul id='search' class="main-header-search">
 				<form id='search' name="search">
-					<li> <input type='text' id='search' name='search' placeholder='키워트를 입력하세요' /></li>
+					<li> <input type='text' id='search' name='search' placeholder='키워드를 입력하세요' /></li>
                     <li> <button type="submit" id="search-btn">검색</button></li>
 			
 				</form>
@@ -138,7 +138,7 @@
 
     <div id="main-box1">
         <ul class="main-box1-qiuck-menu">
-            <li><a href="view/comuboard/comu_boardlist.jsp">커뮤니티</a></li>
+            <li><a href="/Semi/comuboardlist.bo">커뮤니티</a></li>
             <li><a href="#">장터</a></li>
             <li><a href="#">고객센터</a></li>
             <li><a href="#">공지사항</a></li>
