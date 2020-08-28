@@ -18,14 +18,14 @@ public class Member implements Serializable{
 		super();
 	}
 	
-	// 濡쒓렇�씤 �슜
+	// 로그인용
 	public Member(String userId, String userPwd) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 	}
 
-	//�쉶�썝 媛��엯�슜
+	//회원가입용
 	public Member(String userId, String userPwd, String userName, String email, String address) {
 		super();
 		this.userId = userId;

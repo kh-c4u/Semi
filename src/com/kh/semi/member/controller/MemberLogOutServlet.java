@@ -27,11 +27,11 @@ public class MemberLogOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// �씠誘� 濡쒓렇�씤 �릺�뼱 �엳�뒗 �꽭�뀡 醫낅즺
+		// 이미 로그인 되어 있는 세션 종료
 				HttpSession session = request.getSession(false);
 				
 				if(session != null) {
-					System.out.println("濡쒓렇�븘�썐�씠 �떎�뻾�맗�땲�떎.");
+					System.out.println("로그아웃이 실행됩니다.");
 					session.invalidate();
 				}
 				

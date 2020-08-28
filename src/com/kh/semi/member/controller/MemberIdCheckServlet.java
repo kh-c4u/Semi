@@ -43,7 +43,7 @@ public class MemberIdCheckServlet extends HttpServlet {
 		response.setContentType("text/html;charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		System.out.println(result);
-		if(result != 0)	out.println("0"); // ���̵� �ߺ�
+		if(result != 0)	out.println("0"); 
 		else		out.println("1");
 		
 		out.close();
