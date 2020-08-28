@@ -231,25 +231,28 @@
 			<h1>회원가입</h1>
 			<br>
 			<ul>
-				<li><label>아이디 : </label><input type="text" name="id"
-					maxlength="20" id="id" onkeydown="inputIdChk()" required>&nbsp;
+				<li id="label1"><label>아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					: <input type="text" name="id" maxlength="20" id="id" required>&nbsp;
 					<button type="button" onclick="openIdChk()">중복확인</button> <input
 					type="hidden" name="idDuplication" id="idDuplication"
 					value="idUncheck"></li>
-				<li><label>비밀번호 : </label><input type="password"
-					name="password" maxlength="20" id="password" required></li>
-				<li><label>비밀번호 확인 : </label><input type="password"
+				<li><label>비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					: <input type="password" name="password" maxlength="20"
+					id="password" required></li>
+				<li><label>비밀번호 확인&nbsp;&nbsp;</label> : <input type="password"
 					id="password2" name="password2" placeholder="비밀번호를 다시 입력해주세요."
 					maxlength="20"></li>
-				<li><label>이름 : </label><input id="name" type="text"
-					name="name" maxlength="4" required></li>
-				<li><label>e-mail : </label><input id="email" type="email"
-					name="email" maxlength="30" required></li>
-				<li><label>주소 : </label><input id="address1" type="text"
-					name="address1" maxlength="100" required> 
-					<button type="button" onclick="addrSearch();">검색</button>
-					</li>
-				<li><label>상세주소 : </label><input id="address2" type="text"
+				<li><label>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					: <input id="name" type="text" name="name" maxlength="4" required></li>
+				<li><label>e-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					: <input id="email" type="email" name="email" maxlength="30"
+					required></li>
+				<li id="label2"><label >주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					: <input id="address" type="text" name="address1" maxlength="100"
+					required>&nbsp;
+				<button type="button" onclick="addrSearch();">검색</button></li>
+
+				<li><label>상세주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>: <input id="address2" type="text"
 					name="address2" maxlength="100" required></li>
 			</ul>
 			<br>

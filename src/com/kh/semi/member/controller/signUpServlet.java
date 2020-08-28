@@ -43,10 +43,11 @@ public class signUpServlet extends HttpServlet {
 		int result = ms.MemberSignUp(m);
 		
 		if(result>0) {
-			response.sendRedirect("view/semi_SignUpConfirm.jsp");
+			response.sendRedirect("view/member/semi_SignUpConfirm.jsp");
 			
 			
 		}else {
+			response.setCharacterEncoding("UTF-8");
 			PrintWriter out=response.getWriter(); 
 
 			
