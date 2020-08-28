@@ -16,8 +16,8 @@
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="./css/semi_comu_gisa.css">
-<link rel="stylesheet" href="./css/semi_menu_frame.css">
+<link rel="stylesheet" href="../resources/css/semi_comu_gisa.css">
+<link rel="stylesheet" href="../resources/css/semi_menu_frame.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -116,10 +116,10 @@
 			<div>
 				<select id="category-Name" name="category-Name">
 					<option value>카테고리 선택</option>
-					<option value="공부팁">공부팁</option>
-					<option value="합격수기">합격수기</option>
-					<option value="수강후기">수강후기</option>
-					<option value="무료인강추천">무료인강추천</option>
+					<option value='1'>공부팁</option>
+					<option value='2'>합격수기</option>
+					<option value='3'>수강후기</option>
+					<option value='4'>무료인강추천</option>
 				</select>
 			</div>
 			<div class="search-option">
@@ -216,13 +216,9 @@
 				<%  } %>
 				<button
 					onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
-
-
 			</div>
 		</div>
 	</div>
-	</div>
-
 
 	<div id="main-footer">
 		<div class="main-footer-wrap">
