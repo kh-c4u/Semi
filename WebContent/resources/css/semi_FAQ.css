@@ -1,0 +1,152 @@
+﻿
+.section {
+  /* font-family: 'Segoe UI',Arial,'Malgun Gothic','Gulim','sans-serif'; */
+  /* background-color: #f0f0f0; */
+ 
+  float: right;
+ 
+  margin-right: 113px;
+  margin-bottom: 50px;
+  width: 1000px;
+  min-height: 545px;
+  
+  padding: 20px;
+
+}
+#section-title{
+    /* font-family:BMDOHYEON, NanumGothic, Dotum,"돋움",Gulim,"굴림",Verdana,Tahoma,Apple Gothic,sans-serif,UnDotum; font-size:25px !important; */
+    color: black;
+    margin-left: 10px;
+}
+
+
+.panel-question {
+    margin-bottom: 20px;
+}
+
+#btn-panel{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    
+    width: 1000px;
+    
+}
+.btn-panel-a{
+    font-size: 15px;
+    /* color: aliceblue; */
+   
+    text-decoration: none;
+   
+    
+}
+
+.allon{
+    border: 1px solid #64b6d6;
+    text-align: center;
+    width: 138.5px;
+    height: 30px;
+    padding-top: 7px;
+    float: left;
+    margin-left: 2px;
+    background:  #64b6d6;
+    /* background: royalblue; */
+   
+    
+    transition: background-color 0.5s
+}
+.allon:hover{
+    background: #f6faff 
+}
+.allon:hover a{
+    color:  #64b6d6;
+
+}
+.allon>a{
+
+    color: rgb(255, 255, 255);
+}
+
+.tb0{
+    border: 1px solid black;
+    width: 1000px;
+}
+.tb1{
+    width: 1000px;
+}
+section table th{
+    display: inline-block;
+    
+}
+.tagtda{
+    color: black;
+    text-decoration: none;
+    font-size: 23px;
+    margin-right: 10px;
+}
+.th1{
+    font-size: 20px;
+    margin: 0 auto;
+    margin-left: 30px;
+    padding-right: 30px;
+    /* border-right: 1px solid black; */
+}
+.th2{
+    font-size: 20px;
+    margin-left: 300px;
+}
+.th3{
+    display: inline-block;
+    font-size: 18px;
+    margin: 0 auto;
+    margin-left: 40px;
+    padding-right: 40px;
+    /* border-right: 1px solid black; */
+}
+.th4{
+    width: 673px;
+}
+.panel-heading {
+    padding: 5px;
+    /* background-color: rgb(96,160,211); */
+    border: 1px solid  #a7a9ab;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+.panel-body {
+    padding: 15px;
+    font-size: 16px;
+    background: rgb(236, 234, 234);
+}
+.paging {
+    text-align: center;
+}
+.paging > a {
+    padding: 5px;
+    font-size: 20px;
+    color: black;
+}
+.fastext {
+    font-size: medium;
+    vertical-align: middle;
+    color: black;
+    text-decoration: none;
+    font-size: 23px;
+}
+.page-guide2{
+    border: 1px solid #64b6d6;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 12px;
+    color: #ffffff;
+    background: #64b6d6;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 10px;
+    
+    transition: background-color 0.5s
+}
+.page-guide2:hover{
+    background:  #f6fcff;
+    color: #64b6d6;
+}
