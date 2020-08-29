@@ -99,4 +99,26 @@ public class MemberDao {
 		
 	}
 
+	public int deleteMember(Connection conn, String userId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM USRINFO WHERE USR_ID=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }
