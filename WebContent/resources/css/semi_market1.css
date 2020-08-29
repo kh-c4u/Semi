@@ -35,11 +35,12 @@ body {
 .main-header-navi {
   float: right;
   left: 250px;
-  margin-top: 60px;
+  margin-top: -4px;
+  margin-left: -109px;
   position: relative;
   min-width: 700px;
   padding-top: 50px;
-  margin-right: 120px;
+ 
 }
 .main-header-navi li {
   float: left;
@@ -60,6 +61,8 @@ body {
   float: right;
   overflow: hidden;
   max-width: 500px;
+  margin-top: -142px;
+  padding-right : 40px;
 }
 .main-header-login li a {
   color: #000000;
