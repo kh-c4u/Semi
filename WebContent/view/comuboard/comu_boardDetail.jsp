@@ -93,7 +93,7 @@
 <% if(m != null ) { %>
 <div class="sub-right-content">
 	<div class="page-title Nanum2">게시판</div>  
-	<div class="left pb5 mr5"><a href="#" class="btn3">목록</a></div>
+	<div class="left pb5 mr5"><a href="<%= request.getContextPath()%>/resources" class="btn3">목록</a></div>
 		
 	<div class="table-wrap">
 		<table class="tstyle2" style="word-break:break-all">
@@ -201,7 +201,7 @@
 </div>
 <div id="main-footer">
 	<div class="main-footer-wrap">
-		<div><img src="./images/semiLogosize.png"/></div>
+		<div><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png"/></div>
 		<div>
 			<ul>
 				<li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)  help@c4you.com</li>
