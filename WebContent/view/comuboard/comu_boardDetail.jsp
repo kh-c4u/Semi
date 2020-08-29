@@ -113,9 +113,12 @@
 						<%= b.getBtitle() %>
 					</td>
 					<th class="tcenter vm" >첨부파일</th>
-					<td class="pl20">kakao.png</td>
-							
+					<td class="pl20"><a href="<%= request.getContextPath()%>/resources/boardUploadFiles/<%=b.getBoardfile() %>"
+							   download="<%= b.getBoardfile() %>">
+							<%=b.getBoardfile() %>
+							</a></td>
 				</tr>
+				밑에서부터 하면 됨
 				<tr>
 					<th class="tcenter vm">작성자</th>
 					<td class="pl20 r-noline">
