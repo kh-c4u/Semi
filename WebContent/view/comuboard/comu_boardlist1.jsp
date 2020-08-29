@@ -124,7 +124,7 @@
                 <input type="text" id="searchWord" name="searchWord" style="width: 150px;">
             </div>
             <div id="btns">
-                <a href="/Semi/searchBoard1.bo" class="btns"><img src="<%= request.getContextPath()%>/resources/images/seach_gisa.png" ></a>
+                <a href="<%= request.getContextPath()%>/searchBoard1.bo" class="btns"><img src="<%= request.getContextPath()%>/resources/images/seach_gisa.png" ></a>
             </div>
         </div>
         <div class="table-wrap">
