@@ -124,7 +124,7 @@
                 <input type="text" id="searchWord" name="searchWord" style="width: 150px;">
             </div>
             <div id="btns">
-                <a href="/Semi/searchBoard1.bo" class="btns"><img src="/Semi/resources/images/seach_gisa.png" ></a>
+                <a href="/Semi/searchBoard1.bo" class="btns"><img src="<%= request.getContextPath()%>/resources/images/seach_gisa.png" ></a>
             </div>
         </div>
         <div class="table-wrap">
@@ -207,6 +207,15 @@
 		</div>
         </div>
     </div>
+    
+    <script>
+		$(function(){
+			$(".table-gisa td").click(function(){
+				var bno = $(this).parent().find("input").val();
+				location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+			});
+		});
+	</script>
 
 <div id="main-footer">
     <div class="main-footer-wrap">
