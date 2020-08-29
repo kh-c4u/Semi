@@ -138,8 +138,8 @@
 
     <div id="main-box1">
         <ul class="main-box1-qiuck-menu">
-            <li><a href="<%= request.getContextPath()%>/comuboardlist.bo">커뮤니티</a></li>
-            <li><a href="#">장터</a></li>
+            <li><a href="<%=request.getContextPath()%>/comuboardlist.bo">커뮤니티</a></li>
+     <li><a href="#">장터</a></li>
             <li><a href="#">고객센터</a></li>
             <li><a href="#">공지사항</a></li>
         </ul>
