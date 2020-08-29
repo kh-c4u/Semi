@@ -94,7 +94,7 @@
 </head>
 <body>
     <div id="main-header">
-        <div class="main-header-logo"><a href="/Semi/semi_main.jsp"><img src="./resources/images/semiLogosize.png" /></a></div> 
+        <div class="main-header-logo"><a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="./resources/images/semiLogosize.png" /></a></div> 
             <ul class="main-header-navi Nanum1">
                 <li><a href="#">기사</a></li>
 				<li><a href="#">산업기사</a></li>
