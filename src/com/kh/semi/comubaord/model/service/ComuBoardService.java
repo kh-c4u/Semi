@@ -27,10 +27,6 @@ public class ComuBoardService {
 		return list;
 	}
 
-	public ComuBoard selectOne(int bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 
