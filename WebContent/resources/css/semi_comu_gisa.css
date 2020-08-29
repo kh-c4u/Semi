@@ -10,13 +10,13 @@
 #page-title{font-family: '나눔1'; font-size: 26px; padding: 10px 0 10px 0;}
 .page-guide{font-family: '나눔2'; font-size: 16px; border-radius:10px; border: 2px solid rgb(209, 49, 49); width: 1000px; float: left; height: 28px; text-align: center; padding-top: 7px;}
 .search-box{float: left; width: 1000px; height: 40px; border: 1px solid rgb(170, 147, 131); margin: 10px 0 10px 0;}
-.table-wrap{float: left; width: 1000px; min-height: 350px; }
-.paging-wrap{ margin: 10px 0 10px 0; float: left;  width: 1000px; height: 20px;}
+.table-wrap{float: left; width: 1000px; min-height: 350px; margin-botton:0 }
+.paging-wrap{ margin: 20px 0 10px 0; float: left;  width: 1000px; height: 20px;}
 
 #category-Name{font-family: '나눔4';}
 
 .search-box>div{float: left; padding: 10px 0 0 10px; }
-.search-option{margin-left: 50px;}
+.search-option{margin-left: 30px;}
 .search-option>span{margin-right: 50px;}
 
 .btns{padding-left: 0px; font-size: 15px; } 
@@ -31,7 +31,7 @@
 }
 .notice{height: 50px; background-color : #438dbf70; }
 th, td{border-bottom: 1px solid rgb(150, 150, 150);}
-td{height: 30px; }
+td{height: 30px; text-align: center; }
 th{height: 20px; background-color:  rgba(150, 150, 150, 0.507);}
 tr{border-right : 1px solid rgb(150,150,150); border-left : 1px solid rgb(150,150,150); }
 table{border-collapse: collapse; border-top :1px solid rgb(150,150,150); color : #494949;}

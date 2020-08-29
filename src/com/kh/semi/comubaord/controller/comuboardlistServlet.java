@@ -35,7 +35,6 @@ public class comuboardlistServlet extends HttpServlet {
 		
 				ArrayList<ComuBoard> list =null;
 				ComuBoardService cbs = new ComuBoardService();
-				
 	
 				int startPage;
 				int endPage;

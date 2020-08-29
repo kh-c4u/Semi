@@ -19,24 +19,24 @@
 	int endPage = pi.getEndPage();
 %>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"> 
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="../../resources/css/semi_menu_frame.css">
-    <link rel="stylesheet" href="../../resources/css/semi_comu_gisa.css">
+    <link rel="stylesheet" type="text/css" href="/Semi/resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" type="text/css" href="/Semi/resources/css/semi_comu_gisa.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="main-header">
-        <div class="main-header-logo"><a href="#"><img src="./images/semiLogosize.png" /></a></div> 
+        <div class="main-header-logo"><a href="/Semi/semi_main.jsp"><img src="/Semi/resources/images/semiLogosize.png" /></a></div> 
         <ul id='BeforeLogin' class="main-header-login">
             <li><a href="#">로그인</a></li>
             <li><span>|</span><a href="/#">회원가입</a></li>
             <li><span>|</span><a href="/#">고객센터</a></li>
         </ul>
-        
+       
         <ul class="main-header-navi">
             <li><a href="#">기사</a></li>
             <li><a href="#">산업기사</a></li>
@@ -124,7 +124,7 @@
                 <input type="text" id="searchWord" name="searchWord" style="width: 150px;">
             </div>
             <div id="btns">
-                <a href="javascript:search();" class="btns"><img src="./images/seach_gisa.png" ></a>
+                <a href="javascript:search();" class="btns"><img src="/Semi/resources/images/seach_gisa.png" ></a>
             </div>
         </div>
         <div class="table-wrap">
@@ -210,7 +210,7 @@
 
 <div id="main-footer">
     <div class="main-footer-wrap">
-        <div><img src="../../resources/images/semiLogosize.png"/></div>
+        <div><img src="/Semi/resources/images/semiLogosize.png"/></div>
         <div>
             <ul>
                 <li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)  help@c4you.com</li>
