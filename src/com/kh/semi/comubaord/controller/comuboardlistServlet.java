@@ -75,7 +75,7 @@ public class comuboardlistServlet extends HttpServlet {
 				String page = "";
 				
 				if(list != null) {
-					page = "view/comuboard/comu_boardlist.jsp";
+					page = "view/comuboard/comu_boardlist1.jsp";
 					request.setAttribute("list", list);
 					
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);

@@ -43,7 +43,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 				
 				String page = "";
 				if(list != null) {
-					page = "view/comuboard/comu_boardlist.jsp";
+					page = "view/comuboard/comu_boardlist1.jsp";
 					request.setAttribute("list", list);
 				}else {
 					page = "view/common/errorPage.jsp";
