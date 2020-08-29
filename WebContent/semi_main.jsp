@@ -108,7 +108,7 @@
             <%}else{ %>
             	<li><a><%=m.getUserName()%>님</a></li>
             	<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
+                <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
             <%} %>
 			</ul>
            
