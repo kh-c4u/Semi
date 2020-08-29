@@ -74,8 +74,8 @@ public class ComuBoardDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			int startRow = (currentPage - 1) * limit +1; // 1, 11
-			int endRow = startRow + limit - 1; // 10,20
+			int startRow = (currentPage - 1) * limit +1;
+			int endRow = startRow + limit - 1;
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
@@ -88,10 +88,10 @@ public class ComuBoardDao {
 				ComuBoard b = new ComuBoard();
 				
 				b.setBno(rset.getInt("BNO"));
-				b.setBtype(rset.getInt("BTYPE"));
+				b.setBtype(rset.getInt("BTYPE"));  //1 공부팁 2 합격수기 3수강후기 4무료인강추천
 				b.setBtitle(rset.getString("BTITLE"));
-				b.setBcontent(rset.getString("BCONTENT"));
-				b.setBwriter(rset.getString("USERNAME"));
+				b.setBwriter(rset.getString("BWRITER"));
+				b.setBwriterId(rset.getString("USERNAME"));
 				b.setBcount(rset.getInt("BCOUNT"));
 				b.setBdate(rset.getDate("BDATE"));
 				list.add(b);

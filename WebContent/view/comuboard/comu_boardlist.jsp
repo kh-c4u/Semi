@@ -23,8 +23,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="../resouces/css/semi_comu_gisa.css">
-    <link rel="stylesheet" href="./resouces/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="../../resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="../../resources/css/semi_comu_gisa.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -181,11 +181,11 @@
             
         </div>
         <div class="pagination" id="paging-link">
-             <button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
+             <button onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled>이전</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -193,16 +193,16 @@
 			%>
 				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
 			<%      } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button disabled>다음</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
 			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
 
 		</div>
         </div>
@@ -210,7 +210,7 @@
 
 <div id="main-footer">
     <div class="main-footer-wrap">
-        <div><img src="./images/semiLogosize.png"/></div>
+        <div><img src="../../resources/images/semiLogosize.png"/></div>
         <div>
             <ul>
                 <li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)  help@c4you.com</li>

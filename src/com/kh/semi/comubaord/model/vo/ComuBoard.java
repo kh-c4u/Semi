@@ -44,6 +44,19 @@ public class ComuBoard implements Serializable {
 		this.bdate = bdate;
 		
 	}
+	
+	
+	// 전체 리스트용
+	public ComuBoard(int bno, int btype, String btitle, String bwriter, String bwriterId, int bcount, Date bdate) {
+		super();
+		this.bno = bno;
+		this.btype = btype;
+		this.btitle = btitle;
+		this.bwriter = bwriter;
+		this.bwriterId = bwriterId;
+		this.bcount = bcount;
+		this.bdate = bdate;
+	}
 
 	public int getBno() {
 		return bno;
