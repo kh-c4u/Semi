@@ -111,20 +111,20 @@
             </div>
             <div class="search-option">
                 <span class="ch-10">
-                <input type="checkbox" name="searchType" searchType="title" checked="checked"> 제목
+                <input type="radio" name="searchType" searchType="title" checked="checked"> 제목
                 </span>
                 <span class="ch-10">
-                    <input type="checkbox" name="searchType" searchType="content"> 내용
+                    <input type="radio" name="searchType" searchType="content"> 내용
                 </span>
                 <span class="ch-10">
-                    <input type="checkbox" name="searchType" searchType="regUserName"> 작성자
+                    <input type="radio" name="searchType" searchType="regUserName"> 작성자
                 </span>
             </div>
             <div class="input-wrap">
                 <input type="text" id="searchWord" name="searchWord" style="width: 150px;">
             </div>
             <div id="btns">
-                <a href="javascript:search();" class="btns"><img src="/Semi/resources/images/seach_gisa.png" ></a>
+                <a href="/Semi/searchBoard1.bo" class="btns"><img src="/Semi/resources/images/seach_gisa.png" ></a>
             </div>
         </div>
         <div class="table-wrap">
@@ -149,12 +149,12 @@
           </thead>
           <tbody id="serach-Result">
               <tr class="notice">
-                  <td></td>
+                  <td> </td>
                   <td>공지</td>
-                  <td class="tleft td-comment"><a href="#">나중에 공지사항 관리자 수정하게 하기-태민</a></td>
+                  <td class="tleft td-comment"><a href="#"></a>게시글 작성 공지</td>
                   <td>관리자</td>
-                  <td>날짜 태민</td>
-                  <td>조회수 태민</td>
+                  <td>2020-09-21</td>
+                  <td>3401</td>
               </tr>
               
             <% for(ComuBoard b : list){ %>

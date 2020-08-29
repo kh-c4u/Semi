@@ -27,4 +27,6 @@ public class ComuBoardService {
 		return list;
 	}
 
+
+
 }

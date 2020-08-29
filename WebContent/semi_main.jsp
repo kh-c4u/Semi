@@ -95,7 +95,7 @@
 <body>
     <div id="main-header">
         <div class="main-header-logo"><a href="/Semi/semi_main.jsp"><img src="./resources/images/semiLogosize.png" /></a></div> 
-            <ul class="main-header-navi">
+            <ul class="main-header-navi Nanum1">
                 <li><a href="#">기사</a></li>
 				<li><a href="#">산업기사</a></li>
 				<li><a href="#">기능사</a></li>
@@ -114,7 +114,7 @@
            
             <ul id='search' class="main-header-search">
 				<form id='search' name="search">
-					<li> <input type='text' id='search' name='search' placeholder='키워드를 입력하세요' /></li>
+					<li> <input type='text' id='search' name='search' placeholder='&nbsp;&nbsp;&nbsp;키워드를 입력하세요' /></li>
                     <li> <button type="submit" id="search-btn">검색</button></li>
 			
 				</form>
