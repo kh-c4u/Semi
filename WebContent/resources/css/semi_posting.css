@@ -1,0 +1,49 @@
+.comment{
+     width: 1000px; margin-top: 20px;
+}
+
+#replyContent{resize: none; width: 800px;}
+
+.writeC td{
+    text-align: center;
+    
+}
+#txt{
+    width: 500px;
+}
+
+#addReply{
+    height: 47px;
+    width: 100px;
+    border: none;
+    background: rgb(71, 164, 207);rgb(135, 200, 230);
+    transition: 0.7s;
+}
+
+#addReply:hover{
+    background:rgb(135, 200, 230);
+}
+
+td{
+    text-align: center;
+}
+
+#replySelectArea{
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(146, 146, 146);
+    border-right: 1px solid rgb(146, 146, 146);
+    border-left: 1px solid rgb(143, 142, 142);;
+}
+
+#replySelectArea button{
+    background: none;
+    border:none;
+}
+
+.reply-content{
+    resize: none;
+    width: 500px;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+}
