@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2113779912629692194L;
-	
+	private static final long serialVersionUID = -2891510656231932499L;
 	private String userId;
 	private String userPwd;
 	private String userName;

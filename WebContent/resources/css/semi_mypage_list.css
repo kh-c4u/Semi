@@ -1,134 +1,128 @@
 .testbox {
-    width: 1050px;
-    min-height: 500px;
-    /* background-color: blue; */
-    float: left;
-    
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-bottom: 5%;
-  }
-  a{
-    color: black;
-  }
-  
-  table a:hover {
-    text-decoration: underline;
-  }
-  table {
-    border-collapse: collapse;
-    background-color: skyblue;
-  }
-  
-  table,
-  th,
-  td {
-    border-bottom: 1px solid black;
-    padding: 10px;
-  }
-  
-  th {
-    font-size: 16px;
-  }
-  
-  .fas {
-    font-size: medium;
-    vertical-align: middle;
-  }
-  
-  
-  .noticebody {
-    background: hsl(240, 12%, 94%);
-  }
-  
-  .postsbody {
-    background: white;
-  }
-  
-  .notice-qnabox {
-    border: 1px solid rgb(255, 162, 177);
-    padding: 3px 4px;
-    border-radius: 4px;
-    background-color: pink;
-    color: red;
-  }
-  
-  .notice-qna {
-    color: red;
-  }
-  
-  .title-write {
-    width: 100%;
-  
-    text-align: left;
-  }
-  
-  .tablebox {
-    width: 100%;
-  
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .paging {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 10px;
-  }
-  .paging > a {
-    padding: 5px;
-  }
-  
-  .btns {
-    display: flex;
-    margin-top: 50px;
-    text-align: center;
-    margin-left: auto;
-    float: right;
-  }
-  
-  .btn {
-    display: flex;
-    margin-left: 5px;
-  }
-  .btn:hover{
-    background:#2c6379;
-  }
-  
-  .deleteBtn,
-  .replyBtn,
-  .reportBtn,
-  .saveBtn {
-  
-    background:#64b6d6;
-    transition: background-color 0.5s;
-    padding: 10px 20px;
-    border-radius: 2px;
-    font-size: 15px;
-    font-family: sans-serif;
-    font-weight: bold;
-  
-  }
-  
-  .btns .fas {
-    vertical-align: auto;
-    font-size: 18px;
-  }
-  
-  .searchbox-qna {
-    width: fit-content;
-    margin: 0 auto;
-    margin-top: 10px;
-  }
-  #search-qna-sel {
-    vertical-align: middle;
-  }
-  
-  .search-qna-btn {
-    vertical-align: middle;
-  }
-  
-  .search-qna-bar {
-    vertical-align: middle;
-    width: 200px;
-  }
+	width: 1050px;
+	min-height: 500px;
+	/* background-color: blue; */
+	float: left;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-bottom: 5%;
+}
+
+a {
+	color: black;
+}
+
+table a:hover {
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+	background-color: skyblue;
+}
+
+table, th, td {
+	border-bottom: 1px solid black;
+	padding: 10px;
+}
+
+th {
+	font-size: 16px;
+}
+
+.fas {
+	font-size: medium;
+	vertical-align: middle;
+}
+
+.noticebody {
+	background: hsl(240, 12%, 94%);
+}
+
+.postsbody {
+	background: white;
+}
+
+.notice-qnabox {
+	border: 1px solid rgb(255, 162, 177);
+	padding: 3px 4px;
+	border-radius: 4px;
+	background-color: pink;
+	color: red;
+}
+
+.notice-qna {
+	color: red;
+}
+
+.title-write {
+	width: 100%;
+	text-align: left;
+}
+
+.tablebox {
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+.paging {
+	width: fit-content;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.paging>a {
+	padding: 5px;
+}
+
+.btns {
+	display: flex;
+	margin-top: 50px;
+	text-align: center;
+	margin-left: auto;
+	float: right;
+}
+
+.btn {
+	display: flex;
+	margin-left: 5px;
+}
+
+.btn:hover {
+	background: #2c6379;
+}
+
+.deleteBtn, .replyBtn, .reportBtn, .saveBtn {
+	background: #64b6d6;
+	transition: background-color 0.5s;
+	padding: 10px 20px;
+	border-radius: 2px;
+	font-size: 15px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.btns .fas {
+	vertical-align: auto;
+	font-size: 18px;
+}
+
+.searchbox-qna {
+	width: fit-content;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#search-qna-sel {
+	vertical-align: middle;
+}
+
+.search-qna-btn {
+	vertical-align: middle;
+}
+
+.search-qna-bar {
+	vertical-align: middle;
+	width: 200px;
+}

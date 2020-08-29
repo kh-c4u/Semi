@@ -17,8 +17,8 @@
 		<h3 style="font-size: 30px; margin: 0 20px 0 0; z-index: 3;">회원
 			탈퇴</h3>
 		<div class="form-id-pwd">
-			<form id="find-id" 
-			action="${pageContext.request.contextPath}/mDelete.me" method="POST">
+			<form id="find-id"
+				action="${pageContext.request.contextPath}/mDelete.me" method="POST">
 				<ul>
 					<li><label>ID : </label><input type="text" name="Id"
 						maxlength="15" required></li>

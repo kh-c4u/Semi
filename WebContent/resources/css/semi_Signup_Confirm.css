@@ -1,50 +1,41 @@
-
-    
-    
-
-#signUpCompleate{
-    min-width: 1000px;
-
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin: auto;
-    float: left;
+#signUpCompleate {
+	min-width: 1000px;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	margin: auto;
+	float: left;
 }
 
-#complete{
-    width: fit-content;
-    height: 300px;
-    text-align: center;
-    margin: auto;
+#complete {
+	width: fit-content;
+	height: 300px;
+	text-align: center;
+	margin: auto;
 }
 
-#complete div{
-    display: inline-block;
-    
-    margin-top: 10px;
-    height:200px;
+#complete div {
+	display: inline-block;
+	margin-top: 10px;
+	height: 200px;
 }
 
-.complete>div{
-    
+.complete>div {
+	
 }
 
-.signuplogo img{
-    margin-right: 60px;
+.signuplogo img {
+	margin-right: 60px;
 }
 
-button{
-    background :#91d2ec;
-    border: none;
-    min-width: 300px;
-    height: 40px;
-    transition: background-color 0.5s;
-    
-   
+button {
+	background: #91d2ec;
+	border: none;
+	min-width: 300px;
+	height: 40px;
+	transition: background-color 0.5s;
 }
 
-button:hover{
-    background: #64b0ce;
+button:hover {
+	background: #64b0ce;
 }
-

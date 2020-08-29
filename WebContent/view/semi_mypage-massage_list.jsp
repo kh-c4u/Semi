@@ -42,8 +42,8 @@
 						<td style="width: 15%;">옆집형님</td>
 						<td
 							style="width: 60%; text-align: left; text-indent: 10px; font-family: sans-serif;">
-							<a href="semi_mypage_massage view.html">안녕하세요,
-								혹시 문제집 어디서 구하셨는지 알 수 있을까요?</a>
+							<a href="semi_mypage_massage view.html">안녕하세요, 혹시 문제집 어디서
+								구하셨는지 알 수 있을까요?</a>
 						</td>
 
 						<td style="width: 15%;">2020.08.06</td>

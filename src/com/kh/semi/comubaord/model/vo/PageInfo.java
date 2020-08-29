@@ -7,8 +7,7 @@ public class PageInfo implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7946086236950001274L;
-
+	private static final long serialVersionUID = -173083728344368600L;
 	private int currentPage;
 	private int listCount;
 	private int limit;

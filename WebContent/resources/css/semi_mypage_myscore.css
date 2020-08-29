@@ -1,41 +1,39 @@
-
-    
-
-#score-title{
-    font-size: 30px; text-align: center;
+#score-title {
+	font-size: 30px;
+	text-align: center;
 }
 
 table.score-table {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    margin-left: auto;
-    margin-right: auto;
-
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 table.score-table thead th {
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #369;
-    border-bottom: 3px solid #036;
-    text-align: center;
-
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #369;
+	border-bottom: 3px solid #036;
+	text-align: center;
 }
+
 table.score-table tbody th {
-    width: 110px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #f3f6f7;
-    text-align: center;
-
+	width: 110px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #f3f6f7;
+	text-align: center;
 }
+
 table.score-table td {
-    width: 220px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
+	width: 220px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
 }

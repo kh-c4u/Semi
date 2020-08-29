@@ -247,13 +247,14 @@
 				<li><label>e-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					: <input id="email" type="email" name="email" maxlength="30"
 					required></li>
-				<li id="label2"><label >주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<li id="label2"><label>주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					: <input id="address" type="text" name="address1" maxlength="100"
 					required>&nbsp;
-				<button type="button" onclick="addrSearch();">검색</button></li>
+					<button type="button" onclick="addrSearch();">검색</button></li>
 
-				<li><label>상세주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>: <input id="address2" type="text"
-					name="address2" maxlength="100" required></li>
+				<li><label>상세주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</label>: <input id="address2" type="text" name="address2" maxlength="100"
+					required></li>
 			</ul>
 			<br>
 			<div id="btn">
