@@ -236,7 +236,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script>
 		$(function(){
 			$(".table-gisa td").click(function(){
