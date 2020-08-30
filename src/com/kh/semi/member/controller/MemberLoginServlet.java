@@ -59,7 +59,7 @@ public class MemberLoginServlet extends HttpServlet {
 
 			out.println("<script>");
 
-			out.println("alert('·Î±×ÀÎ ½ÇÆĞ');");
+			out.println("alert('ë¡œê·¸ì¸ ì‹¤íŒ¨')");
 
 			out.println("history.back();");
 

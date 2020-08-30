@@ -142,4 +142,31 @@ public class ComuBoardDao {
 		}
 		return b;
 	}
+
+	public int insertComu(ComuBoard cb, Connection con) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertComu");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cb.getBtype());
+			pstmt.setString(2,cb.getBtitle());
+			pstmt.setString(3,cb.getBcontent());
+			pstmt.setString(4, cb.getBwriter());
+			pstmt.setString(5,cb.getBoardfile());
+			System.out.println("dao : " + cb);
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
