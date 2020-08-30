@@ -1,7 +1,6 @@
-package com.kh.semi.comubaord.controller;
+package com.kh.semi.comuboardComment.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
-import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
 import com.kh.semi.comuboardComment.service.BoardCommentService;
 
 /**
- * Servlet implementation class comuBoardSelectoneServlet
+ * Servlet implementation class CommentinsertServlet
  */
-@WebServlet("/CselectOne.bo")
-public class comuBoardSelectoneServlet extends HttpServlet {
+@WebServlet("/CinsertComment.bo")
+public class CommentinsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public comuBoardSelectoneServlet() {
+    public CommentinsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +30,22 @@ public class comuBoardSelectoneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String writer = request.getParameter("writer");
 		int bno = Integer.parseInt(request.getParameter("bno"));
+		String content = request.getParameter("replyContent");
+		int refcno = Integer.parseInt(request.getParameter("refcno"));
+		int clevel= Integer.parseInt(request.getParameter("clevel"));
 		
-		ComuBoard b = new ComuBoardService().selectOne(bno);
-		ArrayList<comuboardComment> clist = new BoardCommentService().selectList(bno);
+		comuboardComment bco = new comuboardComment(bno,content,writer,refcno,clevel);
 		
+		int result = new BoardCommentService().insertComment(bco);
 		
-		String page = "";
-		if(b != null) {
-			page = "view/comuboard/comu_boardDetail.jsp";
-			request.setAttribute("board", b);
-			request.setAttribute("clist", clist);
+		if(result > 0) {
+			response.sendRedirect("CselectOne.bo?bno="+bno);
 		}else {
-			page = "view/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 상세보기 실패!");
+			request.setAttribute("msg", "댓글 작성 실패!");
+			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

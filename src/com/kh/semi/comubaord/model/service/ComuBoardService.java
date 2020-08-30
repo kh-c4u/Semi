@@ -27,6 +27,15 @@ public class ComuBoardService {
 		return list;
 	}
 
+	public ComuBoard selectOne(int bno) {
+		Connection con = getConnection();
+		
+		ComuBoard b = bDao.selectOne(con,bno);
+		
+		close(con);
+		return b;
+	}
+
 
 
 

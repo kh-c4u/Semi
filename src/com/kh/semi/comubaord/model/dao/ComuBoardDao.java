@@ -107,5 +107,39 @@ public class ComuBoardDao {
 		
 		return list;
 	}
-	
+
+	public ComuBoard selectOne(Connection con, int bno) {
+		ComuBoard b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new ComuBoard();
+				
+				b.setBno(rset.getInt("BNO"));
+				b.setBtype(rset.getInt("BTYPE"));
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBcontent(rset.getString("BCONTENT"));
+				b.setBwriter(rset.getString("USERNAME"));
+				b.setBwriterId(rset.getString("BWRITER"));
+				b.setBcount(rset.getInt("BCOUNT"));
+				b.setBdate(rset.getDate("BDATE"));
+				b.setBoardfile(rset.getString("BOARDFILE"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+	}
 }

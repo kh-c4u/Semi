@@ -71,7 +71,7 @@
 						<div>커뮤니티</div>
 					</dt>
 					<dd>
-						<a href="#">- 기사</a>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
 						<a href="#">- 산업기사</a>
@@ -181,7 +181,7 @@
 					</tr>
 
 					<% for(ComuBoard b : list){ %>
-					<tr>
+					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
 						<td><%= b.getBno() %></td>
 						<td><%= b.getBtype() %></td>
@@ -241,7 +241,7 @@
 		$(function(){
 			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/CselectOne.bo?bno=" + bno;
 			});
 		});
 	</script>
