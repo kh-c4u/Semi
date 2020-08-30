@@ -34,15 +34,14 @@ body {
 }
 
 .main-header-navi {
-	float: right;
-	left: 250px;
-	margin-top: 60px;
-	position: relative;
-	min-width: 700px;
-	padding-top: 50px;
-	margin-right: 120px;
+  float: right;
+  left: 250px;
+  margin-top: -4px;
+  margin-left: -109px;
+  position: relative;
+  min-width: 700px;
+  padding-top: 50px;
 }
-
 .main-header-navi li {
 	float: left;
 	padding: 0 140px 0 0px;
