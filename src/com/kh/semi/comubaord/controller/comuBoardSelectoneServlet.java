@@ -19,9 +19,13 @@ import com.kh.semi.comuboardComment.service.BoardCommentService;
  */
 @WebServlet("/CselectOne.bo")
 public class comuBoardSelectoneServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1615579536934385288L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public comuBoardSelectoneServlet() {

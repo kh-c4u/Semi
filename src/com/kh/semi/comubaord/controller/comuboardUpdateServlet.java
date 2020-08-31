@@ -15,9 +15,14 @@ import com.kh.semi.comubaord.model.vo.ComuBoard;
  */
 @WebServlet("/comuboardUpdate.bo")
 public class comuboardUpdateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+
+    
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -309402496948173448L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public comuboardUpdateServlet() {
@@ -33,6 +38,11 @@ public class comuboardUpdateServlet extends HttpServlet {
 	    String content= request.getParameter("content");
 	    int bno = Integer.parseInt(request.getParameter("bno"));
 	
+	    System.out.println("title : "+title);
+	    System.out.println("content : " + content);
+	    System.out.println("bno : " + bno);
+	    
+	    
 	    ComuBoard b = new ComuBoard();
 	    b.setBno(bno);
 	    b.setBcontent(content);

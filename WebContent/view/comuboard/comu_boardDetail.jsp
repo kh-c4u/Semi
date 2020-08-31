@@ -121,7 +121,7 @@
          
       </div>
       <div class="left pb5 mr5">
-      <% if( m != null && m.getUserId().equals(b.getBwriter())) { %>
+      <% if( m != null && m.getUserId().equals(b.getBwriterId())) { %>
            <a href="<%= request.getContextPath()%>/cbUpView.bo?bno=<%=b.getBno()%>" class="btn3">수정</a>
          <% } %>
       </div>
@@ -154,7 +154,7 @@
               
                <tr>
                   <th class="tcenter vm">작성자</th>
-                  <td class="pl20 r-noline"><span class="darkgray pr20"><%= b.getBwriter() %></span>
+                  <td class="pl20 r-noline"><span class="darkgray pr20"><%= b.getBwriterId() %></span>
 
                   </td>
                   <th class="tcenter vm">작성일</th>
