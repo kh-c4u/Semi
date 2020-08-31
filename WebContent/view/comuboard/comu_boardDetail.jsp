@@ -190,7 +190,7 @@
                   <tr>
                      <td>댓글 작성 :</td>
                      <td id="txt"><textArea rows="3" cols="80" id="replyContent"
-                           name="replyContent"></textArea></td>
+                           name="replyContent" required></textArea></td>
                      <td><button type="submit" id="addReply">댓글 등록</button></td>
                   </tr>
                </table>
@@ -242,7 +242,7 @@
                <tr class="comment replyList<%=bco.getClevel()%>">
                   <td style="width: 100px; font-size: 15px;"><%= bco.getCwriter() %> :</td>
                   <td colspan="2" style="background: transparent;"><textarea
-                        class="reply-content" cols="105" rows="1" readonly="readonly"><%= bco.getCcontent() %></textarea>
+                        class="reply-content" cols="105" rows="1" readonly="readonly" required><%= bco.getCcontent() %></textarea>
                   </td>
                   <td></td>
                </tr>
