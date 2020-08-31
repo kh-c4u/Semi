@@ -1,6 +1,7 @@
 package com.kh.semi.comubaord.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -73,7 +74,8 @@ public class comuInsertServlet extends HttpServlet {
 		System.out.println("fileName : " + fileName);
 		
 		HttpSession session = request.getSession();
-		String writer = ((Member)session.getAttribute("member")).getUserName();
+		String writer = ((Member)session.getAttribute("member")).getUserId();
+		System.out.println("writer : " +writer);
 		ComuBoard cb = new ComuBoard(title,content,writer,fileName);
 		cb.setBtype(category);
 		int result = 0;
@@ -84,7 +86,24 @@ public class comuInsertServlet extends HttpServlet {
 			request.getRequestDispatcher("/comuboardlist.bo").forward(request, response);
 			
 		}else {
-			System.out.println("실패");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter(); 
+
+			out.println("<html>");
+			out.println("<body>");
+
+			out.println("</body>");
+
+			out.println("</html>");
+
+			out.println("<script>");
+
+			out.println("alert('게시 실패')");
+
+			out.println("history.back();");
+
+			out.println("</script>");
 		}
 		
 		

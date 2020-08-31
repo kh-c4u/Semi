@@ -85,9 +85,9 @@
                 <div class="option-type">
     
                     <label>제목 :</label>
-                    <input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;">
+                    <input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
                     <div class="select-box">
-                        <select id="category-name" name="category">
+                        <select id="category-name" name="category" required="required">
                             <option disabled="disabled" selected="selected">게시판 선택</option>
                             <option value="1">공부팁</option>
                             <option value="2">합격수기</option>
@@ -100,7 +100,7 @@
                 </div>
     
                 <textarea name="content" cols="40" rows="10"
-                             style="width: 800px; height: 300px; resize: none"></textarea>
+                             style="width: 800px; height: 300px; resize: none" required="required"></textarea>
                 <br>
                 
                 <!-- 취소/등록 버튼 -->
@@ -109,7 +109,7 @@
                     <input type="file" name="filename" accept="image/png,image/jpg,image/bmp"/>
                     </div>
                     <div class="can-sub-buttons">
-                    <button class="btn" id="cancel">취소</button>
+                    <button type="button" class="btn" id="cancel" onclick="cancle()">취소</button>
                     <button type="submit" class="btn" id="submit">등록</button>
                     </div>
                     
@@ -119,19 +119,25 @@
             </form>
         </div>
     
+    <script>
+    	function cancle(){
+    		location.href="<%=request.getContextPath()%>/comuboardlist.bo";
+    		
+    	}
     
     
     
+    </script>
+   
     
     
-    </section>
     
     
     
     
     <div style="clear: both"></div>
     
-    </div>
+    
 
 <div id="main-footer">
     <div class="main-footer-wrap">

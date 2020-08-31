@@ -9,7 +9,7 @@ public class ComuBoard implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8297655824521926635L;
+	private static final long serialVersionUID = -2844221438025150770L;
 	private int bno;			// 게시글 번호
 	private int btype;			// 게시판 종류
 	private String btitle;		// 제목
