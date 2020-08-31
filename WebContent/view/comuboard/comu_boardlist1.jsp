@@ -36,7 +36,7 @@
 	<div id="main-header">
 		<div class="main-header-logo">
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
-				src="/Semi/resources/images/semiLogosize.png" /></a>
+				src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
 			<li><a href="#">로그인</a></li>

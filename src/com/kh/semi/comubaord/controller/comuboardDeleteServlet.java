@@ -17,9 +17,14 @@ import com.oreilly.servlet.MultipartRequest;
  */
 @WebServlet("/cbDelete.bo")
 public class comuboardDeleteServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2246450383476469697L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public comuboardDeleteServlet() {
@@ -33,7 +38,7 @@ public class comuboardDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest mrequest = new MultipartRequest(request,"/");
 		int bno = Integer.parseInt(mrequest.getParameter("bno"));
-
+		System.out.println("delte bno : " + bno);
 		// 서비스 결과 처리
 		int result = new ComuBoardService().deleteBoard(bno);
 		

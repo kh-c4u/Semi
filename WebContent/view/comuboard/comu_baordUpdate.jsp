@@ -144,7 +144,7 @@
 						accept="image/png,image/jpg,image/bmp" />
 				</div>
 				<div class="can-sub-buttons">
-					<button type="button" class="btn" 
+					<button type="submit" class="btn" 
 						onclick="deleteBoard();">삭제</button>
 					<button type="submit" class="btn" 
 						onclick="complete();">완료</button>
