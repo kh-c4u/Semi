@@ -121,8 +121,9 @@
          
       </div>
       <div class="left pb5 mr5">
+      <% if( m != null && m.getUserId().equals(b.getBwriter())) { %>
            <a href="<%= request.getContextPath()%>/cbUpView.bo?bno=<%=b.getBno()%>" class="btn3">수정</a>
-         
+         <% } %>
       </div>
 
       <div class="table-wrap">
