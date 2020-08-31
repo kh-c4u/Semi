@@ -31,7 +31,13 @@ public class ComuBoardService {
 		Connection con = getConnection();
 
 		ComuBoard b = bDao.selectOne(con,bno);
-
+		
+		if(b != null) {
+			int result = bDao.updateReadCount(con,bno);
+			
+			if(result > 0) commit(con);
+			else rollback(con);
+		}
 		close(con);
 		return b;
 	}

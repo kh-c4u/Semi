@@ -38,7 +38,6 @@ public class comuBoardSelectoneServlet extends HttpServlet {
 		ComuBoard b = new ComuBoardService().selectOne(bno);
 		ArrayList<comuboardComment> clist = new BoardCommentService().selectList(bno);
 		
-		
 		String page = "";
 		if(b != null) {
 			page = "view/comuboard/comu_boardDetail.jsp";
