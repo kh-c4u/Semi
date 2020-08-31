@@ -67,7 +67,7 @@ public class ComuBoardService {
 	}
 
 	public int updateComuboard(ComuBoard b) {
-Connection con = getConnection();
+		Connection con = getConnection();
 		
 		int result = bDao.updateComuboard(con,b);
 		

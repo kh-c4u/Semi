@@ -206,12 +206,15 @@ public class ComuBoardDao {
 		
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateBoard");
-		
+
+		System.out.println("dao : " + b);
 		try {
-			pstmt =  con.prepareStatement(sql);
-			pstmt.setString(1, b.getBtitle());
-			pstmt.setString(2, b.getBcontent());
-			pstmt.setInt(3, b.getBno());
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b.getBtype());
+			pstmt.setString(2,b.getBtitle());
+			pstmt.setString(3,b.getBcontent());
+			pstmt.setString(4,b.getBoardfile());
+			pstmt.setInt(5,b.getBno());
 			
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {

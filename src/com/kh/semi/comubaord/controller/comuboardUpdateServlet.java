@@ -1,14 +1,22 @@
 package com.kh.semi.comubaord.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.comubaord.model.service.ComuBoardService;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
+import com.kh.semi.member.vo.Member;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class comuboardUpdateServlet
@@ -16,8 +24,7 @@ import com.kh.semi.comubaord.model.vo.ComuBoard;
 @WebServlet("/comuboardUpdate.bo")
 public class comuboardUpdateServlet extends HttpServlet {
 
-    
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -309402496948173448L;
@@ -34,30 +41,75 @@ public class comuboardUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
-	    String content= request.getParameter("content");
-	    int bno = Integer.parseInt(request.getParameter("bno"));
-	
-	    System.out.println("title : "+title);
-	    System.out.println("content : " + content);
-	    System.out.println("bno : " + bno);
-	    
-	    
-	    ComuBoard b = new ComuBoard();
-	    b.setBno(bno);
-	    b.setBcontent(content);
-	    b.setBtitle(title);
-	    
-	    int result = new ComuBoardService().updateComuboard(b);
-	    
-	    if(result > 0) {
-	    	// 수정 성공
-	    	response.sendRedirect("CselectOne.bo?nno="+bno);
-	    }else {
-	    	// 수정 실패
-	    	request.setAttribute("msg", "공지사항 수정 실패!");
-	    	request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
-	    }
+	int maxSize = 1024*1024*10;
+		
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			// 만약 올바른 multipart / form-data로 전송되지 않았을 경우
+			// 에러 페이지로 즉시 이동시킨다.
+			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request,response);
+		}
+		
+		String root = request.getServletContext().getRealPath("/");
+		System.out.println("최상위 경로 : " + root);
+		
+		// 게시판의 첨부파일을 저장할 폴더 이름 지정하기
+		String savePath = root + "resources/boardUploadFiles";
+		
+		// 4. 실제 담아온 파일 기타 정보들을 활용하여
+		// (request --> MultipartRequest)
+		// MultipartRequest 생성하기
+		MultipartRequest mrequest = new MultipartRequest(request, savePath,maxSize,"UTF-8",new DefaultFileRenamePolicy());
+		String title = mrequest.getParameter("title");
+		System.out.println("title : " + title);
+		
+		int category = Integer.parseInt(mrequest.getParameter("category"));
+		System.out.println("category : " + category);
+		
+		
+		String content = mrequest.getParameter("content");
+		System.out.println("content : " + content);
+		String fileName = mrequest.getFilesystemName("filename");
+		System.out.println("fileName : " + fileName);
+		
+		HttpSession session = request.getSession();
+		String writer = ((Member)session.getAttribute("member")).getUserId();
+		System.out.println("writer : " +writer);
+		int bno = Integer.parseInt(mrequest.getParameter("bno"));
+		System.out.println("bno : " +bno);
+		
+		
+		ComuBoard cb = new ComuBoard(title,content,writer,fileName);
+		cb.setBtype(category);
+		cb.setBno(bno);
+		int result = 0;
+		ComuBoardService cs = new ComuBoardService();
+		result = cs.updateComuboard(cb);
+		
+		if(result>0) {
+			response.sendRedirect(request.getContextPath()+"/CselectOne.bo?bno=" + bno);
+			
+		}else {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter(); 
+
+			out.println("<html>");
+			out.println("<body>");
+
+			out.println("</body>");
+
+			out.println("</html>");
+
+			out.println("<script>");
+
+			out.println("alert('게시 실패')");
+
+			out.println("history.back();");
+
+			out.println("</script>");
+		}
+		
 	}
 
 	/**
