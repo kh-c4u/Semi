@@ -128,7 +128,7 @@
                     <script>
                     
 		function complete(){
-			$("#updateForm").attr("action","<%=request.getContextPath() %>/comuboardUpdate.bo");
+			$("#updateForm").attr("action","<%=request.getContextPath() %>/cbUpdate.bo");
 			
 		}
 		
