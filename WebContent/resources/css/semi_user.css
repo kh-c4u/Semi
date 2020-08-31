@@ -82,7 +82,7 @@ a.btn1:hover              {color:#ffffff !important;}
 a.btn2                     {float:left; font-family:Dotum; color:#666666; background:url("../img/btn2-bg.png") no-repeat left top; 
                              padding:3px 0; text-align: center; margin:0 auto; width:80px;}
 a.btn2:hover              {color:#666666 !important;}
-a.btn3                     {float:left; font-family:Dotum; color:#666666; background:url(../img/btn3-bg.png") no-repeat left top; 
+a.btn3                     {float:left; font-family:Dotum; color:#666666; background:url("../img/btn3-bg.png") no-repeat left top; 
                              padding:3px 0; text-align: center; margin:0 auto; width:60px;}
 a.btn3:hover              {color:#666666 !important;}
 a.btn4                     {float:left; font-family:Dotum; color:#ffffff !important; background:url("../img/btn4-bg.png") no-repeat left top; 

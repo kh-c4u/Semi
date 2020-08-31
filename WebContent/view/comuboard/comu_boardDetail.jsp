@@ -19,14 +19,13 @@
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
 <link rel="stylesheet"
-   href="<%= request.getContextPath()%>/resources/css//semi_menu_frame.css">
+   href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
 <link rel="stylesheet"
-   href="<%= request.getContextPath()%>/resources/css//semi_posting.css">
+   href="<%= request.getContextPath()%>/resources/css/semi_posting.css">
 <link rel="stylesheet"
-   href="<%= request.getContextPath()%>/resources/css//semi_user.css">
+   href="<%= request.getContextPath()%>/resources/css/semi_user.css">
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <title>C4U 너만의 기사</title>
 </head>
 <body>
@@ -119,9 +118,11 @@
       <div class="page-title Nanum2">게시판</div>
       <div class="left pb5 mr5">
          <a href="<%= request.getContextPath()%>/comuboardlist.bo" class="btn3">목록</a>
+         
       </div>
       <div class="left pb5 mr5">
          <a href="#" class="btn3">수정</a>
+         
       </div>
 
       <div class="table-wrap">
@@ -343,6 +344,8 @@
 		request.getRequestDispatcher("/view/common/errorPage.jsp").forward(request, response);
 	}
 	%>
+	
+
    <div id="main-footer">
       <div class="main-footer-wrap">
          <div>
