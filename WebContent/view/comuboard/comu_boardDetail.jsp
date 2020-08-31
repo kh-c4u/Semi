@@ -41,7 +41,7 @@
       </ul>
 
       <ul class="main-header-navi">
-         <li><a href="#">기사</a></li>
+         <li><a href="<%=request.getContextPath()%>/comuboardlist.bo">기사</a></li>
          <li><a href="#">산업기사</a></li>
          <li><a href="#">기능사</a></li>
       </ul>
@@ -121,7 +121,7 @@
          
       </div>
       <div class="left pb5 mr5">
-         <a href="<%= request.getContextPath()%>/cbUpView.bo?bno" class="btn3">수정</a>
+           <a href="<%= request.getContextPath()%>/cbUpView.bo?bno=<%=b.getBno()%>" class="btn3">수정</a>
          
       </div>
 
