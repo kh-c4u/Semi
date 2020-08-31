@@ -241,7 +241,7 @@
             </tr>
                         
                <tr class="comment replyList<%=bco.getClevel()%>">
-                  <td style="width: 100px; font-size: 15px;"><%= bco.getCwriter() %> :</td>
+                  <td style="width: 100px; font-size: 15px;"><%= bco.getCwriterId() %> :</td>
                   <td colspan="2" style="background: transparent;"><textarea
                         class="reply-content" cols="105" rows="1" readonly="readonly" required><%= bco.getCcontent() %></textarea>
                   </td>

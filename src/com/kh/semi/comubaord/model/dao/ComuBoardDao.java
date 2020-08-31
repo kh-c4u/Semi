@@ -24,69 +24,69 @@ import static com.kh.semi.common.JDBCTemplate.*;
 public class ComuBoardDao {
 
 	private Properties prop;
-	
+
 	public ComuBoardDao() {
 		prop = new Properties();
-		
+
 		String filePath = ComuBoardDao.class.getResource("/config/Comuboard-query.properties").getPath();
-		
+
 		try {
 			prop.load(new FileReader(filePath));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public int getListCount(Connection con) {
-		
+
 		// 총 게시글 수
-				int listCount = 0;
-				Statement stmt = null;
-				ResultSet rset = null;
-				
-				String sql = prop.getProperty("listCount");
-				
-				try {
-					stmt = con.createStatement();
-					rset = stmt.executeQuery(sql);
-					
-					if(rset.next()) {
-						listCount = rset.getInt(1);
-					}
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}finally {
-					close(rset);
-					close(stmt);
-				}
-					
-				return listCount;
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("listCount");
+
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+
+		return listCount;
 	}
 
 	public ArrayList<ComuBoard> selectList(Connection con, int currentPage, int limit) {
 		ArrayList<ComuBoard> list =null;
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("selectList");
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
-			
+
 			int startRow = (currentPage - 1) * limit +1;
 			int endRow = startRow + limit - 1;
-			
+
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			list = new ArrayList<ComuBoard>();
-			
+
 			while(rset.next()){
 				ComuBoard b = new ComuBoard();
-				
+
 				b.setBno(rset.getInt("BNO"));
 				b.setBtype(rset.getInt("BTYPE"));  //1 공부팁 2 합격수기 3수강후기 4무료인강추천
 				b.setBtitle(rset.getString("BTITLE"));
@@ -94,28 +94,28 @@ public class ComuBoardDao {
 				b.setBwriterId(rset.getString("USERNAME"));
 				b.setBcount(rset.getInt("BCOUNT"));
 				b.setBdate(rset.getDate("BDATE"));
-				
+
 				switch(rset.getInt("BTYPE")){
 				case 1:b.setBtypestr("공부팁");
-						break;
+				break;
 				case 2:b.setBtypestr("합격수기");
-						break;
+				break;
 				case 3:b.setBtypestr("수강후기");
-						break;
+				break;
 				case 4:b.setBtypestr("무료인강추천");
-						break;
+				break;
 				}
 				list.add(b);
-				
+
 			}
-			
+
 		}catch(SQLException e) {
-			
+
 		}finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return list;
 	}
 
@@ -123,18 +123,18 @@ public class ComuBoardDao {
 		ComuBoard b = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("selectOne");
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bno);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				b = new ComuBoard();
-				
+
 				b.setBno(rset.getInt("BNO"));
 				b.setBtype(rset.getInt("BTYPE"));
 				b.setBtitle(rset.getString("BTITLE"));
@@ -156,11 +156,11 @@ public class ComuBoardDao {
 
 	public int insertComu(ComuBoard cb, Connection con) {
 		int result = 0;
-		
+
 		PreparedStatement pstmt = null;
-		
+
 		String sql = prop.getProperty("insertComu");
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, cb.getBtype());
@@ -170,29 +170,29 @@ public class ComuBoardDao {
 			pstmt.setString(5,cb.getBoardfile());
 			System.out.println("dao : " + cb);
 			result = pstmt.executeUpdate();
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
 
 	public int updateReadCount(Connection con, int bno) {
 		int result = 0;
-		
+
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateReadCount");
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bno);
 			result = pstmt.executeUpdate();
-	
-			
+
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -202,27 +202,39 @@ public class ComuBoardDao {
 	}
 
 	public int updateComuboard(Connection con, ComuBoard b) {
-		int result = 0;
-		
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("updateBoard");
 
-		System.out.println("dao : " + b);
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		String sql = null;
+		if(b.getBoardfile() !=null){
+			sql = prop.getProperty("updateBoardChageFile");
+		}else {
+			sql = prop.getProperty("updateBoard");
+
+		}
+
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, b.getBtype());
-			pstmt.setString(2,b.getBtitle());
-			pstmt.setString(3,b.getBcontent());
-			pstmt.setString(4,b.getBoardfile());
-			pstmt.setInt(5,b.getBno());
-			
+			pstmt.setString(1, b.getBtitle());
+			pstmt.setString(2, b.getBcontent());
+			if(b.getBoardfile()!= null) {
+				pstmt.setString(3, b.getBoardfile());
+				pstmt.setInt(4, b.getBno());
+			}else {
+				pstmt.setInt(3, b.getBno());
+			}
+
 			result = pstmt.executeUpdate();
-		}catch(SQLException e) {
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
-		}finally {
+
+		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
 }
