@@ -92,7 +92,7 @@
            
     
     
-            <form id="updateForm" method="post" enctype="multipart/form-data">
+            <form id="submitForm" action="<%=request.getContextPath()%>/comuinsert.bo" method="post" enctype="multipart/form-data">
                 <div class="option-type">
     
                     <label>제목 :</label>
@@ -122,30 +122,29 @@
                     <input type="file" name="filename" accept="image/png,image/jpg,image/bmp"/>
                     </div>
                     <div class="can-sub-buttons">
-                    <button id="cancelForm" onclick="deleteBoard()">삭제</button>
-                    <button id="submitForm" onclick="complete();">완료</button>
+                    <button type="button" class="btn" id="cancelForm" onclick="deleteBoard()">삭제</button>
+                    <button type="submit" class="btn" id="submitForm" onclick="complete();">완료</button>
                     </div>
-                    <script>
                     
+                <script>
 		function complete(){
-			$("#updateForm").attr("action","<%=request.getContextPath() %>/cbUpdate.bo");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/comuboardUpdate.bo");
 			
 		}
 		
 		function deleteBoard(){
 			// delete 는 예약어 이므로 deleteNotice 로 ...!
-			$("#updateForm").attr("action","<%=request.getContextPath() %>/cbDelete.bo");
+			$("#cancelForm").attr("action","<%=request.getContextPath() %>/cbDelete.bo");
 		}
 	
     	</script>
-                
+     
                      </div>
     
             </form>
         </div>
  
 		
-     
 
     
     
