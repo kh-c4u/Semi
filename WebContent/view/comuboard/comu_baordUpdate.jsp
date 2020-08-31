@@ -134,7 +134,7 @@
 
 			<textarea name="content" cols="40" rows="10"
 				style="width: 800px; height: 300px; resize: none"
-				required="required" <%= b.getBcontent() %>></textarea>
+				 required><%= b.getBcontent() %></textarea>
 			<br>
 
 			<!-- 취소/등록 버튼 -->
