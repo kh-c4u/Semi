@@ -56,7 +56,26 @@ public class ComuBoardService {
 		return result;
 	}
 
+	public ComuBoard updateView(int bno) {
+		Connection con = getConnection();
+		
+		ComuBoard b = bDao.selectOne(con, bno);
+		
+		close(con);
+		return b;
 
+	}
 
-
+	public int updateComuboard(ComuBoard b) {
+Connection con = getConnection();
+		
+		int result = bDao.updateComuboard(con,b);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 }

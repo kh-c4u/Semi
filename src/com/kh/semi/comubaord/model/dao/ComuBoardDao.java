@@ -200,4 +200,26 @@ public class ComuBoardDao {
 		}
 		return result;
 	}
+
+	public int updateComuboard(Connection con, ComuBoard b) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt =  con.prepareStatement(sql);
+			pstmt.setString(1, b.getBtitle());
+			pstmt.setString(2, b.getBcontent());
+			pstmt.setInt(3, b.getBno());
+			
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
