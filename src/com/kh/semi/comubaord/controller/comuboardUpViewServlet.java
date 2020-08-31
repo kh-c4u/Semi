@@ -15,7 +15,11 @@ import com.kh.semi.comubaord.model.vo.ComuBoard;
  */
 @WebServlet("/cbUpView.bo")
 public class comuboardUpViewServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4558529078575827991L;
+
        
     /**
      * @see HttpServlet#HttpServlet()
