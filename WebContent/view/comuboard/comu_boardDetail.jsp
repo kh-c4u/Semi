@@ -297,7 +297,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="/myWeb/deleteComment.bo"
+		location.href="<%= request.getContextPath()%>/comentDelete.co"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	
