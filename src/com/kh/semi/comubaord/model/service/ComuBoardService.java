@@ -78,4 +78,14 @@ public class ComuBoardService {
 		
 		return result;
 	}
+
+	public int deleteBoard(int bno) {
+		Connection con = getConnection();
+		int result = bDao.deleteBoard(con,bno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		return result;
+	}
 }

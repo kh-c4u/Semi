@@ -148,7 +148,7 @@
                   <td class="pl20"><a
                      href="<%= request.getContextPath()%>/resources/boardUploadFiles/<%=b.getBoardfile() %>"
                      download="<%= b.getBoardfile() %>"> <%=b.getBoardfile() %>
-                  </a> <%=b.getBoardfile() %></td>
+                  </a> </td>
                    <% } %>
                </tr>
               

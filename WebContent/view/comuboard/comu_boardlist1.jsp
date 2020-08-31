@@ -117,9 +117,9 @@
 	</div>
 
 	<div class="semi-comu-gisa" style="float: left;">
-		<div id="page-title" class="page-title">기능사</div>
+		<div id="page-title" class="page-title">기사</div>
 		<div class="page-guide">
-			<span>해당 게시판은 기능사를 준비하는 수험생 여러분들을 위한 공간입니다. 공부팁, 온라인, 학원 수강 등
+			<span>해당 게시판은 기사를 준비하는 수험생 여러분들을 위한 공간입니다. 공부팁, 온라인, 학원 수강 등
 				다양한 정보를 자유롭게 공유하세요.</span>
 		</div>
 		<div class="search-box">

@@ -144,21 +144,22 @@
 						accept="image/png,image/jpg,image/bmp" />
 				</div>
 				<div class="can-sub-buttons">
-					<button type="button" class="btn" id="cancelForm"
+					<button type="button" class="btn" 
 						onclick="deleteBoard();">삭제</button>
-					<button type="submit" class="btn" id="submitForm"
+					<button type="submit" class="btn" 
 						onclick="complete();">완료</button>
 				</div>
 
 				<script>
-		function complete(){
-			$("#submitForm").attr("action","<%=request.getContextPath() %>/comuboardUpdate.bo");
-			
-		}
+	
 		
 		function deleteBoard(){
 			// delete 는 예약어 이므로 deleteNotice 로 ...!
-			$("#cancelForm").attr("action","<%=request.getContextPath() %>/cbDelete.bo");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/cbDelete.bo");
+		}
+		function complete(){
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/comuboardUpdate.bo");
+			
 		}
 	
     	</script>
