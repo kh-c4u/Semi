@@ -97,7 +97,7 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
 
 #notice_text,#calendar_text{margin: 30px 1000px 0px 30px; font-size: 20px; font-weight: 800; width: 600px;}
 #Exam_text,#new_post_text{margin: 30px 0px 0px 30px; font-size: 20px; font-weight: 800; width: 600px;}
-
+#notice_text td,#Exam_text td,#new_post_text td{font-weight: 300;}
 
 
 .div-title                                             {width:100%; text-align:center; margin-top:200px;  border-bottom:1px solid #418dc0; padding-top:10px;}
@@ -130,10 +130,19 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
 /*---------------------------윤희 추가 css-------------------------------*/
 .left-box{
 
-    border: 1px solid#808080; border-radius: 10px; margin-top: 30px; margin-right: 50px; width: 590px; height: 500px;
+border: 1px solid#808080; border-radius: 10px; margin-top: 30px; margin-right: 50px; width: 590px; height: 500px;
 }
 
 .right-box{
 border: 1px solid #808080; border-radius: 10px; margin-top: 30px; margin-right: 90px; margin-left: 50px; width: 590px; height: 500px;
 
 }
+
+
+
+tr{ font-size: 20px; }
+.boardTop5{border-collapse: collapse; 
+    margin-left: 10px;
+    margin-top: 40px;
+    color : #494949; width: 650px; height: 430px;}
+

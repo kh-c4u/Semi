@@ -160,8 +160,42 @@
 		<div id="notice">
 			<div id="notice_text">
 				공지사항<a href="#" class="more">+ 더보기</a>
+				<div class="left-box">
+                    <table align="center" class="boardTop5" style="word-break: break-all;">
+                        <tbody>
+                            <tr>
+                                <td>-여기서 강의 들어보신분 있나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기능사 시험 꿀팁 공유!!</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-인강추천합니다.</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기사시험 어렵나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>	
+                </div>
 			</div>
-
 		</div>
 		<div id="calendar">
 			<div id="calendar_text">
@@ -186,12 +220,82 @@
 		<div id="Exam">
 			<div id="Exam_text">
 				기출문제<a href="#" class="more">+ 더보기</a>
+				<div class="left-box">
+                    <table align="center" class="boardTop5" style="word-break: break-all;">
+                        <tbody>
+                            <tr>
+                                <td>-여기서 강의 들어보신분 있나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기능사 시험 꿀팁 공유!!</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-인강추천합니다.</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기사시험 어렵나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>	
+                </div>
 			</div>
 
 		</div>
 		<div id="new_post">
 			<div id="new_post_text">
 				새로운 게시글<a href="#" class="more">+ 더보기</a>
+				<div class="left-box">
+                    <table align="center" class="boardTop5" style="word-break: break-all;">
+                        <tbody>
+                            <tr>
+                                <td>-여기서 강의 들어보신분 있나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기능사 시험 꿀팁 공유!!</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-인강추천합니다.</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-기사시험 어렵나요?</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            <tr>
+                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td>2020.08.21</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>	
+                </div>
 			</div>
 
 		</div>
