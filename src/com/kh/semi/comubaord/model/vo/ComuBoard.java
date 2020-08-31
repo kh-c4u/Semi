@@ -19,6 +19,7 @@ public class ComuBoard implements Serializable {
 	private int bcount;			// 게시글 조회수
 	private String boardfile;	// 게시글 첨부파일
 	private Date bdate;			// 작성일
+	private String btypestr; 	//타입명
 
 	public ComuBoard() {}
 
@@ -44,7 +45,20 @@ public class ComuBoard implements Serializable {
 		
 	}
 	
-	
+	//btype리스트용
+	public ComuBoard(int bno, int btype, String btitle, String bwriter, String bwriterId, int bcount, Date bdate,
+			String btypestr) {
+		super();
+		this.bno = bno;
+		this.btype = btype;
+		this.btitle = btitle;
+		this.bwriter = bwriter;
+		this.bwriterId = bwriterId;
+		this.bcount = bcount;
+		this.bdate = bdate;
+		this.btypestr = btypestr;
+	}
+
 	// 전체 리스트용
 	public ComuBoard(int bno, int btype, String btitle, String bwriter, String bwriterId, int bcount, Date bdate) {
 		super();
@@ -127,6 +141,16 @@ public class ComuBoard implements Serializable {
 
 	public void setBdate(Date bdate) {
 		this.bdate = bdate;
+	}
+	
+	
+
+	public String getBtypestr() {
+		return btypestr;
+	}
+
+	public void setBtypestr(String btypestr) {
+		this.btypestr = btypestr;
 	}
 
 	@Override

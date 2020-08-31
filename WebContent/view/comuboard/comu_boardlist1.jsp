@@ -185,7 +185,7 @@
 					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
 						<td><%= b.getBno() %></td>
-						<td><%= b.getBtype() %></td>
+						<td><%= b.getBtypestr() %></td>
 						<td><%= b.getBtitle() %></td>
 						<td><%= b.getBwriter() %></td>
 						<td><%= b.getBdate() %></td>

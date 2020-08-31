@@ -94,6 +94,17 @@ public class ComuBoardDao {
 				b.setBwriterId(rset.getString("USERNAME"));
 				b.setBcount(rset.getInt("BCOUNT"));
 				b.setBdate(rset.getDate("BDATE"));
+				
+				switch(rset.getInt("BTYPE")){
+				case 1:b.setBtypestr("공부팁");
+						break;
+				case 2:b.setBtypestr("합격수기");
+						break;
+				case 3:b.setBtypestr("수강후기");
+						break;
+				case 4:b.setBtypestr("무료인강추천");
+						break;
+				}
 				list.add(b);
 				
 			}
