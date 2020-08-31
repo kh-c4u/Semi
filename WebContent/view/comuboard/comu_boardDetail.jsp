@@ -172,7 +172,7 @@
                <tr>
                   <td class="t-noline l-line">
                      <div class="bbs-content" id="content">
-                        <p id="content"></p>
+                        <p id="content"><%= b.getBcontent() %></p>
                      </div>
                   </td>
                </tr>
