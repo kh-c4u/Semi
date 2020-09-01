@@ -89,4 +89,26 @@ public class BoardCommentDao {
 		
 		return result;
 	}
+
+	public int deleteComment(Connection con, comuboardComment com) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteComment");
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, com.getCno());
+			pstmt.setInt(2, com.getBno());
+			result = pstmt.executeUpdate();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
 }

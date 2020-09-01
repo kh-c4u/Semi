@@ -27,4 +27,15 @@ public class BoardCommentService {
 		close(con);
 		return result;
 	}
+
+	public int deleteComment(comuboardComment com) {
+		Connection con = getConnection();
+		int result = bcDao.deleteComment(con,com);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		close(con);
+		
+		return result;
+	}
 }
