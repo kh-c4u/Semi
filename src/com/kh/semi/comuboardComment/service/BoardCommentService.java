@@ -38,4 +38,17 @@ public class BoardCommentService {
 		
 		return result;
 	}
+
+	public int updateComment(comuboardComment com) {
+		int result = 0;
+		Connection con = getConnection();
+		result= bcDao.updateComment(con,com);
+		
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		close(con);
+		
+		return result;
+	}
 }

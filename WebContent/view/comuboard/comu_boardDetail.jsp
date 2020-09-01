@@ -287,7 +287,7 @@
       // 게시글 번호 가져오기
       var bno = '<%=b.getBno()%>';
       
-      location.href="/myWeb/updateComment.bo?"
+      location.href="<%= request.getContextPath()%>/updateComment.bo?"
              +"cno="+cno+"&bno="+bno+"&content="+content;
    } 
    
