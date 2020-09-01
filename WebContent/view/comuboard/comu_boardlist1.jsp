@@ -159,7 +159,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&skw="$("searchType").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&skw="$("#searchType").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
