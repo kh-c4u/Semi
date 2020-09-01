@@ -1,4 +1,4 @@
-package com.kh.semi.marketboard.model.vo;
+package com.kh.semi.buymarket.model.vo;
 
 import java.io.Serializable;
 
