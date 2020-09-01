@@ -35,16 +35,16 @@
             src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
       </div>
       <ul id='BeforeLogin' class="main-header-login">
-			<%if(m == null) {%>
-			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
-			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
-			<%}else{ %>
-			<li><a><%=m.getUserName()%>님</a></li>
-			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
-			<%} %>
-		</ul>
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
 
       <ul class="main-header-navi">
          <li><a href="<%=request.getContextPath()%>/comuboardlist.bo">기사</a></li>
@@ -254,104 +254,106 @@
                   <td></td>
                </tr>
             </table>
-            		
-			<% } } else { %>
-			<p>현재 등록된 댓글이 없습니다.<br>
-			   첫 댓글의 주인공이 되어 보세요!</p>
-			<% } %>
+                  
+         <% } } else { %>
+         <p>현재 등록된 댓글이 없습니다.<br>
+            첫 댓글의 주인공이 되어 보세요!</p>
+         <% } %>
          </div>
       </div>
    </div>
-   	<script>
-	function updateReply(obj) {
-		// 현재 위치와 가장 근접한 textarea 접근하기
-		$(obj).parent().parent().next().find('textarea')
-		.removeAttr('readonly');
-		
-		// 수정 완료 버튼을 화면 보이게 하기
-		$(obj).siblings('.updateConfirm').css('display','inline');
-		
-		// 수정하기 버튼 숨기기
-		$(obj).css('display', 'none');
-	}
-	
-	function updateConfirm(obj) {
-		// 댓글의 내용 가져오기
-		var content
-		  = $(obj).parent().parent().next().find('textarea').val();
-		
-		// 댓글의 번호 가져오기
-		var cno = $(obj).siblings('input').val();
-		
-		// 게시글 번호 가져오기
-		var bno = '<%=b.getBno()%>';
-		
-		location.href="/myWeb/updateComment.bo?"
-				 +"cno="+cno+"&bno="+bno+"&content="+content;
-
-	
-	function deleteReply(obj) {
-		// 댓글의 번호 가져오기
-		var cno = $(obj).siblings('input').val();
-		
-		// 게시글 번호 가져오기
-		var bno = '<%=b.getBno()%>';
-		
-		location.href="<%= request.getContextPath()%>/comentDelete.co"
-		+"?cno="+cno+"&bno="+bno;
-	}
-	
-	function reComment(obj){
-		// 수정후 저장 버튼을 화면 보이게 하기
-		$(obj).siblings('.updateConfirm').css('display','inline');
-		
-		// 클릭한 버튼 숨기기
-		$(obj).css('display', 'none');
-		
-		// 내용 입력 공간 만들기
-		var htmlForm = 
-			'<tr class="comment"><td></td>'
-				+'<td colspan="3" style="background : transparent;">'
-					+ '<textarea class="reply-content" style="text-align: left;margin-bottom:10px; width:600px; border:1.4px solid grey; cols="100px" rows="2"></textarea>'
-				+ '</td>'
-			+ '</tr>';
-		
-		$(obj).parents('table').append(htmlForm);
-		
-	}
-	
-	function reConfirm(obj) {
-		// 댓글의 내용 가져오기
-		
-		// 참조할 댓글의 번호 가져오기
-		var refcno = $(obj).siblings('input[name="refcno"]').val();
-		var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
-		
-		// console.log(refcno + " : " + level);
-		
-		// 게시글 번호 가져오기
-		var bno = '<%=b.getBno()%>';
-		
-		var parent = $(obj).parent();
-		var grandparent = parent.parent();
-		var siblingsTR = grandparent.siblings().last();
-		
-		var content = siblingsTR.find('textarea').val();
-		
-		location.href='<%= request.getContextPath()%>/CinsertComment.bo'
-		           + '?writer=<%= m.getUserId() %>' 
-		           + '&replyContent=' + content
-		           + '&bno=' + bno
-		           + '&refcno=' + refcno
-		           + '&clevel=' + level;
-	}
-	</script>
-	<% } else {
-		request.setAttribute("msg", "회원만 가능한 서비스 입니다.");
-		request.getRequestDispatcher("/view/common/errorPage.jsp").forward(request, response);
-	}
-	%>
-	
+      <script>
+   function updateReply(obj) {
+      // 현재 위치와 가장 근접한 textarea 접근하기
+      $(obj).parent().parent().next().find('textarea')
+      .removeAttr('readonly');
+      
+      // 수정 완료 버튼을 화면 보이게 하기
+      $(obj).siblings('.updateConfirm').css('display','inline');
+      
+      // 수정하기 버튼 숨기기
+      $(obj).css('display', 'none');
+   }
+   
+   function updateConfirm(obj) {
+      // 댓글의 내용 가져오기
+      var content
+        = $(obj).parent().parent().next().find('textarea').val();
+      
+      // 댓글의 번호 가져오기
+      var cno = $(obj).siblings('input').val();
+      
+      // 게시글 번호 가져오기
+      var bno = '<%=b.getBno()%>';
+      
+      location.href="/myWeb/updateComment.bo?"
+             +"cno="+cno+"&bno="+bno+"&content="+content;
+   } 
+   
+   
+   
+   function deleteReply(obj) {
+      // 댓글의 번호 가져오기
+      var cno = $(obj).siblings('input').val();
+      
+      // 게시글 번호 가져오기
+      var bno = '<%=b.getBno()%>';
+      
+      location.href="<%= request.getContextPath()%>/comentDelete.co"
+      +"?cno="+cno+"&bno="+bno;
+   }
+   
+   function reComment(obj){
+      // 수정후 저장 버튼을 화면 보이게 하기
+      $(obj).siblings('.updateConfirm').css('display','inline');
+      
+      // 클릭한 버튼 숨기기
+      $(obj).css('display', 'none');
+      
+      // 내용 입력 공간 만들기
+      var htmlForm = 
+         '<tr class="comment"><td></td>'
+            +'<td colspan="3" style="background : transparent;">'
+               + '<textarea class="reply-content" style="text-align: left;margin-bottom:10px; width:600px; border:1.4px solid grey; cols="100px" rows="2"></textarea>'
+            + '</td>'
+         + '</tr>';
+      
+      $(obj).parents('table').append(htmlForm);
+      
+   }
+   
+   function reConfirm(obj) {
+      // 댓글의 내용 가져오기
+      
+      // 참조할 댓글의 번호 가져오기
+      var refcno = $(obj).siblings('input[name="refcno"]').val();
+      var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
+      
+      // console.log(refcno + " : " + level);
+      
+      // 게시글 번호 가져오기
+      var bno = '<%=b.getBno()%>';
+      
+      var parent = $(obj).parent();
+      var grandparent = parent.parent();
+      var siblingsTR = grandparent.siblings().last();
+      
+      var content = siblingsTR.find('textarea').val();
+      
+      location.href='<%= request.getContextPath()%>/CinsertComment.bo'
+                 + '?writer=<%= m.getUserId() %>' 
+                 + '&replyContent=' + content
+                 + '&bno=' + bno
+                 + '&refcno=' + refcno
+                 + '&clevel=' + level;
+   }
+   </script>
+   <% } else {
+      request.setAttribute("msg", "회원만 가능한 서비스 입니다.");
+      request.getRequestDispatcher("/view/common/errorPage.jsp").forward(request, response);
+   }
+   %>
+   
 
    <div id="main-footer">
       <div class="main-footer-wrap">
