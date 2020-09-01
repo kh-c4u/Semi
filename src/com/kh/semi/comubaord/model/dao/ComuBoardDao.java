@@ -333,7 +333,7 @@ public class ComuBoardDao {
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectTop5");
+		String sql = prop.getProperty("selectTop7");
 		
 		try {
 			
