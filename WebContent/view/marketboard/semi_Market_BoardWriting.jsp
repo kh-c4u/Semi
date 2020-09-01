@@ -99,18 +99,18 @@
         <hr>
 
 
-        <form action="<%= request.getContextPath() %>/SEMI/marketboardInsert.bo>"
-        		method="post" enctype="multipart/form-data">
+        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
+        		method="post" enctype="multipart/form-data" name="board_form">
                <div>
 
                 <table>
                     <tr>
                         <td class="Nanum1">제목
                       
-                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요.">
+                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요." required="required">
                                               
-                            <select id="ad" class="Nanum1">
-                                <option value="none" id="ad-ing" >---판매 상태---</option>
+                            <select id="sale_status" class="Nanum1" name="sale_status" required="required">
+                                <option value >---판매 상태---</option>
                                 <option value="sale">판매중</option>
                                 <option value="complete">판매완료</option>
                             </select>
@@ -118,20 +118,19 @@
                     </tr>
                    <tr>
                        <td>작성자
-                      <%= m.getUserName() %>
+                      <%= m.getUserId() %>
                            <input type="hidden" name="userId" value="<%= m.getUserId() %>"/>
                        </td>
                    </tr>
                    <tr>
                         <td>첨부파일
-                            <input type="file" name="file" id="file" />
+                            <input type="file" name="filename" accept="image/png, image/jpg, image/bmp" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10">
-                   -------------------- 새글 양식 -------------------
-                    &#13;&#10; 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
+                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10" required="required">
+               		 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
                         </td>
                     </tr>
 
@@ -148,8 +147,8 @@
     
     <div id="btn_group">
 
-          <button type="reset" class="Nanum2" id="cancel" >취소</button>
-           <button type="submit" class="Nanum2" id="submit">등록</button>
+          <button type="button" class="Nanum2" id="cancel" >취소</button>
+           <button type="button" class="Nanum2" id="submit">등록</button>
 
     </div>
   
@@ -186,25 +185,29 @@
 
 </body>
 <script>
-  <!--  var semi_market = {
+    var semi_market_board_write = {
         init : function() {
             var _this = this;
             $("#cancel").click(function() {
-                _this.cancel_alert();
+                _this.cancel_click();
             });
             $("#submit").click(function() {
-                _this.submit_alert();
+                _this.submit_click();
             });
         },
-        cancel_alert : function () {
-            alert('취소함다.');
+        cancel_click : function () {
+        	$("#board_wirte_form")[0].reset();
+            console.log('취소함다.');
         },
-        submit_alert : function() {
+        submit_click : function() {
+        	
+        	$("#board_wirte_form").submit();
+        	//$("form")[0].submit();  -- form 태그의 0번째를 찾아서 submit 함
             // location.href ="./semi_main.html";
-            alert('제출함다.');
+            console.log('제출함다.');
         }
     };
-    semi_market.init(); -->
+    semi_market_board_write.init(); 
 
 
 

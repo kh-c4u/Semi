@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
+import com.kh.semi.market.model.vo.MarketBoard;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -79,7 +79,7 @@ public class BuyMarketUpdateSerlvet extends HttpServlet {
 				int bno = Integer.parseInt(mrequest.getParameter("bno"));
 				
 				// 6. 전송된 파일 VO에 담아 서비스로 보내기
-				BuyMarketBoard b = new BuyMarketBoard();
+				MarketBoard b = new MarketBoard();
 				b.setBno(bno);
 				b.setBtitle(title);
 				b.setBcontent(content);

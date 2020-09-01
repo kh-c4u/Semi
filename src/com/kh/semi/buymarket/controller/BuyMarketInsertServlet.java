@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
+import com.kh.semi.market.model.vo.MarketBoard;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -70,7 +70,7 @@ int maxSize = 1024 * 1024 * 10;
 
 		String fileName = mrequest.getFilesystemName("file");
 		
-		BuyMarketBoard b = new BuyMarketBoard();
+		MarketBoard b = new MarketBoard();
 		b.setBtitle(title);
 		b.setBcontent(content);
 		b.setBwriter(writer);

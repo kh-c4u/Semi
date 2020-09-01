@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.semi.buymarket.model.dao.BuyMarketDao;
-import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
+import com.kh.semi.market.model.vo.MarketBoard;
 
 
 public class BuyMarketService {
@@ -26,15 +26,15 @@ public class BuyMarketService {
 	
 	
 	
-	public ArrayList<BuyMarketBoard> selectList(int currentPage, int limit) {
+	public ArrayList<MarketBoard> selectList(int currentPage, int limit) {
 		Connection conn = getConnection();
-		ArrayList<BuyMarketBoard> list = bDao.selectList(conn,currentPage,limit);
+		ArrayList<MarketBoard> list = bDao.selectList(conn,currentPage,limit);
 		
 		close(conn);
 		return list;
 	}
 
-	public int insertBoard(BuyMarketBoard b) {
+	public int insertBoard(MarketBoard b) {
 		Connection conn = getConnection();
 		
 		int result = bDao.insertBoard(conn,b);
@@ -48,10 +48,10 @@ public class BuyMarketService {
 		
 	}
 
-	public BuyMarketBoard selectOne(int bno) {
+	public MarketBoard selectOne(int bno) {
 		Connection conn = getConnection();
 		
-		BuyMarketBoard b = bDao.selectOne(conn, bno);
+		MarketBoard b = bDao.selectOne(conn, bno);
 	
 		if(b != null) {
 			int result = bDao.marketBoardCount(conn,bno);
@@ -74,7 +74,7 @@ public class BuyMarketService {
 		return result;
 	}
 
-	public int updateBoard(BuyMarketBoard b) {
+	public int updateBoard(MarketBoard b) {
 		Connection conn = getConnection();
 		
 		int result = bDao.updateBoard(conn,b);

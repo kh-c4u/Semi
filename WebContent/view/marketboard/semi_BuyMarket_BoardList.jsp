@@ -1,7 +1,8 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
-<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.semi.marketboard.model.vo.PageInfo" %>
+<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
+<%@page import="com.kh.semi.market.model.vo.PageInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%  Member m = (Member)session.getAttribute("member"); %>    
@@ -255,7 +256,7 @@
             	<input type="hidden" value="<%= b.getBno() %>"/>
             	<td><%= b.getBno() %></td>
             	<td><%= b.getBtitle() %></td>
-            	<td><%= b.getBwriter() %></td>
+            	<td><%= b.getBwriter()%></td>
             	<td><%= b.getBdate() %></td>
             	<td><%= b.getBcount() %></td>
             	<td><%= b.getBcondition() %></td>
@@ -271,11 +272,11 @@
        
        <%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -283,16 +284,16 @@
 			%>
 				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= p %>'"><%= p %></button>
 			<%      } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button disabled>></button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
        
@@ -305,6 +306,8 @@
 			</select>
 			<input type="search">
 			<button type="submit">검색하기</button>
+			
+			
 			<% if(m != null){ %>
 				<button onclick="location.href='view/board/semi_Market_BoardWriting.jsp'">작성하기</button>
 			<% } %>
@@ -320,7 +323,9 @@
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0"; 
+				
+		
 			});
 		});
 	</script>       

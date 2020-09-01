@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
-import com.kh.semi.buymarket.model.vo.PageInfo;
+import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.market.model.vo.PageInfo;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -33,7 +33,7 @@ public class BuyMarketListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<BuyMarketBoard> list =null;
+		ArrayList<MarketBoard> list =null;
 				BuyMarketService bs = new BuyMarketService();
 				int startPage;
 				
