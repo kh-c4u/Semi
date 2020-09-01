@@ -80,18 +80,21 @@ public class SearchComuBoardServlet extends HttpServlet {
 				// 검색 카테고리
 				System.out.println(request.getParameter("con"));
 				int category = Integer.parseInt(request.getParameter("con"));
+				
 				System.out.println("category : "  + category);
+				
 				// 검색 키워드 선택
 				String selectKeyword = request.getParameter("skw");
 				System.out.println("selectKeyword : " + selectKeyword);
+			
 				if(selectKeyword.equals("undefined")) { 
 					response.sendRedirect(request.getContextPath()+"/comuboardlist.bo");
-				}else {
-				
+				}else{
 				
 				// 검색 키워드
 				String keyword = request.getParameter("keyword");
 				System.out.println("keyword : " + keyword);
+				
 				list = new ComuBoardService().searchBoard(category,keyword,selectKeyword,currentPage,limit);
 				
 				
@@ -110,7 +113,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 					
 					
 					request.getRequestDispatcher(page).forward(request, response);
-				}else {
+				}	else {
 					response.setCharacterEncoding("UTF-8");
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out=response.getWriter(); 
@@ -124,7 +127,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 		
 					out.println("<script>");
 		
-					out.println("alert('게시 실패')");
+					out.println("alert('검색 실패')");
 		
 					out.println("history.back();");
 		

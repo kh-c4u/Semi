@@ -90,7 +90,7 @@ public class ComuBoardService {
 	}
 
 	public ArrayList<ComuBoard> searchBoard(int category, String keyword, String selectKeyword, int currentPage,int limit) {
-		//키워드 - 검색창 category-공부팁  select-라디오버튼(작성자, 내용, 제목) 아하
+		//키워드 - 검색창 category-공부팁  select-라디오버튼(작성자, 내용, 제목) 
 		Connection con = getConnection();
 		ArrayList<ComuBoard> list = null;
 		

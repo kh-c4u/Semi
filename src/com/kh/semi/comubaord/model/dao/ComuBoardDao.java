@@ -263,6 +263,7 @@ public class ComuBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = null;
+		
 		switch(selectKeyword) {
 		case "content":
 			sql = prop.getProperty("searchContentBoard");
