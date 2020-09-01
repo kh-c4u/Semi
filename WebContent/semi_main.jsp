@@ -277,7 +277,7 @@
         				success : function(data){
         					
         					// console.log(data);
-        					var $table = $('#boardTop7Comu tbody');
+        					var $table = $('#boardTop7Comu>tbody');
         					
         					for(var i in data){
         						
