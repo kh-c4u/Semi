@@ -13,7 +13,7 @@ import com.kh.semi.comubaord.model.vo.ComuBoard;
 /**
  * Servlet implementation class comuboardUpViewServlet
  */
-@WebServlet("/cbUpView.bo")
+@WebServlet("/GScbUpView.bo")
 public class comuboardUpViewServlet extends HttpServlet {
 	/**
 	 * 

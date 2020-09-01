@@ -17,7 +17,7 @@ import com.kh.semi.comuboardComment.service.BoardCommentService;
 /**
  * Servlet implementation class comuBoardSelectoneServlet
  */
-@WebServlet("/CselectOne.bo")
+@WebServlet("/GSCselectOne.bo")
 public class comuBoardSelectoneServlet extends HttpServlet {
 	
     /**

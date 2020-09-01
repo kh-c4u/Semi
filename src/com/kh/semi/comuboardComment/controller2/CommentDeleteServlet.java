@@ -15,7 +15,7 @@ import com.kh.semi.comuboardComment.service.BoardCommentService;
 /**
  * Servlet implementation class CommentDeleteServlet
  */
-@WebServlet("/comentDelete.co")
+@WebServlet("/GScomentDelete.co")
 public class CommentDeleteServlet extends HttpServlet {
 	
        

@@ -15,7 +15,7 @@ import com.kh.semi.comuboardComment.service.BoardCommentService;
 /**
  * Servlet implementation class CommentUpdateServlet
  */
-@WebServlet("/updateComment.bo")
+@WebServlet("/GSupdateComment.bo")
 public class CommentUpdateServlet extends HttpServlet {
 	
        

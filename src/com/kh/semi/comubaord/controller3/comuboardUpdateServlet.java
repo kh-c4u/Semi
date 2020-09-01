@@ -21,7 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class comuboardUpdateServlet
  */
-@WebServlet("/comuboardUpdate.bo")
+@WebServlet("/SGScomuboardUpdate.bo")
 public class comuboardUpdateServlet extends HttpServlet {
 
 	

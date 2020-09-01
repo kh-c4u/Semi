@@ -17,7 +17,7 @@ import com.kh.semi.comubaord.model.vo.PageInfo;
 /**
  * Servlet implementation class SearchComuBoardServlet
  */
-@WebServlet("/searchBoard1.bo")
+@WebServlet("/GSsearchBoard1.bo")
 public class SearchComuBoardServlet extends HttpServlet {
 	
 	

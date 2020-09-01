@@ -1,4 +1,4 @@
-package com.kh.semi.comuboardComment.service2;
+package com.kh.semi.comuboardComment.service3;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import static com.kh.semi.common.JDBCTemplate.*;
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
 import com.kh.semi.coumuboardComment.dao.BoardCommentDao;
 
-public class BoardCommentService {
+public class BoardCommentServiceSGS {
 	private BoardCommentDao bcDao = new BoardCommentDao();
 	
 	public ArrayList<comuboardComment> selectList(int bno) {

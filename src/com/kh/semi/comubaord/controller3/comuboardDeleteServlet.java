@@ -15,7 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 /**
  * Servlet implementation class comuboardDeleteServlet
  */
-@WebServlet("/cbDelete.bo")
+@WebServlet("/SGScbDelete.bo")
 public class comuboardDeleteServlet extends HttpServlet {
 	
        

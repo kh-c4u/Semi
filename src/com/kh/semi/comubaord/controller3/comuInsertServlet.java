@@ -21,7 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class comuInsertServlet
  */
-@WebServlet("/comuinsert.bo")
+@WebServlet("/SGScomuinsert.bo")
 public class comuInsertServlet extends HttpServlet {
 	
     

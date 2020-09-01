@@ -16,7 +16,7 @@ import com.kh.semi.comubaord.model.vo.PageInfo;
 /**
  * Servlet implementation class comuboardlistServlet
  */
-@WebServlet("/comuboardlist.bo")
+@WebServlet("/GScomuboardlist.bo")
 public class comuboardlistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

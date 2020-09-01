@@ -7,7 +7,7 @@ import static com.kh.semi.common.JDBCTemplate.*;
 import com.kh.semi.comubaord.model.dao.ComuBoardDao;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 
-public class ComuBoardService {
+public class ComuBoardServiceGS {
 	private ComuBoardDao bDao = new ComuBoardDao();
 
 	public int getListCount() {

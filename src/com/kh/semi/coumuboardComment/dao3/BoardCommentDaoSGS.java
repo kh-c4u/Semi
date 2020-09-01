@@ -11,12 +11,12 @@ import java.util.Properties;
 import static com.kh.semi.common.JDBCTemplate.*;
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
 
-public class BoardCommentDao {
+public class BoardCommentDaoSGS {
 
 	private Properties prop = new Properties();
 
-	public BoardCommentDao() {
-		String filePath = BoardCommentDao.class
+	public BoardCommentDaoSGS() {
+		String filePath = BoardCommentDaoSGS.class
 				.getResource("/config/comucomment-query.properties").getPath();
 		try {
 			prop.load(new FileReader(filePath));

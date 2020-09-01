@@ -14,7 +14,7 @@ import com.kh.semi.comuboardComment.service.BoardCommentService;
 /**
  * Servlet implementation class CommentinsertServlet
  */
-@WebServlet("/CinsertComment.bo")
+@WebServlet("/SGSCinsertComment.bo")
 public class CommentinsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
