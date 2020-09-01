@@ -81,10 +81,10 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
 					</dd>
 				</dl>
 			</li>
@@ -159,7 +159,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/searchBoard1.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/GSsearchBoard1.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
@@ -213,19 +213,19 @@
 		<div class="paging-wrap">
 			<div class="writeBtn">
 				<% if(m != null){ %>
-				<button onclick="location.href='view/comuboard/semi_comu_write.jsp'"
+				<button onclick="location.href='view/comuboard/semi_comu_write_GS.jsp'"
 					id="writeB">글쓰기</button>
 				<% } %>
 
 			</div>
 			<div class="pagination" id="paging-link">
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=1'"><<</button>
+					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=1'"><<</button>
 				<%  if(currentPage <= 1){  %>
 				<button disabled>이전</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
 				<%  } %>
 
 				<% for(int p = startPage; p <= endPage; p++){
@@ -234,7 +234,7 @@
 				<button disabled><%= p %></button>
 				<%      }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
+					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
 				<%      } %>
 				<% } %>
 
@@ -242,10 +242,10 @@
 				<button disabled>다음</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
 				<%  } %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
+					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
 
 			</div>
 		</div>
@@ -255,7 +255,7 @@
 		$(function(){
 			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/CselectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/GSCselectOne.bo?bno=" + bno;
 			});
 		});
 	</script>

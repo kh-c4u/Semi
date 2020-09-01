@@ -17,7 +17,7 @@ public class BoardCommentDaoGS {
 
 	public BoardCommentDaoGS() {
 		String filePath = BoardCommentDaoGS.class
-				.getResource("/config/comucomment-query.properties").getPath();
+				.getResource("/config/GScomucomment-query.properties").getPath();
 		try {
 			prop.load(new FileReader(filePath));
 		}catch(IOException e) {

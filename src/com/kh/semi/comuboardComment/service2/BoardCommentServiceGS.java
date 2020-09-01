@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import static com.kh.semi.common.JDBCTemplate.*;
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
-import com.kh.semi.coumuboardComment.dao.BoardCommentDao;
+
+import com.kh.semi.coumuboardComment.dao2.BoardCommentDaoGS;
 
 public class BoardCommentServiceGS {
-	private BoardCommentDao bcDao = new BoardCommentDao();
+	private BoardCommentDaoGS bcDao = new BoardCommentDaoGS();
 	
 	public ArrayList<comuboardComment> selectList(int bno) {
 		Connection con = getConnection();

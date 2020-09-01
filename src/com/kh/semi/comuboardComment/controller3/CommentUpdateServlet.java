@@ -49,7 +49,7 @@ public class CommentUpdateServlet extends HttpServlet {
 		int result = bcs.updateComment(com);
 		
 		if(result>0) {
-			response.sendRedirect(request.getContextPath()+"/CselectOne.bo?bno=" + bno);
+			response.sendRedirect(request.getContextPath()+"/SGSCselectOne.bo?bno=" + bno);
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");

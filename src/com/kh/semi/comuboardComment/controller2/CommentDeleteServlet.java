@@ -48,7 +48,7 @@ public class CommentDeleteServlet extends HttpServlet {
 		int result = bcs.deleteComment(com);
 		
 		if(result>0) {
-			response.sendRedirect(request.getContextPath()+"/CselectOne.bo?bno=" + bno);
+			response.sendRedirect(request.getContextPath()+"/GSCselectOne.bo?bno=" + bno);
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");

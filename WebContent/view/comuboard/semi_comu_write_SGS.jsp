@@ -55,9 +55,9 @@
                 <dt>
                     <div>커뮤니티</div>
                 </dt>
-                <dd><a href="#">- 기사</a></dd>
-                <dd><a href="#">- 산업기사</a></dd>
-                <dd><a href="#">- 기능사</a></dd>
+                <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+                <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+                <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
             </dl>
         </li>
         <div class="menu-line"></div>
@@ -91,7 +91,7 @@
            
     
     
-            <form action="<%=request.getContextPath()%>/comuinsert.bo" method="post" enctype="multipart/form-data">
+            <form action="<%=request.getContextPath()%>/SGScomuinsert.bo" method="post" enctype="multipart/form-data">
                 <div class="option-type">
     
                     <label>제목 :</label>
@@ -131,7 +131,7 @@
     
     <script>
     	function cancle(){
-    		location.href="<%=request.getContextPath()%>/comuboardlist.bo";
+    		location.href="<%=request.getContextPath()%>/SGScomuboardlist.bo";
     		
     	}
     

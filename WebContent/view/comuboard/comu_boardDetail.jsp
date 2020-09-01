@@ -47,7 +47,7 @@
 		</ul>
 
 		<ul class="main-header-navi">
-			<li><a href="<%=request.getContextPath()%>/comuboardlist.bo">기사</a></li>
+			<li><a href="#">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
@@ -77,10 +77,10 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
 					</dd>
 				</dl>
 			</li>

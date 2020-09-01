@@ -28,7 +28,7 @@ public class ComuBoardDaoGS {
 	public ComuBoardDaoGS() {
 		prop = new Properties();
 
-		String filePath = ComuBoardDaoGS.class.getResource("/config/Comuboard-query.properties").getPath();
+		String filePath = ComuBoardDaoGS.class.getResource("/config/GSComuboard-query.properties").getPath();
 
 		try {
 			prop.load(new FileReader(filePath));

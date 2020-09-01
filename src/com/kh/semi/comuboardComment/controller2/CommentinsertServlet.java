@@ -41,7 +41,7 @@ public class CommentinsertServlet extends HttpServlet {
 		int result = new BoardCommentService().insertComment(bco);
 		
 		if(result > 0) {
-			response.sendRedirect("CselectOne.bo?bno="+bno);
+			response.sendRedirect("GSCselectOne.bo?bno="+bno);
 		}else {
 			request.setAttribute("msg", "댓글 작성 실패!");
 			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);

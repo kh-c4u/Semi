@@ -47,7 +47,7 @@
 		</ul>
 
 		<ul class="main-header-navi">
-			<li><a href="<%=request.getContextPath()%>/comuboardlist.bo">기사</a></li>
+			<li><a href="#">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
@@ -77,10 +77,10 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo"">- 산업기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
 					</dd>
 				</dl>
 			</li>
@@ -123,14 +123,14 @@
 	<div class="sub-right-content">
 		<div class="page-title Nanum2">게시판</div>
 		<div class="left pb5 mr5">
-			<a href="<%= request.getContextPath()%>/comuboardlist.bo"
+			<a href="<%= request.getContextPath()%>/GScomuboardlist.bo"
 				class="btn3">목록</a>
 
 		</div>
 		<div class="left pb5 mr5">
 			<% if( m != null && m.getUserId().equals(b.getBwriterId())) { %>
 			<a
-				href="<%= request.getContextPath()%>/cbUpView.bo?bno=<%=b.getBno()%>"
+				href="<%= request.getContextPath()%>/GScbUpView.bo?bno=<%=b.getBno()%>"
 				class="btn3">수정</a>
 			<% } %>
 		</div>
@@ -191,7 +191,7 @@
 		<div class="comment">
 			<div class="replyWriteArea">
 
-				<form action="<%= request.getContextPath()%>/CinsertComment.bo"
+				<form action="<%= request.getContextPath()%>/GSCinsertComment.bo"
 					method="post">
 					<input type="hidden" name="writer" value="<%=m.getUserId()%>" /> <input
 						type="hidden" name="bno" value="<%=b.getBno() %>" /> <input
@@ -287,7 +287,7 @@
       // 게시글 번호 가져오기
       var bno = '<%=b.getBno()%>';
       
-      location.href="<%= request.getContextPath()%>/updateComment.bo?"
+      location.href="<%= request.getContextPath()%>/GSupdateComment.bo?"
              +"cno="+cno+"&bno="+bno+"&content="+content;
    } 
    
@@ -300,7 +300,7 @@
       // 게시글 번호 가져오기
       var bno = '<%=b.getBno()%>';
       
-      location.href="<%= request.getContextPath()%>/comentDelete.co"
+      location.href="<%= request.getContextPath()%>/GScomentDelete.co"
       +"?cno="+cno+"&bno="+bno;
    }
    
@@ -341,7 +341,7 @@
       
       var content = siblingsTR.find('textarea').val();
       
-      location.href='<%= request.getContextPath()%>/CinsertComment.bo'
+      location.href='<%= request.getContextPath()%>/GSCinsertComment.bo'
                  + '?writer=<%= m.getUserId() %>' 
                  + '&replyContent=' + content
                  + '&bno=' + bno
