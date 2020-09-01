@@ -77,7 +77,7 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo"">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
 					</dd>
 					<dd>
 						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
@@ -123,7 +123,7 @@
 	<div class="sub-right-content">
 		<div class="page-title Nanum2">게시판</div>
 		<div class="left pb5 mr5">
-			<a href="<%= request.getContextPath()%>/GScomuboardlist.bo"
+			<a href="<%=request.getContextPath()%>/GScomuboardlist.bo"
 				class="btn3">목록</a>
 
 		</div>

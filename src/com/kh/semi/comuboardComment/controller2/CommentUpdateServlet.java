@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
-import com.kh.semi.comuboardComment.service.BoardCommentService;
+import com.kh.semi.comuboardComment.service2.BoardCommentServiceGS;
+
 
 /**
  * Servlet implementation class CommentUpdateServlet
@@ -44,7 +45,7 @@ public class CommentUpdateServlet extends HttpServlet {
 		com.setBno(bno);
 		com.setCno(cno);
 		com.setCcontent(content);
-		BoardCommentService bcs = new BoardCommentService();
+		BoardCommentServiceGS bcs = new BoardCommentServiceGS();
 		
 		int result = bcs.updateComment(com);
 		

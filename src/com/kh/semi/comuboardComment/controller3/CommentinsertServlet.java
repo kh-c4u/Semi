@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
-import com.kh.semi.comuboardComment.service.BoardCommentService;
+import com.kh.semi.comuboardComment.service3.BoardCommentServiceSGS;
 
 /**
  * Servlet implementation class CommentinsertServlet
@@ -38,7 +38,7 @@ public class CommentinsertServlet extends HttpServlet {
 		
 		comuboardComment bco = new comuboardComment(bno,content,writer,refcno,clevel);
 		
-		int result = new BoardCommentService().insertComment(bco);
+		int result = new BoardCommentServiceSGS().insertComment(bco);
 		
 		if(result > 0) {
 			response.sendRedirect("SGSCselectOne.bo?bno="+bno);

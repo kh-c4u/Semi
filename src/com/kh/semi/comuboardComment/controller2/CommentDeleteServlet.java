@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
-import com.kh.semi.comuboardComment.service.BoardCommentService;
+import com.kh.semi.comuboardComment.service2.BoardCommentServiceGS;
 
 /**
  * Servlet implementation class CommentDeleteServlet
@@ -43,7 +43,7 @@ public class CommentDeleteServlet extends HttpServlet {
 		com.setBno(bno);
 		com.setCno(cno);
 		
-		BoardCommentService bcs = new BoardCommentService();
+		BoardCommentServiceGS bcs = new BoardCommentServiceGS();
 		
 		int result = bcs.deleteComment(com);
 		

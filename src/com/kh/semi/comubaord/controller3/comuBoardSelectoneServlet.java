@@ -44,7 +44,7 @@ public class comuBoardSelectoneServlet extends HttpServlet {
 		
 		String page = "";
 		if(b != null) {
-			page = "view/comuboard/comu_boardDetail.jsp";
+			page = "view/comuboard/comu_boardDetail_SGS.jsp";
 			request.setAttribute("board", b);
 			request.setAttribute("clist", clist);
 		}else {
