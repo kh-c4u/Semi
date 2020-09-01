@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import static com.kh.semi.common.JDBCTemplate.*;
-import com.kh.semi.comubaord.model.dao.ComuBoardDao;
+
+import com.kh.semi.comubaord.model.dao3.ComuBoardDaoSGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 
 public class ComuBoardServiceSGS {
-	private ComuBoardDao bDao = new ComuBoardDao();
+	private ComuBoardDaoSGS bDao = new ComuBoardDaoSGS();
 
 	public int getListCount() {
 		Connection con = getConnection();

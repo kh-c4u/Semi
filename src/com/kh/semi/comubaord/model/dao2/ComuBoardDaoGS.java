@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kh.semi.comubaord.model.dao3;
+package com.kh.semi.comubaord.model.dao2;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,14 +21,14 @@ import static com.kh.semi.common.JDBCTemplate.*;
  * @author haha2
  *
  */
-public class ComuBoardDao {
+public class ComuBoardDaoGS {
 
 	private Properties prop;
 
-	public ComuBoardDao() {
+	public ComuBoardDaoGS() {
 		prop = new Properties();
 
-		String filePath = ComuBoardDao.class.getResource("/config/Comuboard-query.properties").getPath();
+		String filePath = ComuBoardDaoGS.class.getResource("/config/Comuboard-query.properties").getPath();
 
 		try {
 			prop.load(new FileReader(filePath));
