@@ -96,7 +96,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 				String keyword = request.getParameter("keyword");
 				System.out.println("keyword : " + keyword);
 				
-				list = new ComuBoardService().searchBoard(category,keyword,selectKeyword,currentPage,limit);
+				list = new ComuBoardServiceSGS().searchBoard(category,keyword,selectKeyword,currentPage,limit);
 				
 				
 				for(ComuBoard cb : list) {
