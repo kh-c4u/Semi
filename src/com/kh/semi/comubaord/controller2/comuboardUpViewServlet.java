@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service2.ComuBoardServiceGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 
 /**
@@ -35,11 +35,11 @@ public class comuboardUpViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		
-		ComuBoard b = new ComuBoardService().updateView(bno);
+		ComuBoard b = new ComuBoardServiceGS().updateView(bno);
 		
 		String page = "";
 		if(b != null) {
-			page = "view/comuboard/comu_baordUpdate.jsp";
+			page = "view/comuboard/comu_baordUpdate_GS.jsp";
 			request.setAttribute("board", b);
 		}else {
 			page = "view/common/errorPage.jsp";

@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service3.ComuBoardServiceSGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
-import com.kh.semi.comuboardComment.service.BoardCommentService;
+import com.kh.semi.comuboardComment.service3.BoardCommentServiceSGS;
 
 /**
  * Servlet implementation class comuBoardSelectoneServlet
@@ -39,8 +39,8 @@ public class comuBoardSelectoneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		
-		ComuBoard b = new ComuBoardService().selectOne(bno);
-		ArrayList<comuboardComment> clist = new BoardCommentService().selectList(bno);
+		ComuBoard b = new ComuBoardServiceSGS().selectOne(bno);
+		ArrayList<comuboardComment> clist = new BoardCommentServiceSGS().selectList(bno);
 		
 		String page = "";
 		if(b != null) {

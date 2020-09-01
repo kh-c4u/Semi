@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service3.ComuBoardServiceSGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.member.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
@@ -79,11 +79,11 @@ public class comuInsertServlet extends HttpServlet {
 		ComuBoard cb = new ComuBoard(title,content,writer,fileName);
 		cb.setBtype(category);
 		int result = 0;
-		ComuBoardService cs = new ComuBoardService();
+		ComuBoardServiceSGS cs = new ComuBoardServiceSGS();
 		result = cs.insertComu(cb);
 		
 		if(result>0) {
-			request.getRequestDispatcher("/comuboardlist.bo").forward(request, response);
+			request.getRequestDispatcher("/SGScomuboardlist.bo").forward(request, response);
 			
 		}else {
 			response.setCharacterEncoding("UTF-8");

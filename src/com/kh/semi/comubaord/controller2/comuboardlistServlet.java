@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service2.ComuBoardServiceGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.comubaord.model.vo.PageInfo;
 
@@ -34,7 +34,7 @@ public class comuboardlistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 				ArrayList<ComuBoard> list =null;
-				ComuBoardService cbs = new ComuBoardService();
+				ComuBoardServiceGS cbs = new ComuBoardServiceGS();
 	
 				int startPage;
 				int endPage;

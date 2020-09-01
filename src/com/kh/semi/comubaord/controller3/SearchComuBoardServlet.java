@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service3.ComuBoardServiceSGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.comubaord.model.vo.PageInfo;
 
@@ -40,7 +41,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				ArrayList<ComuBoard> list =null;
-				ComuBoardService cbs = new ComuBoardService();
+				ComuBoardServiceSGS cbs = new ComuBoardServiceSGS();
 
 				int startPage;
 				int endPage;
@@ -88,7 +89,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 				System.out.println("selectKeyword : " + selectKeyword);
 			
 				if(selectKeyword.equals("undefined")) { 
-					response.sendRedirect(request.getContextPath()+"/comuboardlist.bo");
+					response.sendRedirect(request.getContextPath()+"/SGScomuboardlist.bo");
 				}else{
 				
 				// 검색 키워드
@@ -106,7 +107,7 @@ public class SearchComuBoardServlet extends HttpServlet {
 				
 				String page = "";
 				if(list != null) {
-					page = "view/comuboard/comu_boardlist1.jsp";
+					page = "view/comuboard/comu_boardlist1_SGS.jsp";
 					request.setAttribute("list", list);
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 					request.setAttribute("pi", pi);

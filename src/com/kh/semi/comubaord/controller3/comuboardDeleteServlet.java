@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service3.ComuBoardServiceSGS;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -40,10 +40,10 @@ public class comuboardDeleteServlet extends HttpServlet {
 		int bno = Integer.parseInt(mrequest.getParameter("bno"));
 		System.out.println("delte bno : " + bno);
 		// 서비스 결과 처리
-		int result = new ComuBoardService().deleteBoard(bno);
+		int result = new ComuBoardServiceSGS().deleteBoard(bno);
 		
 		if(result > 0) {
-			response.sendRedirect("comuboardlist.bo");
+			response.sendRedirect("SGScomuboardlist.bo");
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");

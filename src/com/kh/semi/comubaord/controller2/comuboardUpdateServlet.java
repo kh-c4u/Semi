@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.kh.semi.comubaord.model.service.ComuBoardService;
+import com.kh.semi.comubaord.model.service2.ComuBoardServiceGS;
 import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.member.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
@@ -84,11 +84,11 @@ public class comuboardUpdateServlet extends HttpServlet {
 		cb.setBtype(category);
 		cb.setBno(bno);
 		int result = 0;
-		ComuBoardService cs = new ComuBoardService();
+		ComuBoardServiceGS cs = new ComuBoardServiceGS();
 		result = cs.updateComuboard(cb);
 		
 		if(result>0) {
-			response.sendRedirect(request.getContextPath()+"/CselectOne.bo?bno=" + bno);
+			response.sendRedirect(request.getContextPath()+"/GSCselectOne.bo?bno=" + bno);
 			
 		}else {
 			response.setCharacterEncoding("UTF-8");
