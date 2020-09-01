@@ -325,11 +325,51 @@ public class ComuBoardDao {
 			close(pstmt);
 		}
 		
+		return list;
+	}
+
+	public ArrayList<ComuBoard> selectTop7(Connection con) {
+		ArrayList<ComuBoard> list = null;
+		Statement stmt = null;
+		ResultSet rset = null;
 		
+		String sql = prop.getProperty("selectTop7");
 		
-		
-		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<ComuBoard>();
+			
+			while(rset.next()) {
+				
+				ComuBoard b = new ComuBoard();
+				
+				b.setBno(rset.getInt("BNO"));
+				b.setBtype(rset.getInt("BTYPE"));
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBcontent(rset.getString("BCONTENT"));
+				b.setBwriter(rset.getString("USERNAME"));
+				b.setBcount(rset.getInt("BCOUNT"));
+				b.setBdate(rset.getDate("BDATE"));
+				b.setBoardfile(rset.getString("BOARDFILE"));
+				
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(stmt);
+		}
 		
 		return list;
 	}
+
+	
 }

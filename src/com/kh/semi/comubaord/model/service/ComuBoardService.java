@@ -101,4 +101,14 @@ public class ComuBoardService {
 		return list;
 	}
 
+	public ArrayList<ComuBoard> selectTop7() {
+		Connection con = getConnection();
+		
+		ArrayList<ComuBoard> list = bDao.selectTop7(con);
+		
+		close(con);
+		
+		return list;
+	}
+
 }
