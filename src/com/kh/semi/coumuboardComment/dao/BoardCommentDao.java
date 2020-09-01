@@ -111,4 +111,26 @@ public class BoardCommentDao {
 		
 		return result;
 	}
+
+	public int updateComment(Connection con, comuboardComment com) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateComment");
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, com.getCcontent());
+			pstmt.setInt(2, com.getCno());
+			pstmt.setInt(3, com.getBno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
 }
