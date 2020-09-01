@@ -289,6 +289,7 @@
 		location.href="/myWeb/updateComment.bo?"
 				 +"cno="+cno+"&bno="+bno+"&content="+content;
 
+	
 	function deleteReply(obj) {
 		// 댓글의 번호 가져오기
 		var cno = $(obj).siblings('input').val();
