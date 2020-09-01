@@ -17,18 +17,17 @@
 
     <div class="main-header-logo">
     <a href="semi_main.html"><img src="/SEMI/resources/images/semiLogosize.png" /></a></div>
-        <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/SEMI/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+       <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
  
 
     <ul class="main-header-navi">
@@ -157,7 +156,7 @@
 
 	<% } else { 
 		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
+		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 	 } %>
 </section>
 

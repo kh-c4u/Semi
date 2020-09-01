@@ -38,11 +38,17 @@
         <div class="main-header-logo">
             <a href="#"><img src="./images/semiLogosize.png" /></a>
         </div>
-        <ul id="BeforeLogin" class="main-header-login">
-            <li><a href="#">로그인</a></li>
-            <li><span>|</span><a href="/#">회원가입</a></li>
-            <li><span>|</span><a href="/#">고객센터</a></li>
-        </ul>
+        <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
 
         <ul class="main-header-navi">
             <li><a href="#">기사</a></li>
@@ -78,7 +84,7 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                        <dd><a href="#">- 삽니다</a></dd>
+                        <dd><a href="<%= request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
                         <dd><a href="#">- 팝니다</a></dd>
                     </dl>
                 </li>
@@ -267,7 +273,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="/SEMI/bUpdate.bo"
+		location.href="<%= request.getContextPath()%>bUpdate.bo"
 				 +"?cno="+cno+"&bno="+bno+"&content="+content;
 	}
 	
@@ -278,7 +284,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="/SEMI/bmcdelete.bo
+		location.href=" <%= request.getContextPath()%>bmcdelete.bo"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	

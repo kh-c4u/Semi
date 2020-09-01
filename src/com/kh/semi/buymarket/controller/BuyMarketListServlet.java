@@ -87,13 +87,13 @@ public class BuyMarketListServlet extends HttpServlet {
 				
 				
 				if(list != null) {
-					page = "view/board/semi_Buymarket_BoardList.jsp";
+					page = "view/marketboard/semi_BuyMarket_BoardList.jsp";
 					request.setAttribute("list", list);
 					
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 					request.setAttribute("pi", pi);
 				}else {
-					page = "view/errorPage.jsp";
+					page = "view/common/errorPage.jsp";
 					request.setAttribute("msg", "게시글 목록 조회 실패!");
 				}
 				request.getRequestDispatcher(page).forward(request, response);
