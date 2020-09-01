@@ -19,13 +19,10 @@ import com.kh.semi.comubaord.model.vo.PageInfo;
  */
 @WebServlet("/searchBoard1.bo")
 public class SearchComuBoardServlet extends HttpServlet {
-	
-	
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7252473341393193465L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()

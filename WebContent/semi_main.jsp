@@ -159,7 +159,7 @@
 	<div id="contents1">
 		<div id="notice">
 			<div id="notice_text">
-				공지사항<a href="#" class="more">+ 더보기</a>
+				공지사항<a href="<%=request.getContextPath()%>/noticeList.no" class="more">+ 더보기</a>
 				<div class="left-box">
                     <table align="center" class="boardTop5" style="word-break: break-all;">
                         <tbody>
