@@ -31,15 +31,18 @@ public class SearchComuBoardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 검색 카테고리
-				String category = request.getParameter("con");
+				// 검색 카테고리
+				int category = Integer.parseInt(request.getParameter("con"));
+				
+				// 검색 키워드 선택
+				String selectKeyword = request.getParameter("skw");
 				
 				// 검색 키워드
 				String keyword = request.getParameter("keyword");
 				
 				ArrayList<ComuBoard> list = new ArrayList<ComuBoard>();
 				
-				list = new ComuBoardService().searchBoard(category,keyword);
+				list = new ComuBoardService().searchBoard(category,keyword,selectKeyword);
 				
 				String page = "";
 				if(list != null) {

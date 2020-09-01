@@ -152,17 +152,18 @@
 					style="width: 150px;">
 			</div>
 			<div id="btns">
-				<a href="javascript:void(0);" onclick=search()
+				<a href="javascript:void(0);" onclick="search();"
 					class="btns" ><img
 					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png"></a>
 			</div>
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&skw="$("searchType").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
+		
 		<div class="table-wrap">
 			<table class="table-gisa" style="word-break: break-all;">
 				<colgroup id="colGroupNO">
