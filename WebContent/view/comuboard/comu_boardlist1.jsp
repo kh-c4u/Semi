@@ -130,7 +130,7 @@
 		</div>
 		<div class="search-box">
 			<div>
-				<select id="category-Name" name="category-Name">
+				<select id="category-Name" name="searchCondition">
 					<option value>카테고리 선택</option>
 					<option value="1">공부팁</option>
 					<option value="2">합격수기</option>
@@ -152,10 +152,16 @@
 					style="width: 150px;">
 			</div>
 			<div id="btns">
-				<a href="<%= request.getContextPath()%>/searchBoard1.bo"
-					class="btns"><img
+				<a href="javascript:void(0);" onclick=search()
+					class="btns" ><img
 					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png"></a>
 			</div>
+			
+			<script>
+			function search(){
+				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&keyword="+$('#searchWord').val();
+			}
+			</script>
 		</div>
 		<div class="table-wrap">
 			<table class="table-gisa" style="word-break: break-all;">
