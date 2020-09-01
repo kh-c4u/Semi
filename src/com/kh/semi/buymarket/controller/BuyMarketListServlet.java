@@ -1,4 +1,4 @@
-package com.kh.semi.marketboard.controller;
+package com.kh.semi.buymarket.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.marketboard.model.service.MarketBoardService;
-import com.kh.semi.marketboard.model.vo.MarketBoard;
-import com.kh.semi.marketboard.model.vo.PageInfo;
+import com.kh.semi.buymarket.model.service.BuyMarketService;
+import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
+import com.kh.semi.buymarket.model.vo.PageInfo;
 
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/marketselectList.bo")
-public class MarketBoardListServlet extends HttpServlet {
+@WebServlet("/buymarketList.bo")
+public class BuyMarketListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MarketBoardListServlet() {
+    public BuyMarketListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +33,8 @@ public class MarketBoardListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<MarketBoard> list =null;
-				MarketBoardService bs = new MarketBoardService();
+		ArrayList<BuyMarketBoard> list =null;
+				BuyMarketService bs = new BuyMarketService();
 				int startPage;
 				
 				// 한 번에 표시할 페이지들 중 가장 뒤의 페이지
@@ -87,7 +87,7 @@ public class MarketBoardListServlet extends HttpServlet {
 				
 				
 				if(list != null) {
-					page = "view/board/semi_Market_BoardList.jsp";
+					page = "view/board/semi_Buymarket_BoardList.jsp";
 					request.setAttribute("list", list);
 					
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
