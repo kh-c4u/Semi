@@ -1,4 +1,5 @@
-<%@page import="com.kh.semi.comubaord.model.vo.ComuBoard"%>
+<%@page import="com.kh.semi.notice.model.vo.Notice"%>
+
 <%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +10,7 @@
 	Member m = (Member)session.getAttribute("member");
 %>
 <% 
-	ArrayList<ComuBoard> list = (ArrayList<ComuBoard>)request.getAttribute("list"); 
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 
 	int listCount = pi.getListCount();
@@ -140,7 +141,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/searchBoard1.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%=request.getContextPath()%>/noticesearch.no" + "?keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
@@ -158,22 +159,22 @@
 				<thead id="th">
 					<tr>
 						<th>No.</th>
-						<th>제목</th>
 						<th>작성자</th>
+						<th>제목</th>
 						<th>작성일</th>
 						<th>조회</th>
 					</tr>
 				</thead>
 				<tbody id="serach-Result">
 
-					<% for(ComuBoard b : list){ %>
+					<% for(Notice b : list){ %>
 					<tr id="contents1">
-						<input type="hidden" value="<%= b.getBno() %>" />
-						<td><%= b.getBno() %></td>
-						<td><%= b.getBtitle() %></td>
-						<td><%= b.getBwriter() %></td>
-						<td><%= b.getBdate() %></td>
-						<td><%= b.getBcount() %></td>
+						<input type="hidden" value="<%= b.getNno() %>" />
+						<td><%= b.getNno() %></td>
+						<td><%= b.getNwriter() %></td>
+						<td><%= b.getNtitle() %></td>
+						<td><%= b.getNdate() %></td>
+						<td><%= b.getNcount() %></td>
 					</tr>
 					<% } %>
 				</tbody>
@@ -183,20 +184,23 @@
 		</div>
 		<div class="paging-wrap">
 			<div class="writeBtn">
-				<% if(m != null){ %>
-				<button onclick="location.href='view/comuboard/semi_comu_write.jsp'"
+				<% 
+				if(m != null){
+				if(m.getUserId().equals("admin")){ %>
+				<button onclick="location.href='view/notice/notice_write.jsp'"
 					id="writeB">글쓰기</button>
-				<% } %>
+				<% } 
+				}%>
 
 			</div>
 			<div class="pagination" id="paging-link">
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=1'"><<</button>
+					onclick="location.href='<%= request.getContextPath() %>/noticeList.no?currentPage=1'"><<</button>
 				<%  if(currentPage <= 1){  %>
 				<button disabled>이전</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+					onclick="location.href='<%= request.getContextPath() %>/noticeList.no?currentPage=<%=currentPage - 1 %>'">이전</button>
 				<%  } %>
 
 				<% for(int p = startPage; p <= endPage; p++){
@@ -205,7 +209,7 @@
 				<button disabled><%= p %></button>
 				<%      }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
+					onclick="location.href='<%= request.getContextPath() %>/noticeList.no?currentPage=<%= p %>'"><%= p %></button>
 				<%      } %>
 				<% } %>
 
@@ -213,10 +217,10 @@
 				<button disabled>다음</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+					onclick="location.href='<%= request.getContextPath() %>/noticeList.no?currentPage=<%=currentPage + 1 %>'">다음</button>
 				<%  } %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/comuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
+					onclick="location.href='<%= request.getContextPath() %>/noticeList.no?currentPage=<%= maxPage %>'">>></button>
 
 			</div>
 		</div>
@@ -226,7 +230,7 @@
 		$(function(){
 			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/CselectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" + bno;
 			});
 		});
 	</script>
