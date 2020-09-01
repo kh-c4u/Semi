@@ -1,9 +1,12 @@
 <%@page import="com.kh.semi.faq.model.vo.*"%>
 <%@page import="java.util.*"%>
-
+<%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isErrorPage="true"%>
-	
+
+<%
+	Member m = (Member)session.getAttribute("member");
+%>	
 <% 
 	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -28,9 +31,33 @@
 
 </head>
 <body>
-<%@ include file="/view/mypage/header.jsp"%>
- 
-    <div id="main-box1"></div>
+
+<div id="main-header">
+		<div class="main-header-logo">
+			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
+				src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+		</div>
+		<ul id='BeforeLogin' class="main-header-login">
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<%} %>
+		</ul>
+
+		<ul class="main-header-navi">
+			<li><a href="#">기사</a></li>
+			<li><a href="#">산업기사</a></li>
+			<li><a href="#">기능사</a></li>
+		</ul>
+		
+	</div>
+
+	<div id="main-box1"></div>
 
     <div class="section">
         <h2 id="section-title">자주 묻는 질문</h2>
