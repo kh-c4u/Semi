@@ -79,7 +79,7 @@ public class comuboardlistServlet extends HttpServlet {
 					request.setAttribute("list", list);
 					
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
-					request.setAttribute("pi", pi);
+					request.setAttribute("pi", pi); //이건뭐임/??
 				}else {
 					page = "view/common/errorPage.jsp";
 					request.setAttribute("msg", "게시글 목록 조회 실패!");

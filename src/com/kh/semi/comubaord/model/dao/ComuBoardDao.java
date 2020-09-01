@@ -256,4 +256,79 @@ public class ComuBoardDao {
 				
 		return result;
 	}
+
+	public ArrayList<ComuBoard> searchBoard(Connection con, int category, String keyword, String selectKeyword,
+			int currentPage, int limit) {
+		ArrayList<ComuBoard> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = null;
+		switch(selectKeyword) {
+		case "content":
+			sql = prop.getProperty("searchContentBoard");
+			break;
+		case "title" :
+			sql = prop.getProperty("searchTitleBoard");
+			break;
+		case "writer" : 
+			sql = prop.getProperty("searchWriterBoard");
+			break;
+		}
+
+		
+		
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+
+			int startRow = (currentPage - 1) * limit +1;
+			int endRow = startRow + limit - 1;
+
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, category);
+			pstmt.setString(4, keyword);
+			
+		
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<ComuBoard>();
+
+			while(rset.next()){
+				ComuBoard b = new ComuBoard();
+
+				b.setBno(rset.getInt("BNO"));
+				b.setBtype(rset.getInt("BTYPE"));  //1 공부팁 2 합격수기 3수강후기 4무료인강추천
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBwriter(rset.getString("BWRITER"));
+				b.setBwriterId(rset.getString("USERNAME"));
+				b.setBcount(rset.getInt("BCOUNT"));
+				b.setBdate(rset.getDate("BDATE"));
+
+				switch(rset.getInt("BTYPE")){
+				case 1:b.setBtypestr("공부팁");
+				break;
+				case 2:b.setBtypestr("합격수기");
+				break;
+				case 3:b.setBtypestr("수강후기");
+				break;
+				case 4:b.setBtypestr("무료인강추천");
+				break;
+				}
+				list.add(b);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		
+		
+		
+		return list;
+	}
 }

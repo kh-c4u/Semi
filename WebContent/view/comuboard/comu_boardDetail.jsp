@@ -305,8 +305,8 @@
    }
    
    function reComment(obj){
-      // 수정후 저장 버튼을 화면 보이게 하기
-      $(obj).siblings('.updateConfirm').css('display','inline');
+      // 추가 완료 버튼
+      $(obj).siblings('.insertConfirm').css('display','inline');
       
       // 클릭한 버튼 숨기기
       $(obj).css('display', 'none');

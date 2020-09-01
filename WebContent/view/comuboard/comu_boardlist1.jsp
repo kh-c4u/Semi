@@ -130,7 +130,7 @@
 		</div>
 		<div class="search-box">
 			<div>
-				<select id="category-Name" name="searchCondition">
+				<select id="searchCondition" name="searchCondition">
 					<option value>카테고리 선택</option>
 					<option value="1">공부팁</option>
 					<option value="2">합격수기</option>
@@ -140,11 +140,11 @@
 			</div>
 			<div class="search-option">
 				<span class="ch-10"> <input type="radio" name="searchType"
-					searchType="title" checked="checked"> 제목
+					searchType="title"  value="title"> 제목
 				</span> <span class="ch-10"> <input type="radio" name="searchType"
-					searchType="content"> 내용
+					searchType="content" value="content"> 내용
 				</span> <span class="ch-10"> <input type="radio" name="searchType"
-					searchType="regUserName"> 작성자
+					searchType="regUserName" value="writer"> 작성자
 				</span>
 			</div>
 			<div class="input-wrap">
@@ -152,14 +152,14 @@
 					style="width: 150px;">
 			</div>
 			<div id="btns">
-				<a href="javascript:void(0);" onclick="search();"
-					class="btns" ><img
-					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png"></a>
+				<button style="border:none; background:none;"  onclick="search();" class="btns" ><img
+					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png">
+					</button>
 			</div>
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/searchBoard1.bo"?con="+$('#searchCondition').val()+"&skw="$("#searchType").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/searchBoard1.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
