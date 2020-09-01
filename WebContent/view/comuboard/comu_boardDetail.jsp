@@ -288,8 +288,7 @@
 		
 		location.href="/myWeb/updateComment.bo?"
 				 +"cno="+cno+"&bno="+bno+"&content="+content;
-	}
-	
+
 	function deleteReply(obj) {
 		// 댓글의 번호 가져오기
 		var cno = $(obj).siblings('input').val();
@@ -302,8 +301,8 @@
 	}
 	
 	function reComment(obj){
-		// 추가 완료 버튼을 화면 보이게 하기
-		$(obj).siblings('.insertConfirm').css('display','inline');
+		// 수정후 저장 버튼을 화면 보이게 하기
+		$(obj).siblings('.updateConfirm').css('display','inline');
 		
 		// 클릭한 버튼 숨기기
 		$(obj).css('display', 'none');
