@@ -333,7 +333,7 @@ public class ComuBoardDao {
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectTop7");
+		String sql = prop.getProperty("selectTop5");
 		
 		try {
 			
@@ -348,10 +348,13 @@ public class ComuBoardDao {
 				ComuBoard b = new ComuBoard();
 				
 				b.setBno(rset.getInt("BNO"));
+				b.setBtype(rset.getInt("BTYPE"));
 				b.setBtitle(rset.getString("BTITLE"));
 				b.setBcontent(rset.getString("BCONTENT"));
 				b.setBwriter(rset.getString("USERNAME"));
+				b.setBcount(rset.getInt("BCOUNT"));
 				b.setBdate(rset.getDate("BDATE"));
+				b.setBoardfile(rset.getString("BOARDFILE"));
 				
 				list.add(b);
 			}
@@ -367,4 +370,6 @@ public class ComuBoardDao {
 		
 		return list;
 	}
+
+	
 }
