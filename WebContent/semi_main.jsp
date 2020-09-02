@@ -266,6 +266,7 @@
 				<div class="left-box">
                     <table align="center" id="boardTop7Comu" class="boardTop5" style="word-break: break-all;">
                         <tbody>
+                        
                         </tbody>
                     </table>	
                     
@@ -300,6 +301,8 @@
         				}
         			});
         		});
+                
+              
                 </script>
                 </div>
 			</div>
