@@ -187,10 +187,9 @@
                   </tr>
                </table>
            </form>  
-           
          </div> 
                
-                  <div id="replySelectArea">
+           <div id="replySelectArea">
             <% if (clist != null) { %>
             <% for(MarketBoardComment bco : clist) { %>
             <table id="replySelectTable"

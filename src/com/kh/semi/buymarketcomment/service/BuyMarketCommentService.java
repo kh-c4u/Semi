@@ -26,7 +26,7 @@ private BuyMarketCommentDao bcDao = new BuyMarketCommentDao();
 		Connection conn = getConnection();
 		
 		int result = bcDao.insertComment(conn, bco);
-		
+		System.out.println("result : " + result);
 		if(result > 0) commit(conn);
 		else rollback(conn);
 		
