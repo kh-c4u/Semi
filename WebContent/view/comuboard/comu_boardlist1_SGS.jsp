@@ -131,8 +131,8 @@
 		<div class="search-box">
 			<div>
 				<select id="searchCondition" name="searchCondition">
-					<option >카테고리 선택</option>
-					<option value="1" >공부팁</option>
+					<option value="5">카테고리 선택</option>
+					<option value="1">공부팁</option>
 					<option value="2">합격수기</option>
 					<option value="3">수강후기</option>
 					<option value="4">무료인강추천</option>

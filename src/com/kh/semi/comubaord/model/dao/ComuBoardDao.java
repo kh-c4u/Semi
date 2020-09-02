@@ -104,6 +104,8 @@ public class ComuBoardDao {
 				break;
 				case 4:b.setBtypestr("무료인강추천");
 				break;
+				case 5:b.setBtypestr("--");
+				break;
 				}
 				list.add(b);
 
@@ -307,6 +309,7 @@ public class ComuBoardDao {
 				b.setBdate(rset.getDate("BDATE"));
 
 				switch(rset.getInt("BTYPE")){
+				
 				case 1:b.setBtypestr("공부팁");
 				break;
 				case 2:b.setBtypestr("합격수기");
@@ -314,6 +317,8 @@ public class ComuBoardDao {
 				case 3:b.setBtypestr("수강후기");
 				break;
 				case 4:b.setBtypestr("무료인강추천");
+				break;
+				case 5:b.setBtypestr("---");
 				break;
 				}
 				list.add(b);
