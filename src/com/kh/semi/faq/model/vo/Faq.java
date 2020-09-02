@@ -1,7 +1,7 @@
 package com.kh.semi.faq.model.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
+
 
 public class Faq implements Serializable{
 
@@ -22,8 +22,20 @@ public class Faq implements Serializable{
 	
 	
 	public Faq() {
-		
+
 	}
+
+
+	
+	
+	public Faq(String fcategory, String ftitle, String fcontents) {
+		super();
+		this.fcategory = fcategory;
+		this.ftitle = ftitle;
+		this.fcontents = fcontents;
+	}
+
+
 
 
 	public Faq(int fno, String fcategory, String ftitle, String fcontents) {

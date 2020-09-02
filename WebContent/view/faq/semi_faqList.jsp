@@ -99,12 +99,13 @@
 			
         <section>
             <table class="tb0">
-            	<tr>
-	                <th class="Nanum1">번호</th>
-	                <th class="Nanum1">분류</th>
-	                <th class="Nanum1">제목</th>
-	                
-                </tr>
+
+            	<tr class="border">
+	                <th class="th3 num Nanum1" >번호</th>
+	                <th class="th3 tag Nanum1">분류</th>
+	                <th>제목</th>
+
+            
                 <% for(Faq f : list){ %>
                 	<tr>
                 	    <td class="th3 num Nanum1"><%= f.getFno() %></td>
@@ -123,7 +124,7 @@
       
     
          <a href="./semi_menu_qna.html" class="page-guide2 white">1:1 문의</a>
-         <a href=semi_faqInsertForm.jsp id= "admin-write" class="page-guide2 white right">글쓰기</a>
+         <a href="<%= request.getContextPath()%>/view/faq/semi_faqWrite.jsp" id= "admin-write" class="page-guide2 white right">글쓰기</a>
        
         	<div class="pagingArea" align="center">
 			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=1'"><<</button>
