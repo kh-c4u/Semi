@@ -70,7 +70,7 @@ public class FaqListServlet extends HttpServlet {
 
 		// 페이징 처리
 		int listCount = bs.getListCount();
-		System.out.println("총 페이지 개수: " + listCount);
+		System.out.println("총  수: " + listCount);
 
 		// 총 253개
 		System.out.println("너??");

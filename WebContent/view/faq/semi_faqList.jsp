@@ -1,16 +1,18 @@
-<%@page import="com.kh.semi.faq.model.vo.*"%>
-<%@page import="java.util.*"%>
+<%@page import="com.kh.semi.faq.model.vo.Faq"%>
+<%@page import="com.kh.semi.faq.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isErrorPage="true"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
 	Member m = (Member)session.getAttribute("member");
-%>	
+%>
 <% 
-	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int listCount = pi.getListCount();
+		
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
@@ -18,7 +20,7 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사 FAQ</title>
@@ -105,25 +107,24 @@
                
                 <div class="panel-body" id="thisone">
                     <p><%= f.getFcontents() %></p>
-   <script>
-        $(function(){
-            $('.panel-body').slideUp();
-		
-            $('.panel-heading').click(function(){
-               // $(this).next('p').slideDown();
-				
-                $(this).next('p').slideToggle(1000,function(){
-                    //alert('슬라이드 토글 확인');
-                  
-                });
-            });
-        });
-    </script>
-                    </table>
+				   <script>
+				        $(function(){
+				            $('.panel-body').slideUp();
+						
+				            $('.panel-heading').click(function(){
+				               // $(this).next('p').slideDown();
+								
+				                $(this).next('p').slideToggle(1000,function(){
+				                    //alert('슬라이드 토글 확인');
+				                  
+				                });
+				            });
+				        });
+				    </script>
                 </div>
+                    </table>
+           </div>
             <% } %>
-           
-            </div>
 	     </section>
     
          <a href="./semi_menu_qna.html" class="page-guide2 white">1:1 문의</a>
@@ -215,7 +216,27 @@
         </ul>
     </div>
 
-   <%@ include file="/view/mypage/footer.jsp"%>
+<div id="main-footer">
+		<div class="main-footer-wrap">
+			<div>
+				<img
+					src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" />
+			</div>
+			<div>
+				<ul>
+					<li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)
+						help@c4you.com</li>
+					<li><span>㈜합격하조</span> <span>대표이사 유승제</span> <span>사업자
+							등록번호 1004-1004</span></li>
+					<li>서울시 강남구 역삼대로</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		
+		
+
+
 
 
 </body>

@@ -38,7 +38,17 @@ private Properties prop;
 		ArrayList<Faq> list = null;
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
-		String sql =prop.getProperty("selectList");
+		String sql ="SELECT BO.*" + 
+				"   FROM (" + 
+				"          SELECT ROWNUM RNUM, B.* " + 
+				"             FROM (" + 
+				"                    SELECT * " + 
+				"                      FROM FAQ " + 
+				"                     WHERE FTITLE IS NOT NULL " + 
+				"                     ORDER BY FNO DESC) B" + 
+				"                     WHERE ROWNUM <=?) BO " + 
+				"  WHERE RNUM >= ?";
+		
 		
 		try {
 			pstmt = con.prepareStatement(sql);

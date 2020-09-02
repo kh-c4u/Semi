@@ -33,10 +33,10 @@ public class FaqInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("서블렛나와와??");
 		String fcategory = request.getParameter("category");
 		String ftitle = request.getParameter("title");
 		String fcontents = request.getParameter("contents");
-		System.out.println("서블렛나와와??");
 	
 	
 		// 공지사항 등록을 위한 VO객체 만들기

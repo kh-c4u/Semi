@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class PageInfo implements Serializable {
 
 	
+	
 	/**
 	 * 
 	 */
@@ -17,7 +18,6 @@ public class PageInfo implements Serializable {
 	private int startPage;
 	private int endPage;
 	public PageInfo() {
-	
 	}
 	public PageInfo(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage) {
 		super();
