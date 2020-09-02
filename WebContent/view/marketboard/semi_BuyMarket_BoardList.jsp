@@ -22,7 +22,7 @@
     <meta charset="UTF-8" />
     <title>C4U 너만의 기사</title>
 
-    <link rel="stylesheet" href="/SEMI/resources/css/semi_market1.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_market1.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
@@ -157,7 +157,7 @@
 
     <div id="main-header">
       <div class="main-header-logo">
-        <a href="#"><img src="/SEMI/resources/images/semiLogosize.png" /></a>
+        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
@@ -198,9 +198,9 @@
               <dt>
                 <div>커뮤니티</div>
               </dt>
-              <dd><a href="#">- 기사</a></dd>
-              <dd><a href="#">- 산업기사</a></dd>
-              <dd><a href="#">- 기능사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -336,7 +336,7 @@
   </body>
   <footer id="main-footer">
     <div class="main-footer-wrap">
-      <div><img src="/SEMI/resources/images/semiLogosize.png" /></div>
+      <div><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></div>
       <div>
         <ul>
           <li>
