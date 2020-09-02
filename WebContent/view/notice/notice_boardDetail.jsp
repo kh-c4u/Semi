@@ -123,7 +123,7 @@
 	<div class="sub-right-content">
 		<div class="page-title Nanum2">게시판</div>
 		<div class="left pb5 mr5">
-			<a href="<%= request.getContextPath()%>/comuboardlist.bo"
+			<a href="<%= request.getContextPath()%>/noticeList.no"
 				class="btn3">목록</a>
 
 		</div>

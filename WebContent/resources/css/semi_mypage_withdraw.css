@@ -1,56 +1,34 @@
-li {
-	list-style: none;
-	font-size: 15px;
+
+    
+    
+li{list-style: none; font-size: 15px;}
+ul{
+    margin: 0px; padding: 0px;
 }
 
-ul {
-	margin: 0px;
-	padding: 0px;
+button{
+    background:#64b6d6;
+    border: none;
+    min-width: 355px;
+    height: 40px;
+    transition: background-color 0.5s
+   /*margin-left: 260px;*/
+   
 }
 
-button {
-	background: #64b6d6;
-	border: none;
-	min-width: 355px;
-	height: 40px;
-	transition: background-color 0.5s /*margin-left: 260px;*/
+button:hover{
+    background: #2c6379;
 }
 
-button:hover {
-	background: #2c6379;
-}
 
-.form-id-pwd {
-	width: 500px;
-	margin: auto;
-	min-height: 300px;
-}
+.form-id-pwd{width: 500px; margin: auto;  min-height:300px;  } 
 
-.withdraw {
-	width: 1000px;
-	float: left;
-	margin: 20px 10px 50px 0;
-}
 
-.withdraw label {
-	width: 150px;
-}
+.withdraw{width: 1000px; float:left; margin: 20px 10px 50px 0; }
+.withdraw label{ width: 150px;}
+.withdraw li{margin-bottom: 10px;}
+.withdraw input{width: 200px; height: 30px;}
+.withdraw label, input{display: inline-block;}
 
-.withdraw li {
-	margin-bottom: 10px;
-}
 
-.withdraw input {
-	width: 200px;
-	height: 30px;
-}
-
-.withdraw label, input {
-	display: inline-block;
-}
-
-#find-id {
-	margin: auto;
-	width: fit-content;
-	margin-top: 50px;
-}
+#find-id{margin: auto; width: fit-content; margin-top: 50px; }
