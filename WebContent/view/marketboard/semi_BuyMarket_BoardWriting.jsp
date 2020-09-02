@@ -13,22 +13,19 @@
 </head>
 <body>
 <% if(m != null) { %>
-<div id="main-header">
-
-    <div class="main-header-logo">
-    <a href="semi_main.html"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
-        <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/SEMI/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+ <div id="main-header">
+        <div class="main-header-logo"><a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div> 
+        	<ul id='BeforeLogin' class="main-header-login">
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%} %>
+		</ul>
  
 
     <ul class="main-header-navi">
