@@ -153,19 +153,8 @@
     
   </head>
   <body>
-	  
-
+	 
     <div id="main-header">
-      <div class="main-header-logo">
-        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
-        <ul class="main-header-navi">
-        <li><a href="#">기사</a></li>
-        <li><a href="#">산업기사</a></li>
-        <li><a href="#">기능사</a></li>
-      </ul>
-      </div>
-    </div>
-    
      <ul id='BeforeLogin' class="main-header-login">
          <%if(m == null) {%>
          <li><a href="view/member/semi_Login.jsp">로그인</a></li>
@@ -177,6 +166,17 @@
          <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
          <%} %>
       </ul>
+      <div class="main-header-logo">
+        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+        <ul class="main-header-navi">
+        <li><a href="#">기사</a></li>
+        <li><a href="#">산업기사</a></li>
+        <li><a href="#">기능사</a></li>
+      </ul>
+      </div>
+    </div>
+    
+    
                 
     <div id="main-box1"></div>
     
