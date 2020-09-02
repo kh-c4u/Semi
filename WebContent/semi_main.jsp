@@ -189,6 +189,19 @@
         						var $tdBoardDate = $('<td>').text(data[i].ndate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
+        						
+        						var bno = data[i].nno;
+        						
+        						$tr.on("click",{param_bno : bno},function(e){
+        							location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" +e.data.param_bno;
+        							
+        						});
+        						
+        						
+        						
+        						
+        						
+        						
         						$table.append($tr);
         						
         					}
@@ -296,6 +309,16 @@
         						var $tdBoardDate = $('<td>').text(data[i].bdate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
+        						
+        						
+        						var bno = data[i].bno;
+        						$tr.on("click",{param_bno : bno},function(e){
+        							location.href="<%=request.getContextPath()%>/CselectOne.bo?bno=" +e.data.param_bno;
+        							
+        						});
+        						
+        						
+        						
         						$table.append($tr);
         						
         					}

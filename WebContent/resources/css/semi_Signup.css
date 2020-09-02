@@ -45,7 +45,7 @@
     
 }
 #signupbanner table tr td:not(:first-child){
-    border-left: 1.8px solid rgb(96,160,211); 
+    border-left: 1.4px solid rgb(128, 128, 128); 
 }
 
 #signup form{

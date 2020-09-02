@@ -105,10 +105,14 @@
 						<div>고객센터</div>
 					</dt>
 					<dd>
-						<a href="#">- 자주 묻는 질문</a>
+						<a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
 					</dd>
 					<dd>
-						<a href="<%=request.getContextPath()%>/fList.fa">- 1:1문의</a>
+
+				
+
+						<a href="#">- 1:1문의</a>
+
 					</dd>
 					<dd>
 						<a href="#">- 신고</a>
@@ -181,15 +185,7 @@
 					</tr>
 				</thead>
 				<tbody id="serach-Result">
-					<tr class="notice">
-						<td></td>
-						<td>공지</td>
-						<td class="tleft td-comment"><a href="#"></a>게시글 작성 공지</td>
-						<td>관리자</td>
-						<td>2020-09-21</td>
-						<td>3401</td>
-					</tr>
-
+				
 					<% for(ComuBoard b : list){ %>
 					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
