@@ -60,7 +60,7 @@ public class FaqListServlet extends HttpServlet {
 		currentPage = 1;
 
 		// 글 갯수 및 페이지 수
-		limit = 3;
+		limit = 5;
 
 		// 만약에 사용자가 현재 페이지의 정보를 들고 왔따면
 		// 현재 페이지의 정보를 1에서 특정 페이지로 수정해주어야 한다.
@@ -73,11 +73,11 @@ public class FaqListServlet extends HttpServlet {
 		System.out.println("총  수: " + listCount);
 
 		// 총 253개
-		System.out.println("너??");
+	
 		maxPage = (int) ((double) listCount / limit + 0.9);
 		// 253.0 / 10+0.9
 		startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
-		System.out.println("너??");
+	
 		// 1/10+0.9 -> 1 -1 *10 +1
 		// 7/10 + 0.9 ->1.6 -1 ->0.6 ->0 *10 +1
 		// 11/10 ->1.1+0.9 ->2 -1 ->1 1*10 +1 ->11

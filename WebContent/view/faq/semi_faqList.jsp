@@ -1,18 +1,16 @@
-<%@page import="com.kh.semi.faq.model.vo.Faq"%>
-<%@page import="com.kh.semi.faq.model.vo.PageInfo"%>
+<%@page import="com.kh.semi.faq.model.vo.*"%>
+<%@page import="java.util.*"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
+    pageEncoding="UTF-8" isErrorPage="true"%>
 
 <%
 	Member m = (Member)session.getAttribute("member");
-%>
+%>	
 <% 
-	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); 
+	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int listCount = pi.getListCount();
-		
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
@@ -20,14 +18,14 @@
 %>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사 FAQ</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c9096b9061.js" crossorigin="anonymous"></script>
-<script src="resources/js/jquery-3.4.1.min.js"></script>
+
 <link rel="stylesheet" href="resources/css/semi_FAQ.css" />
 <link rel="stylesheet" href="resources/css/semi_menu_frame.css">
 
@@ -87,48 +85,45 @@
             </p>
         </div>
      
+		<script>	
+		  $(function(){
+	            $('.tr11').slideUp();
 			
-			 
+	            $('.fa-angle-double-down').click(function(){
+	               // $(this).next('p').slideDown();
+					
+	                $(this).parent().next('tr').slideToggle();
+	            });
+	        });
+	    </script>	 
 			
         <section>
             <table class="tb0">
-                <th class="th1 Nanum1">번호</th>
-                <th class="th1 Nanum1">분류</th>
-                <th class="th2 Nanum1">제목</th>
-            </table>
-            <div class="panel-question active">
-            <% for(Faq f : list){ %>
-                <div class="panel-heading">
-                    <table class="tb1">    
-                        <td class="th3 num Nanum1"><%= f.getFno() %></td>
+            	<tr class="border">
+	                <th class="th3 num Nanum1" >번호</th>
+	                <th class="th3 tag Nanum1">분류</th>
+	                <th>제목</th>
+	                
+                </tr>
+                <% for(Faq f : list){ %>
+                	<tr>
+                	    <td class="th3 num Nanum1"><%= f.getFno() %></td>
                         <td class="th3 tag Nanum1"><%= f.getFcategory() %></td>
                         <td class="th4"><%= f.getFtitle() %></td>
                         <td class="tagtda fas fa-angle-double-down"></td>
-               
-                <div class="panel-body" id="thisone">
-                    <p><%= f.getFcontents() %></p>
-				   <script>
-				        $(function(){
-				            $('.panel-body').slideUp();
-						
-				            $('.panel-heading').click(function(){
-				               // $(this).next('p').slideDown();
-								
-				                $(this).next('p').slideToggle(1000,function(){
-				                    //alert('슬라이드 토글 확인');
-				                  
-				                });
-				            });
-				        });
-				    </script>
-                </div>
-                    </table>
-           </div>
-            <% } %>
+                	</tr>
+               	 	<tr class="tr11">
+               			<td><%= f.getFcontents() %></td>
+               		</tr>
+            	<% } %>    
+            </table>
 	     </section>
+	     
+	     
+      
     
          <a href="./semi_menu_qna.html" class="page-guide2 white">1:1 문의</a>
-         <a href=semi_faqInsertForm.jsp id= "admin-write" class="page-guide2 white right">글쓰기</a>
+         <a href="<%= request.getContextPath()%>/view/faq/semi_faqWrite.jsp" id= "admin-write" class="page-guide2 white right">글쓰기</a>
        
         	<div class="pagingArea" align="center">
 			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=1'"><<</button>
@@ -216,27 +211,7 @@
         </ul>
     </div>
 
-<div id="main-footer">
-		<div class="main-footer-wrap">
-			<div>
-				<img
-					src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" />
-			</div>
-			<div>
-				<ul>
-					<li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)
-						help@c4you.com</li>
-					<li><span>㈜합격하조</span> <span>대표이사 유승제</span> <span>사업자
-							등록번호 1004-1004</span></li>
-					<li>서울시 강남구 역삼대로</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-		
-		
-
-
+   <%@ include file="/view/mypage/footer.jsp"%>
 
 
 </body>

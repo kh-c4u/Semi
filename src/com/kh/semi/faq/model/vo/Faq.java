@@ -26,6 +26,18 @@ public class Faq implements Serializable{
 	}
 
 
+	
+	
+	public Faq(String fcategory, String ftitle, String fcontents) {
+		super();
+		this.fcategory = fcategory;
+		this.ftitle = ftitle;
+		this.fcontents = fcontents;
+	}
+
+
+
+
 	public Faq(int fno, String fcategory, String ftitle, String fcontents) {
 		super();
 		this.fno = fno;

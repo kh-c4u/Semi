@@ -8,7 +8,7 @@
 	min-height: 545px;
 	padding: 20px;
 }
-
+.border {border: 1px solid #64b6d6;}
 #section-title {
 	/* font-family:BMDOHYEON, NanumGothic, Dotum,"돋움",Gulim,"굴림",Verdana,Tahoma,Apple Gothic,sans-serif,UnDotum; font-size:25px !important; */
 	color: black;
@@ -101,6 +101,7 @@ section table th {
 .th4 {
 	width: 673px;
 }
+
 
 .panel-heading {
 	padding: 5px;
