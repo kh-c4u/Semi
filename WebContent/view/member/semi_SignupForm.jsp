@@ -226,7 +226,7 @@
 			<h1>회원가입</h1>
 			<br>
 			<ul>
-				<li id="label1"><label>ID</label>
+				<li id="label1"><label>ID</label> 
 					<input type="text" name="id" maxlength="20" id="id" required>&nbsp;
 					<button type="button" onclick="openIdChk()" id="reconfirm">중복확인</button> <input
 					type="hidden" name="idDuplication" id="idDuplication"
