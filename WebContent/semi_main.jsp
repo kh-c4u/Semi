@@ -272,7 +272,7 @@
                     <script>
                 $(function(){
         			$.ajax({
-        				url : '<%= request.getContextPath()%>/boardTop7Comu.to"',
+        				url : '<%= request.getContextPath()%>/boardTop7Comu.to',
         				type : 'get',
         				success : function(data){
         					
@@ -291,6 +291,7 @@
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
         						$table.append($tr);
+        						
         					}
         				}, error : function(data){
         					
