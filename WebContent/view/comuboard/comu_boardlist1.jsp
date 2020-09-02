@@ -181,14 +181,7 @@
 					</tr>
 				</thead>
 				<tbody id="serach-Result">
-					<tr class="notice">
-						<td></td>
-						<td>공지</td>
-						<td class="tleft td-comment"><a href="#"></a>게시글 작성 공지</td>
-						<td>관리자</td>
-						<td>2020-09-21</td>
-						<td>3401</td>
-					</tr>
+					
 
 					<% for(ComuBoard b : list){ %>
 					<tr id="contents1">
