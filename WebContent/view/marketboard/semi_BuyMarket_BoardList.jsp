@@ -322,8 +322,7 @@
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0"; 
-				
+				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno; 
 		
 			});
 		});

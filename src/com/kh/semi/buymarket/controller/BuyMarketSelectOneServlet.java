@@ -42,7 +42,7 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 			
 			String page = "";
 			if(b != null) {
-				page = "view/board/semi_BuyMarket_BoardDetail.jsp";
+				page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
 				request.setAttribute("Marketboard", b);
 				request.setAttribute("clist", clist);
 				
