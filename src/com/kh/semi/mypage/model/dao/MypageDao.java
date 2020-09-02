@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.vo.massage;
 public class MypageDao {
 
@@ -68,7 +69,7 @@ public class MypageDao {
 		String sql =  "SELECT mypage_message.* "
 				+ "FROM "
 				+ "mypage_message "
-				+ "WHERE CNO >= ? AND CNO<= ? "
+				+ "WHERE CNO >= ? AND CNO<= ?"
 				+ "ORDER BY CNO ASC ";
 
 		try {
@@ -209,6 +210,52 @@ public class MypageDao {
 			// INSERT,UPDATE,DELTE : executeUpdate()
 			// SELECT : executeQuery()
 
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateMember(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE USRINFO SET USR_PWD=?, USR_EMAIL=? WHERE USR_ID= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getUserId());
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateMember2(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE USRINFO SET USR_PWD=?, USR_EMAIL=?, USR_ADR=? WHERE USR_ID = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getAddress());
+			pstmt.setString(4, m.getUserId());
+			result = pstmt.executeUpdate();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

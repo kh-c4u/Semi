@@ -19,7 +19,7 @@
 				<li>
 					<dl>
 						<dd>
-							<a href="#">- 개인정보수정</a>
+							<a href="<%=request.getContextPath()%>/view/mypage/semi_changepersonalinfo.jsp">- 개인정보수정</a>
 						</dd>
 						<dd>
 							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage_myscore.jsp">- 나의 점수보기</a>

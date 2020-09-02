@@ -221,7 +221,6 @@
 		</table>
 
 
-
 	</div>
 
 	<div id="signup">
