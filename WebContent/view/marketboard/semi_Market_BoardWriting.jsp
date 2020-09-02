@@ -64,7 +64,7 @@
                         </dt>
                         <dd><a href="semi_comu_gisa.html">- 기사</a></dd>
                         <dd><a href="semi_comu_sanupgisa.html">- 산업기사</a></dd>
-                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>
+                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>   
                     </dl>
                 </li>
                 <div class="menu-line"></div>
