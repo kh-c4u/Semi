@@ -1,6 +1,7 @@
 package com.kh.semi.notice.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.comuboardComment.model.vo.comuboardComment;
+import com.kh.semi.member.vo.Member;
 import com.kh.semi.notice.model.service.NoticeService;
 import com.kh.semi.notice.model.vo.Notice;
 import com.kh.semi.noticeComment.service.BoardCommentService;
@@ -19,7 +22,11 @@ import com.kh.semi.noticeComment.service.BoardCommentService;
  */
 @WebServlet("/noticeOne.no")
 public class NoticeSelectOneServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5223866049167107695L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,15 +46,36 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		ArrayList<comuboardComment> clist = new BoardCommentService().selectList(bno);
 
 		String page = "";
-		if(b != null) {
+		HttpSession session = request.getSession(false);
+		Member user = (Member)session.getAttribute("member");
+		
+		
+		if(b != null && user!=null) {
 			page = "view/notice/notice_boardDetail.jsp";
 			request.setAttribute("board", b);
 			request.setAttribute("clist", clist);
+			request.getRequestDispatcher(page).forward(request, response);
 		}else {
-			page = "view/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 상세보기 실패!");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter(); 
+
+			out.println("<html>");
+			out.println("<body>");
+
+			out.println("</body>");
+
+			out.println("</html>");
+
+			out.println("<script>");
+
+			out.println("alert('로그인이 필요합니다.')");
+
+			out.println("history.back();");
+
+			out.println("</script>");
 		}
-		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 
 	/**
