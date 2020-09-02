@@ -17,18 +17,17 @@
 
     <div class="main-header-logo">
     <a href="semi_main.html"><img src="/SEMI/resources/images/semiLogosize.png" /></a></div>
-        <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/SEMI/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+       <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
  
 
     <ul class="main-header-navi">
@@ -73,7 +72,7 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                        <dd><a href="semi_market_main.html">- 삽니다</a></dd>
+                        <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
                         <dd><a href="semi_market_main.html">- 팝니다</a></dd>
                     </dl>
                 </li>
@@ -99,18 +98,18 @@
         <hr>
 
 
-        <form action="<%= request.getContextPath() %>/SEMI/marketboardInsert.bo>"
-        		method="post" enctype="multipart/form-data">
+        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
+        		method="post" enctype="multipart/form-data" name="board_form">
                <div>
 
                 <table>
                     <tr>
                         <td class="Nanum1">제목
                       
-                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요.">
+                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요." required="required">
                                               
-                            <select id="ad" class="Nanum1">
-                                <option value="none" id="ad-ing" >---판매 상태---</option>
+                            <select id="sale_status" class="Nanum1" name="sale_status" required="required">
+                                <option value >---판매 상태---</option>
                                 <option value="sale">판매중</option>
                                 <option value="complete">판매완료</option>
                             </select>
@@ -118,20 +117,19 @@
                     </tr>
                    <tr>
                        <td>작성자
-                      <%= m.getUserName() %>
+                      <%= m.getUserId() %>
                            <input type="hidden" name="userId" value="<%= m.getUserId() %>"/>
                        </td>
                    </tr>
                    <tr>
                         <td>첨부파일
-                            <input type="file" name="file" id="file" />
+                            <input type="file" name="filename" accept="image/png, image/jpg, image/bmp" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10">
-                   -------------------- 새글 양식 -------------------
-                    &#13;&#10; 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
+                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10" required="required">
+               		 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
                         </td>
                     </tr>
 
@@ -148,8 +146,8 @@
     
     <div id="btn_group">
 
-          <button type="reset" class="Nanum2" id="cancel" >취소</button>
-           <button type="submit" class="Nanum2" id="submit">등록</button>
+          <button type="button" class="Nanum2" id="cancel" >취소</button>
+           <button type="button" class="Nanum2" id="submit">등록</button>
 
     </div>
   
@@ -158,7 +156,7 @@
 
 	<% } else { 
 		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
+		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 	 } %>
 </section>
 
@@ -186,25 +184,29 @@
 
 </body>
 <script>
-  <!--  var semi_market = {
+    var semi_market_board_write = {
         init : function() {
             var _this = this;
             $("#cancel").click(function() {
-                _this.cancel_alert();
+                _this.cancel_click();
             });
             $("#submit").click(function() {
-                _this.submit_alert();
+                _this.submit_click();
             });
         },
-        cancel_alert : function () {
-            alert('취소함다.');
+        cancel_click : function () {
+        	$("#board_wirte_form")[0].reset();
+            console.log('취소함다.');
         },
-        submit_alert : function() {
+        submit_click : function() {
+        	
+        	$("#board_wirte_form").submit();
+        	//$("form")[0].submit();  -- form 태그의 0번째를 찾아서 submit 함
             // location.href ="./semi_main.html";
-            alert('제출함다.');
+            console.log('제출함다.');
         }
     };
-    semi_market.init(); -->
+    semi_market_board_write.init(); 
 
 
 

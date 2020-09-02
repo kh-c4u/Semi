@@ -1,7 +1,8 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
-<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.semi.marketboard.model.vo.PageInfo" %>
+<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
+<%@page import="com.kh.semi.market.model.vo.PageInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%  Member m = (Member)session.getAttribute("member"); %>    
@@ -21,7 +22,7 @@
     <meta charset="UTF-8" />
     <title>C4U 너만의 기사</title>
 
-    <link rel="stylesheet" href="/SEMI/resources/css/semi_market1.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_market1.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
@@ -152,11 +153,21 @@
     
   </head>
   <body>
-	  
-
+	 
     <div id="main-header">
+     <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
       <div class="main-header-logo">
-        <a href="#"><img src="/SEMI/resources/images/semiLogosize.png" /></a>
+        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
@@ -165,18 +176,7 @@
       </div>
     </div>
     
-      <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+    
                 
     <div id="main-box1"></div>
     
@@ -198,9 +198,9 @@
               <dt>
                 <div>커뮤니티</div>
               </dt>
-              <dd><a href="#">- 기사</a></dd>
-              <dd><a href="#">- 산업기사</a></dd>
-              <dd><a href="#">- 기능사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -209,7 +209,7 @@
               <dt>
                 <div>장터</div>
               </dt>
-              <dd><a href="#">- 삽니다</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
               <dd><a href="#">- 팝니다</a></dd>
             </dl>
           </li>
@@ -255,7 +255,7 @@
             	<input type="hidden" value="<%= b.getBno() %>"/>
             	<td><%= b.getBno() %></td>
             	<td><%= b.getBtitle() %></td>
-            	<td><%= b.getBwriter() %></td>
+            	<td><%= b.getBwriter()%></td>
             	<td><%= b.getBdate() %></td>
             	<td><%= b.getBcount() %></td>
             	<td><%= b.getBcondition() %></td>
@@ -271,11 +271,11 @@
        
        <%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -283,16 +283,16 @@
 			%>
 				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= p %>'"><%= p %></button>
 			<%      } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button disabled>></button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
        
@@ -305,8 +305,10 @@
 			</select>
 			<input type="search">
 			<button type="submit">검색하기</button>
+			
+			
 			<% if(m != null){ %>
-				<button onclick="location.href='view/board/semi_Market_BoardWriting.jsp'">작성하기</button>
+				<button onclick="location.href='view/marketboard/semi_BuyMarket_BoardWriting.jsp'">작성하기</button>
 			<% } %>
 			
 		</div>
@@ -320,7 +322,9 @@
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0"; 
+				
+		
 			});
 		});
 	</script>       
@@ -332,7 +336,7 @@
   </body>
   <footer id="main-footer">
     <div class="main-footer-wrap">
-      <div><img src="/SEMI/resources/images/semiLogosize.png" /></div>
+      <div><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></div>
       <div>
         <ul>
           <li>

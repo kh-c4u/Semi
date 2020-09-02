@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.semi.buymarket.model.vo.BuyMarketBoard;
+import com.kh.semi.market.model.vo.MarketBoard;
 
 public class BuyMarketDao {
 	private Properties prop;
@@ -59,14 +59,15 @@ public int getListCount(Connection conn) {
 }
 
 
-public ArrayList<BuyMarketBoard> selectList(Connection conn, int currentPage, int limit) {
-	ArrayList<BuyMarketBoard> list =null;
+public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int limit) {
+	ArrayList<MarketBoard> list =null;
 	PreparedStatement pstmt=null;
 	ResultSet rset = null;
 
+	System.out.println("SQL");
 	
 	String sql = prop.getProperty("selectList");
-	
+	System.out.println(sql);
 	try {
 		pstmt = conn.prepareStatement(sql);		
 		
@@ -76,12 +77,14 @@ public ArrayList<BuyMarketBoard> selectList(Connection conn, int currentPage, in
 		pstmt.setInt(1, endRow);
 		pstmt.setInt(2, startRow);
 		
+		System.out.println("123123");
+
 		rset = pstmt.executeQuery();
 		
-		list = new ArrayList<BuyMarketBoard>();
+		list = new ArrayList<MarketBoard>();
 		
 		while(rset.next()){
-			BuyMarketBoard b = new BuyMarketBoard();
+			MarketBoard b = new MarketBoard();
 			
 			b.setBno(rset.getInt("BNO"));
 			b.setBtype(rset.getInt("BTYPE"));
@@ -92,7 +95,7 @@ public ArrayList<BuyMarketBoard> selectList(Connection conn, int currentPage, in
 			b.setBdate(rset.getDate("BDATE"));
 			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
-		
+			System.out.println("1212");
 			list.add(b);
 			
 		}
@@ -109,7 +112,7 @@ public ArrayList<BuyMarketBoard> selectList(Connection conn, int currentPage, in
 }
 
 
-public int insertBoard(Connection conn, BuyMarketBoard b) {
+public int insertBoard(Connection conn, MarketBoard b) {
 	int result = 0;
 	PreparedStatement pstmt = null;
 	String sql = prop.getProperty("insertBoard");
@@ -134,8 +137,8 @@ public int insertBoard(Connection conn, BuyMarketBoard b) {
 }
 
 
-public BuyMarketBoard selectOne(Connection conn, int bno) {
-	BuyMarketBoard b = null;
+public MarketBoard selectOne(Connection conn, int bno) {
+	MarketBoard b = null;
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
 	
@@ -148,7 +151,7 @@ public BuyMarketBoard selectOne(Connection conn, int bno) {
 		rset = pstmt.executeQuery();
 		
 		if(rset.next()) {
-			b = new BuyMarketBoard();
+			b = new MarketBoard();
 			
 			b.setBno(rset.getInt("BNO"));
 			b.setBtype(rset.getInt("BTYPE"));
@@ -192,7 +195,7 @@ public int deleteBoard(Connection conn, int bno) {
 }
 
 
-public int updateBoard(Connection conn, BuyMarketBoard b) {
+public int updateBoard(Connection conn, MarketBoard b) {
 	int result = 0;
 	PreparedStatement pstmt = null;
 	System.out.println("안녕하세요");

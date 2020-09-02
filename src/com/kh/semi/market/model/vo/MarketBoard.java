@@ -1,9 +1,9 @@
-package com.kh.semi.buymarket.model.vo;
+package com.kh.semi.market.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
 
-public class BuyMarketBoard implements Serializable{
+public class MarketBoard implements Serializable{
 
 		/**
 		 * 
@@ -23,9 +23,9 @@ public class BuyMarketBoard implements Serializable{
 		private String bcondition;	// 판매현황
 		private String status;		// 삭제여부('Y'이면 삭제 X, 'N'이면 삭제 O)
 		
-		public BuyMarketBoard() {}
+		public MarketBoard() {}
 
-		public BuyMarketBoard(String btitle, String bcontent, String bwriter, String boardfile, String bcondition) {
+		public MarketBoard(String btitle, String bcontent, String bwriter, String boardfile, String bcondition) {
 			super();
 			this.btitle = btitle;
 			this.bcontent = bcontent;
@@ -34,7 +34,7 @@ public class BuyMarketBoard implements Serializable{
 			this.bcondition = bcondition;
 		}
 
-		public BuyMarketBoard(int bno, int btype, String btitle, String bcontent, String bwriter, int bcount, String boardfile,
+		public MarketBoard(int bno, int btype, String btitle, String bcontent, String bwriter, int bcount, String boardfile,
 				Date bdate, String bcondition, String status) {
 			super();
 			this.bno = bno;

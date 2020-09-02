@@ -1,7 +1,6 @@
-package com.kh.semi.buymarket.controller;
+package com.kh.semi.buymarketcomment.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.buymarket.model.service.BuyMarketService;
 import com.kh.semi.buymarketcomment.service.BuyMarketCommentService;
-import com.kh.semi.market.model.vo.MarketBoard;
 import com.kh.semi.marketcomment.model.vo.MarketBoardComment;
 
 /**
- * Servlet implementation class BoardSelectOneServlet
+ * Servlet implementation class BuyMarketCommentDeleteServlet
  */
-@WebServlet("/buymarketselectOne.bo")
-public class BuyMarketSelectOneServlet extends HttpServlet {
+@WebServlet("/bmcdelete.bo")
+public class BuyMarketCommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BuyMarketSelectOneServlet() {
+    public BuyMarketCommentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +30,27 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			int bno = Integer.parseInt(request.getParameter("bno"));
+		int cno = Integer.parseInt(request.getParameter("cno"));
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		
+		MarketBoardComment bc = new MarketBoardComment();
+		bc.setBno(bno);
+		bc.setCno(cno);
+	
+		
+		BuyMarketCommentService mcs = new BuyMarketCommentService();
+		
+		int result = mcs.deleteComment(bc);
+		
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno=" + bno);		
+		}else {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
 			
-			
-			MarketBoard b = new BuyMarketService().selectOne(bno);
-			ArrayList<MarketBoardComment> clist = new BuyMarketCommentService().selectList(bno);
-			
-			
-			String page = "";
-			if(b != null) {
-				page = "view/board/semi_BuyMarket_BoardDetail.jsp";
-				request.setAttribute("Marketboard", b);
-				request.setAttribute("clist", clist);
-				
-			}else {
-				page = "view/errorPage.jsp";
-				request.setAttribute("msg", "게시글 상세보기 실패!");
-				
-				
-			}
-			request.getRequestDispatcher(page).forward(request, response);
+		}
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
