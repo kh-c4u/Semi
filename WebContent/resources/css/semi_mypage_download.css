@@ -1,58 +1,59 @@
-#score-title {
-	position: relative;
-	font-size: 30px;
-	text-align: center;
-	top: 20px;
+
+
+#score-title{
+    position: relative;
+    font-size: 30px; text-align: center;
+    top:20px;
 }
 
-#score-table {
-	text-align: center;
-	width: 900px;
-	height: 250px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 100px;
-}
 
-#category-Name {
-	position: relative;
-	left: 130px;
-	bottom: -30px;
-	height: 25px;
-}
 
+#score-table{
+    
+    text-align: center;
+    width:  900px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+
+
+}
+#category-Name{
+    position: relative;
+    left:130px;
+    bottom: -30px;
+    height:25px;
+}
 #score-table th {
-	height: 18px;
-	text-align: center;
-	font-weight: 400;
-	background-color: #6593bb;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	color: rgb(255, 255, 255);
+    height:18px;
+    text-align: center;
+    font-weight: 400;
+    background-color: #6593bb;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    color:rgb(255, 255, 255);
+    
+}
+#score-table td a:hover{
+    color: rgb(169, 55, 80)
 }
 
-#score-table td a:hover {
-	color: rgb(169, 55, 80)
+#score-table td{
+    text-align : center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
 }
-
-#score-table td {
-	text-align: center;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
+.paging{
+    position: relative;
+    left: 500px;
+    top: 300px;
+    padding: 10px;
 }
-
-.paging {
-	position: relative;
-	left: 500px;
-	top: 300px;
-	padding: 10px;
-}
-
-.paging>a {
-	padding: 5px;
-	color: rgb(41, 14, 150)
-}
-
-.paging>a:hover {
-	color: red;
-}
+.paging > a {
+    padding: 5px;
+    color:rgb(41, 14, 150)
+  }
+  .paging > a:hover {
+    color:red;
+  }

@@ -1,62 +1,37 @@
-li {
-	list-style: none;
-	font-size: 15px;
+
+    
+    
+    
+
+li{list-style: none; font-size: 15px;}
+ul{
+    margin: 0px; padding: 0px;
 }
 
-ul {
-	margin: 0px;
-	padding: 0px;
+button{
+    background:#64b6d6;
+    border: none;
+    min-width: 310px;
+    height: 25px;
+    transition: background-color 0.5s
+   /*margin-left: 260px;*/
+   
 }
 
-button {
-	background: #64b6d6;
-	border: none;
-	min-width: 310px;
-	height: 25px;
-	transition: background-color 0.5s /*margin-left: 260px;*/
+button:hover{
+    background: #2c6379;
 }
 
-button:hover {
-	background: #2c6379;
-}
 
-.form-id-pwd {
-	width: 500px;
-	margin: auto;
-	min-height: 300px;
-}
+.form-id-pwd{width: 500px; margin: auto;  min-height:300px;  } 
 
-.find-information {
-	width: 1000px;
-	float: left;
-	margin: 20px 10px 50px 0;
-}
 
-.find-information label {
-	margin-right: 30px;
-	width: 150px;
-}
+.find-information{width: 1000px; float:left; margin: 20px 10px 50px 0; }
+.find-information label{margin-right: 30px; width: 150px;}
+.find-information li{margin-bottom: 10px;}
+.find-information input{width: 120px;}
+.find-information label, input{display: inline-block;}
 
-.find-information li {
-	margin-bottom: 10px;
-}
 
-.find-information input {
-	width: 120px;
-}
-
-.find-information label, input {
-	display: inline-block;
-}
-
-#find-id {
-	margin: auto;
-	width: fit-content;
-	margin-bottom: 70px;
-}
-
-#find-pwd {
-	margin: auto;
-	width: fit-content;
-	margin-bottom: 20px;
-}
+#find-id{margin: auto; width: fit-content; margin-bottom: 70px; }
+#find-pwd{margin: auto; width: fit-content; margin-bottom: 20px; }
