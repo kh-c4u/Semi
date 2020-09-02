@@ -23,9 +23,15 @@
 				src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
-			<li><a href="#">로그인</a></li>
-			<li><span>|</span><a href="/#">회원가입</a></li>
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
 			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%} %>
 		</ul>
 
 		<ul class="main-header-navi">
@@ -59,10 +65,10 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
 					</dd>
 				</dl>
 			</li>

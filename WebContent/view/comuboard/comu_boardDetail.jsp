@@ -42,7 +42,7 @@
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
 
@@ -152,13 +152,15 @@
 						<td colspan="3" class="pl20"
 							style="border-right: 1.3px solid grey;"><%= b.getBtitle() %>
 						</td>
-						<% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
 						<th class="tcenter vm">첨부파일</th>
-						<td class="pl20"><a
+						<td class="pl20">
+						<% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
+						<a
 							href="<%= request.getContextPath()%>/resources/boardUploadFiles/<%=b.getBoardfile() %>"
 							download="<%= b.getBoardfile() %>"> <%=b.getBoardfile() %>
-						</a></td>
-						<% } %>
+						</a>
+						<% } %></td>
+						
 					</tr>
 
 					<tr>

@@ -236,7 +236,7 @@
 
 
             <div class="title-write">
-              <h1>장터</h1>
+              <h1>구매</h1>
             </div>
 
             <thead id="listArea">
