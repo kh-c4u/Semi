@@ -185,7 +185,7 @@
         						
         						// 내용을 각각 표현할 td 태그 생성
         
-        						var $tdBoardTitle = $('<td>').text("-"+data[i].ntitle);
+        						var $tdBoardTitle = $('<td id="tname">').text("-"+data[i].ntitle);
         						var $tdBoardDate = $('<td>').text(data[i].ndate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
@@ -231,31 +231,31 @@
                     <table align="center" class="boardTop5" style="word-break: break-all;">
                         <tbody>
                             <tr>
-                                <td>-여기서 강의 들어보신분 있나요?</td>
+                                <td id="tname">-여기서 강의 들어보신분 있나요?</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-기능사 시험 꿀팁 공유!!</td>
+                                <td id="tname">-기능사 시험 꿀팁 공유!!</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-인강추천합니다.</td>
+                                <td id="tname">-인강추천합니다.</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-기사시험 어렵나요?</td>
+                                <td id="tname">-기사시험 어렵나요?</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             
@@ -292,7 +292,7 @@
         						
         						// 내용을 각각 표현할 td 태그 생성
         
-        						var $tdBoardTitle = $('<td>').text("-"+data[i].btitle);
+        						var $tdBoardTitle = $('<td id="tname">').text("-"+data[i].btitle);
         						var $tdBoardDate = $('<td>').text(data[i].bdate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
