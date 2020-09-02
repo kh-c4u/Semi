@@ -19,11 +19,11 @@
 <body>
 	<div id="main-header">
 		<div class="main-header-logo">
-			<a href="#"><img src="../../resources/images/semiLogosize.png" /></a>
+			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="../../resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
-			<li><a href="#">로그인</a></li>
-			<li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
 			<li><span>|</span><a href="/#">고객센터</a></li>
 		</ul>
 
@@ -54,13 +54,13 @@
 						<div>커뮤니티</div>
 					</dt>
 					<dd>
-						<a href="#">- 기사</a>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
 					</dd>
 					<dd>
-						<a href="#">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
 					</dd>
 				</dl>
 			</li>
@@ -70,12 +70,8 @@
 					<dt>
 						<div>장터</div>
 					</dt>
-					<dd>
-						<a href="#">- 삽니다</a>
-					</dd>
-					<dd>
-						<a href="#">- 팝니다</a>
-					</dd>
+				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
 				</dl>
 			</li>
 			<div class="menu-line"></div>

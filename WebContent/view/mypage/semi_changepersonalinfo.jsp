@@ -91,6 +91,7 @@
 </head>
 <body>
 	<%@ include file="../mypage/header.jsp"%>
+	<p>
 	<%@ include file="../mypage/leftmenu.jsp"%>
 	<%
    		Member e = (Member)session.getAttribute("member");
@@ -150,6 +151,7 @@
 		</form>
 		
 	</div>
+	</p>
 	<%@ include file="../mypage/footer.jsp"%>
 </body>
 </html>

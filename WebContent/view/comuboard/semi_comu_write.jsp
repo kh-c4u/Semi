@@ -67,7 +67,7 @@
                     <div>장터</div>
                 </dt>
                 <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-                <dd><a href="#">- 팝니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
             </dl>
         </li>
         <div class="menu-line"></div>
@@ -98,7 +98,7 @@
                     <input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
                     <div class="select-box">
                         <select id="category-name" name="category" required="required">
-                            <option disabled="disabled" selected="selected">게시판 선택</option>
+                            <option value="5" selected="selected">게시판 선택</option>
                             <option value="1">공부팁</option>
                             <option value="2">합격수기</option>
                             <option value="3">수강후기</option>

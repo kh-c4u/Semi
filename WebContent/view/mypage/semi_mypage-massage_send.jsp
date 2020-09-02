@@ -1,3 +1,4 @@
+<%@page import="javafx.scene.control.Alert"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
 	<div class="section">
 		<div class="title-write Nanum1">쪽지보내기</div>
 		<form action="${pageContext.request.contextPath}/semi_mypage-massage_send.do"method="POST">
-			<input name="id"id="id" class="id Nanum1" type="text" maxlength="20" placeholder="ID를 입력해주세요" required>
+			<input name="id"id="id" class="id Nanum1" type="text" maxlength="20" placeholder="ID를 입력해주세요" value="<%=request.getParameter("cwriter")==null?"":request.getParameter("cwriter")%>" required>
 			<br> <br>
 			<input name="titlename"id="titlename" class="titlename Nanum1" type="text"maxlength="20" placeholder="제목을 입력해주세요" required> <br> <br>
 			<textarea name="writeNote" id="writeNote" class="writeNote Nanum1" style="resize: none; width: 500px;" rows="6"
@@ -30,7 +31,6 @@
 			<input class="btn" type="reset" value="취소">
 		</form>
 	</div>
-
 
 
 	<%@ include file="../mypage/footer.jsp"%>

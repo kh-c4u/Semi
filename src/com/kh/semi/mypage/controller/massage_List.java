@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.service.MypageService;
 import com.kh.semi.mypage.model.vo.PageInfo_massage;
 import com.kh.semi.mypage.model.vo.massage;
@@ -82,11 +84,13 @@ public class massage_List extends HttpServlet {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-
-		list = ms.selectList(currentPage,limit);
-		
+		HttpSession session = request.getSession(false);
+		String cwriter = ((Member)session.getAttribute("member")).getUserId();
+		System.out.println(cwriter);
+		list = ms.selectList(currentPage,limit,cwriter);
+		System.out.println("list : "+list);
 		String page = "";
-
+		
 		if(list != null) {
 			page = "view/mypage/semi_mypage-massage_list.jsp";
 			request.setAttribute("list", list);

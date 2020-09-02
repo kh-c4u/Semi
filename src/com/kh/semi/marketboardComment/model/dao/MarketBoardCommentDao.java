@@ -42,7 +42,8 @@ public class MarketBoardCommentDao {
 			pstmt.setInt(1, bno);
 			
 			rset = pstmt.executeQuery();
-			
+			System.out.println("bno : " + bno);
+			System.out.println(sql);
 			clist = new ArrayList<MarketBoardComment>();
 			while(rset.next()) {
 				MarketBoardComment bco = new MarketBoardComment();
@@ -55,7 +56,9 @@ public class MarketBoardCommentDao {
 				bco.setRefcno(rset.getInt("REF_CNO"));
 				bco.setClevel(rset.getInt("CLEVEL"));
 				clist.add(bco);
+				System.out.println("들어간다");
 			}
+			
 			
 			
 		}catch(SQLException e) {

@@ -44,7 +44,7 @@
 
 				<thead>
 					<tr style="text-align: center; display: block;">
-						<th><input type="checkbox" name="" id="" /></th>
+						<th>읽음여부</th>
 						<th>보낸사람</th>
 						<th>제목</th>
 						<th>내용</th>
@@ -55,7 +55,8 @@
 				<tbody style="background: white;">
 					<% for(massage b : list){%>
 					<tr>
-						<td class="td1" id="<%= b.getCno() %>"><input type="checkbox" name="" id="" /></td>
+						<td class="td1" id="<%= b.getCno() %>">
+						<%= b.getCchecked() == 1 ?"읽음":"안읽음"%></td>
 						<td class="td1 td2"><%= b.getCtowriter() %></td>
 						<td class="td1 td2"><%= b.getCtitle() %></td>
 						<td class="td1 td2"><%= b.getCcontent() %></td>
@@ -106,11 +107,11 @@
 				<input type="search" class="search-qna-bar" id="keyword" placeholder="키워드를 입력하세요!"/>
 				<input type="button"value="검색" class="search-qna-btn" onclick="search();"/>
 			</div>
-			<div class="btns">
+			<!-- <div class="btns">
 				<a href="#" class="btn deleteBtn">삭제</a> <a href="#"
 					class="btn reportBtn">신고</a> <a href="#" class="btn saveBtn">보관</a>
 				<a href="semi_mypage_massage send.html" class="btn replyBtn">답장</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<script>
@@ -127,7 +128,6 @@
 	function search(){
 		location.href="<%=request.getContextPath()%>/mypagesearchNotice.no?con="+$('#searchCondition').val()+"&keyword="+$('#keyword').val();
 	}
-	
 </script>
 	<%@ include file="../mypage/footer.jsp"%>
 </body>

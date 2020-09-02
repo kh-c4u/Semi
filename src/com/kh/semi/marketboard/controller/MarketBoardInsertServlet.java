@@ -68,7 +68,7 @@ public class MarketBoardInsertServlet extends HttpServlet {
 		
 
 
-		String fileName = mrequest.getFilesystemName("file");
+		String fileName = mrequest.getFilesystemName("filename");
 		
 		MarketBoard b = new MarketBoard();
 		b.setBtitle(title);

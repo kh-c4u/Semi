@@ -53,7 +53,7 @@ public class MemberDeleteServlet extends HttpServlet {
 				useremail.equals(useremail2))) {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
-				writer.println("<script>alert('회원정보가 일치하지 않습니다. 다시 입력해주세요.'); location.href='view/mypage/semi_mypage-withdraw.jsp';</script>");
+				writer.println("<script>alert('회원정보가 일치하지 않습니다. 다시 입력해주세요.'); history.back();</script>");
 				writer.close();
 			}else {
 				int result = ms.deleteMember(userId);

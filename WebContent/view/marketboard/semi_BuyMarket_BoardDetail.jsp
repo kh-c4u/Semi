@@ -36,7 +36,7 @@
 
     <div id="main-header">
         <div class="main-header-logo">
-            <a href="#"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+            <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         </div>
         <ul id='BeforeLogin' class="main-header-login">
          <%if(m == null) {%>
@@ -187,10 +187,9 @@
                   </tr>
                </table>
            </form>  
-           
          </div> 
                
-                  <div id="replySelectArea">
+           <div id="replySelectArea">
             <% if (clist != null) { %>
             <% for(MarketBoardComment bco : clist) { %>
             <table id="replySelectTable"
@@ -273,7 +272,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="<%= request.getContextPath()%>bUpdate.bo"
+		location.href="<%=request.getContextPath()%>/bmcupdate.bo"
 				 +"?cno="+cno+"&bno="+bno+"&content="+content;
 	}
 	
@@ -284,7 +283,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href=" <%= request.getContextPath()%>bmcdelete.bo"
+		location.href="<%=request.getContextPath()%>/bmcdelete.bo"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	

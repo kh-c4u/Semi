@@ -168,17 +168,17 @@ th {
 					<h1>받은 쪽지</h1>
 				</div>
 
-				<div style="border-bottom: 1px solid gray; margin: 10px 10px;">
-						받는사람: <%= n.getCtowriter() %></div>
+				<div id="cwriter" class="cwriter" style="border-bottom: 1px solid gray; margin: 10px 10px;">
+						보낸 사람: <%= n.getCwriter() %></div>
 					<div
 						style="border-bottom: 1px solid gray; min-height: 100px; margin: 10px 10px; font-family: sans-serif;">
 						<%= n.getCcontent() %></div>
 				</div>
 
 				<div class="btns">
-					<a href="#" class="btn deleteBtn">삭제</a> <a href="#"
-						class="btn reportBtn">신고</a> <a href="#" class="btn saveBtn">보관</a>
-					<a href="/semi_mypage_massage send.html" class="btn replyBtn">답장</a>
+					<a href="<%=request.getContextPath()%>/massageDelet.bo?cno= <%= n.getCno() %>" class="btn deleteBtn">삭제</a>
+					<!-- <a href="#"class="btn reportBtn">신고</a> <a href="#" class="btn saveBtn">보관</a> -->
+					<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage-massage_send.jsp?cwriter=<%=n.getCwriter()%>" class="btn replyBtn">답장</a>
 					<a href="<%=request.getContextPath()%>/massageList.bo" class="btn replyBtn">목록</a>
 				</div>
 			</div>

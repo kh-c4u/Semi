@@ -45,7 +45,7 @@ public class BuyMarketCommentUpdateServlet extends HttpServlet {
 		int result = mcs.updateComment(bc);
 		
 		if(result > 0) {
-			response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno=" + bno);		
+			response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno=" + bno +"&gubun=0");		
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
