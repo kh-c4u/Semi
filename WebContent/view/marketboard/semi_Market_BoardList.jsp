@@ -155,8 +155,20 @@
 	  
 
     <div id="main-header">
+    <ul id='BeforeLogin' class="main-header-login">
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%} %>
+		</ul>
       <div class="main-header-logo">
-        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+        
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
@@ -165,18 +177,7 @@
       </div>
     </div>
     
-      <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+      
                 
     <div id="main-box1"></div>
     
@@ -198,9 +199,9 @@
               <dt>
                 <div>커뮤니티</div>
               </dt>
-              <dd><a href="#">- 기사</a></dd>
-              <dd><a href="#">- 산업기사</a></dd>
-              <dd><a href="#">- 기능사</a></dd>
+              		<dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+					<dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+					<dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -226,6 +227,8 @@
           </li>
         </ul>
       </div>
+      
+      
       <div class="testbox">
         <div class="tablebox">
           <table

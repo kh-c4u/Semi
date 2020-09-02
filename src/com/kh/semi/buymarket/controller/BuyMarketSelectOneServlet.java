@@ -19,9 +19,13 @@ import com.kh.semi.marketcomment.model.vo.MarketBoardComment;
  */
 @WebServlet("/buymarketselectOne.bo")
 public class BuyMarketSelectOneServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3151176556428193838L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public BuyMarketSelectOneServlet() {
