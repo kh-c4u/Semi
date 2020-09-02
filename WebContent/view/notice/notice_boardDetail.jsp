@@ -152,13 +152,17 @@
 						<td colspan="3" class="pl20"
 							style="border-right: 1.3px solid grey;"><%= b.getNtitle() %>
 						</td>
-						<% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
+						
 						<th class="tcenter vm">첨부파일</th>
-						<td class="pl20"><a
+						<td class="pl20">
+						<% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
+						<a
 							href="<%= request.getContextPath()%>/resources/boardUploadFiles/<%=b.getBoardfile() %>"
 							download="<%= b.getBoardfile() %>"> <%=b.getBoardfile() %>
-						</a></td>
+						</a>
 						<% } %>
+						</td>
+						
 					</tr>
 
 					<tr>
