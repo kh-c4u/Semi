@@ -12,23 +12,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<% if(m != null) { %>
-<div id="main-header">
 
-    <div class="main-header-logo">
-    <a href="semi_main.html"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
-        <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/SEMI/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+ <div id="main-header">
+        <div class="main-header-logo"><a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div> 
+           <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
  
 
     <ul class="main-header-navi">
@@ -62,9 +59,9 @@
                         <dt>
                             <div>커뮤니티</div>
                         </dt>
-                        <dd><a href="semi_comu_gisa.html">- 기사</a></dd>
-                        <dd><a href="semi_comu_sanupgisa.html">- 산업기사</a></dd>
-                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>
+                            <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+              				<dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+              				<dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -73,8 +70,8 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                   	<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd></dd>
+                      <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+                    <dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd></dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -100,7 +97,7 @@
 
 
         <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
-        		method="post" enctype="multipart/form-data" name="board_form">
+              method="post" enctype="multipart/form-data" name="board_form">
                <div>
 
                 <table>
@@ -130,7 +127,7 @@
                     <tr>
                         <td>
                    <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10" required="required">
-               		 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
+                      판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
                         </td>
                     </tr>
 
@@ -155,10 +152,6 @@
 
 
 
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
-	 } %>
 </section>
 
 
@@ -196,13 +189,13 @@
             });
         },
         cancel_click : function () {
-        	$("#board_wirte_form")[0].reset();
+           $("#board_wirte_form")[0].reset();
             console.log('취소함다.');
         },
         submit_click : function() {
-        	
-        	$("#board_wirte_form").submit();
-        	//$("form")[0].submit();  -- form 태그의 0번째를 찾아서 submit 함
+           
+           $("#board_wirte_form").submit();
+           //$("form")[0].submit();  -- form 태그의 0번째를 찾아서 submit 함
             // location.href ="./semi_main.html";
             console.log('제출함다.');
         }

@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<% if(m != null) { %>
+
 <div id="main-header">
 
     <div class="main-header-logo">
@@ -64,7 +64,7 @@
                         </dt>
                         <dd><a href="semi_comu_gisa.html">- 기사</a></dd>
                         <dd><a href="semi_comu_sanupgisa.html">- 산업기사</a></dd>
-                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>
+                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>   
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -155,10 +155,6 @@
 
 
 
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
-	 } %>
 </section>
 
 
