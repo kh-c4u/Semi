@@ -99,12 +99,12 @@
                     <div class="select-box">
                         <select id="category-name" name="fcategory" required="required">
                             <option disabled="disabled" selected="selected">분류</option>
-                            <option value="회원정보">회원정보</option>
-                            <option value="자료이용">자료이용</option>
-                            <option value="결제">결제</option>
-                            <option value="사이트이용">사이트이용</option>
-                            <option value="장애관련">장애관련</option>
-                            <option value="기타">기타</option>
+                            <option value=1>회원정보</option>
+                            <option value=2>자료이용</option>
+                            <option value=3>결제</option>
+                            <option value=4>사이트이용</option>
+                            <option value=5>장애관련</option>
+                            <option value=6>기타</option>
                         </select>
                     </div>
 

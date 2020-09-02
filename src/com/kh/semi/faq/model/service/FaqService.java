@@ -3,8 +3,11 @@ package com.kh.semi.faq.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.semi.comubaord.model.vo.ComuBoard;
+import com.kh.semi.comuboardComment.model.vo.comuboardComment;
 import com.kh.semi.faq.model.dao.FaqDao;
 import com.kh.semi.faq.model.vo.Faq;
+import com.kh.semi.notice.model.vo.Notice;
 
 import static com.kh.semi.common.JDBCTemplate.*;
 
@@ -65,8 +68,47 @@ private FaqDao fDao = new FaqDao();
 	}
 	
 	
+	public ArrayList<Faq> searchFaq(String category) {
+		//키워드 - 검색창 category-공부팁  select-라디오버튼(작성자, 내용, 제목) 
+		Connection con = getConnection();
+		ArrayList<Faq> list = null;
+		
+		list = fDao.searchFaq(con,category);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int updateFaq(Faq f) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Faq selectOne(int fno) {
+
+		Connection con = getConnection();
+
+		Faq f = fDao.selectOne(con,fno);
+
+		if(f != null) {
+			int result = fDao.updateReadCount(con,fno);
+
+			if(result > 0) commit(con);
+			else rollback(con);
+		}
+		close(con);
+		return f;
 	
+	}
+	public int getSearchListCount(String keyword) {
+		Connection con = getConnection();
+
+		int listCount = fDao.getSearchListCount(con , keyword);
+
+		close(con);
+		return listCount;
+	}
 
 	
-
 }

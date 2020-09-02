@@ -6,9 +6,6 @@ import java.io.Serializable;
 public class Faq implements Serializable{
 
 	
-	
-	
-	
 	/**
 	 * 
 	 */
@@ -28,6 +25,14 @@ public class Faq implements Serializable{
 
 	
 	
+	public Faq(String fcategory) {
+		super();
+		this.fcategory = fcategory;
+	}
+
+
+
+
 	public Faq(String fcategory, String ftitle, String fcontents) {
 		super();
 		this.fcategory = fcategory;

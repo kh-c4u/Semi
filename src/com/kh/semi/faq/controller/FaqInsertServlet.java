@@ -67,19 +67,19 @@ public class FaqInsertServlet extends HttpServlet {
     		
     		
     		
-    		String category = mrequest.getParameter("fcategory");
-    		System.out.println("ftitle : " + category);
+    		String category =mrequest.getParameter("fcategory");
+    		System.out.println("fcategory : " + category);
 
     		String title = mrequest.getParameter("ftitle");
     		System.out.println("ftitle : " + title);
     		
-    		String content = mrequest.getParameter("fcontents");
-    		System.out.println("fcontents : " + content);
+    		String contents = mrequest.getParameter("fcontents");
+    		System.out.println("fcontents : " + contents);
     	
     		
     		//HttpSession session = request.getSession();
     		
-    		Faq f = new Faq(category,title,content);
+    		Faq f = new Faq(category,title,contents);
     		int result = 0;
     		FaqService ns = new FaqService();
     		result = ns.insertFaq(f);

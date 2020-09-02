@@ -2,29 +2,39 @@ package com.kh.semi.faq.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.faq.model.service.FaqService;
-import com.kh.semi.notice.model.service.NoticeService;
-import com.oreilly.servlet.MultipartRequest;
+import com.kh.semi.faq.model.vo.Faq;
+
+
+import com.kh.semi.member.vo.Member;
+
+
+
 
 /**
- * Servlet implementation class FaqDeleteServlet
+ * Servlet implementation class FaqSelectOneServlet
  */
-@WebServlet("/fDelete.fa")
-public class FaqDeleteServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/fOne.fa")
+public class FaqSelectOneServlet extends HttpServlet {
+	
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2442470957715604099L;
+	/**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqDeleteServlet() {
+    public FaqSelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +43,19 @@ public class FaqDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MultipartRequest mrequest = new MultipartRequest(request,"/");
-		int fno = Integer.parseInt(mrequest.getParameter("fno"));
-		System.out.println("delte fno : " + fno);
-		// 서비스 결과 처리
-		int result = new FaqService().deleteFaq(fno);
+		int fno = Integer.parseInt(request.getParameter("fno"));
+
+		Faq f = new FaqService().selectOne(fno);
 		
-		if(result > 0) {
-			response.sendRedirect("fList.no");
+		HttpSession session = request.getSession(false);
+		Member user = (Member)session.getAttribute("member");
+		
+		
+		if(f != null && user!=null) {
+		
+			request.setAttribute("board", f);
+		
+			
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
@@ -55,13 +70,13 @@ public class FaqDeleteServlet extends HttpServlet {
 
 			out.println("<script>");
 
-			out.println("alert('삭제 실패')");
+			out.println("alert('로그인이 필요합니다.')");
 
 			out.println("history.back();");
 
 			out.println("</script>");
-			
 		}
+		
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

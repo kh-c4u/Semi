@@ -1,38 +1,42 @@
-<%@page import="com.kh.semi.faq.model.vo.*"%>
-<%@page import="java.util.*"%>
+<%@page import="com.kh.semi.faq.model.vo.Faq"%>
+
+<%@page import="com.kh.semi.faq.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isErrorPage="true"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
 	Member m = (Member)session.getAttribute("member");
-%>	
+%>
 <% 
-	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 %>
-
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>C4U 너만의 기사 FAQ</title>
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/c9096b9061.js" crossorigin="anonymous"></script>
+<title>C4U 너만의 기사</title>
+<link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
+<link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath()%>/resources/css/semi_FAQ.css">
+<link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath()%>/resources/css/semi_comu_gisa.css">
 
-<link rel="stylesheet" href="resources/css/semi_FAQ.css" />
-<link rel="stylesheet" href="resources/css/semi_menu_frame.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
-
-<div id="main-header">
+	<div id="main-header">
 		<div class="main-header-logo">
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
 				src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
@@ -45,7 +49,7 @@
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
 
@@ -54,176 +58,222 @@
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
-		
+
 	</div>
 
 	<div id="main-box1"></div>
 
-    <div class="section">
-        <h2 id="section-title">자주 묻는 질문</h2>
-        <div id="btn-panel">
-            <p class="allon">
-                <a class="btn-panel-a" href="#">전체</a>
-            </p>
-            <p class="allon">
-                <button type="button" onclick="회원정보">회원정보</button>
-            </p>
-            <p class="allon">
-                <a class="btn-panel-a" href="#">자료 이용</a>
-            </p>
-            <p class="allon">
-                <a class="btn-panel-a" href="#">결제</a>
-            </p>
-            <p class="allon">
-                <a class="btn-panel-a" href="#">사이트 이용</a>
-            </p>
-            <p class="allon">
-                <a class="btn-panel-a" href="#">장애관련</a>
-            </p>
-            <p class="allon">
-                <a class="btn-panel-a" href="#">기타</a>
-            </p>
-        </div>
-     
-		<script>	
-		  $(function(){
-	            $('.tr11').slideUp();
+
+	<div class="left-menu">
+		<ul id="left-menu-share" class="left-menu1">
+
+			<li>
+				<dl>
+					<dt>
+						<div class="left-menu-name">게시판</div>
+					</dt>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>커뮤니티</div>
+					</dt>
+					<dd>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
+					</dd>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>장터</div>
+					</dt>
+				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>고객센터</div>
+					</dt>
+					<dd>
+						<a href="#">- 자주 묻는 질문</a>
+					</dd>
+					<dd>
+						<a href="#">- 1:1문의</a>
+					</dd>
+					<dd>
+						<a href="#">- 신고</a>
+					</dd>
+				</dl>
+			</li>
+		</ul>
+	</div>
+
+	<div class="semi-comu-gisa" style="float: left;">
+		<div id="page-title" class="page-title">FAQ</div>
+		<div class="page-guide">
+			<span>해당 게시판은 FAQ 게시판입니다.</span>
+		</div>
+		<div class="search-box">
+			<div class="input-wrap" style="margin-left: 300px;">검색 : 
+				<input type="text" id="searchWord" name="searchWord"
+					style="width: 250px;">
+			</div>
+			<div id="btns">
+				<button style="border:none; background:none;"  onclick="search();" class="btns" ><img
+					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png">
+					</button>
+			</div>
 			
-	            $('.fa-angle-double-down').click(function(){
+			<script>
+			function search(){
+				location.href="<%=request.getContextPath()%>/sFaq.fa" + "?keyword="+$('#searchWord').val();
+			}
+			</script>
+		</div>
+		
+		<div class="table-wrap">
+			<table class="table-gisa" style="word-break: break-all;">
+				<colgroup id="colGroupNO">
+					<col width="2%">
+					<col width="5%">
+					<col width=25%>
+					<col width="3%">
+					<col width="5%">
+					<col width="3%">
+				</colgroup>
+				<thead id="th">
+					<tr>
+						<th>No.</th>
+						<th>분류</th>
+						<th>제목</th>
+						<th></th>
+						
+					</tr>
+				</thead>
+				<tbody id="serach-Result">
+
+					<% for(Faq f : list){ %>
+					<tr id="contents1">
+						<input type="hidden" value="<%= f.getFno() %>" />
+						<td><%= f.getFno() %></td>
+						<td><%= f.getFcategory() %></td>
+						<td><%= f.getFtitle() %></td>
+						<td class="double-down" >︾</td>
+					</tr>
+					<tr>
+						<td colspan="4" style=text-align:center;><%= f.getFcontents() %>
+								<% 
+									if(m != null){
+									if(m.getUserId().equals("admin")){ %>
+									<button style=float:right onclick="location.href='view/faq/semi_faqUpdate.jsp'"
+										id="writeB">수정하기</button>
+									
+								<% } 
+							}%>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			<script>	
+		  $(function(){
+	            $('double_down').slideUp();
+			
+	            $('.double-down').click(function(){
 	               // $(this).next('p').slideDown();
 					
 	                $(this).parent().next('tr').slideToggle();
 	            });
 	        });
 	    </script>	 
-			
-        <section>
-            <table class="tb0">
+			</table>
 
-            	<tr class="border">
-	                <th class="th3 num Nanum1" >번호</th>
-	                <th class="th3 tag Nanum1">분류</th>
-	                <th>제목</th>
 
-            
-                <% for(Faq f : list){ %>
-                	<tr>
-                	    <td class="th3 num Nanum1"><%= f.getFno() %></td>
-                        <td class="th3 tag Nanum1"><%= f.getFcategory() %></td>
-                        <td class="th4"><%= f.getFtitle() %></td>
-                        <td class="tagtda fas fa-angle-double-down"></td>
-                	</tr>
-               	 	<tr class="tr11">
-               			<td><%= f.getFcontents() %></td>
-               		</tr>
-            	<% } %>    
-            </table>
-	     </section>
-	     
-	     
-      
-    
-         <a href="./semi_menu_qna.html" class="page-guide2 white">1:1 문의</a>
-         <a href="<%= request.getContextPath()%>/view/faq/semi_faqWrite.jsp" id= "admin-write" class="page-guide2 white right">글쓰기</a>
-       
-        	<div class="pagingArea" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=1'"><<</button>
-			<%  if(currentPage <= 1){  %>
-			<button disabled><</button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%=currentPage - 1 %>'"><</button>
-			<%  } %>
-			
-			<% for(int p = startPage; p <= endPage; p++){
+		</div>
+		<div class="paging-wrap">
+			<div class="writeBtn">
+				<% 
+				if(m != null){
+				if(m.getUserId().equals("admin")){ %>
+				<button onclick="location.href='view/faq/semi_faqWrite.jsp'"
+					id="writeB">글쓰기</button>
+				
+				<% } 
+				}%>
+
+			</div>
+			<div class="pagination" id="paging-link">
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=1'"><<</button>
+				<%  if(currentPage <= 1){  %>
+				<button disabled>이전</button>
+				<%  }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%=currentPage - 1 %>'">이전</button>
+				<%  } %>
+
+				<% for(int p = startPage; p <= endPage; p++){
 					if(p == currentPage){	
 			%>
 				<button disabled><%= p %></button>
-			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%= p %>'"><%= p %></button>
-			<%      } %>
-			<% } %>
-				
-			<%  if(currentPage >= maxPage){  %>
-			<button disabled>></button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%=currentPage + 1 %>'">></button>
-			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%= maxPage %>'">>></button>
-			
-        
+				<%      }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%= p %>'"><%= p %></button>
+				<%      } %>
+				<% } %>
+
+				<%  if(currentPage >= maxPage){  %>
+				<button disabled>다음</button>
+				<%  }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%=currentPage + 1 %>'">다음</button>
+				<%  } %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/fList.fa?currentPage=<%= maxPage %>'">>></button>
+
+			</div>
+		</div>
 	</div>
-     <script>
-                 function hiddenatag() {
-                if(getElementById() == "admin"){
-                    $("#admin-write").show();
-                }else{
-                    $("#admin-write").hide();
-                }
-            }
-   			</script>
-              
-           
-    
-    
+	
+	<script>
+		$(function(){
+			$(".table-gisa td").click(function(){
+				var bno = $(this).parent().find("input").val();
+				location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" + fno;
+			});
+		});
+	</script>
 
-   </div>
-   <div class="left-menu">
-        <ul id="left-menu-share" class="left-menu1">
-
-            <li>
-                <dl>
-                    <dt>
-                        <div class="left-menu-name">게시판</div>
-                    </dt>
-                </dl>
-            </li>
-            <div class="menu-line"></div>
-            <li>
-                <dl>
-                    <dt>
-                        <div>커뮤니티</div>
-                    </dt>
-                    <dd><a href="#">- 기사</a></dd>
-                    <dd><a href="#">- 산업기사</a></dd>
-                    <dd><a href="#">- 기능사</a></dd>
-                </dl>
-            </li>
-            <div class="menu-line"></div>
-            <li>
-                <dl>
-                    <dt>
-                        <div>장터</div>
-                    </dt>
-                    <dd><a href="#">- 삽니다</a></dd>
-                    <dd><a href="#">- 팝니다</a></dd>
-                </dl>
-            </li>
-            <div class="menu-line"></div>
-            <li>
-                <dl>
-                    <dt>
-                        <div>고객센터</div>
-                    </dt>
-                    <dd><a href="#">- 자주 묻는 질문</a></dd>
-                    <dd><a href="#">- 1:1문의</a></dd>
-                    <dd><a href="#">- 신고</a></dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
-
-   <%@ include file="/view/mypage/footer.jsp"%>
+	<div id="main-footer">
+		<div class="main-footer-wrap">
+			<div>
+				<img
+					src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" />
+			</div>
+			<div>
+				<ul>
+					<li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)
+						help@c4you.com</li>
+					<li><span>㈜합격하조</span> <span>대표이사 유승제</span> <span>사업자
+							등록번호 1004-1004</span></li>
+					<li>서울시 강남구 역삼대로</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
- 
