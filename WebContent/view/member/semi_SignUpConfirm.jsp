@@ -17,11 +17,11 @@
 <body>
 	<div id="main-header">
 		<div class="main-header-logo">
-			<a href="<%= request.getContextPath()%>/semi_main.jsp">"><img src="../../resources/images/semiLogosize.png" /></a>
+			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="../../resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
-			<li><a href="#">로그인</a></li>
-			<li><span>|</span><a href="/#">회원가입</a></li>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
 			<li><span>|</span><a href="/#">고객센터</a></li>
 		</ul>
 
