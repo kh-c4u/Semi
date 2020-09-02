@@ -43,7 +43,7 @@ public class MarketCommentDeleteServlet extends HttpServlet {
 		int result = mcs.deleteComment(bc);
 		
 		if(result > 0) {
-			response.sendRedirect(request.getContextPath()+"/marketboardselectOne.bo?bno=" + bno);		
+			response.sendRedirect(request.getContextPath()+"/marketboardselectOne.bo?bno=" + bno + "&gubun=0");		
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");

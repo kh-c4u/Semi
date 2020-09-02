@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
+import com.kh.semi.buymarketcomment.service.BuyMarketCommentService;
 import com.kh.semi.market.model.vo.MarketBoard;
-import com.kh.semi.marketboardComment.model.service.MarketBoardCommentService;
 import com.kh.semi.marketcomment.model.vo.MarketBoardComment;
 
 /**
@@ -38,9 +38,9 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sBno = request.getParameter("bno");
-		String sGubun = request.getParameter("gubun");
+		String sGubun = request.getParameter("gubun").trim();
 		String page = "";
-		
+		System.out.println(" detail");
 		if("".equals(sBno) || sBno == null || "".equals(sBno) || sBno == null) {
 			page = "view/errorPage.jsp";
 			request.setAttribute("msg", "잘못된 접근입니다!");
@@ -51,9 +51,11 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 			
 
 			MarketBoard b = new BuyMarketService().selectOne(bno);
-			ArrayList<MarketBoardComment> clist = new MarketBoardCommentService().selectList(bno);
+			ArrayList<MarketBoardComment> clist = new BuyMarketCommentService().selectList(bno);
 			
-			
+			clist.forEach(item -> {
+				System.out.println("item : " + item);
+				});
 			
 			if(b != null) {
 				if(gubun == 0) { // 상세보기

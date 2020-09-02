@@ -267,7 +267,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="/SEMI/bupdate.bo"
+		location.href="<%= request.getContextPath() %>/bcupdate.bo"
 				 +"?cno="+cno+"&bno="+bno+"&content="+content;
 	}
 	
@@ -278,7 +278,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="/SEMI/deletecomment.bo"
+		location.href="<%= request.getContextPath() %>/deletecomment.bo"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	
