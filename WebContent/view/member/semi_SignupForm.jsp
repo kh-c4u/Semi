@@ -226,9 +226,9 @@
 			<h1>회원가입</h1>
 			<br>
 			<ul>
-				<li id="label1"><label>ID</label> 
+				<li id="label1"><label>Id</label> 
 					<input type="text" name="id" maxlength="20" id="id" required>&nbsp;
-					<button type="button" onclick="openIdChk()" id="reconfirm">중복확인</button> <input
+					<button type="button" onclick="openIdChk()" class="reconfirm">중복확인</button> <input
 					type="hidden" name="idDuplication" id="idDuplication"
 					value="idUncheck"></li>
 				<li><label>Password</label>
@@ -243,13 +243,13 @@
 					<input id="email" type="email" name="email" maxlength="30"
 					required></li>
 				<li id="label1"><label>Address</label>
-					<input id="address" type="text" name="address1" maxlength="100"
+					<input id="address1" type="text" name="address1" maxlength="100"
 					required>&nbsp;
-					<button type="button" onclick="addrSearch();" id=reconfirm>검색</button>
+					<button type="button" onclick="addrSearch();" class=reconfirm>검색</button>
 					</li>
 					
 
-				<li><label>Detailed address
+				<li><label>Detail Address
 				</label>&nbsp;<input id="address2" type="text" name="address2" maxlength="100"
 					required></li>
 			</ul>

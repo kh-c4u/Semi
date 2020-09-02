@@ -20,8 +20,8 @@
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="../../resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
-			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
-			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><a href="/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="/member/semi_SignupForm.jsp">회원가입</a></li>
 			<li><span>|</span><a href="/#">고객센터</a></li>
 		</ul>
 
@@ -99,7 +99,7 @@
 				<td>1. 회원 약관</td>
 				<td>2. 회원 가입</td>
 				<td
-					style="background: rgba(12, 93, 199, 0.603); color: rgb(0, 0, 0);">3.
+					style="background:  #449ad3;  color: rgb(0, 0, 0);">3.
 					회원 가입 결과</td>
 			</tr>
 		</table>

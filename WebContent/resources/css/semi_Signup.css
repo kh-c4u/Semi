@@ -100,18 +100,18 @@
 #btn input{
     background-color:#449ad3; 
     color: #ffffff;
-    border: none;
+    border:none;
     font-size: 15px;
     margin-left: 20px;
     width: 130px;
     margin-bottom:80px ;
-    height: 30px;
+    height: 40px;
     transition: background-color 0.5s;
     margin-left: 30px;
     
 }
 #btn input:hover{
-    border: none;
+    border:none;
     background-color: #5bb5f1;
     color:  #ffffff;
 }
@@ -120,16 +120,16 @@
     left: 74px;
 }
 
-#reconfirm{
-    height: 24px;
-    border: none;
-    background: rgb(219, 217, 214);
+.reconfirm{
+    height: 28px;
+    border: 1px solid grey;
+    background: rgb(231, 231, 231);
     transition: background-color 0.5s;
     width: 68px;
 }
 
 
-#reconfirm:hover{
-    background: rgb(185, 181, 176);
+.reconfirm:hover{
+    background: rgb(202, 200, 197);
     
 }
