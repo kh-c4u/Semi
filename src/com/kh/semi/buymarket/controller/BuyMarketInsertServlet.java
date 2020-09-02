@@ -39,7 +39,7 @@ int maxSize = 1024 * 1024 * 10;
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
-			request.getRequestDispatcher("view/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 		}
 
 
@@ -82,10 +82,10 @@ int maxSize = 1024 * 1024 * 10;
 		int result = new BuyMarketService().insertBoard(b);
 		
 		if(result > 0) {
-			response.sendRedirect("buymarketList.bo");
+			response.sendRedirect(request.getContextPath()+"/buymarketList.bo");
 		}else {
 			request.setAttribute("msg", "게시글 작성 실패");
-			request.getRequestDispatcher("view/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 		}
 	}
 

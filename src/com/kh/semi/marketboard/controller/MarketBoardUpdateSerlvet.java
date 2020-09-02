@@ -101,7 +101,7 @@ public class MarketBoardUpdateSerlvet extends HttpServlet {
 				} else {
 					request.setAttribute("msg", "게시글 수정 실패!");
 					request
-					.getRequestDispatcher("view/errorPage.jsp")
+					.getRequestDispatcher("view/common/errorPage.jsp")
 					.forward(request, response);
 				}
 	}

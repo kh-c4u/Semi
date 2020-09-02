@@ -44,7 +44,7 @@ public class BuyMarketCommentInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 
-			response.sendRedirect("buymarketselectOne.bo?bno="+bno);
+			response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno="+bno);
 			
 		} else {
 			request.setAttribute("msg", "댓글 작성 실패!!");

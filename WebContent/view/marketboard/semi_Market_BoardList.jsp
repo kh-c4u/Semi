@@ -308,7 +308,7 @@
 			
 			
 			<% if(m != null){ %>
-				<button onclick="location.href='view/board/semi_Market_BoardWriting.jsp'">작성하기</button>
+				<button onclick="location.href='view/marketboard/semi_Market_BoardWriting.jsp'">작성하기</button>
 			<% } %>
 			
 		</div>

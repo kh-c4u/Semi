@@ -36,7 +36,7 @@
 
     <div id="main-header">
         <div class="main-header-logo">
-            <a href="#"><img src="./images/semiLogosize.png" /></a>
+            <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         </div>
         <ul id="BeforeLogin" class="main-header-login">
             <li><a href="#">로그인</a></li>
@@ -98,7 +98,7 @@
         
         	<% if(m != null){ %>
         <div class="sub-right-content">
-            <div class="page-title Nanum2">삽니다.</div>
+            <div class="page-title Nanum2">팝니다.</div>
          	<div class="left pb5 mr5">
          		<a href="<%=request.getContextPath()%>//marketselectList.bo" class="btn3">목록</a>
          		</div>

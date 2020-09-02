@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.buymarketcomment.service.BuyMarketCommentService;
 import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.marketboardComment.model.service.MarketBoardCommentService;
 import com.kh.semi.marketcomment.model.vo.MarketBoardComment;
 
 /**
@@ -33,26 +33,42 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			int bno = Integer.parseInt(request.getParameter("bno"));
+		String sBno = request.getParameter("bno");
+		String sGubun = request.getParameter("gubun");
+		String page = "";
+		
+		if("".equals(sBno) || sBno == null || "".equals(sBno) || sBno == null) {
+			page = "view/errorPage.jsp";
+			request.setAttribute("msg", "잘못된 접근입니다!");
 			
+		} else {
+			int bno = Integer.parseInt(sBno);
+			int gubun = Integer.parseInt(sGubun);
 			
+
 			MarketBoard b = new BuyMarketService().selectOne(bno);
-			ArrayList<MarketBoardComment> clist = new BuyMarketCommentService().selectList(bno);
+			ArrayList<MarketBoardComment> clist = new MarketBoardCommentService().selectList(bno);
 			
 			
-			String page = "";
+			
 			if(b != null) {
-				page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
+				if(gubun == 0) { // 상세보기
+					page = "view/marketboard/semi_Market_BuyBoardDetail.jsp";
+				} else if(gubun == 1) { // 업데이트
+					
+					page = "view/marketboard/semi_Market_BuyBoardUpdate.jsp";
+				}
 				request.setAttribute("Marketboard", b);
 				request.setAttribute("clist", clist);
 				
 			}else {
-				page = "view/errorPage.jsp";
+				page = "view/common/errorPage.jsp";
 				request.setAttribute("msg", "게시글 상세보기 실패!");
 				
 				
 			}
-			request.getRequestDispatcher(page).forward(request, response);
+		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

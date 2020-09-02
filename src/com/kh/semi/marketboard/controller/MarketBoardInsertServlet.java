@@ -82,10 +82,10 @@ public class MarketBoardInsertServlet extends HttpServlet {
 		int result = new MarketBoardService().insertBoard(b);
 		
 		if(result > 0) {
-			response.sendRedirect("/SEMI/marketselectList.bo");
+			response.sendRedirect(request.getContextPath()+"/marketselectList.bo");
 		}else {
 			request.setAttribute("msg", "게시글 작성 실패");
-			request.getRequestDispatcher("view/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 		}
 	}
 

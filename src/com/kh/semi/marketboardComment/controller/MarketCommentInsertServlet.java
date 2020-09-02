@@ -44,7 +44,7 @@ public class MarketCommentInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 
-			response.sendRedirect("marketboardselectOne.bo?bno="+bno);
+			response.sendRedirect(request.getContextPath()+"/marketboardselectOne.bo?bno="+bno);
 			
 		} else {
 			request.setAttribute("msg", "댓글 작성 실패!!");

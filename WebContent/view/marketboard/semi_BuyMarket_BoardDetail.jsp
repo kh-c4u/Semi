@@ -36,7 +36,7 @@
 
     <div id="main-header">
         <div class="main-header-logo">
-            <a href="#"><img src="./images/semiLogosize.png" /></a>
+            <a href="#"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         </div>
         <ul id='BeforeLogin' class="main-header-login">
          <%if(m == null) {%>
@@ -106,7 +106,7 @@
         <div class="sub-right-content">
             <div class="page-title Nanum2">삽니다.</div>
          	<div class="left pb5 mr5">
-         		<a href="<%=request.getContextPath()%>/buymarketInsert.bo" class="btn3">목록</a>
+         		<a href="<%=request.getContextPath()%>/buymarketList.bo" class="btn3">목록</a>
          		</div>
          		<div class="left pb5 mr5">
          		

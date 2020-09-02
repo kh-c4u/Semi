@@ -54,16 +54,16 @@ public class MarketBoardSelectOneServlet extends HttpServlet {
 				
 				if(b != null) {
 					if(gubun == 0) { // 상세보기
-						page = "view/board/semi_Market_BoardDetail.jsp";
+						page = "view/marketboard/semi_Market_BoardDetail.jsp";
 					} else if(gubun == 1) { // 업데이트
 						
-						page = "view/board/semi_Market_BoardUpdate.jsp";
+						page = "view/marketboard/semi_Market_BoardUpdate.jsp";
 					}
 					request.setAttribute("Marketboard", b);
 					request.setAttribute("clist", clist);
 					
 				}else {
-					page = "view/errorPage.jsp";
+					page = "view/common/errorPage.jsp";
 					request.setAttribute("msg", "게시글 상세보기 실패!");
 					
 					
