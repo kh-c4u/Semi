@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_menu_frame.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_market.css">
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_market.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
@@ -16,19 +16,18 @@
 <div id="main-header">
 
     <div class="main-header-logo">
-    <a href="semi_main.html"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
-        <ul id='BeforeLogin' class="main-header-login">
-      <%if(m == null) {%>
-                <li><a href="semi_Login.jsp">로그인</a></li>
-                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
-                <li><span>|</span><a href="/#">고객센터</a></li>
-            <%}else{ %>
-            	<li><a><%=m.getUserName()%>님</a></li>
-            	<li><span>|</span><a href="/SEMI/logOut.do">로그아웃</a></li>
-                <li><span>|</span><a href="/#">마이페이지</a></li>
-            	  
-            <%} %>
-            </ul>
+    <a href="semi_main.html"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
+       <ul id='BeforeLogin' class="main-header-login">
+         <%if(m == null) {%>
+         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
+         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+         <li><span>|</span><a href="/#">고객센터</a></li>
+         <%}else{ %>
+         <li><a><%=m.getUserName()%>님</a></li>
+         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
+         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+         <%} %>
+      </ul>
  
 
     <ul class="main-header-navi">
@@ -73,8 +72,8 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                   	<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd></dd>
+ 					<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -99,7 +98,7 @@
         <hr>
 
 
-        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/marketboardInsert.bo"
+        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
         		method="post" enctype="multipart/form-data" name="board_form">
                <div>
 
@@ -157,7 +156,7 @@
 
 	<% } else { 
 		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
+		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 	 } %>
 </section>
 

@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
-<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard"%>
 <%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -38,17 +38,11 @@
         <div class="main-header-logo">
             <a href="#"><img src="./images/semiLogosize.png" /></a>
         </div>
-        <ul id='BeforeLogin' class="main-header-login">
-         <%if(m == null) {%>
-         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
-         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-         <li><span>|</span><a href="/#">고객센터</a></li>
-         <%}else{ %>
-         <li><a><%=m.getUserName()%>님</a></li>
-         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
-         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
-         <%} %>
-      </ul>
+        <ul id="BeforeLogin" class="main-header-login">
+            <li><a href="#">로그인</a></li>
+            <li><span>|</span><a href="/#">회원가입</a></li>
+            <li><span>|</span><a href="/#">고객센터</a></li>
+        </ul>
 
         <ul class="main-header-navi">
             <li><a href="#">기사</a></li>
@@ -73,9 +67,9 @@
                         <dt>
                             <div>커뮤니티</div>
                         </dt>
-                <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
-                <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
-                <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
+                        <dd><a href="#">- 기사</a></dd>
+                        <dd><a href="#">- 산업기사</a></dd>
+                        <dd><a href="#">- 기능사</a></dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -84,9 +78,9 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                         <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              			 <dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
-               
+                     <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+                    </dl>
                 </li>
                 <div class="menu-line"></div>
                 <li>
@@ -106,13 +100,13 @@
         <div class="sub-right-content">
             <div class="page-title Nanum2">삽니다.</div>
          	<div class="left pb5 mr5">
-         		<a href="<%=request.getContextPath()%>/buymarketInsert.bo" class="btn3">목록</a>
+         		<a href="<%=request.getContextPath()%>//marketselectList.bo" class="btn3">목록</a>
          		</div>
          		<div class="left pb5 mr5">
          		
          			
          				<% if(m != null && m.getUserId().equals(b.getBwriterId())){ %>
-			<a href="<%= request.getContextPath() %>/buymarketselectOne.bo?bno=<%=b.getBno()%>&gubun=1" class="btn3">수정</a>
+			<a href="<%= request.getContextPath() %>/marketboardselectOne.bo?bno=<%=b.getBno()%>&gubun=1" class="btn3">수정</a>
 			<% } %>	
          		</div>
          			
@@ -173,7 +167,7 @@
       <div class="comment">
          <div class="replyWriteArea">
                
-             <form action="<%= request.getContextPath()%>/bmcinsert.bo" method="post">
+             <form action="<%= request.getContextPath()%>/insertComment.bo" method="post">
                <input type="hidden" name="writer" value="<%=m.getUserId()%>" /> <input
                   type="hidden" name="bno" value="<%=b.getBno() %>" /> <input
                   type="hidden" name="refcno" value="0" /> <input type="hidden"
@@ -273,7 +267,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="<%= request.getContextPath()%>bUpdate.bo"
+		location.href="/SEMI/bupdate.bo"
 				 +"?cno="+cno+"&bno="+bno+"&content="+content;
 	}
 	
@@ -284,7 +278,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href=" <%= request.getContextPath()%>bmcdelete.bo"
+		location.href="/SEMI/deletecomment.bo"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	
@@ -325,7 +319,7 @@
 		
 		var content = siblingsTR.find('textarea').val();
 		
-		location.href='<%= request.getContextPath()%>/bmcinsert.bo'
+		location.href='<%= request.getContextPath()%>/insertComment.bo'
 		           + '?writer=<%= m.getUserId() %>' 
 		           + '&replyContent=' + content
 		           + '&bno=' + bno
