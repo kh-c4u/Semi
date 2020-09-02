@@ -20,9 +20,15 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
  */
 @WebServlet("/buymarketInsert.bo")
 public class BuyMarketInsertServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -540537578435279371L;
+
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public BuyMarketInsertServlet() {
@@ -68,8 +74,8 @@ int maxSize = 1024 * 1024 * 10;
 		
 
 
-		String fileName = mrequest.getFilesystemName("file");
-		
+		String fileName = mrequest.getFilesystemName("filename");
+		System.out.println("fileName : "  + fileName);
 		MarketBoard b = new MarketBoard();
 		b.setBtitle(title);
 		b.setBcontent(content);
