@@ -185,8 +185,8 @@
         						
         						// 내용을 각각 표현할 td 태그 생성
         
-        						var $tdBoardTitle = $('<td>').text("-"+data[i].btitle);
-        						var $tdBoardDate = $('<td>').text(data[i].bdate);
+        						var $tdBoardTitle = $('<td>').text("-"+data[i].ntitle);
+        						var $tdBoardDate = $('<td>').text(data[i].ndate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
         						$table.append($tr);

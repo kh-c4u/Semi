@@ -144,5 +144,5 @@ tr{ font-size: 20px; }
 .boardTop5{border-collapse: collapse; 
     margin-left: 10px;
     margin-top: 40px;
-    color : #494949; width: 650px; height: 430px;}
+    color : #494949; min-width: 600px; height: 430px;}
 

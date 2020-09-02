@@ -306,4 +306,46 @@ public class NoticeDao {
 				return listCount;
 	}
 
+	public ArrayList<Notice> selectTop7(Connection con) {
+		ArrayList<Notice> list = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectTop7");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<Notice>();
+			
+			while(rset.next()) {
+				
+				Notice b = new Notice();
+				
+				b.setNno(rset.getInt("BNO"));
+				b.setNtitle(rset.getString("BTITLE"));
+				b.setNcontent(rset.getString("BCONTENT"));
+				b.setNwriter(rset.getString("USERNAME"));
+				b.setNcount(rset.getInt("BCOUNT"));
+				b.setNdate(rset.getDate("BDATE"));
+
+				
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
 }
