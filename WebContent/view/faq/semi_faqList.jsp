@@ -25,7 +25,7 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c9096b9061.js" crossorigin="anonymous"></script>
-<script src="resources/js/jquery-3.4.1.min.js"></script>
+
 <link rel="stylesheet" href="resources/css/semi_FAQ.css" />
 <link rel="stylesheet" href="resources/css/semi_menu_frame.css">
 
@@ -85,46 +85,42 @@
             </p>
         </div>
      
+		<script>	
+		  $(function(){
+	            $('.tr11').slideUp();
 			
-			 
+	            $('.fa-angle-double-down').click(function(){
+	               // $(this).next('p').slideDown();
+					
+	                $(this).parent().next('tr').slideToggle();
+	            });
+	        });
+	    </script>	 
 			
         <section>
             <table class="tb0">
-                <th class="th1 Nanum1">번호</th>
-                <th class="th1 Nanum1">분류</th>
-                <th class="th2 Nanum1">제목</th>
-            </table>
-            <div class="panel-question active">
-            <% for(Faq f : list){ %>
-                <div class="panel-heading">
-                    <table class="tb1">    
-                        <td class="th3 num Nanum1"><%= f.getFno() %></td>
+            	<tr>
+	                <th class="Nanum1">번호</th>
+	                <th class="Nanum1">분류</th>
+	                <th class="Nanum1">제목</th>
+	                
+                </tr>
+                <% for(Faq f : list){ %>
+                	<tr>
+                	    <td class="th3 num Nanum1"><%= f.getFno() %></td>
                         <td class="th3 tag Nanum1"><%= f.getFcategory() %></td>
                         <td class="th4"><%= f.getFtitle() %></td>
                         <td class="tagtda fas fa-angle-double-down"></td>
-               
-                <div class="panel-body" id="thisone">
-                    <p><%= f.getFcontents() %></p>
-   <script>
-        $(function(){
-            $('.panel-body').slideUp();
-		
-            $('.panel-heading').click(function(){
-               // $(this).next('p').slideDown();
-				
-                $(this).next('p').slideToggle(1000,function(){
-                    //alert('슬라이드 토글 확인');
-                  
-                });
-            });
-        });
-    </script>
-                    </table>
-                </div>
-            <% } %>
-           
-            </div>
+                	</tr>
+               	 	<tr class="tr11">
+               			<td><%= f.getFcontents() %></td>
+               		</tr>
+            	<% } %>    
+            </table>
 	     </section>
+	     
+	     
+      
     
          <a href="./semi_menu_qna.html" class="page-guide2 white">1:1 문의</a>
          <a href=semi_faqInsertForm.jsp id= "admin-write" class="page-guide2 white right">글쓰기</a>
