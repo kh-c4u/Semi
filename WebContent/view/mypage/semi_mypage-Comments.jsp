@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
 <link rel="stylesheet" href="../../resources/css/semi_mypage.css">
-<link rel="stylesheet" href="../../resources/css/semi_Comments.css">
+<link rel="stylesheet" href="../../resources/css/semi_mypage_Comments.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c9096b9061.js"
