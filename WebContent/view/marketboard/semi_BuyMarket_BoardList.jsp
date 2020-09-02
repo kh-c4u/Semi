@@ -167,7 +167,7 @@
          <%} %>
       </ul>
       <div class="main-header-logo">
-        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
