@@ -53,10 +53,10 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 			
 			if(b != null) {
 				if(gubun == 0) { // 상세보기
-					page = "view/marketboard/semi_Market_BuyBoardDetail.jsp";
+					page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
 				} else if(gubun == 1) { // 업데이트
 					
-					page = "view/marketboard/semi_Market_BuyBoardUpdate.jsp";
+					page = "view/marketboard/semi_BuyMarket_BoardUpdate.jsp";
 				}
 				request.setAttribute("Marketboard", b);
 				request.setAttribute("clist", clist);

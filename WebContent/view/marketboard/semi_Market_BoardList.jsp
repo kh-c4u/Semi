@@ -156,7 +156,7 @@
 
     <div id="main-header">
       <div class="main-header-logo">
-        <a href="#"><img src="/SEMI/resources/images/semiLogosize.png" /></a>
+        <a href="#"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
@@ -236,7 +236,7 @@
 
 
             <div class="title-write">
-              <h1>장터</h1>
+              <h1>판매</h1>
             </div>
 
             <thead id="listArea">
