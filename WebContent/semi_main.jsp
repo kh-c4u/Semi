@@ -264,7 +264,7 @@
 			<div id="new_post_text">
 				새로운 게시글<a href="<%=request.getContextPath()%>/comuboardlist.bo" class="more">+ 더보기</a>
 				<div class="left-box">
-                    <table align="center" id="boardTop7Comu" class="boardTop7Comu" style="word-break: break-all;">
+                    <table align="center" id="boardTop7Comu" class="boardTop5" style="word-break: break-all;">
                         <tbody>
                         </tbody>
                     </table>	
