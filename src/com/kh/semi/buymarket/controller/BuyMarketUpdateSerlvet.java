@@ -90,7 +90,7 @@ public class BuyMarketUpdateSerlvet extends HttpServlet {
 				int result = new BuyMarketService().updateBoard(b);
 				
 				if( result > 0) {
-					response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno="+bno);
+					response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno="+bno+"&gubun=0");
 					System.out.println(6);
 				} else {
 					request.setAttribute("msg", "게시글 수정 실패!");
