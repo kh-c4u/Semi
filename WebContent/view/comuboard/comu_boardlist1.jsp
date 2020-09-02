@@ -181,8 +181,7 @@
 					</tr>
 				</thead>
 				<tbody id="serach-Result">
-					
-
+				
 					<% for(ComuBoard b : list){ %>
 					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
