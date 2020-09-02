@@ -94,12 +94,8 @@
 					<dt>
 						<div>장터</div>
 					</dt>
-					<dd>
-						<a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a>
-					</dd>
-					<dd>
-						<a href="#">- 팝니다</a>
-					</dd>
+				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
 				</dl>
 			</li>
 			<div class="menu-line"></div>
@@ -131,7 +127,7 @@
 		<div class="search-box">
 			<div>
 				<select id="searchCondition" name="searchCondition">
-					<option >카테고리 선택</option>
+					<option value="5" >카테고리 선택</option>
 					<option value="1" >공부팁</option>
 					<option value="2">합격수기</option>
 					<option value="3">수강후기</option>

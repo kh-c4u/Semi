@@ -104,6 +104,8 @@ public class ComuBoardDaoSGS {
 				break;
 				case 4:b.setBtypestr("무료인강추천");
 				break;
+				case 5:b.setBtypestr("--");
+				break;
 				}
 				list.add(b);
 
@@ -314,6 +316,8 @@ public class ComuBoardDaoSGS {
 				case 3:b.setBtypestr("수강후기");
 				break;
 				case 4:b.setBtypestr("무료인강추천");
+				break;
+				case 5:b.setBtypestr("--");
 				break;
 				}
 				list.add(b);

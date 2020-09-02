@@ -55,15 +55,15 @@ public class MypageService {
 		return listCount;
 	}
 
-	public ArrayList<massage> selectList(int currentPage, int limit) {
+	public ArrayList<massage> selectList(int currentPage, int limit, String cwriter) {
 		Connection con = getConnection();
-		ArrayList<massage> list = pDao.selectList(con,currentPage,limit);
+		ArrayList<massage> list = pDao.selectList(con,currentPage,limit,cwriter);
 
 		close(con);
 		return list;
 	}
 
-	public ArrayList<massage> searchMassage(String category, String keyword, int currentPage, int limit) {
+	public ArrayList<massage> searchMassage(String category, String keyword, int currentPage, int limit, String cwriter) {
 		Connection con = getConnection();
 		ArrayList<massage> list = null;
 
@@ -73,7 +73,7 @@ public class MypageService {
 		//			list = nDao.selectList(con);
 		//		}
 
-		list = (category.length() >0) ? pDao.searchNotice(con,category,keyword,currentPage,limit) :  pDao.selectList(con,currentPage,limit);
+		list = (category.length() >0) ? pDao.searchNotice(con,category,keyword,currentPage,limit,cwriter) :  pDao.selectList(con,currentPage,limit,cwriter);
 		return list;
 	}
 
@@ -115,6 +115,19 @@ public class MypageService {
 		if(result > 0) commit(conn);
 		else rollback(conn);
 		
+		close(conn);
+		
+		return result;
+	}
+
+	public int deleteMassage(String cno) {
+		conn = getConnection();
+		
+		int result = pDao.deleteMassage(conn,cno);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		System.out.println(result);
 		close(conn);
 		
 		return result;
