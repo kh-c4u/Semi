@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<% if(m != null) { %>
+
  <div id="main-header">
         <div class="main-header-logo"><a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div> 
         	<ul id='BeforeLogin' class="main-header-login">
@@ -152,10 +152,6 @@
 
 
 
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
-	 } %>
 </section>
 
 
