@@ -317,6 +317,8 @@ public class ComuBoardDaoGS {
 				break;
 				case 4:b.setBtypestr("무료인강추천");
 				break;
+				case 5:b.setBtypestr("--");
+				break;
 				}
 				list.add(b);
 			}
