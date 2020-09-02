@@ -1,8 +1,7 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
+<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
-<%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
-<%@page import="com.kh.semi.market.model.vo.PageInfo" %>
+<%@page import="com.kh.semi.marketboard.model.vo.PageInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%  Member m = (Member)session.getAttribute("member"); %>    
@@ -153,21 +152,11 @@
     
   </head>
   <body>
-	 
+	  
+
     <div id="main-header">
-     <ul id='BeforeLogin' class="main-header-login">
-         <%if(m == null) {%>
-         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
-         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-         <li><span>|</span><a href="/#">고객센터</a></li>
-         <%}else{ %>
-         <li><a><%=m.getUserName()%>님</a></li>
-         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
-         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
-         <%} %>
-      </ul>
       <div class="main-header-logo">
-        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+        <a href="#"><img src="/SEMI/resources/images/semiLogosize.png" /></a>
         <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
@@ -176,7 +165,18 @@
       </div>
     </div>
     
-    
+      <ul id='BeforeLogin' class="main-header-login">
+      <%if(m == null) {%>
+                <li><a href="semi_Login.jsp">로그인</a></li>
+                <li><span>|</span><a href="semi_SignupForm.jsp">회원가입</a></li>
+                <li><span>|</span><a href="/#">고객센터</a></li>
+            <%}else{ %>
+            	<li><a><%=m.getUserName()%>님</a></li>
+            	<li><span>|</span><a href="/logOut.do">로그아웃</a></li>
+                <li><span>|</span><a href="/#">마이페이지</a></li>
+            	  
+            <%} %>
+            </ul>
                 
     <div id="main-box1"></div>
     
@@ -198,9 +198,9 @@
               <dt>
                 <div>커뮤니티</div>
               </dt>
-              <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
-              <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
-              <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
+              <dd><a href="#">- 기사</a></dd>
+              <dd><a href="#">- 산업기사</a></dd>
+              <dd><a href="#">- 기능사</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -209,8 +209,8 @@
               <dt>
                 <div>장터</div>
               </dt>
-              <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              <dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+           		<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -271,11 +271,11 @@
        
        <%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -283,16 +283,16 @@
 			%>
 				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= p %>'"><%= p %></button>
 			<%      } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button disabled>></button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/marketselectList.bo?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
        
@@ -308,7 +308,7 @@
 			
 			
 			<% if(m != null){ %>
-				<button onclick="location.href='view/marketboard/semi_BuyMarket_BoardWriting.jsp'">작성하기</button>
+				<button onclick="location.href='view/board/semi_Market_BoardWriting.jsp'">작성하기</button>
 			<% } %>
 			
 		</div>
@@ -322,7 +322,7 @@
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0"; 
+				location.href="<%=request.getContextPath()%>/marketboardselectOne.bo?bno=" + bno+"&gubun=0"; 
 				
 		
 			});
@@ -336,7 +336,7 @@
   </body>
   <footer id="main-footer">
     <div class="main-footer-wrap">
-      <div><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></div>
+      <div><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></div>
       <div>
         <ul>
           <li>
