@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.marketboard.model.vo.MarketBoard;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 

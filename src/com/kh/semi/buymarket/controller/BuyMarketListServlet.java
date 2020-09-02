@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.market.model.vo.MarketBoard;
-import com.kh.semi.market.model.vo.PageInfo;
+import com.kh.semi.marketboard.model.vo.MarketBoard;
+import com.kh.semi.marketboard.model.vo.PageInfo;
+
 
 /**
  * Servlet implementation class BoardListServlet

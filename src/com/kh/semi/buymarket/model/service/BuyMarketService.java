@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.semi.buymarket.model.dao.BuyMarketDao;
-import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.marketboard.model.vo.MarketBoard;
 
 
 public class BuyMarketService {
@@ -84,6 +84,20 @@ public class BuyMarketService {
 		
 		return result;
 	
+	}
+
+
+
+	public ArrayList<MarketBoard> searchBoard(int category, String keyword, String selectKeyword, int currentPage,
+			int limit) {
+		Connection conn = getConnection();
+		ArrayList<MarketBoard> list = null;
+		
+		list = bDao.searchBoard(conn,category,keyword,selectKeyword,currentPage,limit);
+		
+		close(conn);
+		
+		return list;
 	}
 	
 }

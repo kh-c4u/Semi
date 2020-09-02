@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
 import com.kh.semi.buymarketcomment.service.BuyMarketCommentService;
-import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.marketboard.model.vo.MarketBoard;
 import com.kh.semi.marketcomment.model.vo.MarketBoardComment;
 
 /**

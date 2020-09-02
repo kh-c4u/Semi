@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.buymarket.model.service.BuyMarketService;
-import com.kh.semi.market.model.vo.MarketBoard;
+import com.kh.semi.marketboard.model.vo.MarketBoard;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -72,16 +72,20 @@ int maxSize = 1024 * 1024 * 10;
 		String writer = mrequest.getParameter("userId");
 		String sale_status = mrequest.getParameter("sale_status");
 		
-
+	
+		
 
 		String fileName = mrequest.getFilesystemName("filename");
 		System.out.println("fileName : "  + fileName);
+		
 		MarketBoard b = new MarketBoard();
 		b.setBtitle(title);
 		b.setBcontent(content);
 		b.setBwriter(writer);
 		b.setBoardfile(fileName);
 		b.setBcondition(sale_status);
+		
+	
 		
 
 

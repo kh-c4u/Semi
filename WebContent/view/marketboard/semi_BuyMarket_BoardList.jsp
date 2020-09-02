@@ -1,8 +1,8 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard"%>
 <%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
-<%@page import="com.kh.semi.market.model.vo.PageInfo" %>
+<%@page import="com.kh.semi.marketboard.model.vo.PageInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%  Member m = (Member)session.getAttribute("member"); %>    
@@ -22,139 +22,30 @@
     <meta charset="UTF-8" />
     <title>C4U 너만의 기사</title>
 
-    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_market1.css" />
+    <link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
+	<link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath()%>/resources/css/semi_comu_gisa.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
       src="https://kit.fontawesome.com/c9096b9061.js"
       crossorigin="anonymous"
     ></script>
-    <style>
-      .testbox {
-        width: 100%;
-        min-height: 500px;
-        /* background-color: blue; */
-        float: right;
-        clear: left;
-        margin: 20px;
-      }
-
-      #con1 {
-        display: flex;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        /* background-color: pink; */
-      }
-
-      a {
-        color: black;
-      }
-      table a:hover {
-        text-decoration: underline;
-      }
-      table {
-        border-collapse: collapse;
-      }
-
-      table,
-      th,
-      td
-      {
-        border-bottom: 1px solid black;
-        padding: 10px;
-      }
-
-      th {
-        font-size: 16px;
-        background-color: skyblue;
-      }
-
-
-      .fas {
-        font-size: medium;
-        vertical-align: middle;
-      }
-
-      .table {
-      }
-
-      .noticebody {
-        background: hsl(240, 12%, 94%);
-      }
-
-      .postsbody {
-        background: white;
-      }
-
-
-      .notice-qna {
-        color: red;
-      }
-
-      .testbox {
-        /* display: flex; */
-        /* justify-content: center; */
-      }
-
-      .title-write {
-        width: 100%;
-
-        text-align: left;
-      }
-
-      .tablebox {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .paging {
-        /* text-align: center; */
-        padding: 10px;
-      }
-      .paging > a {
-        padding: 5px;
-      }
-
-      .btns {
-        margin-top: 50px;
-      }
-      .writeBtn {
-        text-align: right;
-        border: 1px solid black;
-        background: lightgray;
-        padding: 6px 12px;
-        border-radius: 4px;
-      }
-
-      .search-qna {
-        margin-top: 10px;
-      }
-      #search-qna-sel {
-        vertical-align: middle;
-      }
-
-      .search-qna-btn {
-        vertical-align: middle;
-      }
-
-      .search-qna-bar {
-        vertical-align: middle;
-        width: 200px;
-      }
-    </style>
-
+  
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script></script>
     
 
-    
+   
   </head>
   <body>
 	 
     <div id="main-header">
+     <div class="main-header-logo">
+        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+   </div>
+   
      <ul id='BeforeLogin' class="main-header-login">
          <%if(m == null) {%>
          <li><a href="view/member/semi_Login.jsp">로그인</a></li>
@@ -166,15 +57,14 @@
          <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
          <%} %>
       </ul>
-      <div class="main-header-logo">
-        <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
-        <ul class="main-header-navi">
+      
+      <ul class="main-header-navi">
         <li><a href="#">기사</a></li>
         <li><a href="#">산업기사</a></li>
         <li><a href="#">기능사</a></li>
       </ul>
       </div>
-    </div>
+    
     
     
                 
@@ -182,8 +72,8 @@
     
  <!----------------------------------------------------------------------------------------------------->
 
-    <section id="con1">
-      <div class="left-menu" style="max-height: 500px;">
+
+      <div class="left-menu">
         <ul id="left-menu-share" class="left-menu1">
           <li>
             <dl>
@@ -226,112 +116,136 @@
           </li>
         </ul>
       </div>
-      <div class="testbox">
-        <div class="tablebox">
-          <table
-            class="table Nanum1"
-            border="0"
-            style="text-align: center; padding: 0; margin: 0; min-width: 100%;">
+      
+      
+     <div class="semi-comu-gisa" style="float: left;">
+		<div id="page-title" class="page-title">구매</div>
+	
+		<div class="search-box">
+			<div>
+				<select id="searchCondition" name="searchCondition">
+					<option value="3" >카테고리 선택</option>
+					<option value="1" >구매중</option>
+					<option value="2">구매완료</option>				
+				</select>
+			</div>
+			<div class="search-option">
+				<span class="ch-10"> <input type="radio" name="searchType"
+					searchType="title"  value="title" checked="checked"> 제목
+				</span> <span class="ch-10"> <input type="radio" name="searchType"
+					searchType="content" value="content"> 내용
+				</span> <span class="ch-10"> <input type="radio" name="searchType"
+					searchType="regUserName" value="writer"> 작성자
+				</span>
+			</div>
+			<div class="input-wrap">
+				<input type="text" id="searchWord" name="searchWord"
+					style="width: 150px;">
+			</div>
+			<div id="btns">
+				<button style="border:none; background:none;"  onclick="search();" class="btns" ><img
+					src="<%= request.getContextPath()%>/resources/images/seach_gisa.png">
+					</button>
+			</div>
 			
+			<script>
+			function search(){
+				location.href="<%= request.getContextPath()%>/buymarketList.bo"+ "?bon="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
+			}
+			</script>
+		</div>
+		
+		<div class="table-wrap">
+			<table class="table-gisa" style="word-break: break-all;">
+				<colgroup id="colGroupNO">
+					<col width="2%">
+					<col width="5%">
+					<col width=25%>
+					<col width="3%">
+					<col width="5%">
+					<col width="3%">
+				</colgroup>
+				<thead id="th">
+					<tr>
+						<th>No.</th>
+						<th>구매현황</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회</th>
+					</tr>
+				</thead>
+				<tbody id="serach-Result">
+				
+					<% for(MarketBoard b : list){ %>
+					<tr id="contents1">
+						<input type="hidden" value="<%= b.getBno() %>" />
+						<td><%= b.getBno() %></td>
+						<td><%= b.getBcondition() %>
+						<td><%= b.getBtitle() %></td>
+						<td><%= b.getBwriter() %></td>
+						<td><%= b.getBdate() %></td>
+						<td><%= b.getBcount() %></td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
 
 
-            <div class="title-write">
-              <h1>구매</h1>
-            </div>
-
-            <thead id="listArea">
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-                <th>판매현황</th>
-                <th>첨부파일</th>
-              </tr>
-          
-            <% for(MarketBoard b : list){ %>
-            <tr>
-            	<input type="hidden" value="<%= b.getBno() %>"/>
-            	<td><%= b.getBno() %></td>
-            	<td><%= b.getBtitle() %></td>
-            	<td><%= b.getBwriter()%></td>
-            	<td><%= b.getBdate() %></td>
-            	<td><%= b.getBcount() %></td>
-            	<td><%= b.getBcondition() %></td>
-            	<% if( b.getBoardfile() != null) { %>
-				<td> ◎ </td>
-				<%} else { %>
-				<td> X </td>
+		</div>
+		<div class="paging-wrap">
+			<div class="writeBtn">
+				<% if(m != null){ %>
+				<button onclick="location.href='view/marketboard/semi_BuyMarket_BoardWriting.jsp'"
+					id="writeB">글쓰기</button>
 				<% } %>
-			</tr>
-			<% } %>
-		  </thead>
-               </table>
-       
-       <%-- 페이지 처리 --%>
-		<div class="pagingArea" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=1'"><<</button>
-			<%  if(currentPage <= 1){  %>
-			<button disabled><</button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
-			<%  } %>
-			
-			<% for(int p = startPage; p <= endPage; p++){
+
+			</div>
+			<div class="pagination" id="paging-link">
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=1'"><<</button>
+				<%  if(currentPage <= 1){  %>
+				<button disabled>이전</button>
+				<%  }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+				<%  } %>
+
+				<% for(int p = startPage; p <= endPage; p++){
 					if(p == currentPage){	
 			%>
 				<button disabled><%= p %></button>
-			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= p %>'"><%= p %></button>
-			<%      } %>
-			<% } %>
-				
-			<%  if(currentPage >= maxPage){  %>
-			<button disabled>></button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage + 1 %>'">></button>
-			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= maxPage %>'">>></button>
-			
-		</div>
-       
-	<div class="searchArea" align="center">
-			<select id="searchCondition" name="searchCondition">
-				<option>---</option>
-				<option value="writer">작성자</option>
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="search">
-			<button type="submit">검색하기</button>
-			
-			
-			<% if(m != null){ %>
-				<button onclick="location.href='view/marketboard/semi_BuyMarket_BoardWriting.jsp'">작성하기</button>
-			<% } %>
-			
+				<%      }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<%      } %>
+				<% } %>
+
+				<%  if(currentPage >= maxPage){  %>
+				<button disabled>다음</button>
+				<%  }else{ %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+				<%  } %>
+				<button
+					onclick="location.href='<%= request.getContextPath() %>/buymarketList.bo?currentPage=<%= maxPage %>'">>></button>
+
+			</div>
 		</div>
 	</div>
 	
 	<script>
 		$(function(){
-			$("#listArea td").mouseenter(function(){
-				$(this).parent().css({"background":"#CEF6F5", "cursor":"pointer"});
-			}).mouseout(function(){
-				$(this).parent().css({"background":"white"});
-			}).click(function(){
+			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
 				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0";
-		
 			});
 		});
-	</script>       
-       
-       
-        </div>
+	</script>
+
      
-    </section>
+     
+
   </body>
   <footer id="main-footer">
     <div class="main-footer-wrap">

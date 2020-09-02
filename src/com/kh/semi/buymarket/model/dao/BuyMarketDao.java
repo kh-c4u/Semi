@@ -12,7 +12,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.semi.market.model.vo.MarketBoard;
+
+import com.kh.semi.marketboard.model.vo.MarketBoard;
 
 public class BuyMarketDao {
 	private Properties prop;
@@ -71,13 +72,12 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 	try {
 		pstmt = conn.prepareStatement(sql);		
 		
-		int startRow = (currentPage - 1) * limit +1; // 1, 11
-		int endRow = startRow + limit - 1; // 10,20
+		int startRow = (currentPage - 1) * limit +1;
+		int endRow = startRow + limit - 1;
 		System.out.println(startRow + ":" + endRow);
 		pstmt.setInt(1, endRow);
 		pstmt.setInt(2, startRow);
 		
-	
 
 		rset = pstmt.executeQuery();
 		
@@ -96,6 +96,15 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
 		
+			switch(rset.getInt("BCONDITION")){
+			case 1:b.setBcondition("구매중");
+			break;
+			case 2:b.setBcondition("구매완료");
+			break;
+			case 3:b.setBcondition("--");
+			break;
+			}
+			
 			list.add(b);
 			
 		}
@@ -249,16 +258,90 @@ public int marketBoardCount(Connection conn, int bno) {
 		pstmt.setInt(1, bno);
 		result = pstmt.executeUpdate();
 
-
 	}catch(SQLException e) {
 		e.printStackTrace();
 	}finally {
 		close(pstmt);
 	}
 	return result;
-}
+
 }
 
+
+public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String keyword, String selectKeyword,
+		int currentPage, int limit) {
+	
+		ArrayList<MarketBoard> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = null;
+		
+		switch(selectKeyword) {
+		case "content":
+			sql = prop.getProperty("searchContentBoard");
+			break;
+		case "title" :
+			sql = prop.getProperty("searchTitleBoard");
+			break;
+		case "writer" : 
+			sql = prop.getProperty("searchWriterBoard");
+			break;
+		}
+
+		
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (currentPage - 1) * limit +1;
+			int endRow = startRow + limit - 1;
+
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, category);
+			pstmt.setString(4, keyword);
+			
+		
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<MarketBoard>();
+
+
+		while(rset.next()){
+			MarketBoard b = new MarketBoard();
+
+			b.setBno(rset.getInt("BNO"));
+			b.setBtype(rset.getInt("BTYPE"));  
+			b.setBtitle(rset.getString("BTITLE"));
+			b.setBwriter(rset.getString("BWRITER"));
+			b.setBwriterId(rset.getString("USERNAME"));
+			b.setBcount(rset.getInt("BCOUNT"));
+			b.setBdate(rset.getDate("BDATE"));
+	
+	
+			switch(rset.getInt("BTYPE")){
+			case 1:b.setBcondition("구매중");
+			break;
+			case 2:b.setBcondition("구매완료");
+			break;
+			case 3:b.setBcondition("--");
+			break;
+			}
+			list.add(b);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		close(rset);
+		close(pstmt);
+	}
+	
+	return list;
+	
+}
+
+}
 
 
 

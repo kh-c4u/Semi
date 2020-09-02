@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
-<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard"%>
 <%@page import="com.kh.semi.marketcomment.model.vo.MarketBoardComment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -170,6 +170,9 @@
           
          </table>
       </div>
+      
+      
+      
       <div class="comment">
          <div class="replyWriteArea">
                

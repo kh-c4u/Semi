@@ -1,33 +1,35 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%  Member m = (Member)session.getAttribute("member"); %>       
+  <%  Member m = (Member)session.getAttribute("member");%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
-    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_market.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_market.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<% if(m != null) { %>
+
 <div id="main-header">
 
     <div class="main-header-logo">
-    <a href="semi_main.html"><img src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
-       <ul id='BeforeLogin' class="main-header-login">
-         <%if(m == null) {%>
-         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
-         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-         <li><span>|</span><a href="/#">고객센터</a></li>
-         <%}else{ %>
-         <li><a><%=m.getUserName()%>님</a></li>
-         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
-         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
-         <%} %>
-      </ul>
+    <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
+            <ul id='BeforeLogin' class="main-header-login">
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%} %>
+		</ul>
  
 
     <ul class="main-header-navi">
@@ -43,8 +45,8 @@
 <div id="main-box1"></div>
 
 <!----------------------------------------------------------------------------------------------------->
-<section class="section_wrapper nanum1" >
-    <div class ="left_wrapper">
+
+    
         <div class="left-menu">
             <ul id="left-menu-share" class="left-menu1">
 
@@ -61,9 +63,15 @@
                         <dt>
                             <div>커뮤니티</div>
                         </dt>
-                        <dd><a href="semi_comu_gisa.html">- 기사</a></dd>
-                        <dd><a href="semi_comu_sanupgisa.html">- 산업기사</a></dd>
-                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>
+                       <dd>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
+					</dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -72,7 +80,7 @@
                         <dt>
                             <div>장터</div>
                         </dt>
- 					<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+                   	<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
               		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
                     </dl>
                 </li>
@@ -88,9 +96,8 @@
                     </dl>
                 </li>
             </ul>
-        </div>
+       
     </div>
-
     <!-- --------------------------------------장터 글쓰기------------------------------------------------------>
 
     <div id="write" class ="right_wrapper">
@@ -100,65 +107,54 @@
 
         <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
         		method="post" enctype="multipart/form-data" name="board_form">
-               <div>
-
-                <table>
-                    <tr>
-                        <td class="Nanum1">제목
-                      
-                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요." required="required">
-                                              
-                            <select id="sale_status" class="Nanum1" name="sale_status" required="required">
-                                <option value >---판매 상태---</option>
-                                <option value="sale">판매중</option>
-                                <option value="complete">판매완료</option>
-                            </select>
-                        </td>
-                    </tr>
-                   <tr>
-                       <td>작성자
-                      <%= m.getUserId() %>
-                           <input type="hidden" name="userId" value="<%= m.getUserId() %>"/>
-                       </td>
-                   </tr>
-                   <tr>
-                        <td>첨부파일
-                            <input type="file" name="filename" accept="image/png, image/jpg, image/bmp" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10" required="required">
-               		 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
-                        </td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-
+               <div class="writing">
+					<label>제목 :</label>
+					<input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
+					<div class="select-box">
+                        <select id="category-value" name="sale_status" required="required">
+                            <option value selected="selected">판매 현황</option>
+                            <option value="1">구매중</option>
+                            <option value="2">구매완료</option>
+                        </select>
+                    </div>
+            	</div>
+				
+				<br>
+				<div>작성자 <%= m.getUserId() %>
+                           <input type="hidden" name="userId" value="<%= m.getUserId() %>"/></div>
+				 <textarea name="content" cols="40" rows="10"
+                             style="width: 800px; height: 300px; resize: none" placeholder="판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : " 
+                             required="required"></textarea>
+						<br>
+						
+					<div id="btn_group1">
+                    <div class="uploadfile">
+                    <input type="file" name="filename" accept="image/png,image/jpg,image/bmp"/>
+                    </div>
+                    <div class="sub-buttons">
+                    <button type="button" class="btn" id="cancel" onclick="cancle()">취소</button>
+                    <button type="submit" class="btn" id="submit">등록</button>
+                    </div>
+                    </div>
+						
+						
         </form>
     </div>
 
 
-    <!-- 취소/등록 버튼 -->
-    
-    <div id="btn_group">
-
-          <button type="button" class="Nanum2" id="cancel" >취소</button>
-           <button type="button" class="Nanum2" id="submit">등록</button>
-
-    </div>
+    <script>
+    function cancle(){
+		location.href="<%=request.getContextPath()%>/buymarketList.bo";
+		
+	}
+	
+    </script>
+   
   
 
 
 
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
-	 } %>
-</section>
+
 
 
 

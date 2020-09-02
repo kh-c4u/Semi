@@ -93,6 +93,15 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
 		
+			switch(rset.getInt("BCONDITION")){
+			case 1:b.setBcondition("구매중");
+			break;
+			case 2:b.setBcondition("구매완료");
+			break;
+			case 3:b.setBcondition("--");
+			break;
+			}
+			
 			list.add(b);
 			
 		}
@@ -254,7 +263,78 @@ public int marketBoardCount(Connection conn, int bno) {
 	}
 	return result;
 }
+
 }
+//public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String keyword, String selectKeyword,
+//		int currentPage, int limit) {
+//	ArrayList<MarketBoard> list = null;
+//	PreparedStatement pstmt = null;
+//	ResultSet rset = null;
+//	String sql = null;
+//	
+//	switch(selectKeyword) {
+//	case "content":
+//		sql = prop.getProperty("searchContentBoard");
+//		break;
+//	case "title" :
+//		sql = prop.getProperty("searchTitleBoard");
+//		break;
+//	case "writer" : 
+//		sql = prop.getProperty("searchWriterBoard");
+//		break;
+//	}
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//
+//			int startRow = (currentPage - 1) * limit +1;
+//			int endRow = startRow + limit - 1;
+//
+//			pstmt.setInt(1, endRow);
+//			pstmt.setInt(2, startRow);
+//			pstmt.setInt(3, category);
+//			pstmt.setString(4, keyword);
+//			
+//		
+//			rset = pstmt.executeQuery();
+//
+//			list = new ArrayList<MarketBoard>();
+//
+//			while(rset.next()){
+//				MarketBoard b = new MarketBoard();
+//
+//				b.setBno(rset.getInt("BNO"));
+//				b.setBtype(rset.getInt("BTYPE"));  //1 공부팁 2 합격수기 3수강후기 4무료인강추천
+//				b.setBtitle(rset.getString("BTITLE"));
+//				b.setBwriter(rset.getString("BWRITER"));
+//				b.setBwriterId(rset.getString("USERNAME"));
+//				b.setBcount(rset.getInt("BCOUNT"));
+//				b.setBdate(rset.getDate("BDATE"));
+//
+//				switch(rset.getInt("BTYPE")){
+//				
+//				case 1:b.setBtypes("공부팁");
+//				break;
+//				case 2:b.setBtypestr("합격수기");
+//				break;
+//				case 3:b.setBtypestr("수강후기");
+//				break;
+//				case 4:b.setBtypestr("무료인강추천");
+//				break;
+//				case 5:b.setBtypestr("--");
+//				break;
+//				}
+//				list.add(b);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		
+//		return list;
+//	}
+//}
 
 
 

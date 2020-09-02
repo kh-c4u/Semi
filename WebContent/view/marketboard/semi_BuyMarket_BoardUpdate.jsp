@@ -1,5 +1,5 @@
 <%@page import="com.kh.semi.member.vo.Member"%>
-<%@page import="com.kh.semi.market.model.vo.MarketBoard"%>
+<%@page import="com.kh.semi.marketboard.model.vo.MarketBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%  Member m = (Member)session.getAttribute("member"); 
@@ -109,11 +109,6 @@
 							<input type="hidden" name="bno" value="<%=b.getBno()%>">
 						</td>
 					</tr>
-					<tr>
-						<td>작성자 </td>
-						<td colspan="3"><%= b.getBwriter() %></td>
-					</tr>
-					
 				  	
 				
 					<tr>

@@ -23,6 +23,7 @@ public class MarketBoard implements Serializable{
 		private String bcondition;	// 판매현황
 		private String status;		// 삭제여부('Y'이면 삭제 X, 'N'이면 삭제 O)
 		
+		
 		public MarketBoard() {}
 
 		public MarketBoard(String btitle, String bcontent, String bwriter, String boardfile, String bcondition) {

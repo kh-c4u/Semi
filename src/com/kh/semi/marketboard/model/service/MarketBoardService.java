@@ -97,5 +97,19 @@ public class MarketBoardService {
 		
 		return b;
 	}
-	
+
+
+//
+//	public ArrayList<MarketBoard> searchBoard(int category, String keyword, String selectKeyword, int currentPage,
+//			int limit) {
+//		Connection conn = getConnection();
+//		ArrayList<MarketBoard> list = null;
+//		
+//		list = bDao.searchBoard(conn,category,keyword,selectKeyword,currentPage,limit);
+//		
+//		close(conn);
+//		
+//		return list;
+//	}
+//	
 }

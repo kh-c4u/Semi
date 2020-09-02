@@ -1,119 +1,41 @@
-/*---------------------------------------------------------------------------------*/
-#write-title {
+.writing>div {
+	float: left;
+	margin-right: 10px;
+}
+
+.writing {
+	margin-bottom: 20px;
+}
+
+#category-value {
+	height: 25px;
+}
+
+#btn_group1 {
+	width: 1200px;
+	margin-top: 10px;
+}
+
+.uploadfile {
+	float: left;
+}
+
+.sub-buttons {
+	float: right;
+	width: 240px;
+	margin-left: 400px;
+}
+
+.btn {
+	background: #64b6d6;
+	border: none;
+	transition: background-color 0.5s
+}
+
+.btn:hover {
+	background: #3b86a3;
+}
+
+#write-title{
 	font-size: 30px;
-	text-align: center;
-}
-
-#style {
-	padding: 5px 100px 0px 10px;
-}
-
-#ad-ing {
-	font-size: 3px
-}
-
-#content-con {
-	width: 800px;
-	height: 300px;
-	resize: none
-}
-/*---------셀렉트-------------------------------------------------------------------*/
-.section_wrapper {
-	width: 95%;
-	height: 70%;
-	display: flex;
-}
-
-#ad {
-	width: 150px;
-	padding: .8em .5em;
-	border: 1px solid #999;
-	font-family: inherit;
-	background: url(../images/arrow.png) no-repeat 95% 50%;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	margin-left: 80px;
-	margin-bottom: 10px;
-	height: 38px;
-}
-
-#ad::-ms-expand {
-	display: none;
-}
-
-.left_wrapper {
-	float: left;
-	width: 300px;
-	margin: 0px;
-}
-
-.right_wrapper {
-	width: 880px;
-	/*margin-left: 300px;*/
-}
-
-#content1 {
-	
-}
-
-/*   취소/등록 버튼    */
-#cancel {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	margin-right: -4px;
-}
-
-#submit {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-left: -3px;
-}
-
-#btn_group button {
-	border: 1px solid skyblue;
-	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
-	padding: 5px;
-	margin-top: 450px;
-}
-
-#btn_group button:hover {
-	color: white;
-	background-color: skyblue;
-}
-
-#btn_group button:focus {
-	outline: none;
-}
-
-#main-box1 {
-	background-color: rgb(96, 160, 211);
-	height: 55px;
-	width: 100%;
-}
-
-.box1-navi {
-	margin: auto;
-	font-size: 15pt;
-	height: 100%;
-	color: black;
-}
-
-.box1-navi  li {
-	float: left;
-	position: relative;
-	left: 100px;
-	margin-left: 300px;
-	top: 15px;
-	color: black;
-}
-
-.box1-navi  li a {
-	color: black
-}
-
-.box1-navi {
-	font-size: 20px;
 }

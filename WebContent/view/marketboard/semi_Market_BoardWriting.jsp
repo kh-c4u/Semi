@@ -43,8 +43,8 @@
 <div id="main-box1"></div>
 
 <!----------------------------------------------------------------------------------------------------->
-<section class="section_wrapper nanum1" >
-    <div class ="left_wrapper">
+
+    
         <div class="left-menu">
             <ul id="left-menu-share" class="left-menu1">
 
@@ -94,73 +94,67 @@
                     </dl>
                 </li>
             </ul>
-        </div>
+       
     </div>
-
     <!-- --------------------------------------장터 글쓰기------------------------------------------------------>
 
-    <div id="write" class ="right_wrapper">
+      <div id="write" class ="right_wrapper">
         <h1 class="Nanum2" id="write-title">글쓰기</h1>
         <hr>
 
 
         <form id= "board_wirte_form" action="<%= request.getContextPath() %>/marketboardInsert.bo"
         		method="post" enctype="multipart/form-data" name="board_form">
-               <div>
-
-                <table>
-                    <tr>
-                        <td class="Nanum1">제목
-                      
-                            <input type="text"  id="title"  class="Nanum2" name="title" placeholder="제목을 입력하세요." required="required">
-                                              
-                            <select id="sale_status" class="Nanum1" name="sale_status" required="required">
-                                <option value >---판매 상태---</option>
-                                <option value="sale">판매중</option>
-                                <option value="complete">판매완료</option>
-                            </select>
-                        </td>
-                    </tr>
-                   <tr>
-                       <td>작성자
-                      <%= m.getUserId() %>
-                           <input type="hidden" name="userId" value="<%= m.getUserId() %>"/>
-                       </td>
-                   </tr>
-                   <tr>
-                        <td>첨부파일
-                            <input type="file" name="filename" accept="image/png, image/jpg, image/bmp" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                   <textarea  name="content" id="content-con" class="Nanum1" cols="40" rows="10" required="required">
-               		 판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : </textarea>
-                        </td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-
+               <div class="writing">
+					<label>제목 :</label>
+					<input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
+					<div class="select-box">
+                        <select id="category-value" name="sale_status" required="required">
+                            <option value selected="selected">판매 현황</option>
+                            <option value="1">판매중</option>
+                            <option value="2">판매완료</option>
+                        </select>
+                    </div>
+            	</div>
+				
+				<br>
+				<div>작성자 <%= m.getUserId() %>
+                           <input type="hidden" name="userId" value="<%= m.getUserId() %>"/></div>
+				 <textarea name="content" cols="40" rows="10"
+                             style="width: 800px; height: 300px; resize: none" placeholder="판매 상품 : &#13;&#10; 상태 : &#13;&#10; 가격 : &#13;&#10; 연락처 : " 
+                             required="required"></textarea>
+						<br>
+						
+					<div id="btn_group1">
+                    <div class="uploadfile">
+                    <input type="file" name="filename" accept="image/png,image/jpg,image/bmp"/>
+                    </div>
+                    <div class="sub-buttons">
+                    <button type="button" class="btn" id="cancel" onclick="cancle()">취소</button>
+                    <button type="submit" class="btn" id="submit">등록</button>
+                    </div>
+                    </div>
+						
+						
         </form>
     </div>
 
 
-    <!-- 취소/등록 버튼 -->
-    
-    <div id="btn_group">
-
-          <button type="button" class="Nanum2" id="cancel" >취소</button>
-           <button type="button" class="Nanum2" id="submit">등록</button>
-
-    </div>
+    <script>
+    function cancle(){
+		location.href="<%=request.getContextPath()%>/marketselectList.bo";
+		
+	}
+	
+    </script>
+   
+  
+   
   
 
 
 
-</section>
+
 
 
 
