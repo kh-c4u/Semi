@@ -71,13 +71,13 @@ public class BuyMarketCommentDao {
 		public int insertComment(Connection conn, MarketBoardComment bco) {
 			int result = 0;
 			
-			
+			System.out.println(1);
 
 			PreparedStatement pstmt = null;
 			String sql = prop.getProperty("insertComment");
 			
 			try {
-
+				System.out.println(2);
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setInt(1, bco.getBno());
@@ -88,21 +88,23 @@ public class BuyMarketCommentDao {
 
 					pstmt.setInt(4,  bco.getRefcno());
 					
+					System.out.println(3);
 				} else {
 
 					pstmt.setNull(4, java.sql.Types.NULL);
 					
 				}
+				System.out.println(4);
 				
 				pstmt.setInt(5,  bco.getClevel());
 
-				result = pstmt.executeUpdate();			
+				result = pstmt.executeUpdate();		
 				
 			} catch (SQLException e) {
 
 				e.printStackTrace();
 				
-
+				System.out.println(55);
 			} finally {
 				close(pstmt);			
 			}

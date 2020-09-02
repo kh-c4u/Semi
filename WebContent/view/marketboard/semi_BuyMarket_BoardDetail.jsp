@@ -36,7 +36,7 @@
 
     <div id="main-header">
         <div class="main-header-logo">
-            <a href="#"><img src="./images/semiLogosize.png" /></a>
+            <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
         </div>
         <ul id='BeforeLogin' class="main-header-login">
          <%if(m == null) {%>
@@ -84,9 +84,9 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                        <dd><a href="<%= request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-                        <dd><a href="#">- 팝니다</a></dd>
-                    </dl>
+                         <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              			 <dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+               
                 </li>
                 <div class="menu-line"></div>
                 <li>
@@ -106,7 +106,7 @@
         <div class="sub-right-content">
             <div class="page-title Nanum2">삽니다.</div>
          	<div class="left pb5 mr5">
-         		<a href="<%=request.getContextPath()%>/buymarketInsert.bo" class="btn3">목록</a>
+         		<a href="<%=request.getContextPath()%>/buymarketList.bo" class="btn3">목록</a>
          		</div>
          		<div class="left pb5 mr5">
          		
@@ -187,10 +187,9 @@
                   </tr>
                </table>
            </form>  
-           
          </div> 
                
-                  <div id="replySelectArea">
+           <div id="replySelectArea">
             <% if (clist != null) { %>
             <% for(MarketBoardComment bco : clist) { %>
             <table id="replySelectTable"
@@ -273,7 +272,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href="<%= request.getContextPath()%>bUpdate.bo"
+		location.href="<%=request.getContextPath()%>/bmcupdate.bo"
 				 +"?cno="+cno+"&bno="+bno+"&content="+content;
 	}
 	
@@ -284,7 +283,7 @@
 		// 게시글 번호 가져오기
 		var bno = '<%=b.getBno()%>';
 		
-		location.href=" <%= request.getContextPath()%>bmcdelete.bo"
+		location.href="<%=request.getContextPath()%>/bmcdelete.bo"
 		+"?cno="+cno+"&bno="+bno;
 	}
 	

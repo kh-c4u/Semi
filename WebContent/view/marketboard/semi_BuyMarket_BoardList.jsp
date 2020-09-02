@@ -210,7 +210,7 @@
                 <div>장터</div>
               </dt>
               <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              <dd><a href="#">- 팝니다</a></dd>
+              <dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
             </dl>
           </li>
           <div class="menu-line"></div>
@@ -236,7 +236,7 @@
 
 
             <div class="title-write">
-              <h1>장터</h1>
+              <h1>구매</h1>
             </div>
 
             <thead id="listArea">
@@ -322,8 +322,7 @@
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0"; 
-				
+				location.href="<%=request.getContextPath()%>/buymarketselectOne.bo?bno=" + bno+"&gubun=0";
 		
 			});
 		});

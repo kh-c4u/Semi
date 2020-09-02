@@ -38,7 +38,7 @@ public class BuyMarketDelete extends HttpServlet {
 		int result = new BuyMarketService().deleteBoard(bno);
 		
 		if(result > 0) {
-			response.sendRedirect("buymarketList.bo");
+			response.sendRedirect(request.getContextPath()+"/buymarketList.bo");
 		}else {
 			request.setAttribute("msg", "게시글 삭제 실패!");
 			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);

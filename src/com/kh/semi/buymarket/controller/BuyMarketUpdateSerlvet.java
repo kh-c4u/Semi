@@ -41,7 +41,7 @@ public class BuyMarketUpdateSerlvet extends HttpServlet {
 				// 2. multipart/form-data 형식으로 전송되었는지 확인
 				if(!ServletFileUpload.isMultipartContent(request)) {
 					request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
-					request.getRequestDispatcher("view/errorPage.jsp").forward(request, response);
+					request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
 				}
 				System.out.println(2);
 				// 3. 웹 상의 루트(최상위 경로) 경로를 활용하여
@@ -90,12 +90,12 @@ public class BuyMarketUpdateSerlvet extends HttpServlet {
 				int result = new BuyMarketService().updateBoard(b);
 				
 				if( result > 0) {
-					response.sendRedirect("buymarketselectOne.bo?bno="+bno);
+					response.sendRedirect(request.getContextPath()+"/buymarketselectOne.bo?bno="+bno+"&gubun=0");
 					System.out.println(6);
 				} else {
 					request.setAttribute("msg", "게시글 수정 실패!");
 					request
-					.getRequestDispatcher("view/errorPage.jsp")
+					.getRequestDispatcher("view/common/errorPage.jsp")
 					.forward(request, response);
 				}
 	}

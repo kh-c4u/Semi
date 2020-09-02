@@ -64,10 +64,10 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 	PreparedStatement pstmt=null;
 	ResultSet rset = null;
 
-	System.out.println("SQL");
+
 	
 	String sql = prop.getProperty("selectList");
-	System.out.println(sql);
+	
 	try {
 		pstmt = conn.prepareStatement(sql);		
 		
@@ -77,7 +77,7 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 		pstmt.setInt(1, endRow);
 		pstmt.setInt(2, startRow);
 		
-		System.out.println("123123");
+	
 
 		rset = pstmt.executeQuery();
 		
@@ -95,7 +95,7 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			b.setBdate(rset.getDate("BDATE"));
 			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
-			System.out.println("1212");
+		
 			list.add(b);
 			
 		}

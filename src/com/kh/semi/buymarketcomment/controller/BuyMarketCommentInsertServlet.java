@@ -32,10 +32,10 @@ public class BuyMarketCommentInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String writer = request.getParameter("writer");
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		
 		String content = request.getParameter("replyContent");
 		int refcno = Integer.parseInt(request.getParameter("refcno"));
 		int clevel = Integer.parseInt(request.getParameter("clevel"));
+		
 		
 		MarketBoardComment bco
 		 = new MarketBoardComment(bno, content, writer, refcno, clevel);
@@ -43,8 +43,8 @@ public class BuyMarketCommentInsertServlet extends HttpServlet {
 		int result = new BuyMarketCommentService().insertComment(bco);
 		
 		if(result > 0) {
-
-			response.sendRedirect("buymarketselectOne.bo?bno="+bno);
+				System.out.println("dd");
+			response.sendRedirect("buymarketselectOne.bo?bno="+bno+"&gubun=0");
 			
 		} else {
 			request.setAttribute("msg", "댓글 작성 실패!!");

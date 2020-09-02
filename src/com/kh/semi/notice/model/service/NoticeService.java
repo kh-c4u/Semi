@@ -126,4 +126,15 @@ public class NoticeService {
 	}
 
 
+	public ArrayList<Notice> selectTop7() {
+		Connection con = getConnection();
+		
+		ArrayList<Notice> list = nDao.selectTop7(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+
 }

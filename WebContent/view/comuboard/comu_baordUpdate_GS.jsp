@@ -36,7 +36,7 @@
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
 
@@ -84,12 +84,8 @@
 					<dt>
 						<div>장터</div>
 					</dt>
-					<dd>
-						<a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a>
-					</dd>
-					<dd>
-						<a href="#">- 팝니다</a>
-					</dd>
+				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
 				</dl>
 			</li>
 			<div class="menu-line"></div>

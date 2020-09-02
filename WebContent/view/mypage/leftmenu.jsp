@@ -19,7 +19,7 @@
 				<li>
 					<dl>
 						<dd>
-							<a href="#">- 개인정보수정</a>
+							<a href="<%=request.getContextPath()%>/view/mypage/semi_changepersonalinfo.jsp">- 개인정보수정</a>
 						</dd>
 						<dd>
 							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage_myscore.jsp">- 나의 점수보기</a>
@@ -33,13 +33,15 @@
 						<!-- <dd>
 							<a href="semi_mypage-massage_view.jsp">- 받은 쪽지</a>
 						</dd> -->
-						<dd>
+						<dd style=" position:absolute; z-index: 100;">
 							<a href="<%=request.getContextPath()%>/massageList.bo">- 받은 쪽지</a>
 						</dd>
-						<dd>
+						<dd> 　</dd>
+						<dd style=" position:absolute; z-index: 100;">
 							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage-Comments.jsp">- 내 글/댓글 알림</a>
-						</dd>
-						<dd>
+						</dd >
+						<dd> 　</dd>
+						<dd style=" position:absolute; z-index: 100;">
 							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage-withdraw.jsp">- 탈퇴</a>
 						</dd>
 

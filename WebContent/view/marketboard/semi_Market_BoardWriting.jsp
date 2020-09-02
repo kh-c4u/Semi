@@ -7,27 +7,27 @@
 <head>
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
-    <link rel="stylesheet" href="/SEMI/resources/css/semi_menu_frame.css">
-    <link rel="stylesheet" href="/SEMI/resources/css/semi_market.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_market.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<% if(m != null) { %>
+
 <div id="main-header">
 
     <div class="main-header-logo">
-    <a href="semi_main.html"><img src="/SEMI/resources/images/semiLogosize.png" /></a></div>
-       <ul id='BeforeLogin' class="main-header-login">
-         <%if(m == null) {%>
-         <li><a href="view/member/semi_Login.jsp">로그인</a></li>
-         <li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-         <li><span>|</span><a href="/#">고객센터</a></li>
-         <%}else{ %>
-         <li><a><%=m.getUserName()%>님</a></li>
-         <li><span>|</span><a href="logOut.do">로그아웃</a></li>
-         <li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
-         <%} %>
-      </ul>
+    <a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div>
+            <ul id='BeforeLogin' class="main-header-login">
+			<%if(m == null) {%>
+			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
+			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
+			<li><span>|</span><a href="/#">고객센터</a></li>
+			<%}else{ %>
+			<li><a><%=m.getUserName()%>님</a></li>
+			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%} %>
+		</ul>
  
 
     <ul class="main-header-navi">
@@ -61,9 +61,15 @@
                         <dt>
                             <div>커뮤니티</div>
                         </dt>
-                        <dd><a href="semi_comu_gisa.html">- 기사</a></dd>
-                        <dd><a href="semi_comu_sanupgisa.html">- 산업기사</a></dd>
-                        <dd><a href="semi_comu_ginungsa.html">- 기능사</a></dd>
+                       <dd>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
+					</dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -72,8 +78,8 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                        <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-                        <dd><a href="semi_market_main.html">- 팝니다</a></dd>
+                   	<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              		<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
                     </dl>
                 </li>
                 <div class="menu-line"></div>
@@ -98,7 +104,7 @@
         <hr>
 
 
-        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/buymarketInsert.bo"
+        <form id= "board_wirte_form" action="<%= request.getContextPath() %>/marketboardInsert.bo"
         		method="post" enctype="multipart/form-data" name="board_form">
                <div>
 
@@ -154,10 +160,6 @@
 
 
 
-	<% } else { 
-		request.setAttribute("msg", "회원만 열람 가능합니다.");
-		request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
-	 } %>
 </section>
 
 
@@ -170,7 +172,7 @@
 
 <div id="main-footer">
     <div class="main-footer-wrap">
-        <div><img src="/SEMI/resources/images/semiLogosize.png"/></div>
+        <div><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png"/></div>
         <div>
             <ul>
                 <li>고객센터 1544 – 1004 (평일 9:00 ~ 12:30, 13:30 ~ 18:00)  help@c4you.com</li>

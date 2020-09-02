@@ -1,0 +1,80 @@
+#changeup {
+	float: left;
+	min-width: 1000px;
+	margin-top: 1%;
+	margin-bottom: 5%;
+	margin-left: 5%;
+}
+
+#changeup form {
+	border: solid 1px #a7a9ab;
+	width: 1000px;
+}
+
+#changeup ul {
+	position: relative;
+	right: 370px;
+	text-align: right;
+	font-size: 15px;
+	margin-top: 80px;
+}
+
+#changeup label {
+	font-family: '나눔1';
+	src: url(NanumBarunGothicBold.ttf) format('truetype');
+}
+
+#changeup label, input {
+	display: inline-block;
+}
+
+#changeup label {
+	width: 120px;
+	margin-top: 15px;
+}
+
+#changeup ul input {
+	width: 200px;
+}
+
+#btn {
+	width: fit-content;
+	margin: auto;
+}
+
+#btn input {
+	 background:#64b6d6;
+	color: #ffffff;
+	font-size: 15px;
+	margin-left: 50px;
+	width: 100px;
+	margin-bottom: 80px;
+	height: 30px;
+    border: none;
+    min-width: 355px;
+    transition: background-color 0.5s
+}
+
+#btn input:hover {
+	translate: 0.5;
+	background: #2c6379;
+	color: black;
+}
+
+#label1 {
+	position: relative;
+	left: 74px;
+}
+
+#label2 {
+	position: relative;
+	left: 51px;
+}
+
+#id{
+	background: lightgray;
+}
+
+#name{
+	background: lightgray;
+}

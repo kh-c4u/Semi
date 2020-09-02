@@ -1,4 +1,5 @@
 package com.kh.semi.mypage.model.dao;
+
 import static com.kh.semi.common.JDBCTemplate.close;
 
 import java.sql.Connection;
@@ -8,6 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
+import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.vo.massage;
 public class MypageDao {
 
@@ -60,29 +64,26 @@ public class MypageDao {
 		return listCount;
 	}
 
-	public ArrayList<massage> selectList(Connection con, int currentPage, int limit) {
+	public ArrayList<massage> selectList(Connection con, int currentPage, int limit, String cwriter) {
 		ArrayList<massage> list =null;
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
 
-		String sql =  "SELECT mypage_message.* "
-				+ "FROM "
-				+ "mypage_message "
-				+ "WHERE CNO >= ? AND CNO<= ? "
-				+ "ORDER BY CNO ASC ";
-
+		String sql =	"SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b "
+						+ "WHERE "
+				        + "CWRITER = ? "
+						+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ?"
+						+ " ORDER BY CNO ASC";
+		
 		try {
 			pstmt = con.prepareStatement(sql);
 
 			int startRow = (currentPage - 1) * limit +1; // 1, 11
 			int endRow = startRow + limit - 1; // 10,20
-
-
-
-
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-
+			
+			pstmt.setString(1, cwriter);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<massage>();
@@ -98,7 +99,7 @@ public class MypageDao {
 				b.setCdate(rset.getString("CDATETIME"));
 				list.add(b);
 			}
-
+			System.out.println("list!!!!!!! : "+list);
 		}catch(SQLException e) {
 
 		}finally {
@@ -109,7 +110,7 @@ public class MypageDao {
 		return list;
 	}
 
-	public ArrayList<massage> searchNotice(Connection con, String category, String keyword, int currentPage, int limit) {
+	public ArrayList<massage> searchNotice(Connection con, String category, String keyword, int currentPage, int limit, String cwriter) {
 		ArrayList<massage> list =null;
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
@@ -118,13 +119,25 @@ public class MypageDao {
 
 		switch(category) {
 		case "ctowriter":
-			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CTOWRITER LIKE '%'||?||'%') a WHERE a.rownumber  >= ? AND a.rownumber  <= ? ORDER BY CNO ASC";
+			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CTOWRITER LIKE '%'||?||'%'"
+					+ " AND"
+	                + " CWRITER = ? "
+					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
+					+ " ORDER BY CNO ASC";
 			break;
 		case "ctitle":
-			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CTITLE LIKE CONCAT(CONCAT('%',?),'%')) a WHERE a.rownumber  >= ? AND a.rownumber  <= ? ORDER BY CNO ASC";
+			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CTITLE LIKE CONCAT(CONCAT('%',?),'%') "
+					+ " AND "
+	                + "CWRITER = ? "
+					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
+					+ " ORDER BY CNO ASC";
 			break;
 		case "ccontent":
-			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CCONTENT LIKE CONCAT(CONCAT('%',?),'%')) a WHERE a.rownumber  >= ? AND a.rownumber  <= ? ORDER BY CNO ASC";
+			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CCONTENT LIKE CONCAT(CONCAT('%',?),'%') "
+					+ " AND "
+	                + "CWRITER = ? "
+					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
+					+ " ORDER BY CNO ASC";
 			break;
 		}
 
@@ -134,8 +147,9 @@ public class MypageDao {
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			pstmt.setString(2, cwriter);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
 
 			rset = pstmt.executeQuery();
 			list = new ArrayList<massage>();
@@ -214,6 +228,74 @@ public class MypageDao {
 		}finally {
 			close(pstmt);
 		}
+		return result;
+	}
+
+	public int updateMember(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE USRINFO SET USR_PWD=?, USR_EMAIL=? WHERE USR_ID= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getUserId());
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateMember2(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE USRINFO SET USR_PWD=?, USR_EMAIL=?, USR_ADR=? WHERE USR_ID = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getAddress());
+			pstmt.setString(4, m.getUserId());
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteMassage(Connection conn, String cno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM MYPAGE_MESSAGE WHERE CNO=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 }

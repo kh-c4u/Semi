@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.service.MypageService;
 import com.kh.semi.mypage.model.vo.PageInfo_massage;
 import com.kh.semi.mypage.model.vo.massage;
@@ -87,26 +89,17 @@ public class massage_search extends HttpServlet {
 				
 				// 검색 키워드
 				String keyword = request.getParameter("keyword");
-				System.out.println("keyword : " + keyword);
-				System.out.println("category : " + category);
 				list = new ArrayList<massage>();
-				
-				list = new MypageService().searchMassage(category,keyword,currentPage,limit);
-				System.out.println("list : " + list);
-				System.out.println("list size = " + list.size()/5);
-				if(list.size()<5) {
-					System.out.println("!!!");
-					limit = list.size()/5;
-					endPage = list.size()/5;
-				}
+				HttpSession session = request.getSession(false);
+				String cwriter = ((Member)session.getAttribute("member")).getUserId();
+				list = new MypageService().searchMassage(category,keyword,currentPage,limit,cwriter);
 				String page = "";
 				if(list != null) {
-					System.out.println("massage_search성공");
 					page = "view/mypage/semi_mypage-massage_list.jsp";
 					request.setAttribute("list", list);
 					PageInfo_massage pi = new PageInfo_massage(currentPage,listCount,limit,maxPage,startPage,endPage);
 					request.setAttribute("pi", pi);
-				}else {
+				}else{
 					System.out.println("massage_search에러");
 					page = "view/common/errorPage.jsp";
 					request.setAttribute("msg", "공지사항 검색 실패!");

@@ -112,7 +112,7 @@
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/mypage/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
 
@@ -161,42 +161,60 @@
 			<div id="notice_text">
 				공지사항<a href="<%=request.getContextPath()%>/noticeList.no" class="more">+ 더보기</a>
 				<div class="left-box">
-                    <table align="center" class="boardTop5" style="word-break: break-all;">
+                    <table align="center" id="noticeTop7Comu" class="boardTop5" style="word-break: break-all;">
                         <tbody>
-                            <tr>
-                                <td>-여기서 강의 들어보신분 있나요?</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-기능사 시험 꿀팁 공유!!</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-인강추천합니다.</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-기사시험 어렵나요?</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
                             
                         </tbody>
                     </table>	
                 </div>
                 
+                 <script>
+                $(function(){
+        			$.ajax({
+        				url : '<%= request.getContextPath()%>/noticeTop7.to',
+        				type : 'get',
+        				success : function(data){
+        					
+        					// console.log(data);
+        					var $table = $('#noticeTop7Comu>tbody');
+        					
+        					for(var i in data){
+        						
+        						// 내용을 담을 tr 태그 생성
+        						var $tr = $('<tr>');
+        						
+        						// 내용을 각각 표현할 td 태그 생성
+        
+        						var $tdBoardTitle = $('<td id="tname">').text("-"+data[i].ntitle);
+        						var $tdBoardDate = $('<td>').text(data[i].ndate);
+        						
+        						$tr.append($tdBoardTitle).append($tdBoardDate);
+        						
+        						var bno = data[i].nno;
+        						
+        						$tr.on("click",{param_bno : bno},function(e){
+        							location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" +e.data.param_bno;
+        							
+        						});
+        						
+        						
+        						
+        						
+        						
+        						
+        						$table.append($tr);
+        						
+        					}
+        				}, error : function(data){
+        					
+        					console.log("데이터 전달 실패!");
+        					console.log(data);
+        				}
+        			});
+        		});
                 
+              
+                </script>
 			</div>
 		</div>
 		<div id="calendar">
@@ -226,31 +244,31 @@
                     <table align="center" class="boardTop5" style="word-break: break-all;">
                         <tbody>
                             <tr>
-                                <td>-여기서 강의 들어보신분 있나요?</td>
+                                <td id="tname">-여기서 강의 들어보신분 있나요?</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-기능사 시험 꿀팁 공유!!</td>
+                                <td id="tname">-기능사 시험 꿀팁 공유!!</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-인강추천합니다.</td>
+                                <td id="tname">-인강추천합니다.</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-기사시험 어렵나요?</td>
+                                <td id="tname">-기사시험 어렵나요?</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             <tr>
-                                <td>-질문합니다. 풀의부탁드려요</td>
+                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
                                 <td>2020.08.21</td>
                             </tr>
                             
@@ -264,15 +282,16 @@
 			<div id="new_post_text">
 				새로운 게시글<a href="<%=request.getContextPath()%>/comuboardlist.bo" class="more">+ 더보기</a>
 				<div class="left-box">
-                    <table align="center" id="boardTop7Comu" class="boardTop7Comu" style="word-break: break-all;">
+                    <table align="center" id="boardTop7Comu" class="boardTop5" style="word-break: break-all;">
                         <tbody>
+                        
                         </tbody>
                     </table>	
                     
                     <script>
                 $(function(){
         			$.ajax({
-        				url : '<%= request.getContextPath()%>/boardTop7Comu.to"',
+        				url : '<%= request.getContextPath()%>/boardTop7Comu.to',
         				type : 'get',
         				success : function(data){
         					
@@ -286,11 +305,22 @@
         						
         						// 내용을 각각 표현할 td 태그 생성
         
-        						var $tdBoardTitle = $('<td>').text(data[i].btitle);
+        						var $tdBoardTitle = $('<td id="tname">').text("-"+data[i].btitle);
         						var $tdBoardDate = $('<td>').text(data[i].bdate);
         						
         						$tr.append($tdBoardTitle).append($tdBoardDate);
+        						
+        						
+        						var bno = data[i].bno;
+        						$tr.on("click",{param_bno : bno},function(e){
+        							location.href="<%=request.getContextPath()%>/CselectOne.bo?bno=" +e.data.param_bno;
+        							
+        						});
+        						
+        						
+        						
         						$table.append($tr);
+        						
         					}
         				}, error : function(data){
         					
@@ -299,6 +329,8 @@
         				}
         			});
         		});
+                
+              
                 </script>
                 </div>
 			</div>

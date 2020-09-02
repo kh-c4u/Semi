@@ -99,12 +99,13 @@
 			
         <section>
             <table class="tb0">
+
             	<tr class="border">
 	                <th class="th3 num Nanum1" >번호</th>
 	                <th class="th3 tag Nanum1">분류</th>
 	                <th>제목</th>
-	                
-                </tr>
+
+            
                 <% for(Faq f : list){ %>
                 	<tr>
                 	    <td class="th3 num Nanum1"><%= f.getFno() %></td>
