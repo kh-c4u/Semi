@@ -87,7 +87,7 @@ public class MarketBoardListServlet extends HttpServlet {
 				
 				
 				if(list != null) {
-					page = "view/board/semi_Market_BoardList.jsp";
+					page = "view/marketboard/semi_Market_BoardList.jsp";
 					request.setAttribute("list", list);
 					
 					PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
