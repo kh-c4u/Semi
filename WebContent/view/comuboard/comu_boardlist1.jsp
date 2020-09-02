@@ -112,7 +112,7 @@
 						<a href="#">- 자주 묻는 질문</a>
 					</dd>
 					<dd>
-						<a href="view/faq/semi_faqList.jsp">- 1:1문의</a>
+						<a href="<%=request.getContextPath()%>/fList.fa">- 1:1문의</a>
 					</dd>
 					<dd>
 						<a href="#">- 신고</a>
