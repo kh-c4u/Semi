@@ -61,15 +61,9 @@
 					<dt>
 						<div>커뮤니티</div>
 					</dt>
-					<dd>
-						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
-					</dd>
-					<dd>
-						<a href="#">- 산업기사</a>
-					</dd>
-					<dd>
-						<a href="#">- 기능사</a>
-					</dd>
+				<dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
+                <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
+                <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
 				</dl>
 			</li>
 			<div class="menu-line"></div>
@@ -79,7 +73,7 @@
 						<div>장터</div>
 					</dt>
 					<dd>
-						<a href="#">- 삽니다</a>
+						<a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a>
 					</dd>
 					<dd>
 						<a href="#">- 팝니다</a>

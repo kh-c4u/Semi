@@ -72,7 +72,7 @@
                         <dt>
                             <div>장터</div>
                         </dt>
-                        <dd><a href="semi_market_main.html">- 삽니다</a></dd>
+                        <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
                         <dd><a href="semi_market_main.html">- 팝니다</a></dd>
                     </dl>
                 </li>
