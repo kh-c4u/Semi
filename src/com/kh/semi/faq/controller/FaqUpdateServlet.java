@@ -18,15 +18,18 @@ import com.kh.semi.member.vo.Member;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 /**
  * Servlet implementation class FaqUpdateServlet
  */
 @WebServlet("/fUpdate.fa")
 public class FaqUpdateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5528838368761539661L;
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public FaqUpdateServlet() {
@@ -39,12 +42,15 @@ public class FaqUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int maxSize = 1024*1024*10;
-
+System.out.println("뭐가문젤까?");
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			// 만약 올바른 multipart / form-data로 전송되지 않았을 경우
 			// 에러 페이지로 즉시 이동시킨다.
+			System.out.println("뭐가문젤까1?");
 			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request,response);
+			System.out.println("뭐가문젤까2?");
+			request.getRequestDispatcher("view/common/errorPage.jsp").forward(request,response);
+			System.out.println("뭐가문젤까3?");
 		}
 
 		String root = request.getServletContext().getRealPath("/");
@@ -56,22 +62,26 @@ public class FaqUpdateServlet extends HttpServlet {
 		// 4. 실제 담아온 파일 기타 정보들을 활용하여
 		// (request --> MultipartRequest)
 		// MultipartRequest 생성하기
+	
 		MultipartRequest mrequest = new MultipartRequest(request, savePath,maxSize,"UTF-8",new DefaultFileRenamePolicy());
 		
 
-		String category =mrequest.getParameter("fcategory");
-		System.out.println("fcategory : " + category);
+	
 
 		String title = mrequest.getParameter("ftitle");
 		System.out.println("ftitle : " + title);
 		
 		String contents= mrequest.getParameter("fcontents");
 		System.out.println("fcontents : " + contents);
-
-		int fno = Integer.parseInt(mrequest.getParameter("fno"));
-		System.out.println("bno : " +fno);
 		
-		Faq f = new Faq(category,title,contents);
+		HttpSession session = request.getSession();
+		String writer = ((Member)session.getAttribute("member")).getUserId();
+		System.out.println("writer : " +writer);
+		
+		int fno = Integer.parseInt(mrequest.getParameter("fno"));
+		System.out.println("fno : " +fno);
+		
+		Faq f = new Faq(title,contents);
 		f.setFno(fno);
 		int result = 0;
 		FaqService fs = new FaqService();

@@ -7,7 +7,7 @@
 
 <%
    Member m = (Member)session.getAttribute("member");
-   Faq f = (Faq)request.getAttribute("Faqboard");
+   Faq f = (Faq)request.getAttribute("board");
 %>
 <!DOCTYPE html>
 <html lang="ko">

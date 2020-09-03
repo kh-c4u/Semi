@@ -178,7 +178,7 @@
 								<% 
 									if(m != null){
 									if(m.getUserId().equals("admin")){ %>
-									<button style=float:right onclick="location.href='view/faq/semi_faqUpdate.jsp'"
+									<button style=float:right onclick="location.href='<%= request.getContextPath()%>/fUpdate.fa?fno=<%=f.getFno()%>'"
 										id="writeB">수정하기</button>
 									
 								<% } 
