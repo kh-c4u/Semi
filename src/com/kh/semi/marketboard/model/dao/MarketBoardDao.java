@@ -94,9 +94,9 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			b.setBoardfile(rset.getString("BOARDFILE"));
 		
 			switch(rset.getInt("BCONDITION")){
-			case 1:b.setBcondition("구매중");
+			case 1:b.setBcondition("판매중");
 			break;
-			case 2:b.setBcondition("구매완료");
+			case 2:b.setBcondition("판매완료");
 			break;
 			case 3:b.setBcondition("--");
 			break;
