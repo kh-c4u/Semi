@@ -150,7 +150,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/buymarketList.bo"+ "?bon="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/bsearch.bo"+ "?bon="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>

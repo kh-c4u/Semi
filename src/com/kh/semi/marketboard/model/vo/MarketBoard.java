@@ -5,12 +5,12 @@ import java.sql.Date;
 
 public class MarketBoard implements Serializable{
 
+		
+		
 		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1041155315714384727L;
-		
-		
+	 * 
+	 */
+	private static final long serialVersionUID = 8492242723258710131L;
 		private int bno;			// 게시글 번호
 		private int btype;			// 게시판 종류
 		private String btitle;		// 제목

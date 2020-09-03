@@ -20,9 +20,15 @@ import com.kh.semi.marketboard.model.vo.PageInfo;
  */
 @WebServlet("/bsearch.bo")
 public class BuyMarketSearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public BuyMarketSearchServlet() {
@@ -73,8 +79,8 @@ public class BuyMarketSearchServlet extends HttpServlet {
      
      
            // 검색 카테고리
-           System.out.println(request.getParameter("con"));
-           int category = Integer.parseInt(request.getParameter("con"));
+           System.out.println(request.getParameter("bon"));
+           int category = Integer.parseInt(request.getParameter("bon"));
            
            System.out.println("category : "  + category);
            
@@ -93,8 +99,8 @@ public class BuyMarketSearchServlet extends HttpServlet {
            list = new BuyMarketService().searchBoard(category,keyword,selectKeyword,currentPage,limit);
            
            
-           for(MarketBoard cb : list) {
-              System.out.println(cb);
+           for(MarketBoard b : list) {
+              System.out.println(b);
            }
            
            
