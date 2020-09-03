@@ -18,9 +18,16 @@ import com.kh.semi.examboard.model.vo.ExamBoard;
  */
 @WebServlet("/ExamBoardlist.ex")
 public class ExamBoardlistSerlvet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
+	
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3493955999038041159L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public ExamBoardlistSerlvet() {
@@ -74,11 +81,11 @@ public class ExamBoardlistSerlvet extends HttpServlet {
 		String page = "";
 		
 		if(list != null) {
-			page = "view/comuboard/comu_boardlist1.jsp";
+			page = "view/exam/semi_exam_list.jsp";
 			request.setAttribute("list", list);
-			
+			System.out.println("성공?");
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
-			request.setAttribute("pi", pi); //이건뭐임/??
+			request.setAttribute("pi", pi); 
 		}else {
 			page = "view/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 목록 조회 실패!");

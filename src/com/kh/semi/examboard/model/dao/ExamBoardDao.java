@@ -63,7 +63,7 @@ public class ExamBoardDao {
 		ResultSet rset = null;
 
 		String sql = prop.getProperty("selectList");
-
+		System.out.println(sql);
 		try {
 			pstmt = con.prepareStatement(sql);
 
@@ -82,6 +82,7 @@ public class ExamBoardDao {
 				n.setBno(rset.getInt("BNO"));
 				n.setBtitle(rset.getString("BTITLE"));
 				n.setBdate(rset.getDate("BDATE"));
+				System.out.println(n);
 				list.add(n);
 			}
 
