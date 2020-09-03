@@ -1,9 +1,17 @@
+<%@page import="com.kh.semi.examboard.model.vo.ExamBoard"%>
+<%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
+<%@page import="com.kh.semi.comuboardComment.model.vo.comuboardComment"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
-	Member m = (Member)session.getAttribute("member");
+   Member m = (Member)session.getAttribute("member");
+   ExamBoard b = (ExamBoard)request.getAttribute("board");
+   // 댓글 리스트
+   ArrayList<comuboardComment> clist
+     = (ArrayList<comuboardComment>)request.getAttribute("clist");
 %>
 <!DOCTYPE html>
 <html>
@@ -114,7 +122,7 @@
 	<div class="sub-right-content">
 		<div class="page-title Nanum2"></div>
 		<div class="left pb5 mr5">
-			<a href="<%= request.getContextPath()%>/noticeList.no"
+			<a href="<%= request.getContextPath()%>/ExamBoardlist.ex"
 				class="btn3">목록</a>
 
 		</div>
@@ -135,10 +143,10 @@
 						<th class="tcenter vm">제목</th>
 
 						<td class="pl20"
-							style="border-right: 1.3px solid grey;"><%= b.getNtitle() %>
+							style="border-right: 1.3px solid grey;"><%= b.getBtitle() %>
 						</td>
                         <th class="tcenter vm">작성일</th>
-						<td class="pl20 r-noline"><%= b.getNdate() %></td>
+						<td class="pl20 r-noline"><%= b.getBdate() %></td>
 						
 						<th class="tcenter vm">첨부파일</th>
 						<td class="pl20">
@@ -155,7 +163,8 @@
                                     <br><br><br><br><br>
                                     ↓ 바로 문제 풀러 가기 ↓<br><br><br>
 
-                                    <button type="button" id="Ebtn">문제 풀기</button>
+                                    <buttononclick="location.href='<%=request.getContextPath()%>/문제 풀기 경로쓰기'"
+                                     id="Ebtn">문제 풀기</button>
                                     <br><br><br><br>
                                 </td>
                             </tr>
@@ -166,7 +175,7 @@
        
 	</div>
 
-   </script>
+
 	<% } else {
       request.setAttribute("msg", "회원만 가능한 서비스 입니다.");
       request.getRequestDispatcher("/view/common/errorPage.jsp").forward(request, response);

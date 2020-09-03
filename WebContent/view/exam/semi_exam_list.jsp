@@ -1,9 +1,23 @@
+<%@page import="com.kh.semi.examboard.model.vo.ExamBoard"%>
+<%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
 	Member m = (Member)session.getAttribute("member");
+%>
+
+<% 
+	ArrayList<ExamBoard> list = (ArrayList<ExamBoard>)request.getAttribute("list"); 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -121,7 +135,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%=request.getContextPath()%>/noticesearch.no" + "?keyword="+$('#searchWord').val();
+				location.href="<%=request.getContextPath()%>/검색경로" + "?keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
@@ -146,7 +160,7 @@
 				<tbody id="serach-Result">
 					
 
-					<% for(ComuBoard b : list){ %>
+					<% for(ExamBoard b : list){ %>
 					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
 						<td class="first"><%= b.getBno() %></td>
@@ -165,12 +179,12 @@
 		<div class="paging-wrap">
 			<div class="pagination" id="paging-link">
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=1'"><<</button>
+					onclick="location.href='<%= request.getContextPath() %>/ExamBoardlist.ex?currentPage=1'"><<</button>
 				<%  if(currentPage <= 1){  %>
 				<button disabled>이전</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+					onclick="location.href='<%= request.getContextPath() %>/ExamBoardlist.ex?currentPage=<%=currentPage - 1 %>'">이전</button>
 				<%  } %>
 
 				<% for(int p = startPage; p <= endPage; p++){
@@ -179,7 +193,7 @@
 				<button disabled><%= p %></button>
 				<%      }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
+					onclick="location.href='<%= request.getContextPath() %>/ExamBoardlist.ex?currentPage=<%= p %>'"><%= p %></button>
 				<%      } %>
 				<% } %>
 
@@ -187,10 +201,10 @@
 				<button disabled>다음</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+					onclick="location.href='<%= request.getContextPath() %>/ExamBoardlist.ex?currentPage=<%=currentPage + 1 %>'">다음</button>
 				<%  } %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/GScomuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
+					onclick="location.href='<%= request.getContextPath() %>/ExamBoardlist.ex?currentPage=<%= maxPage %>'">>></button>
 
 			</div>
 		</div>
@@ -200,7 +214,7 @@
 		$(function(){
 			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/GSCselectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/선택했을 때 서블릿 경로?bno=" + bno;
 			});
 		});
 	</script>
