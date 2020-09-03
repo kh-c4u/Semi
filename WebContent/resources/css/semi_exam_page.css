@@ -1,0 +1,52 @@
+.right-menu{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+    min-width: 1150px;
+    min-height: 500px;
+    border: 1px solid rgb(179, 177, 177);
+}
+
+#eaxm{
+ width: 1050px;
+ resize: none;
+ border: none;
+ margin: 15px 0 30px 15px;
+ height: 120px;
+ font-size: 20px;
+ font-weight: 900;
+}
+
+#answer{
+    width: 1000px;
+    resize: none;
+    border: none;
+    margin:  0 10px 10px 30px;
+    font-size: 15px;
+    height: 60px;
+}
+
+#next{
+  float: right;
+  width: 60px;
+  height: 30px;
+  background: skyblue;
+  border: 1px solid grey;
+  transition: background-color 0.5s;
+}
+
+#next:hover{
+    background: rgb(46, 160, 209);
+    border: 1px solid grey;
+
+}
+
+.btnN{
+    float: right;
+    width: 1000px;
+    margin:270px 20px 20px 0;
+}
+
+textarea{
+    background: none;
+}
