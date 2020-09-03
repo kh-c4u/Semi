@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
+import com.kh.semi.comubaord.model.vo.ComuBoard;
 import com.kh.semi.marketboard.model.vo.MarketBoard;
 
 public class BuyMarketDao {
@@ -87,22 +87,21 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			MarketBoard b = new MarketBoard();
 			
 			b.setBno(rset.getInt("BNO"));
-			b.setBtype(rset.getInt("BTYPE"));
 			b.setBtitle(rset.getString("BTITLE"));
 			b.setBcontent(rset.getString("BCONTENT"));
-			b.setBwriter(rset.getString("USER_NAME"));
+			b.setBwriter(rset.getString("BWRITER"));
 			b.setBcount(rset.getInt("BCOUNT"));
 			b.setBdate(rset.getDate("BDATE"));
 			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
 		
 			switch(rset.getInt("BCONDITION")){
-			case 1:b.setBcondition("구매중");
-			break;
-			case 2:b.setBcondition("구매완료");
-			break;
-			case 3:b.setBcondition("--");
-			break;
+				case 1:b.setBcondition("구매중");
+				break;
+				case 2:b.setBcondition("구매완료");
+				break;
+				case 3:b.setBcondition("--");
+				break;
 			}
 			
 			list.add(b);
@@ -207,8 +206,7 @@ public int deleteBoard(Connection conn, int bno) {
 public int updateBoard(Connection conn, MarketBoard b) {
 	int result = 0;
 	PreparedStatement pstmt = null;
-	System.out.println("안녕하세요");
-	
+
 	String sql = null;
 	if(b.getBoardfile() != null) {
 		sql = prop.getProperty("updateBoardChangeFile");
@@ -216,8 +214,6 @@ public int updateBoard(Connection conn, MarketBoard b) {
 		sql = prop.getProperty("updateBoard");
 	}
 	
-	System.out.println("저는");
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, b.getBtitle());
@@ -229,19 +225,16 @@ public int updateBoard(Connection conn, MarketBoard b) {
 				pstmt.setInt(3, b.getBno());
 			}
 			
-			System.out.println("한정원");
 
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			System.out.println("입니다.");
-
+			
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("안녕히계세요");
 
 		return result;
 	}
@@ -273,7 +266,7 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 	
 		ArrayList<MarketBoard> list = null;
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
+		ResultSet rset = null;		
 		String sql = null;
 		
 		switch(selectKeyword) {
@@ -287,9 +280,6 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 			sql = prop.getProperty("searchWriterBoard");
 			break;
 		}
-
-		
-		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -297,8 +287,8 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 			int startRow = (currentPage - 1) * limit +1;
 			int endRow = startRow + limit - 1;
 
-			pstmt.setInt(1, endRow);
-			pstmt.setInt(2, startRow);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			pstmt.setInt(3, category);
 			pstmt.setString(4, keyword);
 			
@@ -312,7 +302,6 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 			MarketBoard b = new MarketBoard();
 
 			b.setBno(rset.getInt("BNO"));
-			b.setBtype(rset.getInt("BTYPE"));  
 			b.setBtitle(rset.getString("BTITLE"));
 			b.setBwriter(rset.getString("BWRITER"));
 			b.setBwriterId(rset.getString("USERNAME"));
@@ -320,7 +309,7 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 			b.setBdate(rset.getDate("BDATE"));
 	
 	
-			switch(rset.getInt("BTYPE")){
+			switch(rset.getInt("BCONDITION")){
 			case 1:b.setBcondition("구매중");
 			break;
 			case 2:b.setBcondition("구매완료");

@@ -6,7 +6,7 @@
 
   <%  Member m = (Member)session.getAttribute("member"); %>    
 <%
-	MarketBoard b = (MarketBoard)request.getAttribute("Marketboard");
+	MarketBoard b = (MarketBoard)request.getAttribute("board");
 	// 댓글 리스트
 	ArrayList<MarketBoardComment> clist
 	  = (ArrayList<MarketBoardComment>)request.getAttribute("clist");
@@ -111,7 +111,7 @@
          		<div class="left pb5 mr5">
          		
          			
-         				<% if(m != null && m.getUserId().equals(b.getBwriterId())){ %>
+         	<% if(m != null && m.getUserId().equals(b.getBwriterId())){ %>
 			<a href="<%= request.getContextPath() %>/buymarketselectOne.bo?bno=<%=b.getBno()%>&gubun=1" class="btn3">수정</a>
 			<% } %>	
          		</div>

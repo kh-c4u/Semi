@@ -100,7 +100,7 @@
 				src="./resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul class="main-header-navi Nanum1">
-			<li><a href="#">기사</a></li>
+			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
