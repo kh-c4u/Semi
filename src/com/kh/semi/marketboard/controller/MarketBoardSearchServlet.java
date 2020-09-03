@@ -1,4 +1,4 @@
-package com.kh.semi.buymarket.controller;
+package com.kh.semi.marketboard.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,36 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.buymarket.model.service.BuyMarketService;
 import com.kh.semi.marketboard.model.service.MarketBoardService;
 import com.kh.semi.marketboard.model.vo.MarketBoard;
 import com.kh.semi.marketboard.model.vo.PageInfo;
 
 /**
- * Servlet implementation class BuyMarketSearchServlet
+ * Servlet implementation class MarketBoardSearchServlet
  */
-@WebServlet("/bsearch.bo")
-public class BuyMarketSearchServlet extends HttpServlet {
-
-	/**
-	 * 
-	 */
+@WebServlet("/mbsearch.bo")
+public class MarketBoardSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MarketBoardSearchServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public BuyMarketSearchServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<MarketBoard> list = null;
 		MarketBoardService cbs = new MarketBoardService();
 
@@ -85,7 +78,7 @@ public class BuyMarketSearchServlet extends HttpServlet {
 		
 
 		if (selectKeyword.equals("undefined")) {
-			response.sendRedirect(request.getContextPath() + "/buymarketList.bo");
+			response.sendRedirect(request.getContextPath() + "/marketselectList.bo");
 		} else {
 
 			// 검색 키워드
@@ -97,7 +90,7 @@ public class BuyMarketSearchServlet extends HttpServlet {
 			System.out.println("currentPage : " + currentPage);
 			System.out.println("limit : " + limit);
 			
-			list = new BuyMarketService().searchBoard(category, keyword, selectKeyword, currentPage, limit);
+			list = new MarketBoardService().searchBoard(category, keyword, selectKeyword, currentPage, limit);
 
 			for (MarketBoard b : list) {
 				System.out.println(b);
@@ -105,7 +98,7 @@ public class BuyMarketSearchServlet extends HttpServlet {
 
 			String page = "";
 			if (list != null) {
-				page = "view/marketboard/semi_BuyMarket_BoardList.jsp";
+				page = "view/marketboard/semi_Market_BoardList.jsp";
 				request.setAttribute("list", list);
 				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 				request.setAttribute("pi", pi);
@@ -136,14 +129,21 @@ public class BuyMarketSearchServlet extends HttpServlet {
 			}
 
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

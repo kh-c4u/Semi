@@ -70,7 +70,7 @@ public class BuyMarketService {
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);
-		
+		close(conn);
 		return result;
 	}
 
@@ -81,7 +81,7 @@ public class BuyMarketService {
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);
-		
+		close(conn);
 		return result;
 	
 	}

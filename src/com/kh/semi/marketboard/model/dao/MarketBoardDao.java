@@ -84,10 +84,9 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			MarketBoard b = new MarketBoard();
 			
 			b.setBno(rset.getInt("BNO"));
-			b.setBtype(rset.getInt("BTYPE"));
 			b.setBtitle(rset.getString("BTITLE"));
 			b.setBcontent(rset.getString("BCONTENT"));
-			b.setBwriter(rset.getString("USER_NAME"));
+			b.setBwriter(rset.getString("BWRITER"));
 			b.setBcount(rset.getInt("BCOUNT"));
 			b.setBdate(rset.getDate("BDATE"));
 			b.setBcondition(rset.getString("BCONDITION"));
@@ -204,7 +203,6 @@ public int deleteBoard(Connection conn, int bno) {
 public int updateBoard(Connection conn, MarketBoard b) {
 	int result = 0;
 	PreparedStatement pstmt = null;
-	System.out.println("안녕하세요");
 	
 	String sql = null;
 	if(b.getBoardfile() != null) {
@@ -213,8 +211,6 @@ public int updateBoard(Connection conn, MarketBoard b) {
 		sql = prop.getProperty("updateBoard");
 	}
 	
-	System.out.println("저는");
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, b.getBtitle());
@@ -225,20 +221,16 @@ public int updateBoard(Connection conn, MarketBoard b) {
 			}else {
 				pstmt.setInt(3, b.getBno());
 			}
-			
-			System.out.println("한정원");
 
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			System.out.println("입니다.");
 
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("안녕히계세요");
 
 		return result;
 	}
@@ -264,77 +256,74 @@ public int marketBoardCount(Connection conn, int bno) {
 	return result;
 }
 
+
+
+public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String keyword, String selectKeyword,
+		int currentPage, int limit) {
+	ArrayList<MarketBoard> list = null;
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
+	String sql = null;
+	
+	switch(selectKeyword) {
+	case "content":
+		sql = prop.getProperty("searchContentBoard");
+		break;
+	case "title" :
+		sql = prop.getProperty("searchTitleBoard");
+		break;
+	case "writer" : 
+		sql = prop.getProperty("searchWriterBoard");
+		break;
+	}
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (currentPage - 1) * limit +1;
+			int endRow = startRow + limit - 1;
+
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, category);
+			pstmt.setString(4, keyword);
+			
+		
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<MarketBoard>();
+
+			while(rset.next()){
+				MarketBoard b = new MarketBoard();
+
+				b.setBno(rset.getInt("BNO"));
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBwriter(rset.getString("BWRITER"));
+				b.setBwriterId(rset.getString("USERNAME"));
+				b.setBcount(rset.getInt("BCOUNT"));
+				b.setBdate(rset.getDate("BDATE"));
+
+				switch(rset.getInt("BCONDITION")){
+				case 1:b.setBcondition("판매중");
+				break;
+				case 2:b.setBcondition("판매완료");
+				break;
+				case 3:b.setBcondition("--");
+				break;
+				}
+				
+				
+				list.add(b);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 }
-//public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String keyword, String selectKeyword,
-//		int currentPage, int limit) {
-//	ArrayList<MarketBoard> list = null;
-//	PreparedStatement pstmt = null;
-//	ResultSet rset = null;
-//	String sql = null;
-//	
-//	switch(selectKeyword) {
-//	case "content":
-//		sql = prop.getProperty("searchContentBoard");
-//		break;
-//	case "title" :
-//		sql = prop.getProperty("searchTitleBoard");
-//		break;
-//	case "writer" : 
-//		sql = prop.getProperty("searchWriterBoard");
-//		break;
-//	}
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//
-//			int startRow = (currentPage - 1) * limit +1;
-//			int endRow = startRow + limit - 1;
-//
-//			pstmt.setInt(1, endRow);
-//			pstmt.setInt(2, startRow);
-//			pstmt.setInt(3, category);
-//			pstmt.setString(4, keyword);
-//			
-//		
-//			rset = pstmt.executeQuery();
-//
-//			list = new ArrayList<MarketBoard>();
-//
-//			while(rset.next()){
-//				MarketBoard b = new MarketBoard();
-//
-//				b.setBno(rset.getInt("BNO"));
-//				b.setBtype(rset.getInt("BTYPE"));  //1 공부팁 2 합격수기 3수강후기 4무료인강추천
-//				b.setBtitle(rset.getString("BTITLE"));
-//				b.setBwriter(rset.getString("BWRITER"));
-//				b.setBwriterId(rset.getString("USERNAME"));
-//				b.setBcount(rset.getInt("BCOUNT"));
-//				b.setBdate(rset.getDate("BDATE"));
-//
-//				switch(rset.getInt("BTYPE")){
-//				
-//				case 1:b.setBtypes("공부팁");
-//				break;
-//				case 2:b.setBtypestr("합격수기");
-//				break;
-//				case 3:b.setBtypestr("수강후기");
-//				break;
-//				case 4:b.setBtypestr("무료인강추천");
-//				break;
-//				case 5:b.setBtypestr("--");
-//				break;
-//				}
-//				list.add(b);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rset);
-//			close(pstmt);
-//		}
-//		
-//		return list;
-//	}
-//}
 
 
 
