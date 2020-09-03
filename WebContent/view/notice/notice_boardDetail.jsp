@@ -182,7 +182,7 @@
 						<td class="t-noline l-line">
 							<div class="bbs-content" id="content">
 								<p id="content"><%= b.getNcontent() %></p>
-							</div>
+							</div>  
 						</td>
 					</tr>
 				</tbody>
