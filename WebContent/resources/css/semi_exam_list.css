@@ -30,7 +30,7 @@
 }
 th, td{border-bottom: 1px solid rgb(150, 150, 150);}
 td{height: 30px; text-align: center;}
-th{height: 20px; background-color:  rgba(150, 150, 150, 0.507); }
+th{height: 20px; background-color: rgba(150, 150, 150, 0.507); width: 1000px;}
 tr{border-right : 1px solid rgb(150,150,150); border-left : 1px solid rgb(150,150,150); }
 table{border-collapse: collapse; border-top :1px solid rgb(150,150,150); color : #494949;}
 tr a{color :  #494949;}
