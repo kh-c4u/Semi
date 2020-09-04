@@ -160,7 +160,7 @@
                                     <br><br><br><br><br>
                                     ↓ 바로 문제 풀러 가기 ↓<br><br><br>
 
-                                    <buttononclick="location.href='<%=request.getContextPath()%>/문제 풀기 경로쓰기'"
+                                    <button> onclick="location.href='<%=request.getContextPath()%>/문제 풀기 경로쓰기'"
                                      id="Ebtn">문제 풀기</button>
                                     <br><br><br><br>
                                 </td>
