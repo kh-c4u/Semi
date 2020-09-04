@@ -178,7 +178,7 @@
 								<% 
 									if(m != null){
 									if(m.getUserId().equals("admin")){ %>
-									<button style=float:right onclick="<%= request.getContextPath()%>/fUpdate.fa?fno=<%= f.getFno() %>"
+									<button style=float:right onclick="location.href='<%= request.getContextPath()%>/fUpview.fa?fno=<%= f.getFno()%>'"
 										id="writeB">수정하기</button>
 									
 								<% } 
@@ -253,7 +253,7 @@
 				var bno = $(this).parent().find("input").val();
 				location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" + fno;
 			});
-		});
+		});"
 	</script>
 
 	<div id="main-footer">

@@ -55,7 +55,7 @@ private FaqDao fDao = new FaqDao();
 
 	public int deleteFaq(int fno) {
 		Connection con = getConnection();
-		
+		System.out.println("service : " + fno);
 		int result = fDao.deleteFaq(con,fno);
 		
 		// delete이니까
@@ -87,10 +87,26 @@ private FaqDao fDao = new FaqDao();
 		
 		return list;
 	}
+	public Faq updateView(int fno) {
+		Connection con = getConnection();
 
+		Faq f = fDao.selectOne(con, fno);
+
+		close(con);
+		return f;
+	}
+	
 	public int updateFaq(Faq f) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = getConnection();
+
+		int result = fDao.updateFaq(con,f);
+
+		if(result > 0) commit(con);
+		else rollback(con);
+
+		close(con);
+
+		return result;
 	}
 
 	public Faq selectOne(int fno) {

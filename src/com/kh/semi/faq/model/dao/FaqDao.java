@@ -115,12 +115,13 @@ private Properties prop;
 	public int deleteFaq(Connection con, int fno) {
 		int result =0;
 		PreparedStatement pstmt = null;
+		System.out.println("dao1: " + fno);
 		String sql = prop.getProperty("deleteFaq");
-		
+		Faq f = new Faq();
 		try {
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, fno);
+			pstmt.setInt(1,fno);
 			
 			
 			
@@ -132,6 +133,7 @@ private Properties prop;
 		}
 		
 		
+		System.out.println("dao2: " + result);
 		return result;
 	}
 
@@ -332,6 +334,36 @@ private Properties prop;
 
 		return listCount;
 }
+
+
+
+	public int updateFaq(Connection con, Faq f) {
+		int result = 0;
+		PreparedStatement pstmt =null;
+		
+		String sql = prop.getProperty("updateFaq");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,f.getFcategory());
+			pstmt.setString(2,f.getFtitle());
+			pstmt.setString(3,f.getFcontents());
+			pstmt.setInt(4, f.getFno());
+			System.out.println("dao : " + f);
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+		
+		
+		
 
 
 }
