@@ -35,27 +35,27 @@ public class ExamBoardDao {
 	}
 	public int getListCount(Connection con) {
 		// 총 게시글 수
-				int listCount = 0;
-				Statement stmt = null;
-				ResultSet rset = null;
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
 
-				String sql = prop.getProperty("listCount");
+		String sql = prop.getProperty("listCount");
 
-				try {
-					stmt = con.createStatement();
-					rset = stmt.executeQuery(sql);
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
 
-					if(rset.next()) {
-						listCount = rset.getInt(1);
-					}
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}finally {
-					close(rset);
-					close(stmt);
-				}
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(stmt);
+		}
 
-				return listCount;
+		return listCount;
 	}
 	public ArrayList<ExamBoard> selectList(Connection con, int currentPage, int limit) {
 		ArrayList<ExamBoard> list =null;
@@ -101,12 +101,12 @@ public class ExamBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("examBoardDetail");
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, tc);
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				eb = new ExamBoard();
 				eb.setBdate(rset.getDate("BDATE"));
@@ -114,19 +114,120 @@ public class ExamBoardDao {
 				eb.setBoardfile(rset.getString("TFILE"));
 				eb.setBtitle(rset.getString("BTITLE"));
 				eb.setBtc(rset.getString("TC"));
-				
+
 			}
 			System.out.println(eb);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rset);
 			close(pstmt);
-			
-			
+
+
 		}
-		
+
 		return eb;
 	}
+	public ArrayList<ExamBoard> searchExam(Connection con, String keyword, int currentPage, int limit) {
+		ArrayList<ExamBoard> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchExam");
+
+		try {
+			pstmt = con.prepareStatement(sql);
+
+			int startRow = (currentPage - 1) * limit +1;
+			int endRow = startRow + limit - 1;
+
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			pstmt.setString(3, keyword);
+
+
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<ExamBoard>();
+
+			while(rset.next()){
+				ExamBoard n = new ExamBoard();
+				n.setBno(rset.getInt("BNO"));
+				n.setBtitle(rset.getString("BTITLE"));
+				n.setBdate(rset.getDate("BDATE"));
+				n.setBtc(rset.getString("TC"));
+				list.add(n);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+
+		return list;
+	}
+	public int getSearchListCount(Connection con, String keyword) {
+		int listCount = 0;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("countSearchExam");
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			rset = pstmt.executeQuery();
+
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return listCount;
+	}
+	public ArrayList<ExamBoard> selectTop7(Connection con) {
+		ArrayList<ExamBoard> list = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectTop7");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<ExamBoard>();
+			
+			while(rset.next()) {
+				
+				ExamBoard b = new ExamBoard();
+				
+				b.setBno(rset.getInt("BNO"));
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBdate(rset.getDate("BDATE"));
+				b.setBtc(rset.getString("TC"));
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
 }

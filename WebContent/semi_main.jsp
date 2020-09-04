@@ -241,42 +241,57 @@
 			<div id="Exam_text">
 				기출문제<a href="#" class="more">+ 더보기</a>
 				<div class="left-box">
-                    <table align="center" class="boardTop5" style="word-break: break-all;">
+                    <table align="center" id="ExamTop7" class="boardTop5" style="word-break: break-all;">
                         <tbody>
-                            <tr>
-                                <td id="tname">-여기서 강의 들어보신분 있나요?</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-기능사 시험 꿀팁 공유!!</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-인강추천합니다.</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-기사시험 어렵나요?</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            <tr>
-                                <td id="tname">-질문합니다. 풀의부탁드려요</td>
-                                <td>2020.08.21</td>
-                            </tr>
-                            
+      
                         </tbody>
                     </table>	
                 </div>
 			</div>
-
+                    <script>
+                $(function(){
+        			$.ajax({
+        				url : '<%= request.getContextPath()%>/ExamTop7.to',
+        				type : 'get',
+        				success : function(data){
+        					
+        					// console.log(data);
+        					var $table = $('#ExamTop7>tbody');
+        					
+        					for(var i in data){
+        						
+        						// 내용을 담을 tr 태그 생성
+        						var $tr = $('<tr>');
+        						
+        						// 내용을 각각 표현할 td 태그 생성
+        
+        						var $tdBoardTitle = $('<td id="tname">').text("-"+data[i].btitle);
+        						var $tdBoardDate = $('<td>').text(data[i].bdate);
+        						
+        						$tr.append($tdBoardTitle).append($tdBoardDate);
+        						
+        						
+        						var bno = data[i].bno;
+        						$tr.on("click",{param_bno : bno},function(e){
+        							location.href="<%=request.getContextPath()%>/examdetail.ex?bno=" +e.data.param_bno;
+        							
+        						});
+        						
+        						
+        						
+        						$table.append($tr);
+        						
+        					}
+        				}, error : function(data){
+        					
+        					console.log("데이터 전달 실패!");
+        					console.log(data);
+        				}
+        			});
+        		});
+                
+              
+                </script>
 		</div>
 		<div id="new_post">
 			<div id="new_post_text">

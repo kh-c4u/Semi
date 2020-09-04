@@ -135,7 +135,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%=request.getContextPath()%>/검색경로" + "?keyword="+$('#searchWord').val();
+				location.href="<%=request.getContextPath()%>/ExamBoardSearch.ex" + "?keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
