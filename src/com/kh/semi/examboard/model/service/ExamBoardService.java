@@ -30,5 +30,14 @@ public class ExamBoardService {
 		close(con);
 		return list;
 	}
+	public ExamBoard examBoardDetail(String tc) {
+		ExamBoard eb =null;
+		Connection con = getConnection();
+		
+		eb = bDao.examBoardDetail(con, tc);
+
+		close(con);
+		return eb;
+	}
 
 }

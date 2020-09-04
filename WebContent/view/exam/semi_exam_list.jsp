@@ -162,7 +162,7 @@
 
 					<% for(ExamBoard b : list){ %>
 					<tr id="contents1">
-						<input type="hidden" value="<%= b.getBno() %>" />
+						<input type="hidden" value="<%= b.getBtc()%>"/>
 						<td class="first"><%= b.getBno() %></td>
 						
 						<td class="second"><%= b.getBtitle() %></td>
@@ -213,8 +213,8 @@
 	<script>
 		$(function(){
 			$(".table-gisa td").click(function(){
-				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/선택했을 때 서블릿 경로?bno=" + bno;
+				var tc = $(this).parent().find("input").val();
+				location.href="<%=request.getContextPath()%>/examdetail.ex?tc=" + tc;
 			});
 		});
 	</script>

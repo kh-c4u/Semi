@@ -82,6 +82,7 @@ public class ExamBoardDao {
 				n.setBno(rset.getInt("BNO"));
 				n.setBtitle(rset.getString("BTITLE"));
 				n.setBdate(rset.getDate("BDATE"));
+				n.setBtc(rset.getString("TC"));
 				System.out.println(n);
 				list.add(n);
 			}
@@ -94,5 +95,38 @@ public class ExamBoardDao {
 		}
 
 		return list;
+	}
+	public ExamBoard examBoardDetail(Connection con, String tc) {
+		ExamBoard eb = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("examBoardDetail");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, tc);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				eb = new ExamBoard();
+				eb.setBdate(rset.getDate("BDATE"));
+				eb.setBno(rset.getInt("BNO"));
+				eb.setBoardfile(rset.getString("TFILE"));
+				eb.setBtitle(rset.getString("BTITLE"));
+				eb.setBtc(rset.getString("TC"));
+				
+			}
+			System.out.println(eb);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+			
+		}
+		
+		return eb;
 	}
 }

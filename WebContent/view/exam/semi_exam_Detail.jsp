@@ -9,18 +9,15 @@
 <%
    Member m = (Member)session.getAttribute("member");
    ExamBoard b = (ExamBoard)request.getAttribute("board");
-   // 댓글 리스트
-   ArrayList<comuboardComment> clist
-     = (ArrayList<comuboardComment>)request.getAttribute("clist");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="./css/semi_menu_frame.css">
-<link rel="stylesheet" href="./css/semi_posting.css">
-<link rel="stylesheet" href="./css/semi_user.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/semi_menu_frame.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/semi_posting.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/semi_user.css">
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
@@ -152,7 +149,7 @@
 						<td class="pl20">
 						<% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
 						<a
-							href="<%= request.getContextPath()%>/resources/boardUploadFiles/<%=b.getBoardfile() %>"
+							href="<%= request.getContextPath()%>/resources/examFiles/<%=b.getBoardfile() %>"
 							download="<%= b.getBoardfile() %>"> <%=b.getBoardfile() %>
 						</a>
 						<% } %>
