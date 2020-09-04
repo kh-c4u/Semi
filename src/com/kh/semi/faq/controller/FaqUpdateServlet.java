@@ -42,7 +42,7 @@ public class FaqUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int maxSize = 1024*1024*10;
-System.out.println("뭐가문젤까?");
+		System.out.println("뭐가문젤까?");
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			// 만약 올바른 multipart / form-data로 전송되지 않았을 경우
 			// 에러 페이지로 즉시 이동시킨다.

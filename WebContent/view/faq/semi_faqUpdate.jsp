@@ -120,11 +120,21 @@
 				<label>제목 :</label> <input type="text" placeholder="제목을 입력하세요."
 					name="ftitle" style="padding: 5px 100px 0px 10px;"
 					value="<%= f.getFtitle().replace("\"", "&#34;") %>">
-
+					<div class="select-box">
+                        <select id="category-name" name="fcategory" required="required">
+                            <option disabled="disabled" selected="selected">분류</option>
+                            <option value=1>회원정보</option>
+                            <option value=2>자료이용</option>
+                            <option value=3>결제</option>
+                            <option value=4>사이트이용</option>
+                            <option value=5>장애관련</option>
+                            <option value=6>기타</option>
+                        </select>
+                    </div>
 
 			</div>
 
-			<textarea name="content" cols="40" rows="10"
+			<textarea name="fcontents" cols="40" rows="10"
 				style="width: 800px; height: 300px; resize: none"
 				 required><%= f.getFcontents() %></textarea>
 			<br>
@@ -147,10 +157,10 @@
 		
 		function deleteBoard(){
 			// delete 는 예약어 이므로 deleteNotice 로 ...!
-			$("#submitForm").attr("action","<%=request.getContextPath() %>/noticedelete.no");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/fDelete.fa");
 		}
 		function complete(){
-			$("#submitForm").attr("action","<%=request.getContextPath() %>/noticeupdate.no");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/fUpdate.fa");
 			
 		}
 	
