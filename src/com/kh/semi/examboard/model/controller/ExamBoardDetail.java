@@ -20,7 +20,8 @@ import com.kh.semi.member.vo.Member;
 @WebServlet("/examdetail.ex")
 public class ExamBoardDetail extends HttpServlet {
        
-    /**
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -994402237916046421L;

@@ -354,6 +354,7 @@ public class ComuBoardDao {
 				
 				b.setBno(rset.getInt("BNO"));
 				b.setBtype(rset.getInt("BTYPE"));
+				
 				b.setBtitle(rset.getString("BTITLE"));
 				b.setBcontent(rset.getString("BCONTENT"));
 				b.setBwriter(rset.getString("USERNAME"));

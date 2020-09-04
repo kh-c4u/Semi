@@ -271,9 +271,9 @@
         						$tr.append($tdBoardTitle).append($tdBoardDate);
         						
         						
-        						var bno = data[i].bno;
-        						$tr.on("click",{param_bno : bno},function(e){
-        							location.href="<%=request.getContextPath()%>/examdetail.ex?bno=" +e.data.param_bno;
+        						var btc = data[i].btc;
+        						$tr.on("click",{param_btc : btc},function(e){
+        							location.href="<%=request.getContextPath()%>/examdetail.ex?tc=" +e.data.param_btc;
         							
         						});
         						
