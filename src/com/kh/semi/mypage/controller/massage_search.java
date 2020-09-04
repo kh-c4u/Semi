@@ -37,6 +37,8 @@ public class massage_search extends HttpServlet {
 		ArrayList<massage> list =null;
 		MypageService ms = new MypageService();
 		// 페이징 처리에 필요한 변수들
+		HttpSession session = request.getSession(false);
+		String cwriter = ((Member)session.getAttribute("member")).getUserId();
 				// 한번에 표시할 페이지들 중 가장 앞의 페이지
 				// 1, 2, 3, 4, 5, --> 1 // 6, 7, 8, 9, 10 --> 6
 				int startPage;
@@ -66,7 +68,7 @@ public class massage_search extends HttpServlet {
 				}
 
 				// 페이징 처리
-				int listCount = ms.getListCount();
+				int listCount = ms.getListCount(cwriter);
 
 				// 총 253개
 				maxPage = (int)((double)listCount / limit +0.9);
@@ -90,8 +92,7 @@ public class massage_search extends HttpServlet {
 				// 검색 키워드
 				String keyword = request.getParameter("keyword");
 				list = new ArrayList<massage>();
-				HttpSession session = request.getSession(false);
-				String cwriter = ((Member)session.getAttribute("member")).getUserId();
+				
 				list = new MypageService().searchMassage(category,keyword,currentPage,limit,cwriter);
 				String page = "";
 				if(list != null) {

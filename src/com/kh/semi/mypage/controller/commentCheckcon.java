@@ -10,22 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.semi.mypage.model.vo.*;
 import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.service.MypageService;
-import com.kh.semi.mypage.model.vo.PageInfo_massage;
-import com.kh.semi.mypage.model.vo.massage;
 
 /**
- * Servlet implementation class massage_List
+ * Servlet implementation class commentCheck
  */
-@WebServlet("/massageList.bo")
-public class massage_List extends HttpServlet {
+@WebServlet("/commentCheck.bo")
+public class commentCheckcon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public massage_List() {
+	public commentCheckcon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,11 +33,10 @@ public class massage_List extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<massage> list =null;
-		MypageService ms = new MypageService();
-		HttpSession session = request.getSession(false);
-		String cwriter = ((Member)session.getAttribute("member")).getUserId();
 		// 페이징 처리에 필요한 변수들
+		HttpSession session = request.getSession(false);
+		String bwriter = ((Member)session.getAttribute("member")).getUserId();
+		MypageService ms = new MypageService();
 		// 한번에 표시할 페이지들 중 가장 앞의 페이지
 		// 1, 2, 3, 4, 5, --> 1 // 6, 7, 8, 9, 10 --> 6
 		int startPage;
@@ -62,22 +60,22 @@ public class massage_List extends HttpServlet {
 		limit = 5;
 		// 만약에 사용자가 현재 페이지의 정보를 들고왔다면
 		// 현재 페이지의 정보를 1에서 특정 페이지로 수정해주어야 한다.
-		
+
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 
 		// 페이징 처리
-		int listCount = ms.getListCount(cwriter);
+		int listCount = ms.getListCountComment(bwriter);
 
 		// 총 253개
 		if(listCount <=5) {
-	         maxPage = 1;
-	      }else {
-		maxPage = (int)((double)listCount / limit +0.9);
-		//                         253.0 / 10+0.9 --> 26
-	    }
-		startPage 
+			maxPage = 1;
+		}else {
+			maxPage = (int)((double)listCount / limit +0.9);
+			//                         253.0 / 10+0.9 --> 26
+		}
+		startPage
 		=    ((int)((double)currentPage/limit+0.9)-1)*limit +1;
 		//    1/10+0.9 ->1 -1 * 10 + 1
 		//    7/ 0.7+0.9->1.6 -1 ->0.6 -> 0 +1
@@ -89,12 +87,11 @@ public class massage_List extends HttpServlet {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-		
-		list = ms.selectList(currentPage,limit,cwriter);
+		ArrayList<commentCheck> list =null;
+		list = ms.commentCheck(bwriter,  currentPage,  limit);
 		String page = "";
-		
 		if(list != null) {
-			page = "view/mypage/semi_mypage-massage_list.jsp";
+			page = "view/mypage/semi_mypage-Comments.jsp";
 			request.setAttribute("list", list);
 			PageInfo_massage pi = new PageInfo_massage(currentPage,listCount,limit,maxPage,startPage,endPage);
 			request.setAttribute("pi", pi);

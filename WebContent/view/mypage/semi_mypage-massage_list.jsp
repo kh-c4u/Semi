@@ -11,6 +11,13 @@
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
+		System.out.println("\nlistCount : " + listCount
+				+"\ncurrentPage : " + currentPage
+				+"\nmaxPage : " + maxPage
+				+"\nstartPage : "+ startPage
+				+"\nendPage : "+endPage
+		);
+		
 %>
 <!DOCTYPE html>
 <html>

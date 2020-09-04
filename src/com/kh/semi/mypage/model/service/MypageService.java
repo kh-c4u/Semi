@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.kh.semi.member.dao.MemberDao;
 import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.dao.MypageDao;
+import com.kh.semi.mypage.model.vo.commentCheck;
 import com.kh.semi.mypage.model.vo.massage;
 
 public class MypageService {
@@ -46,10 +47,10 @@ public class MypageService {
 		return result;
 	}
 
-	public int getListCount() {
+	public int getListCount(String cwriter) {
 		Connection con = getConnection();
 
-		int listCount = pDao.getListCount(con);
+		int listCount = pDao.getListCount(con,cwriter);
 
 		close(con);
 		return listCount;
@@ -131,6 +132,24 @@ public class MypageService {
 		close(conn);
 		
 		return result;
+	}
+
+	public ArrayList<commentCheck> commentCheck(String bwriter, int currentPage, int limit) {
+		Connection con = getConnection();
+		System.out.println("mypageservice");
+		ArrayList<commentCheck> list = pDao.commentCheck(con,bwriter, currentPage, limit);
+
+		close(con);
+		return list;
+	}
+
+	public int getListCountComment(String bwriter) {
+		Connection con = getConnection();
+
+		int listCount = pDao.getListCountComment(con,bwriter);
+
+		close(con);
+		return listCount;
 	}
 }
 

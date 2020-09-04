@@ -9,9 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import com.kh.semi.member.vo.Member;
+import com.kh.semi.mypage.model.vo.commentCheck;
 import com.kh.semi.mypage.model.vo.massage;
 public class MypageDao {
 
@@ -39,17 +38,20 @@ public class MypageDao {
 		return result;
 	}
 
-	public int getListCount(Connection con) {
+	public int getListCount(Connection con, String cwriter) {
 		// 총 게시글 수
 		int listCount = 0;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String sql = "SELECT COUNT(*) FROM mypage_message";
-
+		String sql = "SELECT COUNT(*) FROM mypage_message"
+				+ " WHERE "
+		        + "CWRITER = ? ";
+//		System.out.println(sql);
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cwriter);
+			rset = pstmt.executeQuery();
 
 			if(rset.next()) {
 				listCount = rset.getInt(1);
@@ -58,7 +60,7 @@ public class MypageDao {
 			e.printStackTrace();
 		}finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 
 		return listCount;
@@ -99,7 +101,7 @@ public class MypageDao {
 				b.setCdate(rset.getString("CDATETIME"));
 				list.add(b);
 			}
-			System.out.println("list!!!!!!! : "+list);
+//			System.out.println("list!!!!!!! : "+list);
 		}catch(SQLException e) {
 
 		}finally {
@@ -199,7 +201,7 @@ public class MypageDao {
 				n.setCtowriter(rset.getString("CTOWRITER"));
 				n.setCdate(rset.getString("CDATETIME"));
 			}
-			System.out.println("메세지 cno : " + n);
+//			System.out.println("메세지 cno : " + n);
 
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -297,5 +299,124 @@ public class MypageDao {
 		}
 		
 		return result;
+	}
+
+	public ArrayList<commentCheck> commentCheck(Connection con, String bwriter, int currentPage, int limit) {
+		ArrayList<commentCheck> list =null;
+		PreparedStatement pstmt=null;
+		ResultSet rset = null;
+
+		String sql = /*
+						 * "SELECT '커뮤니티' AS \"TYPECONTENT\",'기사' AS \"TYPENAME\",A.* FROM COMU_BOARD A "
+						 * +"WHERE BWRITER = ? " +"UNION ALL "
+						 * +"SELECT '커뮤니티' AS \"TYPECONTENT\",'기능사' AS \"TYPENAME\",A.* FROM COMU_GBOARD A "
+						 * +"WHERE BWRITER = ? " +"UNION ALL "
+						 * +"SELECT '커뮤니티' AS \"TYPECONTENT\",'산업기사' AS \"TYPENAME\",A.* FROM COMU_SGBOARD A "
+						 * +"WHERE BWRITER = ? " +"UNION ALL "
+						 * +"SELECT '장터' AS \"TYPECONTENT\",'팝니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE FROM MARKETBOARD A "
+						 * +"WHERE BWRITER = ? " +"UNION ALL "
+						 * +"SELECT '장터' AS \"TYPECONTENT\",'삽니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE FROM SALE_MARKETBOARD A "
+						 * +"WHERE BWRITER = ?  ";
+						 */
+		"SELECT * FROM (SELECT ROWNUM AS rownumber,b.* FROM("
+               +" SELECT '커뮤니티' AS \"TYPECONTENT\",'기사' AS \"TYPENAME\",A.*,(SELECT COUNT(*) FROM COMU_COMMENT WHERE BNO=A.BNO) AS COMMENTNUM FROM COMU_BOARD A "
+               +"WHERE BWRITER = ? "
+				+"UNION ALL "
+				+"SELECT '커뮤니티' AS \"TYPECONTENT\",'기능사' AS \"TYPENAME\",A.*,(SELECT COUNT(*) FROM GCOMU_COMMENT WHERE BNO=A.BNO) AS COMMENTNUM FROM COMU_GBOARD A "
+				+"WHERE BWRITER = ? "
+				+"UNION ALL "
+				+"SELECT '커뮤니티' AS \"TYPECONTENT\",'산업기사' AS \"TYPENAME\",A.*,(SELECT COUNT(*) FROM SGCOMU_COMMENT WHERE BNO=A.BNO) AS COMMENTNUM FROM COMU_SGBOARD A "
+				+"WHERE BWRITER = ? "
+				+"UNION ALL "
+				+"SELECT '장터' AS \"TYPECONTENT\",'팝니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE,(SELECT COUNT(*) FROM marketboard_comment WHERE BNO=A.BNO) AS COMMENTNUM FROM MARKETBOARD A "
+				+"WHERE BWRITER = ? "
+				+"UNION ALL "
+				+"SELECT '장터' AS \"TYPECONTENT\",'삽니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE,(SELECT COUNT(*) FROM sale_marketboard_comment WHERE BNO=A.BNO) AS COMMENTNUM FROM SALE_MARKETBOARD A "
+				+"WHERE BWRITER = ?)b "
+            +")a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
+            +"ORDER BY BNO ASC";
+		int startRow = (currentPage - 1) * limit +1; // 1, 11
+		int endRow = startRow + limit - 1; // 10,20
+		try {
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, bwriter);
+			pstmt.setString(2, bwriter);
+			pstmt.setString(3, bwriter);
+			pstmt.setString(4, bwriter);
+			pstmt.setString(5, bwriter);
+			pstmt.setInt(6, startRow);
+			pstmt.setInt(7, endRow);
+			
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<commentCheck>();
+
+			while(rset.next()){
+				commentCheck b = new commentCheck();
+				b.setTypecontent(rset.getString("TYPECONTENT"));
+				b.setTypename(rset.getString("TYPENAME"));
+				b.setBno(Integer.parseInt(rset.getString("BNO")));
+				b.setBtype(Integer.parseInt(rset.getString("BTYPE")));
+				b.setBtitle(rset.getString("BTITLE"));
+				b.setBcontent(rset.getString("BCONTENT"));
+				b.setBwriter(rset.getString("BWRITER"));
+				b.setBcount(Integer.parseInt(rset.getString("BCOUNT")));
+				b.setBoardfile(rset.getString("BOARDFILE"));
+				b.setBdate(rset.getDate("BDATE"));
+				b.setBcommentnum(Integer.parseInt(rset.getString("COMMENTNUM")));
+				list.add(b);
+			}
+//			System.out.println("list!!!!!!! : "+list);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return list;
+	}
+
+	public int getListCountComment(Connection con, String bwriter) {
+		// 총 게시글 수
+				int listCount = 0;
+				PreparedStatement pstmt = null;
+				ResultSet rset = null;
+
+				String sql = "SELECT COUNT(*) FROM (SELECT '커뮤니티' AS \"TYPECONTENT\",'기사' AS \"TYPENAME\",A.* FROM COMU_BOARD A " 
+						+"WHERE BWRITER = ? "
+						+"UNION ALL "
+						+"SELECT '커뮤니티' AS \"TYPECONTENT\",'기능사' AS \"TYPENAME\",A.* FROM COMU_GBOARD A "
+						+"WHERE BWRITER = ? "
+						+"UNION ALL "
+						+"SELECT '커뮤니티' AS \"TYPECONTENT\",'산업기사' AS \"TYPENAME\",A.* FROM COMU_SGBOARD A "
+						+"WHERE BWRITER = ? "
+						+"UNION ALL "
+						+"SELECT '장터' AS \"TYPECONTENT\",'팝니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE FROM MARKETBOARD A "
+						+"WHERE BWRITER = ? "
+						+"UNION ALL "
+						+"SELECT '장터' AS \"TYPECONTENT\",'삽니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE FROM SALE_MARKETBOARD A "
+						+"WHERE BWRITER = ? )";
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bwriter);
+					pstmt.setString(2, bwriter);
+					pstmt.setString(3, bwriter);
+					pstmt.setString(4, bwriter);
+					pstmt.setString(5, bwriter);
+					rset = pstmt.executeQuery();
+
+					if(rset.next()) {
+						listCount = rset.getInt(1);
+					}
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}finally {
+					close(rset);
+					close(pstmt);
+				}
+
+				return listCount;
 	}
 }

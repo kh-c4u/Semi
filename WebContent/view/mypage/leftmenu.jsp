@@ -38,7 +38,7 @@
 						</dd>
 						<dd> 　</dd>
 						<dd style=" position:absolute; z-index: 100;">
-							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage-Comments.jsp">- 내 글/댓글 알림</a>
+							<a href="<%=request.getContextPath()%>/commentCheck.bo">- 내 글/댓글 알림</a>
 						</dd >
 						<dd> 　</dd>
 						<dd style=" position:absolute; z-index: 100;">
