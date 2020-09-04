@@ -55,7 +55,8 @@ public class SearchFaqServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 
-		list = new FaqService().searchFaq(keyword);
+		System.out.println("여기는 나오나요1");
+		list = new FaqService().searchFaq(keyword,currentPage,limit);
 		
 		
 		
@@ -68,6 +69,7 @@ public class SearchFaqServlet extends HttpServlet {
 
 		if(listCount <=10) {
 			maxPage = 1;
+			System.out.println("여기는 나오나요2");
 		}else {
 			maxPage = (int) ((double) listCount / limit + 0.9);
 		}
@@ -75,8 +77,8 @@ public class SearchFaqServlet extends HttpServlet {
 		startPage 
 		=    ((int)((double)currentPage/limit+0.9)-1)*limit +1;
 
+		System.out.println("여기는 나오나요3");
 		endPage = startPage + limit -1;
-
 		// 만약 마지막 페이지보다 현재 게시글이 끝나는 페이지가 적다면
 		if(endPage > maxPage) {
 			endPage = maxPage;
@@ -92,7 +94,7 @@ public class SearchFaqServlet extends HttpServlet {
 		
 		String page = "";
 		if(list != null) {
-			page = "view/faqe/semi_faqList.jsp";
+			page = "view/faq/semi_faqList.jsp";
 			request.setAttribute("list", list);
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 			request.setAttribute("pi", pi);

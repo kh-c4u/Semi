@@ -25,6 +25,16 @@ public class Faq implements Serializable{
 
 	
 	
+	public Faq(String fcategory, String ftitle, String fcontents) {
+		super();
+		this.fcategory = fcategory;
+		this.ftitle = ftitle;
+		this.fcontents = fcontents;
+	}
+
+
+
+
 	public Faq(String fcategory) {
 		super();
 		this.fcategory = fcategory;
@@ -33,9 +43,9 @@ public class Faq implements Serializable{
 
 
 
-	public Faq(String fcategory, String ftitle, String fcontents) {
+	public Faq(String ftitle, String fcontents) {
 		super();
-		this.fcategory = fcategory;
+		
 		this.ftitle = ftitle;
 		this.fcontents = fcontents;
 	}
@@ -50,6 +60,11 @@ public class Faq implements Serializable{
 		this.ftitle = ftitle;
 		this.fcontents = fcontents;
 	}
+
+
+	
+
+
 
 
 	public int getFno() {

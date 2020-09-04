@@ -67,13 +67,21 @@ private FaqDao fDao = new FaqDao();
 		return result;
 	}
 	
+	public int getSearchListCount(String keyword) {
+		Connection con = getConnection();
+		
+		int listCount = fDao.getSearchListCount(con , keyword);
+		
+		close(con);
+		return listCount;
+	}
 	
-	public ArrayList<Faq> searchFaq(String category) {
+	public ArrayList<Faq> searchFaq(String keyword, int currentPage,int limit) {
 		//키워드 - 검색창 category-공부팁  select-라디오버튼(작성자, 내용, 제목) 
 		Connection con = getConnection();
 		ArrayList<Faq> list = null;
 		
-		list = fDao.searchFaq(con,category);
+		list = fDao.searchFaq(con,keyword,currentPage,limit);
 		
 		close(con);
 		
@@ -100,14 +108,6 @@ private FaqDao fDao = new FaqDao();
 		close(con);
 		return f;
 	
-	}
-	public int getSearchListCount(String keyword) {
-		Connection con = getConnection();
-
-		int listCount = fDao.getSearchListCount(con , keyword);
-
-		close(con);
-		return listCount;
 	}
 
 	

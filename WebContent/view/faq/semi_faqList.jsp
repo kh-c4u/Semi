@@ -173,12 +173,12 @@
 						<td><%= f.getFtitle() %></td>
 						<td class="double-down" >︾</td>
 					</tr>
-					<tr>
+					<tr class="double_down1">
 						<td colspan="4" style=text-align:center;><%= f.getFcontents() %>
 								<% 
 									if(m != null){
 									if(m.getUserId().equals("admin")){ %>
-									<button style=float:right onclick="location.href='view/faq/semi_faqUpdate.jsp'"
+									<button style=float:right onclick="<%= request.getContextPath()%>/fUpdate.fa?fno=<%= f.getFno() %>"
 										id="writeB">수정하기</button>
 									
 								<% } 
@@ -187,9 +187,10 @@
 					</tr>
 					<% } %>
 				</tbody>
-			<script>	
+			</table>
+		<script>	
 		  $(function(){
-	            $('double_down').slideUp();
+	            $('.double_down1').slideUp();
 			
 	            $('.double-down').click(function(){
 	               // $(this).next('p').slideDown();
@@ -198,7 +199,6 @@
 	            });
 	        });
 	    </script>	 
-			</table>
 
 
 		</div>

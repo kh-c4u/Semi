@@ -40,15 +40,15 @@ private Properties prop;
 		ArrayList<Faq> list = null;
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
-		String sql ="SELECT BO.*" + 
+		String sql ="SELECT CO.*" + 
 				"   FROM (" + 
-				"          SELECT ROWNUM RNUM, B.* " + 
+				"          SELECT ROWNUM RNUM, C.* " + 
 				"             FROM (" + 
 				"                    SELECT * " + 
 				"                      FROM FAQ " + 
 				"                     WHERE FTITLE IS NOT NULL " + 
-				"                     ORDER BY FNO DESC) B" + 
-				"                     WHERE ROWNUM <=?) BO " + 
+				"                     ORDER BY FNO DESC) C" + 
+				"                     WHERE ROWNUM <=?) CO " + 
 				"  WHERE RNUM >= ?";
 		
 		
@@ -166,54 +166,54 @@ private Properties prop;
 
 
 
-	public ArrayList<Faq> searchFaq(Connection con, String category) {
+	public ArrayList<Faq> searchFaq(Connection con, String keyword, int currentPage, int limit) {
 	
 			ArrayList<Faq> list = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
-			String sql = null;
-			
 		
+			String sql = "SELECT CO.*" + 
+					"   FROM (" + 
+					"          SELECT ROWNUM RNUM, C.* " + 
+					"             FROM (" + 
+					"                    SELECT * " + 
+					"                      FROM FAQ " + 
+					"                     WHERE FTITLE IS NOT NULL " + 
+					"                     ORDER BY FNO DESC) C" + 
+					"                     WHERE ROWNUM <=?) CO " + 
+					"  WHERE RNUM >= ?" +
+		            " AND FTITLE LIKE CONCAT('%',CONCAT(?,'%')) ";
+			
+			
+			
 			try {
 				pstmt = con.prepareStatement(sql);
 
-				//int startRow = (currentPage - 1) * limit +1;
-				//int endRow = startRow + limit - 1;
+				int startRow = (currentPage - 1) * limit +1;
+				int endRow = startRow + limit - 1;
+				System.out.println("다오 나옵네까4");
 
+				pstmt.setInt(1, endRow);
+				System.out.println("다오 나옵네까5");
+				pstmt.setInt(2, startRow);
+				System.out.println("다오 나옵네까6");
+				pstmt.setString(3, keyword);
+				System.out.println("다오 나옵네까7");
 				
-				pstmt.setString(1, category);
-				
-				
-			
+							
 				rset = pstmt.executeQuery();
 
 				list = new ArrayList<Faq>();
 
 				while(rset.next()){
+					System.out.println("다오 나옵네까8");
 					Faq f = new Faq();
 
 				
 					f.setFno(rset.getInt("FNO"));
 					f.setFcategory(rset.getString("FCATEGORY"));
 					f.setFtitle(rset.getString("FTITLE"));
-					f.setFcontents(rset.getString("FCONTENTS"));
-					
-                    
-					switch(rset.getString("FCATEGORY")){
-					
-					case "회원정보":f.setFcategory("회원정보");
-					break;
-					case "자료이용":f.setFcategory("자료이용");
-					break;
-					case "결제":f.setFcategory("결제");
-					break;
-					case "사이트이용":f.setFcategory("사이트이용");
-					break;
-					case "장애관련":f.setFcategory("장애관련");
-					break;
-					case "기타":f.setFcategory("기타");
-					break;
-					}
+					f.setFcontents(rset.getString("FCONTENTS"));					            					
 					list.add(f);
 				}
 			} catch (Exception e) {
@@ -226,7 +226,8 @@ private Properties prop;
 			return list;
 		}
 
-
+	
+	
 	public Faq selectOne(Connection con, int fno) {
 		Faq f = null;
 		PreparedStatement pstmt = null;
@@ -312,7 +313,7 @@ private Properties prop;
 		PreparedStatement pstmt =null;
 		ResultSet rset = null;
 
-		String sql = prop.getProperty("countSearchNotice");
+		String sql = prop.getProperty("searchFaq");
 
 		try {
 			pstmt = con.prepareStatement(sql);

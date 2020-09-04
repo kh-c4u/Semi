@@ -24,6 +24,7 @@ public class FaqListServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public FaqListServlet() {
+		
 		super();
 		// TODO Auto-generated constructor stub
 	}
