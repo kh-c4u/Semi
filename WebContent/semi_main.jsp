@@ -95,11 +95,11 @@
 </head>
 <body>
 	<div id="main-header">
-		<div class="main-header-logo">
+		<div class="main-header-logo" >
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
 				src="./resources/images/semiLogosize.png" /></a>
 		</div>
-		<ul class="main-header-navi Nanum1">
+		<ul class="main-header-navi Nanum1" style="padding-left:100px">
 			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
@@ -116,16 +116,6 @@
 			<%} %>
 		</ul>
 
-		<ul id='search' class="main-header-search">
-			<form id='search' name="search">
-				<li><input type='text' id='search' name='search'
-					placeholder='&nbsp;&nbsp;&nbsp;키워드를 입력하세요' /></li>
-				<li>
-					<button type="submit" id="search-btn">검색</button>
-				</li>
-
-			</form>
-		</ul>
 	</div>
 
 
