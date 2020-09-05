@@ -49,10 +49,8 @@
 
 	<div id="main-box1"></div>
 
-
 	<div class="left-menu">
 		<ul id="left-menu-share" class="left-menu1">
-
 			<li>
 				<dl>
 					<dt>
@@ -106,7 +104,6 @@
 			</li>
 		</ul>
 	</div>
-
 
     <div class="right-menu">
         <div id="eaxm">
