@@ -52,7 +52,6 @@ public class QuestionListServlet extends HttpServlet {
 		ExamQuestionService ebs = new ExamQuestionService();
 
 		list = ebs.examQeustion(tc);
-
 	
 		HttpSession session = request.getSession(false);
 		Member user = (Member)session.getAttribute("member");
