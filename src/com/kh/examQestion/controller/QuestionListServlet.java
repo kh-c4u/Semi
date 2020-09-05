@@ -36,11 +36,12 @@ public class QuestionListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tc = request.getParameter("tc");
+		int qn = Integer.parseInt(request.getParameter("qn"));
 		ExamQuestion eb = null;
 
 		ExamQuestionService ebs = new ExamQuestionService();
 
-		eb = ebs.examQeustion(tc);
+		eb = ebs.examQeustion(tc,qn);
 
 		HttpSession session = request.getSession(false);
 		Member user = (Member)session.getAttribute("member");

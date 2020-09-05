@@ -31,7 +31,7 @@ public class ExamQuestionDao {
 
 	}
 
-	public ExamQuestion examQuestion(Connection con, String tc) {
+	public ExamQuestion examQuestion(Connection con, String tc, int qn) {
 		ExamQuestion eb = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -40,6 +40,7 @@ public class ExamQuestionDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, tc);
+			pstmt.setInt(2, qn);
 			rset = pstmt.executeQuery();
 
 			if(rset.next()) {
