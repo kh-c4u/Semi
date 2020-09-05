@@ -46,7 +46,7 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
 #main-header{zoom:1; max-width:100%; text-align:center; margin:0 auto; padding:25px 0 0 0; height: 200px; min-width: 100%;min-width: 1400px;}
 .main-header-logo{float:left; padding-top:10px;}
 .main-header-logo img{height: 100px; width: 170px;}
-.main-header-navi{float:left; left: 250px; margin-top: 70px;position: relative; min-width: 700px; margin-left: -120px;
+.main-header-navi{float:left; left: 250px; margin-top: 70px;position: relative; min-width: 700px; margin-left: -120px;}
 .main-header-navi li{float:left; padding-right:100px; line-height:31px;}
 .main-header-navi li a{font-size:40px; color:#418dc0; font-weight:600; }
 .main-header-navi li a:hover{color : #112463; text-decoration:none;}
@@ -89,29 +89,29 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
 #contents1{border: 3px solid none; margin-left: 40px; margin-right: 30px; height: 500px; max-width:1180px;}
 #notice{float: left; position:absolute; border: 1px solid none; width: 30%; height: 550px; margin:20px; margin-top: 25px; max-width: 500px;}
 #notice a.more                                 {float:right; font-size:12px; font-weight:500; color: lightgrey; padding-top:10px; }
-#notice a:hover                                 {color:black; text-decoration:none;}
+#notice a:hover                                 {color:#ff4e00; text-decoration:none;}
 #calendar{float: right; width: 46%; height: 550px; margin:20px; margin-top: 25px; max-width: 500px; }
 #calendar a.more                                 {min-width: 70px;float:right;text-align: right ; font-size:12px; font-weight:500; color: lightgrey; max-height: 30px;}
-#calendar a:hover                                 {color:black; text-decoration:none;}
+#calendar a:hover                                 {color:#ff4e00; text-decoration:none;}
 #iframe_cal{ border: 1px solid#808080; border-radius: 10px; margin-top: 27px; margin-right: 50px; margin-left: 50px; width: 590px; height: 500px;}
 
 #notice_text,#calendar_text{margin: 30px 1000px 0px 30px; font-size: 20px; font-weight: 800; width: 600px;}
 #Exam_text,#new_post_text{margin: 30px 0px 0px 30px; font-size: 20px; font-weight: 800; width: 600px;}
-#notice_text td,#Exam_text td,#new_post_text td{font-weight: 300; color:black;}
+#notice_text td,#Exam_text td,#new_post_text td{font-weight: 300;}
 
 
 .div-title                                             {width:100%; text-align:center; margin-top:200px;  border-bottom:1px solid #418dc0; padding-top:10px;}
 .div-title   div                                       {position:relative; height:22px; width:90px; text-align:center; margin:0 auto;}
 .div-title   div span                                 {position:absolute; top:10px; left:0;  width:150px;  height:25px;  background-color:#418dc0; border-radius:6px;  color:#ffffff; font-size:20px;}
 
-#contents2{border: 3px solid none; margin-left: 40px; margin-right: 30px; height: 700px; max-width:1300px;}
+#contents2{border: 3px solid none; margin-left: 40px; margin-right: 30px; height: 700px; max-width:1260px;}
 #Exam{float: left; position:absolute; border: 1px solid none; width: 30%; height: 650px; margin:20px; margin-top: 25px; max-width: 500px;}
 #Exam a.more                                 {float:right; font-size:12px; font-weight:500; color: lightgrey; padding-top:10px;}
-#Exam a:hover                                 {color:black; text-decoration:none;}
+#Exam a:hover                                 {color:#ff4e00; text-decoration:none;}
 
 #new_post{float: right;  width: 46%; height: 650px; margin:20px; margin-top: 25px;}
 #new_post a.more                                 {float:right; font-size:12px; font-weight:500; color: lightgrey; padding-top:10px;}
-#new_post a:hover                                 {color:black; text-decoration:none;}
+#new_post a:hover                                 {color:#ff4e00; text-decoration:none;}
 
 
 
@@ -130,21 +130,21 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
 /*---------------------------윤희 추가 css-------------------------------*/
 .left-box{
 
-border: 1px solid#808080; border-radius: 10px; margin-top: 30px; margin-right: 50px; width: 590px; height: 500px;
-}
-
-.right-box{
-border: 1px solid #808080; border-radius: 10px; margin-top: 30px; margin-right: 90px; margin-left: 50px; width: 590px; height: 500px;
-
-}
-
-
-
-tr{ font-size: 20px; }
-.boardTop5{border-collapse: collapse; 
-    margin-left: 10px;
-    margin-top: 40px;
-    color : #494949; min-width: 600px; height: 430px;}
-
-
-#tname{color:#808080; min-width: 300px;}
+    border: 1px solid#808080; border-radius: 10px; margin-top: 30px; margin-right: 50px; width: 590px; height: 500px;
+    }
+    
+    .right-box{
+    border: 1px solid #808080; border-radius: 10px; margin-top: 30px; margin-right: 90px; margin-left: 50px; width: 590px; height: 500px;
+    
+    }
+    
+    
+    
+    tr{ font-size: 20px; }
+    .boardTop5{border-collapse: collapse; 
+        margin-left: 10px;
+        margin-top: 40px;
+        color : #494949; min-width: 600px; height: 430px;}
+    
+    
+    #tname{color:#808080;min-width: 300px;}
