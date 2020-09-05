@@ -1,12 +1,9 @@
-<%@page import="com.kh.semi.examboard.model.vo.ExamBoard"%>
-<%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 
 <%
-	ArrayList<ExamBoard> list = (ArrayList<ExamBoard>)request.getAttribute("list"); 
 	Member m = (Member)session.getAttribute("member");
 %>
 
@@ -117,9 +114,20 @@
         </div>
         
         <div class="btnN">
-        <button class="next" id="Mypage" type="button">점수 확인하기</button>
+        <button class="next" id="Mypage" type="button" onclick="gotoMP();">점수 확인하기</button>
         
         </div>
+        
+        <script>
+    	function gotoMP(){
+    		location.href="<%=request.getContextPath()%>/resources/mypage/semi_mypage_myscore.jsp";
+    		
+    	}
+    
+    
+    
+    </script>
+   
         
     </div>
 
