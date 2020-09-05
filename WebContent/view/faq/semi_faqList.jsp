@@ -38,8 +38,8 @@
 <body>
 	<div id="main-header">
 		<div class="main-header-logo">
-			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
-				src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+			<a href="<%= request.getContextPath()%>/semi_main.jsp"> <img
+				src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
 			<%if(m == null) {%>
@@ -119,7 +119,6 @@
 				</dl>
 			</li>
 		</ul>
-	</div>
 
 	<div class="semi-comu-gisa" style="float: left;">
 		<div id="page-title" class="page-title">FAQ</div>

@@ -14,9 +14,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="main-header">
-        <div class="main-header-logo"><a href="<%= request.getContextPath()%>/semi_main.jsp"><img src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a></div> 
-        	<ul id='BeforeLogin' class="main-header-login">
+	<div id="main-header">
+		<div class="main-header-logo">
+			<a href="<%= request.getContextPath()%>/semi_main.jsp"> <img
+				src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+		</div>
+		<ul id='BeforeLogin' class="main-header-login">
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
@@ -24,66 +27,77 @@
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/semi_mypage-withdraw.jsp">마이페이지</a></li>
+			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
-        
-        <ul class="main-header-navi">
-            <li><a href="#">기사</a></li>
-            <li><a href="#">산업기사</a></li>
-            <li><a href="#">기능사</a></li>
-        </ul>
-            
-        </div>
-  
-    <div id="main-box1"></div>
+
+		<ul class="main-header-navi">
+			<li><a href="#">기사</a></li>
+			<li><a href="#">산업기사</a></li>
+			<li><a href="#">기능사</a></li>
+		</ul>
+
+	</div>
+
+	<div id="main-box1"></div>
 
 
-    <div class="left-menu">
-    <ul id="left-menu-share" class="left-menu1">
-        
-        <li>
-            <dl>
-                <dt>
-                    <div class="left-menu-name">게시판</div>
-                </dt>
-            </dl>
-        </li>
-        <div class="menu-line"></div>
-        <li>
-            <dl>
-                <dt>
-                    <div>커뮤니티</div>
-                </dt>
-                <dd><a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a></dd>
-                <dd><a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a></dd>
-                <dd><a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a></dd>
-            </dl>
-        </li>
-        <div class="menu-line"></div>
-        <li>
-            <dl>
-                <dt>
-                    <div>장터</div>
-                </dt>
-                <dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-                <dd><a href="#">- 팝니다</a></dd>
-            </dl>
-        </li>
-        <div class="menu-line"></div>
-        <li>
-            <dl>
-                <dt>
-                    <div>고객센터</div>
-                </dt>
-                <dd><a href="#">- 자주 묻는 질문</a></dd>
-                <dd><a href="#">- 1:1문의</a></dd>
-                <dd><a href="#">- 신고</a></dd>
-            </dl>
-        </li>
-    </ul>
-    </div>
+	<div class="left-menu">
+		<ul id="left-menu-share" class="left-menu1">
 
+			<li>
+				<dl>
+					<dt>
+						<div class="left-menu-name">게시판</div>
+					</dt>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>커뮤니티</div>
+					</dt>
+					<dd>
+						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
+					</dd>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>장터</div>
+					</dt>
+				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
+              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+				</dl>
+			</li>
+			<div class="menu-line"></div>
+			<li>
+				<dl>
+					<dt>
+						<div>고객센터</div>
+					</dt>
+					<dd>
+						<a href="#">- 자주 묻는 질문</a>
+					</dd>
+					<dd>
+						<a href="#">- 1:1문의</a>
+					</dd>
+					<dd>
+						<a href="#">- 신고</a>
+					</dd>
+				</dl>
+			</li>
+		</ul>
+	</div>
 
 
         <div id="write" class ="Nanum2 right_wrapper">
