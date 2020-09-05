@@ -1,8 +1,12 @@
+<%@page import="com.kh.examQuestion.model.vo.ExamQuestion"%>
+<%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
+	ExamQuestion b = (ExamQuestion)request.getAttribute("Question");
 	Member m = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
@@ -106,10 +110,10 @@
 
     <div class="right-menu">
         <div id="eaxm">
-            <textarea id="eaxm" name="eaxm" disabled class="Nanum2">1. 인터페이스 보안을 위해 네트워크 영역에 적용될 수 있는 솔루션과 거리가 먼 것은? 인터페이스 보안을 위해 네트워크 영역에 적용될 수 있는 솔루션과 거리가 먼 것은?인터페이스 보안을 위해 네트워크 영역에 적용될 수 있는 솔루션과 거리가 먼 것은?인터페이스 보안을 위해 네트워크 영역에 적용될 수 있는 솔루션과 거리가 먼 것은?</textarea>
+            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%=b.getQn()%>></textarea>
         </div>
         <div id="answer">
-            
+
            <input style="width: 13px; height: 17px; position: absolute;" type="radio" name="answer1" value="1"><textarea disabled id="answer" name="answer">①IPSec  </textarea><br>
            <input style="width: 13px; height: 17px; position:absolute;" type="radio" name="answer1" value="2"><textarea disabled id="answer" name="answer">②SMTP</textarea><br>
            <input style="width: 13px; height: 17px; position:absolute;" type="radio" name="answer1" value="3"><textarea disabled id="answer" name="answer">③SSL</textarea><br>
