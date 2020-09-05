@@ -24,6 +24,12 @@ public class ExamQuestion implements Serializable{
 		this.ac = ac;
 		this.po = po;
 	}
+	public ExamQuestion(String tc, int qn) {
+		super();
+		this.tc = tc;
+		this.qn = qn;
+		
+	}
 
 	public String getTc() {
 		return tc;

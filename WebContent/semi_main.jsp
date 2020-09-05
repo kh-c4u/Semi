@@ -108,7 +108,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%=request.getContextPath()%>/QnaBoardServlet.do">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
@@ -150,7 +150,7 @@
 		<ul class="main-box1-qiuck-menu">
 			<li><a href="<%=request.getContextPath()%>/comuboardlist.bo">커뮤니티</a></li>
 			<li><a href="<%=request.getContextPath()%>/buymarketList.bo">장터</a></li>
-			<li><a href="#">고객센터</a></li>
+			<li><a href="<%=request.getContextPath()%>/QnaBoardServlet.do">고객센터</a></li>
 			<li><a href="<%=request.getContextPath()%>/noticeList.no">공지사항</a></li>
 		</ul>
 

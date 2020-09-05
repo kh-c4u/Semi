@@ -41,13 +41,21 @@ public class QuestionListServlet extends HttpServlet {
 //		System.out.println("qn : " + qn);
 //		ExamQuestion eb = null;
 		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
+
+		System.out.println("서블릿 tc:" + tc);
+
+//		int qn = Integer.parseInt(request.getParameter("qn"));
+//		System.out.println("서블렛qn :" + qn);
+
+		ExamQuestion eb = null;
+
 		ExamQuestionService ebs = new ExamQuestionService();
 
 		list = ebs.examQeustion(tc);
 
+	
 		HttpSession session = request.getSession(false);
 		Member user = (Member)session.getAttribute("member");
-
 
 		String page = "";
 		if(list != null && user != null) {

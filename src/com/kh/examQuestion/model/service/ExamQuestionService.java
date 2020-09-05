@@ -13,14 +13,16 @@ import com.kh.semi.examboard.model.vo.ExamBoard;
 
 public class ExamQuestionService {
 	ExamQuestionDao bDao = new ExamQuestionDao();
-	
+
 	public ArrayList<ExamQuestion> examQeustion(String tc) {
 		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
-		Connection con = getConnection();
-		
-		list = bDao.examQuestion(con, tc);
+//			System.out.println("ㅅ서비스 들어왔니?");
+			ExamQuestion eb =null;
+			Connection con = getConnection();
 
-		close(con);
-		return list;
+			list = bDao.examQuestion(con, tc);
+
+			close(con);
+			return list;
+		}
 	}
-}
