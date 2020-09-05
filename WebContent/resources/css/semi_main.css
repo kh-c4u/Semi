@@ -144,7 +144,7 @@ body{ margin: 0 auto; max-width: 1400px;font-size:12px !important;  font-family:
     .boardTop5{border-collapse: collapse; 
         margin-left: 10px;
         margin-top: 40px;
-        color : #494949; min-width: 600px; height: 430px;}
+        color : #494949; min-width: 600px; height: 430px;} 
     
     
     #tname{color:#808080;min-width: 300px;}
