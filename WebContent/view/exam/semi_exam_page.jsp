@@ -128,7 +128,7 @@
 		<div class="main-footer-wrap">
 			<div>
 				<img
-					src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" />
+					src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" />
 			</div>
 			<div>
 				<ul>
