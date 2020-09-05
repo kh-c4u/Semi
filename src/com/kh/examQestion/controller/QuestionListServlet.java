@@ -67,7 +67,7 @@ public class QuestionListServlet extends HttpServlet {
 
 			out.println("<script>");
 
-			out.println("alert('로그인이 필요합니다.')");
+			out.println("alert('문제 페이지 오류 발생')");
 
 			out.println("history.back();");
 
