@@ -110,7 +110,7 @@
 
     <div class="right-menu">
         <div id="eaxm">
-            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%=b.getQn()%>></textarea>
+            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%=b.getQc()%>></textarea>
         </div>
         <div id="answer">
 
