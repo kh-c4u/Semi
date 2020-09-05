@@ -253,7 +253,7 @@
 				var bno = $(this).parent().find("input").val();
 				location.href="<%=request.getContextPath()%>/noticeOne.no?bno=" + fno;
 			});
-		});"
+		});
 	</script>
 
 	<div id="main-footer">
