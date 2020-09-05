@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <title>C4U 너만의 기사</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_user.css">   
     <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_qna.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

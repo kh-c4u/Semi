@@ -61,6 +61,7 @@ public class ExamQuestionDao {
 
 		}
 
+		System.out.println("DAO : " + eb);
 		return eb;
 	}
 

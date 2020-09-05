@@ -18,6 +18,12 @@ public class ExamQuestion implements Serializable{
 		this.qn = qn;
 		this.qc = qc;
 	}
+	public ExamQuestion(String tc, int qn) {
+		super();
+		this.tc = tc;
+		this.qn = qn;
+		
+	}
 
 	public String getTc() {
 		return tc;

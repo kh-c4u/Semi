@@ -14,6 +14,7 @@ public class ExamQuestionService {
 	ExamQuestionDao bDao = new ExamQuestionDao();
 	
 	public ExamQuestion examQeustion(String tc,int qn) {
+		System.out.println("ㅅ서비스 들어왔니?");
 		ExamQuestion eb =null;
 		Connection con = getConnection();
 		
