@@ -13,11 +13,11 @@ import com.kh.semi.examboard.model.vo.ExamBoard;
 public class ExamQuestionService {
 	ExamQuestionDao bDao = new ExamQuestionDao();
 	
-	public ExamQuestion examQeustion(String tc) {
+	public ExamQuestion examQeustion(String tc,int qn) {
 		ExamQuestion eb =null;
 		Connection con = getConnection();
 		
-		eb = bDao.examQuestion(con, tc);
+		eb = bDao.examQuestion(con, tc, qn);
 
 		close(con);
 		return eb;
