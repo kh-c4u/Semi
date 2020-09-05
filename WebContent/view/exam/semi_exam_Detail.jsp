@@ -9,6 +9,7 @@
 <%
    Member m = (Member)session.getAttribute("member");
    ExamBoard b = (ExamBoard)request.getAttribute("board");
+   String tc = (String)request.getAttribute("tc");
 %>
 <!DOCTYPE html>
 <html>
@@ -160,7 +161,7 @@
                                     <br><br><br><br><br>
                                     ↓ 바로 문제 풀러 가기 ↓<br><br><br>
 
-                                    <button onclick="location.href='<%=request.getContextPath()%>/QuestionList.qo'"
+                                    <button onclick="location.href='<%=request.getContextPath()%>/QuestionList.qo?tc=<%=tc%>'"
                                      id="Ebtn">문제 풀기</button>
                                     <br><br><br><br>
                                 </td>

@@ -4,6 +4,7 @@ import static com.kh.semi.common.JDBCTemplate.close;
 import static com.kh.semi.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.kh.examQuestion.model.dao.ExamQuestionDao;
 import com.kh.examQuestion.model.vo.ExamQuestion;
@@ -13,13 +14,13 @@ import com.kh.semi.examboard.model.vo.ExamBoard;
 public class ExamQuestionService {
 	ExamQuestionDao bDao = new ExamQuestionDao();
 	
-	public ExamQuestion examQeustion(String tc,int qn) {
-		ExamQuestion eb =null;
+	public ArrayList<ExamQuestion> examQeustion(String tc) {
+		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
 		Connection con = getConnection();
 		
-		eb = bDao.examQuestion(con, tc, qn);
+		list = bDao.examQuestion(con, tc);
 
 		close(con);
-		return eb;
+		return list;
 	}
 }

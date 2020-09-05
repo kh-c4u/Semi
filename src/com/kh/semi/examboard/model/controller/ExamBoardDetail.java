@@ -53,6 +53,7 @@ public class ExamBoardDetail extends HttpServlet {
 		if(eb != null && user != null) {
 			page = "view/exam/semi_exam_Detail.jsp";
 			request.setAttribute("board", eb);
+			request.setAttribute("tc", tc);
 
 			request.getRequestDispatcher(page).forward(request, response);
 		}else {

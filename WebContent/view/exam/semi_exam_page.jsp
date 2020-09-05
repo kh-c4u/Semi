@@ -6,7 +6,7 @@
 <%@page import="java.util.ArrayList"%>
 
 <%
-	ExamQuestion b = (ExamQuestion)request.getAttribute("Question");
+	ArrayList b = (ArrayList)request.getAttribute("list");
 	Member m = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
@@ -110,7 +110,7 @@
 
     <div class="right-menu">
         <div id="eaxm">
-            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%=b.getQc()%>></textarea>
+            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%-- <%=b.getQc()%> --%></textarea>
         </div>
         <div id="answer">
 

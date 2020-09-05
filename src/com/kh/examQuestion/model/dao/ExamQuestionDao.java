@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.examQuestion.model.vo.ExamQuestion;
@@ -31,37 +32,37 @@ public class ExamQuestionDao {
 
 	}
 
-	public ExamQuestion examQuestion(Connection con, String tc, int qn) {
+	public ArrayList<ExamQuestion> examQuestion(Connection con, String tc) {
+
 		ExamQuestion eb = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("examQuestion");
+		ArrayList<ExamQuestion> list = null;
 
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, tc);
-			pstmt.setInt(2, qn);
 			rset = pstmt.executeQuery();
+			list = new ArrayList<ExamQuestion>();
 
-			if(rset.next()) {
+			while(rset.next()) {
 				eb = new ExamQuestion();
-				eb.setQc(rset.getString("QC"));
-				eb.setQn(rset.getInt("QN"));
 				eb.setTc(rset.getString("TC"));
-
+				eb.setQn(Integer.parseInt(rset.getString("QN")));
+				eb.setQc(rset.getString("QC"));
+				eb.setAn(Integer.parseInt(rset.getString("AN")));
+				eb.setAc(rset.getString("AC"));
+				eb.setPo(Integer.parseInt(rset.getString("PO")));
+				list.add(eb);
 			}
 			System.out.println(eb);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rset);
 			close(pstmt);
-
-
 		}
-
-		return eb;
+		return list;
 	}
-
 }

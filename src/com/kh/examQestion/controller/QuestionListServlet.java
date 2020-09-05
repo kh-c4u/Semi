@@ -2,6 +2,7 @@ package com.kh.examQestion.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,22 +37,23 @@ public class QuestionListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tc = request.getParameter("tc");
-		int qn = Integer.parseInt(request.getParameter("qn"));
-		ExamQuestion eb = null;
-
+//		int qn = Integer.parseInt(request.getParameter("qn"));
+//		System.out.println("qn : " + qn);
+//		ExamQuestion eb = null;
+		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
 		ExamQuestionService ebs = new ExamQuestionService();
 
-		eb = ebs.examQeustion(tc,qn);
+		list = ebs.examQeustion(tc);
 
 		HttpSession session = request.getSession(false);
 		Member user = (Member)session.getAttribute("member");
 
 
 		String page = "";
-		if(eb != null && user != null) {
+		if(list != null && user != null) {
 			page = "view/exam/semi_exam_page.jsp";
-			request.setAttribute("Question", eb);
-
+			request.setAttribute("list", list);
+			System.out.println("list : " + list );
 			request.getRequestDispatcher(page).forward(request, response);
 		}else {
 			response.setCharacterEncoding("UTF-8");
