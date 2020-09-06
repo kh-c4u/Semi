@@ -42,6 +42,9 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		String sBno = request.getParameter("bno");
 		String sGubun = request.getParameter("gubun");
 		String page = "";
@@ -58,53 +61,30 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 			ArrayList<MarketBoardComment> clist = new BuyMarketCommentService().selectList(bno);
 			HttpSession session = request.getSession(false);
 			Member user = (Member) session.getAttribute("member");
-
+				
 			if (b != null && user != null) {
-				page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
+				if (gubun == 0) { // 상세보기
+					page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
+				} else if (gubun == 1) { // 업데이트
+					page = "view/marketboard/semi_BuyMarket_BoardUpdate.jsp";
+				}
 				request.setAttribute("board", b);
 				request.setAttribute("clist", clist);
 
 				request.getRequestDispatcher(page).forward(request, response);
-			} else {
-				response.setCharacterEncoding("UTF-8");
-				response.setContentType("text/html;charset=UTF-8");
+			} else if(user == null){
 				PrintWriter out = response.getWriter();
-
-				out.println("<html>");
-				out.println("<body>");
-
-				out.println("</body>");
-
-				out.println("</html>");
-
 				out.println("<script>");
-
 				out.println("alert('로그인이 필요합니다.')");
-
 				out.println("history.back();");
-
 				out.println("</script>");
-
-		
-				if (b != null) {
-					if (gubun == 0) { // 상세보기
-						page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
-					} else if (gubun == 1) { // 업데이트
-						page = "view/marketboard/semi_BuyMarket_BoardUpdate.jsp";
-					}
-					request.setAttribute("Marketboard", b);
-					request.setAttribute("clist", clist);
-
-				} else {
-					page = "view/common/errorPage.jsp";
-					request.setAttribute("msg", "게시글 상세보기 실패!");
-
-				}
+			} else {
+				page = "view/common/errorPage.jsp";
+				request.setAttribute("msg", "게시글 상세보기 실패!");
 			}
 		}
-		}
+	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

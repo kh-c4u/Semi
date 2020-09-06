@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%  Member m = (Member)session.getAttribute("member"); 
-     MarketBoard b = (MarketBoard)request.getAttribute("Marketboard");%> 
+     MarketBoard b = (MarketBoard)request.getAttribute("board");%> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -105,7 +105,7 @@
 					<tr>
 						<td>제목 </td>
 						<td colspan="3">
-							<input type="text" size="65" name="title" value="<%=b.getBtitle().replace("\"", "&#34;") %>">
+							<input type="text" size="65" name="title" value="<%=b.getBtitle() %>">
 							<input type="hidden" name="bno" value="<%=b.getBno()%>">
 						</td>
 					</tr>
