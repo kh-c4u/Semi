@@ -21,7 +21,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
@@ -31,7 +31,7 @@
  
 
     <ul class="main-header-navi">
-        <li><a href="#">기사</a></li>
+        <li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
         <li><a href="#">산업기사</a></li>
         <li><a href="#">기능사</a></li>
     </ul>
@@ -88,9 +88,15 @@
                         <dt>
                             <div>고객센터</div>
                         </dt>
-                        <dd><a href="semi_FAQ.html">- 자주 묻는 질문</a></dd>
-                        <dd><a href="#">- 1:1문의</a></dd>
-                        <dd><a href="semi_menu_qna_error.html">- 신고</a></dd>
+                        <dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
                     </dl>
                 </li>
             </ul>
@@ -109,7 +115,7 @@
 					<label>제목 :</label>
 					<input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
 					<div class="select-box">
-                        <select id="category-value" name="category" required="required">
+                        <select id="category-value" name="sale_status" required="required">
                             <option value selected="selected">판매 현황</option>
                             <option value="1">판매중</option>
                             <option value="2">판매완료</option>

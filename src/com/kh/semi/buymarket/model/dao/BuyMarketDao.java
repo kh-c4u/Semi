@@ -92,7 +92,6 @@ public ArrayList<MarketBoard> selectList(Connection conn, int currentPage, int l
 			b.setBwriter(rset.getString("BWRITER"));
 			b.setBcount(rset.getInt("BCOUNT"));
 			b.setBdate(rset.getDate("BDATE"));
-			b.setBcondition(rset.getString("BCONDITION"));
 			b.setBoardfile(rset.getString("BOARDFILE"));
 		
 			switch(rset.getInt("BCONDITION")){
@@ -292,7 +291,7 @@ public ArrayList<MarketBoard> searchBoard(Connection conn, int category, String 
 			pstmt.setInt(3, category);
 			pstmt.setString(4, keyword);
 			
-		
+	
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<MarketBoard>();

@@ -3,9 +3,11 @@ package com.kh.examQuestion.model.vo;
 import java.io.Serializable;
 
 public class ExamQuestion implements Serializable{
-
-	private static final long serialVersionUID = 3768572286753798391L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tc; //Test_Question의 TC (ex C1
 	private int qn; //Test_Question의 QN (ex 1
 	private String qc; //Test_Question의 QC (ex 문제

@@ -99,7 +99,7 @@
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
 				src="./resources/images/semiLogosize.png" /></a>
 		</div>
-		<ul class="main-header-navi Nanum1" style="padding-left:100px">
+		<ul class="main-header-navi Nanum1">
 			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
@@ -108,7 +108,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="<%=request.getContextPath()%>/QnaBoardServlet.do">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>

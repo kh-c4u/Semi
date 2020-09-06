@@ -37,25 +37,25 @@
 	width: 200px;
 }
 
-#btn {
+#btn2 {
 	width: fit-content;
 	margin: auto;
 }
 
-#btn input {
-	 background:#64b6d6;
+
+#btn2 input {
+	background:#64b6d6;
 	color: #ffffff;
 	font-size: 15px;
-	margin-left: 50px;
-	width: 100px;
+	margin-left: 20px;
 	margin-bottom: 80px;
 	height: 30px;
     border: none;
-    min-width: 355px;
+    min-width: 130px;
     transition: background-color 0.5s
 }
 
-#btn input:hover {
+#btn2 input:hover {
 	translate: 0.5;
 	background: #2c6379;
 	color: black;
@@ -73,7 +73,7 @@
 
 #id{
 	background: lightgray;
-}
+} 
 
 #name{
 	background: lightgray;

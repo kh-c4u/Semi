@@ -144,7 +144,7 @@
 
 			</ul>
 			<br>
-			<div id="btn">
+			<div id="btn2">
 				<input type="submit" value="수정하기">&nbsp;&nbsp;<input
 					type="reset" value="취소">
 			</div>

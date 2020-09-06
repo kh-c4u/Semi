@@ -28,7 +28,7 @@
 		</ul>
 
 		<ul class="main-header-navi">
-			<li><a href="#">기사</a></li>
+			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
@@ -81,14 +81,14 @@
 						<div>고객센터</div>
 					</dt>
 					<dd>
-						<a href="#">- 자주 묻는 질문</a>
-					</dd>
-					<dd>
-						<a href="#">- 1:1문의</a>
-					</dd>
-					<dd>
-						<a href="#">- 신고</a>
-					</dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
 				</dl>
 			</li>
 		</ul>
@@ -103,10 +103,10 @@
 					type="password" placeholder="password" name="password" />
 				<button type="submit">login</button>
 				<p class="message">
-					Not registered? <a href="#">Create an account</a>
+					Not registered? <a href="<%=request.getContextPath()%>/view/member/semi_SignupForm.jsp">Create an account</a>
 				</p>
 				<p class="message">
-					Are you Forget? <a href="#">Find ID/PWD</a>
+					Are you Forget? <a href="<%=request.getContextPath()%>/view/member/semi_Find_all.jsp">Find ID/PWD</a>
 				</p>
 			</form>
 		</div>

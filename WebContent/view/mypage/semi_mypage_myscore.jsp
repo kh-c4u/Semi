@@ -23,7 +23,6 @@
 				<tr>
 					<th scope="cols">No.</th>
 					<th scope="cols">Title.</th>
-					<th scope="cols">Re-Examination.</th>
 					<th scope="cols">Score.</th>
 
 				</tr>
@@ -32,20 +31,17 @@
 				<tr>
 					<th scope="row">1</th>
 					<td>기능사(2020-07-17)</td>
-					<td><a href="#">문제보기</a>/<a href="#">오답풀기</a></td>
 					<td>95</td>
 
 				</tr>
 				<tr>
 					<th scope="row">2</th>
 					<td>정보처리기사(2020-08-20)</td>
-					<td><a href="#">문제보기</a>/<a href="#">오답풀기</a></td>
 					<td>80</td>
 				</tr>
 				<tr>
 					<th scope="row">3</th>
 					<td>기능사(2020-09-17)</td>
-					<td><a href="#">문제보기</a>/<a href="#">오답풀기</a></td>
 					<td>100</td>
 				</tr>
 			</tbody>

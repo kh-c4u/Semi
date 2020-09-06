@@ -85,15 +85,11 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 
 				out.println("</script>");
 
-				clist.forEach(item -> {
-					System.out.println("item : " + item);
-				});
-
+		
 				if (b != null) {
 					if (gubun == 0) { // 상세보기
 						page = "view/marketboard/semi_BuyMarket_BoardDetail.jsp";
 					} else if (gubun == 1) { // 업데이트
-
 						page = "view/marketboard/semi_BuyMarket_BoardUpdate.jsp";
 					}
 					request.setAttribute("Marketboard", b);
@@ -106,9 +102,9 @@ public class BuyMarketSelectOneServlet extends HttpServlet {
 				}
 			}
 		}
+		}
 
-	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
