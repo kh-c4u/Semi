@@ -1,0 +1,37 @@
+
+    
+    
+    
+
+li{list-style: none; font-size: 15px;}
+ul{
+    margin: 0px; padding: 0px;
+}
+
+button{
+    background:#64b6d6;
+    border: none;
+    min-width: 310px;
+    height: 35px;
+    transition: background-color 0.5s
+   /*margin-left: 260px;*/
+   
+}
+
+button:hover{
+    background: #2c6379;
+}
+
+
+.form-id-pwd{width: 500px; margin: auto;  min-height:300px;  } 
+
+
+.find-information{width: 1000px; float:left; margin: 20px 10px 50px 0; }
+.find-information label{margin-right: 10px; width: 32px;}
+.find-information li{margin-bottom: 10px;}
+.find-information input{width: 246px; border:none; background: #ffffff; height: 30px; font-size: 20px; text-align: center;}
+.find-information label, input{display: inline-block;}
+
+
+#find-id{margin: auto; width: fit-content; margin-bottom: 70px; margin-top: 100px; }
+#find-pwd{margin: auto; width: fit-content; margin-bottom: 20px; }
