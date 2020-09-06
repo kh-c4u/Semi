@@ -102,9 +102,14 @@
             <h1 style="font-size: 25px;">회원님의 아이디를 찾았습니다!</h1>
                <li><label>ID : </label><input type="text" readonly maxlength="30" value="haha2yo"></li>
             </ul>
-            <button type="button">로그인 화면으로 돌아가기</button>
+            <button type="button" onclick="findID()";>로그인 화면으로 돌아가기</button>
         </form>
         
+         <script>
+	        	function findID(){
+	        		location.href="<%=request.getContextPath()%>/view/member/semi_Login.jsp"
+	        	}
+	        </script>
     </div>
    
 </div>

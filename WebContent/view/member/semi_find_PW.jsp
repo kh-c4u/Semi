@@ -102,9 +102,13 @@
 	            <h1 style="font-size: 25px;">회원님의 비밀번호를 찾았습니다!</h1>
 	               <li><label>PW : </label><input type="text" readonly maxlength="30" value="1111"></li>
 	            </ul>
-	            <button type="button">로그인 화면으로 돌아가기</button>
+	            <button type="button" onclick='findPw();'>로그인 화면으로 돌아가기</button>
 	        </form>
-	        
+	        <script>
+	        	function findPw(){
+	        		location.href="<%=request.getContextPath()%>/view/member/semi_Login.jsp"
+	        	}
+	        </script>
 	    </div>
    
 	</div>
