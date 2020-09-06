@@ -129,7 +129,7 @@
 					<option value="5">카테고리 선택</option>
 					<option value="1">문제오류</option>
 					<option value="2">첨부파일오류</option>
-					<option value="3">서버오류</option>
+					<option value="3">서버오류</option> 
 					<option value="4">회원신고</option>
 				</select>
 			</div>
