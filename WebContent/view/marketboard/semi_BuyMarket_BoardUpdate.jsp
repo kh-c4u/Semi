@@ -109,7 +109,10 @@
 							<input type="hidden" name="bno" value="<%=b.getBno()%>">
 						</td>
 					</tr>
-				  	
+				  		<tr>
+						<td>작성자 </td>
+						<td colspan="3"><%= b.getBwriter() %></td>
+					</tr>
 				
 					<tr>
 						<td>새 파일 </td>

@@ -99,7 +99,7 @@
 			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
 				src="./resources/images/semiLogosize.png" /></a>
 		</div>
-		<ul class="main-header-navi Nanum1" style="padding-left:100px">
+		<ul class="main-header-navi Nanum1">
 			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>

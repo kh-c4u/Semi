@@ -70,7 +70,8 @@ int maxSize = 1024 * 1024 * 10;
 		String content = mrequest.getParameter("content");
 		content  = content.replaceAll("\n", "<br>");
 		String writer = mrequest.getParameter("userId");
-		String category = mrequest.getParameter("category");
+		String sale_status = mrequest.getParameter("sale_status");
+
 		
 	
 		
@@ -83,7 +84,7 @@ int maxSize = 1024 * 1024 * 10;
 		b.setBcontent(content);
 		b.setBwriter(writer);
 		b.setBoardfile(fileName);
-		b.setBcondition(category);
+		b.setBcondition(sale_status);
 		
 	
 		

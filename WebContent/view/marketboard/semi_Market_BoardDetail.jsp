@@ -100,12 +100,12 @@
         <div class="sub-right-content">
             <div class="page-title Nanum2">팝니다.</div>
          	<div class="left pb5 mr5">
-         		<a href="<%=request.getContextPath()%>//marketselectList.bo" class="btn3">목록</a>
+         		<a href="<%=request.getContextPath()%>/marketselectList.bo" class="btn3">목록</a>
          		</div>
          		<div class="left pb5 mr5">
          		
          			
-         				<% if(m != null && m.getUserId().equals(b.getBwriterId())){ %>
+         	<% if(m != null && m.getUserId().equals(b.getBwriterId())){ %>
 			<a href="<%= request.getContextPath() %>/marketboardselectOne.bo?bno=<%=b.getBno()%>&gubun=1" class="btn3">수정</a>
 			<% } %>	
          		</div>

@@ -120,8 +120,7 @@
 						<td colspan="3"><%= b.getBwriter() %></td>
 					</tr>
 					
-				  	
-				
+				  				
 					<tr>
 						<td>새 파일 </td>
 						<td colspan="3">
