@@ -4,8 +4,12 @@ import java.io.Serializable;
 
 public class ExamAnswer implements Serializable{
 
-	private static final long serialVersionUID = -151334797478967608L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6182497794791612749L;
 	private String tc; //시험코드  A1:기사  B1:기능사  C1:산업기사
 	private int qn; //문제 번호
 	private int an; //문항번호(1,2,3,4반복)

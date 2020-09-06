@@ -100,7 +100,7 @@
 	       <form id="find-id">
 	           <ul>   
 	            <h1 style="font-size: 25px;">회원님의 비밀번호를 찾았습니다!</h1>
-	               <li><label>PW : </label><input type="text" readonly maxlength="30" value="1111"></li>
+	               <li><label>PW : </label><input type="text" readonly maxlength="30" value="<%=request.getAttribute("pwd")%>"></li>
 	            </ul>
 	            <button type="button" onclick='findPw();'>로그인 화면으로 돌아가기</button>
 	        </form>

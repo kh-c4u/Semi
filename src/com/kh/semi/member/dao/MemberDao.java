@@ -121,4 +121,54 @@ public class MemberDao {
 		return result;
 	}
 
+	public String findId(Connection conn, String name, String email) {
+		String id = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = "SELECT * FROM USRINFO WHERE USR_NAME=? AND USR_EMAIL=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				id = rset.getString("USR_ID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return id;
+	}
+
+	public String findPwd(Connection conn, String id, String email) {
+		String pwd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = "SELECT * FROM USRINFO WHERE USR_ID=? AND USR_EMAIL=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pwd = rset.getString("USR_PWD");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pwd;
+	}
+
 }

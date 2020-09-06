@@ -60,6 +60,28 @@ public class MemberService {
 		
 		return result;
 	}
+	public String findId(String name, String email) {
+
+		String id = null;
+		conn = getConnection();
+		
+		
+		id= mDao.findId(conn,name,email);
+		
+		close(conn);
+		
+		return id;
+	}
+	public String findPwd(String id, String email) {
+		String pwd = null;
+		conn = getConnection();
+		
+		pwd=mDao.findPwd(conn,id,email);
+		
+		close(conn);
+		
+		return pwd;
+	}
 	
 	
 	
