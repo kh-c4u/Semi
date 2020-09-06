@@ -1,4 +1,4 @@
-<%@page import="com.kh.semi.comubaord.model.vo.ComuBoard"%>
+<%@page import="com.kh.semi.errorbaord.model.vo.ErrorBoard"%>
 <%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +9,7 @@
 	Member m = (Member)session.getAttribute("member");
 %>
 <% 
-	ArrayList<ComuBoard> list = (ArrayList<ComuBoard>)request.getAttribute("list"); 
+	ArrayList<ErrorBoard> list = (ArrayList<ErrorBoard>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 
 	int listCount = pi.getListCount();
@@ -121,29 +121,10 @@
 	<div class="semi-comu-gisa" style="float: left;">
 		<div id="page-title" class="page-title">산업기사</div>
 		<div class="page-guide">
-			<span>해당 게시판은 산업기사를 준비하는 수험생 여러분들을 위한 공간입니다. 공부팁, 온라인, 학원 수강 등
-				다양한 정보를 자유롭게 공유하세요.</span>
+			<span>해당 게시판은 오류 및 신고 게시판입니다. 다양한 의견을 게시해주세요:)</span>
 		</div>
 		<div class="search-box">
-			<div>
-				<select id="searchCondition" name="searchCondition">
-					<option value="5">카테고리 선택</option>
-					<option value="1">공부팁</option>
-					<option value="2">합격수기</option>
-					<option value="3">수강후기</option>
-					<option value="4">무료인강추천</option>
-				</select>
-			</div>
-			<div class="search-option">
-				<span class="ch-10"> <input type="radio" name="searchType"
-					searchType="title"  value="title" checked="checked"> 제목
-				</span> <span class="ch-10"> <input type="radio" name="searchType"
-					searchType="content" value="content"> 내용
-				</span> <span class="ch-10"> <input type="radio" name="searchType"
-					searchType="regUserName" value="writer"> 작성자
-				</span>
-			</div>
-			<div class="input-wrap">
+			<div class="input-wrap" style="margin-left: 300px;">검색 : 
 				<input type="text" id="searchWord" name="searchWord"
 					style="width: 150px;">
 			</div>
@@ -183,7 +164,7 @@
 				<tbody id="serach-Result">
 					
 
-					<% for(ComuBoard b : list){ %>
+					<% for(ErrorBoard b : list){ %>
 					<tr id="contents1">
 						<input type="hidden" value="<%= b.getBno() %>" />
 						<td><%= b.getBno() %></td>

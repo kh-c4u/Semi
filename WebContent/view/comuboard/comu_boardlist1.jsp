@@ -115,7 +115,7 @@
 
 					</dd>
 					<dd>
-						<a href="#">- 신고</a>
+						<a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
 					</dd>
 				</dl>
 			</li>

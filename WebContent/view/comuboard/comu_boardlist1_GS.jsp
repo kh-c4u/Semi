@@ -111,7 +111,7 @@
 						<a href="#">- 1:1문의</a>
 					</dd>
 					<dd>
-						<a href="#">- 신고</a>
+						<a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
 					</dd>
 				</dl>
 			</li>
