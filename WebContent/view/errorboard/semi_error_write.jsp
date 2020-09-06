@@ -20,7 +20,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
@@ -29,7 +29,7 @@
 		</ul>
         
         <ul class="main-header-navi">
-            <li><a href="#">기사</a></li>
+            <li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
             <li><a href="#">산업기사</a></li>
             <li><a href="#">기능사</a></li>
         </ul>
@@ -76,9 +76,15 @@
                 <dt>
                     <div>고객센터</div>
                 </dt>
-                <dd><a href="#">- 자주 묻는 질문</a></dd>
-                <dd><a href="#">- 1:1문의</a></dd>
-                <dd><a href="#">- 신고</a></dd>
+               <dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
             </dl>
         </li>
     </ul>
@@ -91,11 +97,20 @@
            
     
     
-            <form action="<%=request.getContextPath()%>/comuinsert.bo" method="post" enctype="multipart/form-data">
+            <form action="<%=request.getContextPath()%>/erinsert.bo" method="post" enctype="multipart/form-data">
                 <div class="option-type">
     
                     <label>제목 :</label>
                     <input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
+					<div class="select-box">
+                        <select id="category-name" name="category" required="required">
+                            <option value="5" selected="selected">게시판 선택</option>
+                            <option value="1">문제오류</option>
+                            <option value="2">첨부파일오류</option>
+                            <option value="3">서버오류</option>
+                            <option value="4">회원신고</option>
+                        </select>
+                    </div>
 
     
                 </div>
@@ -122,7 +137,7 @@
     
     <script>
     	function cancle(){
-    		location.href="<%=request.getContextPath()%>/comuboardlist.bo";
+    		location.href="<%=request.getContextPath()%>/errorList.bo";
     		
     	}
     

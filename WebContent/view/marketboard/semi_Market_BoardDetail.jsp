@@ -42,13 +42,18 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
 			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
+		<ul class="main-header-navi">
+            <li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
+            <li><a href="#">산업기사</a></li>
+            <li><a href="#">기능사</a></li>
+        </ul>
     </div>
     <div id="main-box1"></div>
     <section id="con1">
@@ -88,9 +93,15 @@
                         <dt>
                             <div>고객센터</div>
                         </dt>
-                        <dd><a href="#">- 자주 묻는 질문</a></dd>
-                        <dd><a href="mailto:bs_khm@naver.com">- 1:1문의</a></dd>
-                        <dd><a href="/semi_menu_qna list.html">- 신고</a></dd>
+                        <dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
                     </dl>
                 </li>
             </ul>

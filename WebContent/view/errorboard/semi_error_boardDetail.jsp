@@ -1,4 +1,4 @@
-<%@page import="com.kh.semi.comubaord.model.vo.ComuBoard"%>
+<%@page import="com.kh.semi.errorbaord.model.vo.ErrorBoard"%>
 <%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.comuboardComment.model.vo.comuboardComment"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
@@ -8,7 +8,7 @@
 
 <%
    Member m = (Member)session.getAttribute("member");
-   ComuBoard b = (ComuBoard)request.getAttribute("board");
+   ErrorBoard b = (ErrorBoard)request.getAttribute("board");
    // 댓글 리스트
    ArrayList<comuboardComment> clist
      = (ArrayList<comuboardComment>)request.getAttribute("clist");
@@ -38,7 +38,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
@@ -47,7 +47,7 @@
 		</ul>
 
 		<ul class="main-header-navi">
-			<li><a href="#">기사</a></li>
+			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
@@ -100,15 +100,15 @@
 					<dt>
 						<div>고객센터</div>
 					</dt>
-					<dd>
-						<a href="#">- 자주 묻는 질문</a>
-					</dd>
-					<dd>
-						<a href="#">- 1:1문의</a>
-					</dd>
-					<dd>
-						<a href="#">- 신고</a>
-					</dd>
+				<dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
 				</dl>
 			</li>
 		</ul>
@@ -119,14 +119,14 @@
 	<div class="sub-right-content">
 		<div class="page-title Nanum2">게시판</div>
 		<div class="left pb5 mr5">
-			<a href="<%= request.getContextPath()%>/comuboardlist.bo"
+			<a href="<%= request.getContextPath()%>/errorList.bo"
 				class="btn3">목록</a>
 
 		</div>
 		<div class="left pb5 mr5">
 			<% if( m != null && m.getUserId().equals(b.getBwriterId())) { %>
 			<a
-				href="<%= request.getContextPath()%>/cbUpView.bo?bno=<%=b.getBno()%>"
+				href="<%= request.getContextPath()%>/erUpView.bo?bno=<%=b.getBno()%>"
 				class="btn3">수정</a>
 			<% } %>
 		</div>
@@ -189,7 +189,7 @@
 		<div class="comment">
 			<div class="replyWriteArea">
 
-				<form action="<%= request.getContextPath()%>/CinsertComment.bo"
+				<form action="<%= request.getContextPath()%>/erinsertComment.bo"
 					method="post">
 					<input type="hidden" name="writer" value="<%=m.getUserId()%>" /> <input
 						type="hidden" name="bno" value="<%=b.getBno() %>" /> <input
@@ -285,7 +285,7 @@
       // 게시글 번호 가져오기
       var bno = '<%=b.getBno()%>';
       
-      location.href="<%= request.getContextPath()%>/updateComment.bo?"
+      location.href="<%= request.getContextPath()%>/erupdateComment.bo?"
              +"cno="+cno+"&bno="+bno+"&content="+content;
    } 
    
@@ -298,7 +298,7 @@
       // 게시글 번호 가져오기
       var bno = '<%=b.getBno()%>';
       
-      location.href="<%= request.getContextPath()%>/comentDelete.co"
+      location.href="<%= request.getContextPath()%>/ercomentDelete.co"
       +"?cno="+cno+"&bno="+bno;
    }
    
@@ -339,7 +339,7 @@
       
       var content = siblingsTR.find('textarea').val();
       
-      location.href='<%= request.getContextPath()%>/CinsertComment.bo'
+      location.href='<%= request.getContextPath()%>/erinsertComment.bo'
                  + '?writer=<%= m.getUserId() %>' 
                  + '&replyContent=' + content
                  + '&bno=' + bno

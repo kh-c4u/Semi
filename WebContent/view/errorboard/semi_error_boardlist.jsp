@@ -42,7 +42,7 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
@@ -51,7 +51,7 @@
 		</ul>
 
 		<ul class="main-header-navi">
-			<li><a href="#">기사</a></li>
+			<li><a href="<%= request.getContextPath()%>/ExamBoardlist.ex">기사</a></li>
 			<li><a href="#">산업기사</a></li>
 			<li><a href="#">기능사</a></li>
 		</ul>
@@ -104,27 +104,45 @@
 					<dt>
 						<div>고객센터</div>
 					</dt>
-					<dd>
-						<a href="#">- 자주 묻는 질문</a>
-					</dd>
-					<dd>
-						<a href="#">- 1:1문의</a>
-					</dd>
-					<dd>
-						<a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
-					</dd>
+				<dd>
+                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
+               </dd>
+               <dd>
+                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+               </dd>
 				</dl>
 			</li>
 		</ul>
 	</div>
 
 	<div class="semi-comu-gisa" style="float: left;">
-		<div id="page-title" class="page-title">산업기사</div>
+		<div id="page-title" class="page-title">신고 게시판</div>
 		<div class="page-guide">
-			<span>해당 게시판은 오류 및 신고 게시판입니다. 다양한 의견을 게시해주세요:)</span>
+			<span>해당 게시판은 오류 및 신고 게시판입니다.</span>
 		</div>
 		<div class="search-box">
-			<div class="input-wrap" style="margin-left: 300px;">검색 : 
+			<div>
+				<select id="searchCondition" name="searchCondition">
+					<option value="5">카테고리 선택</option>
+					<option value="1">문제오류</option>
+					<option value="2">첨부파일오류</option>
+					<option value="3">서버오류</option> 
+					<option value="4">회원신고</option>
+				</select>
+			</div>
+			<div class="search-option">
+				<span class="ch-10"> <input type="radio" name="searchType"
+					searchType="title"  value="title" checked="checked"> 제목
+				</span> <span class="ch-10"> <input type="radio" name="searchType"
+					searchType="content" value="content"> 내용
+				</span> <span class="ch-10"> <input type="radio" name="searchType"
+					searchType="regUserName" value="writer"> 작성자
+				</span>
+			</div>
+			<div class="input-wrap">
 				<input type="text" id="searchWord" name="searchWord"
 					style="width: 150px;">
 			</div>
@@ -136,7 +154,7 @@
 			
 			<script>
 			function search(){
-				location.href="<%= request.getContextPath()%>/SGSsearchBoard1.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
+				location.href="<%= request.getContextPath()%>/ersearchBoard.bo"+ "?con="+$('#searchCondition').val()+"&skw=" + $("input[name=searchType]:checked").val()+"&keyword="+$('#searchWord').val();
 			}
 			</script>
 		</div>
@@ -183,19 +201,19 @@
 		<div class="paging-wrap">
 			<div class="writeBtn">
 				<% if(m != null){ %>
-				<button onclick="location.href='view/comuboard/semi_comu_write_SGS.jsp'"
+				<button onclick="location.href='view/errorboard/semi_error_write.jsp'"
 					id="writeB">글쓰기</button>
 				<% } %>
 
 			</div>
 			<div class="pagination" id="paging-link">
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/SGScomuboardlist.bo?currentPage=1'"><<</button>
+					onclick="location.href='<%= request.getContextPath() %>/errorList.bo?currentPage=1'"><<</button>
 				<%  if(currentPage <= 1){  %>
 				<button disabled>이전</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/SGScomuboardlist.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
+					onclick="location.href='<%= request.getContextPath() %>/errorList.bo?currentPage=<%=currentPage - 1 %>'">이전</button>
 				<%  } %>
 
 				<% for(int p = startPage; p <= endPage; p++){
@@ -204,7 +222,7 @@
 				<button disabled><%= p %></button>
 				<%      }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/SGScomuboardlist.bo?currentPage=<%= p %>'"><%= p %></button>
+					onclick="location.href='<%= request.getContextPath() %>/errorList.bo?currentPage=<%= p %>'"><%= p %></button>
 				<%      } %>
 				<% } %>
 
@@ -212,10 +230,10 @@
 				<button disabled>다음</button>
 				<%  }else{ %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/SGScomuboardlist.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
+					onclick="location.href='<%= request.getContextPath() %>/errorList.bo?currentPage=<%=currentPage + 1 %>'">다음</button>
 				<%  } %>
 				<button
-					onclick="location.href='<%= request.getContextPath() %>/SGScomuboardlist.bo?currentPage=<%= maxPage %>'">>></button>
+					onclick="location.href='<%= request.getContextPath() %>/errorList.bo?currentPage=<%= maxPage %>'">>></button>
 
 			</div>
 		</div>
@@ -225,7 +243,7 @@
 		$(function(){
 			$(".table-gisa td").click(function(){
 				var bno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/SGSCselectOne.bo?bno=" + bno;
+				location.href="<%=request.getContextPath()%>/erselectOne.bo?bno=" + bno;
 			});
 		});
 	</script>
