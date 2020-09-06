@@ -63,7 +63,7 @@ public class QuestionListServlet extends HttpServlet {
 			page = "view/exam/semi_exam_page.jsp";
 			request.setAttribute("list", list);
 //			System.out.println("list : " + list );
-			maxPage = list.size()/4;
+			maxPage = list.size();
 			PageInfo pi = new PageInfo(maxPage,currentPage);
 			
 			

@@ -157,17 +157,18 @@
 			<%-- var currentPage = <%=currentPage%>;
 		    var maxPage = <%=maxPage%>; --%>
 		    <%-- ArrayList<ExamQuestion> b = <%= b%>; --%>
+		    var oldArray0 = list.pop().split(',');
+    		var oldArray1 = list.pop().split(',');
+    		var oldArray2 = list.pop().split(',');
+    		var oldArray3 = list.pop().split(',');
 				function paging(currentPage,maxPage) {
 					/* var next = last+1;
 			        var prev = first-1; */
 					var $pingingView = $("#paging");
 			        
-	        		var oldArray0 = list.pop().split(',');
-	        		var oldArray1 = list.pop().split(',');
-	        		var oldArray2 = list.pop().split(',');
-	        		var oldArray3 = list.pop().split(',');
 	        		
-	        		console.log("oldArray0 : " + oldArray0);
+	        		
+	        		/* console.log("oldArray0 : " + oldArray0); */
 	        		
 			        /* console.log("list[].size() : " + list.length);
 			        console.log("oldArray0.size() : " + oldArray0.length);
@@ -195,24 +196,25 @@
 		            html += "<div class='btnN'><button href=# id='next' type='button'>다음</button></div> ";
 					$("#paging").html(html); // 페이지 목록 생성
 					/* $("#paging div button").css("color", "red"); */
-					
 					 $("#paging div button").click(function(){
-				            
 				            var $item = $(this);
 				            var $id = $item.attr("id");
-				            
 				            if($id == 'next'){
-				            	if(currentPage<maxPage){
+				            	if(currentPage+4<maxPage){
 				            		currentPage+=4;
+				            		oldArray0 = list.pop().split(',');
+					        		oldArray1 = list.pop().split(',');
+					        		oldArray2 = list.pop().split(',');
+					        		oldArray3 = list.pop().split(',');
+				            	}else{
+				            		console.log("오버남");
 				            	}
 				            }
-				            
-				            console.log("currentPage : " + currentPage );
-				            
+				            console.log("currentPage : " + currentPage);
+				            console.log("maxPage : " + maxPage);
 				            paging(currentPage,maxPage);
 				        });
 				}
-
 				$("document").ready(function() {
 					paging(
 							<%=currentPage%>,<%=maxPage%>
@@ -220,9 +222,7 @@
 				});
 			</script>
 		</div>
-
 	</div>
-
 	<div id="main-footer">
 		<div class="main-footer-wrap">
 			<div>
