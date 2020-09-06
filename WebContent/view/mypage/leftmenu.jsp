@@ -25,9 +25,6 @@
 							<a href="<%=request.getContextPath()%>/myscorelist.my">- 나의 점수보기</a>
 						</dd>
 						<dd>
-							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage_download.jsp">- 내가 받은 자료</a>
-						</dd>
-						<dd>
 							<a href="<%=request.getContextPath()%>/view/mypage/semi_mypage-massage_send.jsp">- 쪽지보내기</a>
 						</dd>
 						<!-- <dd>

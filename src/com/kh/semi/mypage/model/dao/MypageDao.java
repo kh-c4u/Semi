@@ -76,7 +76,7 @@ public class MypageDao {
 						+ "WHERE "
 				        + "CTOWRITER = ? "
 						+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ?"
-						+ " ORDER BY CNO ASC";
+						+ " ORDER BY CNO DESC";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -126,21 +126,21 @@ public class MypageDao {
 					+ " AND"
 	                + " CWRITER = ? "
 					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
-					+ " ORDER BY CNO ASC";
+					+ " ORDER BY CNO DESC";
 			break;
 		case "ctitle":
 			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CTITLE LIKE CONCAT(CONCAT('%',?),'%') "
 					+ " AND "
 	                + "CWRITER = ? "
 					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
-					+ " ORDER BY CNO ASC";
+					+ " ORDER BY CNO DESC";
 			break;
 		case "ccontent":
 			sql = "SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b WHERE CCONTENT LIKE CONCAT(CONCAT('%',?),'%') "
 					+ " AND "
 	                + "CWRITER = ? "
 					+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
-					+ " ORDER BY CNO ASC";
+					+ " ORDER BY CNO DESC";
 			break;
 		}
 
@@ -335,7 +335,7 @@ public class MypageDao {
 				+"SELECT '장터' AS \"TYPECONTENT\",'삽니다' AS \"TYPENAME\",A.BNO,A.BTYPE,A.BTITLE,A.BCONTENT,A.BWRITER,A.BCOUNT,A.BOARDFILE,A.BDATE,(SELECT COUNT(*) FROM sale_marketboard_comment WHERE BNO=A.BNO) AS COMMENTNUM FROM SALE_MARKETBOARD A "
 				+"WHERE BWRITER = ?)b "
             +")a WHERE a.rownumber  >= ? AND a.rownumber  <= ? "
-            +"ORDER BY BNO ASC";
+            +"ORDER BY BDATE DESC";
 		int startRow = (currentPage - 1) * limit +1; // 1, 11
 		int endRow = startRow + limit - 1; // 10,20
 		try {
