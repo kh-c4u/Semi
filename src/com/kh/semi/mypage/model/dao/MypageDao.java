@@ -73,7 +73,7 @@ public class MypageDao {
 
 		String sql =	"SELECT * FROM (SELECT ROWNUM AS rownumber, b.* FROM MYPAGE_MESSAGE b "
 						+ "WHERE "
-				        + "CWRITER = ? "
+				        + "CTOWRITER = ? "
 						+ ") a WHERE a.rownumber  >= ? AND a.rownumber  <= ?"
 						+ " ORDER BY CNO ASC";
 		
