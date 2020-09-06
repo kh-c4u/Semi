@@ -1,42 +1,55 @@
 <%@page import="com.kh.examQuestion.model.vo.ExamQuestion"%>
-<%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
+<%@page import="com.kh.eaxmAnswer.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 
 <%
-	ArrayList b = (ArrayList)request.getAttribute("list");
-	Member m = (Member)session.getAttribute("member");
+	/* ExamQuestion eb = (ExamQuestion)request.getAttribute("eb"); */
+	ArrayList<ExamQuestion> b = (ArrayList<ExamQuestion>) request.getAttribute("list");
+	Member m = (Member) session.getAttribute("member");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	int currentPage = (int)request.getAttribute("currentPage");
+	int maxPage = (int)request.getAttribute("maxPage");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
-<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_exam_page.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/semi_menu_frame.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/semi_exam_page.css">
 
 <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>C4U 너만의 기사</title>
 </head>
 <body>
 	<div id="main-header">
 		<div class="main-header-logo">
-			<a href="<%= request.getContextPath()%>/semi_main.jsp"><img
-				src="<%= request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
+			<a href="<%=request.getContextPath()%>/semi_main.jsp"><img
+				src="<%=request.getContextPath()%>/resources/images/semiLogosize.png" /></a>
 		</div>
 		<ul id='BeforeLogin' class="main-header-login">
-			<%if(m == null) {%>
+			<%
+				if (m == null) {
+			%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
 			<li><span>|</span><a href="/#">고객센터</a></li>
-			<%}else{ %>
+			<%
+				} else {
+			%>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
-			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
-			<%} %>
+			<li><span>|</span><a
+				href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
+			<%
+				}
+			%>
 		</ul>
 
 		<ul class="main-header-navi">
@@ -68,10 +81,12 @@
 						<a href="<%=request.getContextPath()%>/comuboardlist.bo">- 기사</a>
 					</dd>
 					<dd>
-						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">- 산업기사</a>
+						<a href="<%=request.getContextPath()%>/SGScomuboardlist.bo">-
+							산업기사</a>
 					</dd>
 					<dd>
-						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">- 기능사</a>
+						<a href="<%=request.getContextPath()%>/GScomuboardlist.bo">-
+							기능사</a>
 					</dd>
 				</dl>
 			</li>
@@ -81,8 +96,13 @@
 					<dt>
 						<div>장터</div>
 					</dt>
-				<dd><a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a></dd>
-              	<dd><a href="<%=request.getContextPath()%>/marketselectList.bo">- 팝니다</a></dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/buymarketList.bo">- 삽니다</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/marketselectList.bo">-
+							팝니다</a>
+					</dd>
 				</dl>
 			</li>
 			<div class="menu-line"></div>
@@ -105,21 +125,86 @@
 		</ul>
 	</div>
 
-    <div class="right-menu">
-        <div id="eaxm">
-            <textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%-- <%=b.getQc()%> --%></textarea>
-        </div>
-        <div id="answer">
+	<div class="right-menu">
+		<div id="eaxm">
+			<textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%-- <%=b.getQc()%> --%></textarea>
+		</div>
+		<div id="answer">
+			<!-- 
+			<input style="width: 13px; height: 17px; position: absolute;"
+				type="radio" name="answer1" value="1">
+			<textarea disabled id="answer" name="answer">①IPSec  </textarea>
+			<br> <input
+				style="width: 13px; height: 17px; position: absolute;" type="radio"
+				name="answer1" value="2">
+			<textarea disabled id="answer" name="answer">②SMTP</textarea>
+			<br> <input
+				style="width: 13px; height: 17px; position: absolute;" type="radio"
+				name="answer1" value="3">
+			<textarea disabled id="answer" name="answer">③SSL</textarea>
+			<br> <input
+				style="width: 13px; height: 17px; position: absolute;" type="radio"
+				name="answer1" value="4">
+			<textarea disabled id="answer" name="answer">④S-HTTP</textarea> -->
+			<div id="paging"></div>
+			<script type="text/javascript">
+			var currentPage = <%=currentPage%>;
+		    var maxPage = <%=maxPage%>;
+		    <%-- ArrayList<ExamQuestion> b = <%= b%>; --%>
+		   
+				function paging(currentPage,maxPage) {
+					/* var next = last+1;
+			        var prev = first-1; */
+					var $pingingView = $("#paging");
 
-           <input style="width: 13px; height: 17px; position: absolute;" type="radio" name="answer1" value="1"><textarea disabled id="answer" name="answer">①IPSec  </textarea><br>
-           <input style="width: 13px; height: 17px; position:absolute;" type="radio" name="answer1" value="2"><textarea disabled id="answer" name="answer">②SMTP</textarea><br>
-           <input style="width: 13px; height: 17px; position:absolute;" type="radio" name="answer1" value="3"><textarea disabled id="answer" name="answer">③SSL</textarea><br>
-           <input style="width: 13px; height: 17px; position:absolute;" type="radio" name="answer1" value="4"><textarea disabled id="answer" name="answer">④S-HTTP</textarea>
-        
-        </div>
-        <div class="btnN"><button id="next" type="button">다음</button></div>
-        
-    </div>
+					var html = "";
+					html += "<a href=# id='next'>다음</a> ";
+					html += "<a href=# id='prev'>이전</a> ";
+					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\"><%=b.get(currentPage).getQc()%>hrllow</textarea></div>";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 0).getQc()%> </textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 1).getAc()%> </textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 2).getAc()%> </textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 3).getAc()%> </textarea><br> ";
+					
+					$("#paging").html(html); // 페이지 목록 생성
+					$("#paging a").css("color", "black");
+					
+					 $("#paging a").click(function(){
+				            
+				            var $item = $(this);
+				            var $id = $item.attr("id");
+				            
+				            if($id == "next"){
+				            	if(currentPage<maxPage){
+				            		currentPage++;
+				            		request.setAttribute("currentPage", currentPage);
+				        			
+				            	}
+				            }
+				            if($id == "prev"){
+				            	if(currentPage>0){
+				            		currentPage--;
+				            		
+				            	}
+				            }
+				            console.log("currentPage : " + currentPage );
+				            
+				            paging(currentPage,maxPage);
+				        });
+				}
+
+				$("document").ready(function() {
+					paging(
+							currentPage,maxPage
+				);
+				});
+			</script>
+		</div>
+		<div class="btnN">
+			<button id="next" type="button">다음</button>
+		</div>
+
+	</div>
 
 	<div id="main-footer">
 		<div class="main-footer-wrap">

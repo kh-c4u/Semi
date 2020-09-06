@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.eaxmAnswer.model.vo.PageInfo;
 import com.kh.examQuestion.model.service.ExamQuestionService;
 import com.kh.examQuestion.model.vo.ExamQuestion;
-import com.kh.semi.examboard.model.service.ExamBoardService;
-import com.kh.semi.examboard.model.vo.ExamBoard;
 import com.kh.semi.member.vo.Member;
+
+import javafx.scene.control.Alert;
 
 /**
  * Servlet implementation class QuestionListServlet
@@ -42,13 +43,13 @@ public class QuestionListServlet extends HttpServlet {
 //		ExamQuestion eb = null;
 		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
 
-		System.out.println("서블릿 tc:" + tc);
 
 //		int qn = Integer.parseInt(request.getParameter("qn"));
 //		System.out.println("서블렛qn :" + qn);
 
 		ExamQuestion eb = null;
-
+		int maxPage; //마지막페이지
+		int currentPage = 0; //현제 패이지
 		ExamQuestionService ebs = new ExamQuestionService();
 
 		list = ebs.examQeustion(tc);
@@ -61,7 +62,12 @@ public class QuestionListServlet extends HttpServlet {
 			page = "view/exam/semi_exam_page.jsp";
 			request.setAttribute("list", list);
 			System.out.println("list : " + list );
-			request.getRequestDispatcher(page).forward(request, response);
+			maxPage = list.size()/4;
+			PageInfo pi = new PageInfo(maxPage,currentPage);
+			
+			
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("maxPage", maxPage);
 		}else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
@@ -82,6 +88,7 @@ public class QuestionListServlet extends HttpServlet {
 
 			out.println("</script>");
 		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
