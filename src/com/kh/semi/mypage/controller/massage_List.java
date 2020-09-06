@@ -92,7 +92,6 @@ public class massage_List extends HttpServlet {
 		
 		list = ms.selectList(currentPage,limit,cwriter);
 		String page = "";
-		
 		if(list != null) {
 			page = "view/mypage/semi_mypage-massage_list.jsp";
 			request.setAttribute("list", list);
