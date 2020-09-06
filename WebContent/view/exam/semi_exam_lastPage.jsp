@@ -29,13 +29,14 @@
 			<%if(m == null) {%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="/#">고객센터</a></li>
+			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%}else{ %>
 			<li><a><%=m.getUserName()%>님</a></li>
 			<li><span>|</span><a href="logOut.do">로그아웃</a></li>
 			<li><span>|</span><a href="view/mypage/semi_changepersonalinfo.jsp">마이페이지</a></li>
 			<%} %>
 		</ul>
+
 
 		<ul class="main-header-navi">
 			<li><a href="#">기사</a></li>
