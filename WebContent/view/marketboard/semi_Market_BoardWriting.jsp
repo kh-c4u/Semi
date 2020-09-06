@@ -115,7 +115,7 @@
 					<label>제목 :</label>
 					<input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
 					<div class="select-box">
-                        <select id="category-value" name="category" required="required">
+                        <select id="category-value" name="sale_status" required="required">
                             <option value selected="selected">판매 현황</option>
                             <option value="1">판매중</option>
                             <option value="2">판매완료</option>
