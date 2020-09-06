@@ -111,7 +111,7 @@
 
 				
 
-						<a href="#">- 1:1문의</a>
+						<a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
 
 					</dd>
 					<dd>
