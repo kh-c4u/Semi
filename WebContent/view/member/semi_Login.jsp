@@ -103,10 +103,10 @@
 					type="password" placeholder="password" name="password" />
 				<button type="submit">login</button>
 				<p class="message">
-					Not registered? <a href="#">Create an account</a>
+					Not registered? <a href="<%=request.getContextPath()%>/view/member/semi_SignupForm.jsp">Create an account</a>
 				</p>
 				<p class="message">
-					Are you Forget? <a href="#">Find ID/PWD</a>
+					Are you Forget? <a href="<%=request.getContextPath()%>/view/member/semi_Find_all.jsp">Find ID/PWD</a>
 				</p>
 			</form>
 		</div>

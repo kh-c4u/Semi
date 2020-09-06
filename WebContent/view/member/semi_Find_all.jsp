@@ -96,7 +96,8 @@
 		</ul>
 	</div>
 	
-		<div class="find-information">
+		
+    <div class="find-information">
         <h3 style="font-size: 30px; margin: 0 20px 0 0; z-index: 3;">ID/PWD 찾기</h3>
     <div class="form-id-pwd">  
        <form id="find-id">
@@ -105,7 +106,7 @@
                <li><label>이름 : </label><input type="text" name="name" maxlength="4" required></li>
                <li><label>E-mail : </label><input type="email" name="email" maxlength="30" required></li>
             </ul>
-            <button type="button">찾기</button>
+            <input type="submit" class=button1 value="찾기"></input>
         </form>
         
         <form id="find-pwd">
@@ -114,12 +115,12 @@
                 <li><label>아이디 : </label><input type="text" name="id" maxlength="15" required></li>
                 <li><label>E-mail : </label><input type="email" name="email" maxlength="30" required></li>
             </ul>
-            <button type="button" >찾기</button>
+            <input type="submit" class=button1 value="찾기"></input>
 
         </form>
     </div>
    
-	</div>
+</div>
    
 
 	
