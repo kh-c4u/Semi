@@ -8,10 +8,18 @@
 <%
 	/* ExamQuestion eb = (ExamQuestion)request.getAttribute("eb"); */
 	ArrayList<ExamQuestion> b = (ArrayList<ExamQuestion>) request.getAttribute("list");
+
+	out.println("<script>");
+	out.println("var list = [];");
+	for (ExamQuestion list : b) {out.println("list.push(\"" + list.toString() + "\");");}
+	System.out.println("b.size() : " + b.size());
+	
+	/* out.println("\n console.log('list : '+list.pop(0));"); */
+	out.println("</script>");
 	Member m = (Member) session.getAttribute("member");
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
-	int currentPage = (int)request.getAttribute("currentPage");
-	int maxPage = (int)request.getAttribute("maxPage");
+	int currentPage = (int) request.getAttribute("currentPage");
+	int maxPage = (int) request.getAttribute("maxPage");
 %>
 <!DOCTYPE html>
 <html>
@@ -151,21 +159,32 @@
 			var currentPage = <%=currentPage%>;
 		    var maxPage = <%=maxPage%>;
 		    <%-- ArrayList<ExamQuestion> b = <%= b%>; --%>
-		   
 				function paging(currentPage,maxPage) {
 					/* var next = last+1;
 			        var prev = first-1; */
 					var $pingingView = $("#paging");
-
+			        
+			        list.reverse();
+			        
+	        		var oldArray = list.pop(currentPage).split(',');
+			        for(var i in list){
+			        	console.log("list["+i+"] : " + list[i]);
+			        }
+			        /* console.log("oldArray : " + oldArray); */
+			        console.log("tc"+i+" : " + oldArray[0]);
+			        console.log("qn"+i+" : " + oldArray[1]);
+			        console.log("qc"+i+" : " + oldArray[2]);
+			        console.log("ac"+i+" : " + oldArray[4]);
+			        console.log("po"+i+" : " + oldArray[5]);
+			        
 					var html = "";
-					html += "<a href=# id='next'>다음</a> ";
-					html += "<a href=# id='prev'>이전</a> ";
-					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\"><%=b.get(currentPage).getQc()%>hrllow</textarea></div>";
+					
+					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\">"+ oldArray[2] +" </textarea></div>";
 		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 0).getQc()%> </textarea><br> ";
 		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 1).getAc()%> </textarea><br> ";
 		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 2).getAc()%> </textarea><br> ";
 		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 3).getAc()%> </textarea><br> ";
-					
+		            html += "<div class='btnN'><button href=# id='next' type='button'>다음</button></div> ";
 					$("#paging").html(html); // 페이지 목록 생성
 					$("#paging a").css("color", "black");
 					
@@ -178,15 +197,9 @@
 				            	if(currentPage<maxPage){
 				            		currentPage++;
 				            		request.setAttribute("currentPage", currentPage);
-				        			
 				            	}
 				            }
-				            if($id == "prev"){
-				            	if(currentPage>0){
-				            		currentPage--;
-				            		
-				            	}
-				            }
+				            
 				            console.log("currentPage : " + currentPage );
 				            
 				            paging(currentPage,maxPage);
@@ -199,9 +212,6 @@
 				);
 				});
 			</script>
-		</div>
-		<div class="btnN">
-			<button id="next" type="button">다음</button>
 		</div>
 
 	</div>

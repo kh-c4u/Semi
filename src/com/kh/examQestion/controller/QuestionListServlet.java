@@ -30,7 +30,8 @@ public class QuestionListServlet extends HttpServlet {
 	 */
 	public QuestionListServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub 
+		
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class QuestionListServlet extends HttpServlet {
 //		System.out.println("qn : " + qn);
 //		ExamQuestion eb = null;
 		ArrayList<ExamQuestion> list = new ArrayList<ExamQuestion>();
-
+		
 
 //		int qn = Integer.parseInt(request.getParameter("qn"));
 //		System.out.println("서블렛qn :" + qn);
@@ -61,7 +62,7 @@ public class QuestionListServlet extends HttpServlet {
 		if(list != null && user != null) {
 			page = "view/exam/semi_exam_page.jsp";
 			request.setAttribute("list", list);
-			System.out.println("list : " + list );
+//			System.out.println("list : " + list );
 			maxPage = list.size()/4;
 			PageInfo pi = new PageInfo(maxPage,currentPage);
 			
