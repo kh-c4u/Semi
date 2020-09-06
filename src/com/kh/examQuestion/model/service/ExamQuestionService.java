@@ -1,7 +1,7 @@
 package com.kh.examQuestion.model.service;
 
-import static com.kh.semi.common.JDBCTemplate.close;
-import static com.kh.semi.common.JDBCTemplate.getConnection;
+import static com.kh.semi.common.JDBCTemplate.*;
+
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -25,4 +25,30 @@ public class ExamQuestionService {
 			close(con);
 			return list;
 		}
+
+	public int calculScore(int qn, int an, String tc) {
+		Connection con = getConnection();
+		int score = 0;
+		
+		score = bDao.calculScore(con,qn,an,tc);
+		
+		close(con);
+		
+		return score;
+	}
+
+	public int scoreStore(String tc, int score,String id) {
+		int result = 0;
+		Connection con = getConnection();
+		
+		result = bDao.scoreStore(con,tc,score,id);
+		
+		if(result>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		return result;
+	}
 	}

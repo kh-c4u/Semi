@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.kh.semi.member.vo.Member;
+import com.kh.semi.mypage.model.vo.MyScore;
 import com.kh.semi.mypage.model.vo.commentCheck;
 import com.kh.semi.mypage.model.vo.massage;
 public class MypageDao {
@@ -418,5 +419,37 @@ public class MypageDao {
 				}
 
 				return listCount;
+	}
+
+	public ArrayList<MyScore> myscoreList(Connection con, String id) {
+		ArrayList<MyScore> sco = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "SELECT * FROM USR_SCORE JOIN TEST_INFO USING(TC) WHERE USR_ID=? ORDER BY TC,SOLVEDATE";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rset = pstmt.executeQuery();
+			sco = new ArrayList<MyScore>();
+			while(rset.next()) {
+				MyScore ms = new MyScore();
+				ms.setId(rset.getString("USR_ID"));
+				ms.setTc(rset.getString("TC"));
+				ms.setScore(rset.getInt("SCORE"));
+				ms.setTc_name(rset.getString("TN"));
+				
+				sco.add(ms);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return sco;
 	}
 }

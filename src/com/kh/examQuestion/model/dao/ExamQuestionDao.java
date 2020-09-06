@@ -66,4 +66,58 @@ public class ExamQuestionDao {
 		return list;
 
 	}
+
+	public int calculScore(Connection con, int qn, int an, String tc) {
+		int score = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = "SELECT PO FROM TEST_ANSWER WHERE TC=? AND QN=? AND AN=?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, tc);
+			pstmt.setInt(2, qn+1);
+			pstmt.setInt(3, an);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				score = rset.getInt("PO");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return score;
+	}
+
+	public int scoreStore(Connection con, String tc, int score, String id) {
+		int result = 0 ;
+		
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO USR_SCORE VALUES(?,?,?,SYSDATE)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, tc);
+			pstmt.setInt(3, score);
+			result = pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		
+		
+		return result;
+	}
 }

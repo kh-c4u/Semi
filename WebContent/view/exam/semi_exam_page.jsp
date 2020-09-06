@@ -144,24 +144,9 @@
 		var anCountArray = new Array();
 				function paging(currentPage,maxPage,anCountArray) {
 					var $pingingView = $("#paging");
-	        		
-	        		/* console.log("oldArray0 : " + oldArray0); */
-	        		
-			        /* console.log("list[].size() : " + list.length);
-			        console.log("oldArray0.size() : " + oldArray0.length);
-			         console.log("oldArray0 : " + oldArray0); 
-			        console.log("tc[0] : " + oldArray0[0]);
-			        console.log("qn[1] : " + oldArray0[1]);
-			        console.log("qc[2] : " + oldArray0[2]);
-			        console.log("an[3] : " + oldArray0[3]);
-			        console.log("ac[4] : " + oldArray0[4]);
-			        
-			        console.log("ac0[4] : " + oldArray0[4]);
-			        console.log("ac1[4] : " + oldArray1[4]);
-			        console.log("ac2[4] : " + oldArray2[4]);
-			        console.log("ac3[4] : " + oldArray3[4]); */
+	      			var tc = oldArray0[0];
 			        // tc qn qc ac
-			        
+			        console.log('tc : ' + tc);
 					var html = "";
 					
 					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\">"+ oldArray0[2] +" </textarea></div><div id=\"answer\">";
@@ -188,7 +173,44 @@
 					        		oldArray2 = list.pop().split(',');
 					        		oldArray3 = list.pop().split(',');
 				            	}else{
-				            		console.log("오버남");
+				            		anCountArray.push(inputValue);
+				            		console.log(anCountArray);
+				            		var form = document.createElement('form');
+
+				            		form.setAttribute('method', 'post');
+
+				            		form.setAttribute('action', '<%=request.getContextPath()%>/view/exam/semi_exam_lastPage.jsp');
+
+				            		document.charset = "utf-8";
+
+
+
+				            			var hiddenField = document.createElement('input');
+
+				            			hiddenField.setAttribute('type', 'hidden');
+
+				            			hiddenField.setAttribute('name', 'anCountArray');
+
+				            			hiddenField.setAttribute('value', anCountArray);
+
+				            			form.appendChild(hiddenField);
+
+				            			var hiddenField2 = document.createElement('input');
+
+				            			hiddenField2.setAttribute('type', 'hidden');
+
+				            			hiddenField2.setAttribute('name', 'tc');
+
+				            			hiddenField2.setAttribute('value', tc);
+
+				            			form.appendChild(hiddenField2);
+				            			
+				            			
+				            		document.body.appendChild(form);
+
+				            		form.submit(); 
+				            		
+				  
 				            	}
 				            }
 				            /* console.log("currentPage : " + currentPage);
@@ -198,7 +220,8 @@
 				}
 				$("document").ready(function() {
 					paging(
-							<%=currentPage%>,<%=maxPage%>,anCountArray);
+							<%=currentPage%>,<%=maxPage%>
+			, anCountArray);
 			});
 		</script>
 	</div>

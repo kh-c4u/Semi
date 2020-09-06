@@ -1,3 +1,5 @@
+<%@page import="com.kh.semi.mypage.model.vo.MyScore"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,8 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="../../resources/css/semi_mypage.css">
-<link rel="stylesheet" href="../../resources/css/semi_mypage_myscore.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_mypage.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/semi_mypage_myscore.css">
+<%
+	ArrayList<MyScore> scorelist = (ArrayList<MyScore>)request.getAttribute("scoreList");
+%>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -28,22 +34,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>기능사(2020-07-17)</td>
-					<td>95</td>
-
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>정보처리기사(2020-08-20)</td>
-					<td>80</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>기능사(2020-09-17)</td>
-					<td>100</td>
-				</tr>
+				<%int i = 1;
+				for(MyScore ms : scorelist){
+				%>
+					<tr>
+					<th scope="row"><%=i%></th>
+					<td><%=ms.getTc_name() %></td>
+					<td><%=ms.getScore() %></td>
+					</tr>
+				<% 
+				i++;}
+				%>
+				
+				
+				
 			</tbody>
 		</table>
 

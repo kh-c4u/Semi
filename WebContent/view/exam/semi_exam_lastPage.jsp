@@ -5,6 +5,10 @@
 
 <%
 	Member m = (Member)session.getAttribute("member");
+	String array =  request.getParameter("anCountArray");
+	String[] answerString = array.split(",");
+	String tc = request.getParameter("tc");
+	System.out.println("tc : " + tc);
 %>
 
 <!DOCTYPE html>
@@ -12,8 +16,8 @@
 <head>
 <meta charset="UTF-8">
 <title>C4U 너만의 기사</title>
-<link rel="stylesheet" href="./css/semi_menu_frame.css">
-<link rel="stylesheet" href="./css/semi_exam_lastpage.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_menu_frame.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/semi_exam_lastpage.css">
 
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -47,8 +51,7 @@
 	</div>
 
 	<div id="main-box1"></div>
-
-
+	
 	<div class="left-menu">
 		<ul id="left-menu-share" class="left-menu1">
 
@@ -109,25 +112,26 @@
     <div class="right-menu Nanum2">
         <div id="Question">
            모든 문제를 다 풀었습니다.<br>
-           내 점수를 확인하려면 하단의 버튼 또는<br>
-           마이페이지의 "내 점수 보기" 를 이용하세요 !
+           내 점수를 확인하려면 하단의 버튼을 눌러주세요 <br>
+           
+	<%int i = 1 ;
+	for(String a : answerString){
+	%>
+		<p><%=i%> : <%=a %></p>	
+	
+	<% i++;}%>
 
         </div>
         
         <div class="btnN">
-        <button class="next" id="Mypage" type="button" onclick="gotoMP();">점수 확인하기</button>
-        
+        <form action="<%= request.getContextPath() %>/myscore.ex" method="post">
+        <input type="hidden" name="answerString" value="<%=array%>" >
+        <input type="hidden" name="tc" value="<%=tc%>">
+        <button class="next" id="Mypage" type="submit">점수 확인하기</button>
+        </form>
         </div>
         
-        <script>
-    	function gotoMP(){
-    		location.href="<%=request.getContextPath()%>/resources/mypage/semi_mypage_myscore.jsp";
-    		
-    	}
-    
-    
-    
-    </script>
+      
    
         
     </div>

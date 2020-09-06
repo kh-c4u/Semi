@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.kh.semi.member.dao.MemberDao;
 import com.kh.semi.member.vo.Member;
 import com.kh.semi.mypage.model.dao.MypageDao;
+import com.kh.semi.mypage.model.vo.MyScore;
 import com.kh.semi.mypage.model.vo.commentCheck;
 import com.kh.semi.mypage.model.vo.massage;
 
@@ -150,6 +151,16 @@ public class MypageService {
 
 		close(con);
 		return listCount;
+	}
+
+	public ArrayList<MyScore> myscoreList(String id) {
+		ArrayList<MyScore> sco = null;
+		Connection con = getConnection();
+		
+		sco = pDao.myscoreList(con,id);
+		
+		close(con);
+		return sco;
 	}
 }
 
