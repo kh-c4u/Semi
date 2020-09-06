@@ -83,7 +83,7 @@ public class ExamQuestion implements Serializable{
 
 	@Override
 	public String toString() {
-		return "tc=" + tc + ", qn=" + qn + ", qc=" + qc + ", an=" + an + ", ac=" + ac + ", po=" + po;
+		return tc + "," + qn + "," + qc + "," + an + "," + ac + "," + po;
 	}
 
 	

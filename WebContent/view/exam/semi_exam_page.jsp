@@ -4,11 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Collections"%>
 
 <%
 	/* ExamQuestion eb = (ExamQuestion)request.getAttribute("eb"); */
 	ArrayList<ExamQuestion> b = (ArrayList<ExamQuestion>) request.getAttribute("list");
-
+	Collections.reverse(b);
 	out.println("<script>");
 	out.println("var list = [];");
 	for (ExamQuestion list : b) {out.println("list.push(\"" + list.toString() + "\");");}
@@ -134,10 +135,7 @@
 	</div>
 
 	<div class="right-menu">
-		<div id="eaxm">
-			<textarea id="eaxm" name="eaxm" disabled class="Nanum2"><%-- <%=b.getQc()%> --%></textarea>
-		</div>
-		<div id="answer">
+		
 			<!-- 
 			<input style="width: 13px; height: 17px; position: absolute;"
 				type="radio" name="answer1" value="1">
@@ -156,47 +154,56 @@
 			<textarea disabled id="answer" name="answer">④S-HTTP</textarea> -->
 			<div id="paging"></div>
 			<script type="text/javascript">
-			var currentPage = <%=currentPage%>;
-		    var maxPage = <%=maxPage%>;
+			<%-- var currentPage = <%=currentPage%>;
+		    var maxPage = <%=maxPage%>; --%>
 		    <%-- ArrayList<ExamQuestion> b = <%= b%>; --%>
 				function paging(currentPage,maxPage) {
 					/* var next = last+1;
 			        var prev = first-1; */
 					var $pingingView = $("#paging");
 			        
-			        list.reverse();
+	        		var oldArray0 = list.pop().split(',');
+	        		var oldArray1 = list.pop().split(',');
+	        		var oldArray2 = list.pop().split(',');
+	        		var oldArray3 = list.pop().split(',');
+	        		
+	        		console.log("oldArray0 : " + oldArray0);
+	        		
+			        /* console.log("list[].size() : " + list.length);
+			        console.log("oldArray0.size() : " + oldArray0.length);
+			         console.log("oldArray0 : " + oldArray0); 
+			        console.log("tc[0] : " + oldArray0[0]);
+			        console.log("qn[1] : " + oldArray0[1]);
+			        console.log("qc[2] : " + oldArray0[2]);
+			        console.log("an[3] : " + oldArray0[3]);
+			        console.log("ac[4] : " + oldArray0[4]);
+			        console.log("po[5] : " + oldArray0[5]);
 			        
-	        		var oldArray = list.pop(currentPage).split(',');
-			        for(var i in list){
-			        	console.log("list["+i+"] : " + list[i]);
-			        }
-			        /* console.log("oldArray : " + oldArray); */
-			        console.log("tc"+i+" : " + oldArray[0]);
-			        console.log("qn"+i+" : " + oldArray[1]);
-			        console.log("qc"+i+" : " + oldArray[2]);
-			        console.log("ac"+i+" : " + oldArray[4]);
-			        console.log("po"+i+" : " + oldArray[5]);
+			        console.log("ac0[4] : " + oldArray0[4]);
+			        console.log("ac1[4] : " + oldArray1[4]);
+			        console.log("ac2[4] : " + oldArray2[4]);
+			        console.log("ac3[4] : " + oldArray3[4]); */
+			        // tc qn qc ac po
 			        
 					var html = "";
 					
-					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\">"+ oldArray[2] +" </textarea></div>";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 0).getQc()%> </textarea><br> ";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 1).getAc()%> </textarea><br> ";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 2).getAc()%> </textarea><br> ";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\"><%=b.get(currentPage + 3).getAc()%> </textarea><br> ";
+					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\">"+ oldArray0[2] +" </textarea></div><div id=\"answer\">";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+ oldArray0[4] +"</textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray1[4]+"</textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray2[4]+" </textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray3[4]+" </textarea>";
 		            html += "<div class='btnN'><button href=# id='next' type='button'>다음</button></div> ";
 					$("#paging").html(html); // 페이지 목록 생성
-					$("#paging a").css("color", "black");
+					/* $("#paging div button").css("color", "red"); */
 					
-					 $("#paging a").click(function(){
+					 $("#paging div button").click(function(){
 				            
 				            var $item = $(this);
 				            var $id = $item.attr("id");
 				            
-				            if($id == "next"){
+				            if($id == 'next'){
 				            	if(currentPage<maxPage){
-				            		currentPage++;
-				            		request.setAttribute("currentPage", currentPage);
+				            		currentPage+=4;
 				            	}
 				            }
 				            
@@ -208,7 +215,7 @@
 
 				$("document").ready(function() {
 					paging(
-							currentPage,maxPage
+							<%=currentPage%>,<%=maxPage%>
 				);
 				});
 			</script>
