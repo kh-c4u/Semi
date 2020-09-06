@@ -7,7 +7,6 @@
 <%@page import="java.util.Collections"%>
 
 <%
-	/* ExamQuestion eb = (ExamQuestion)request.getAttribute("eb"); */
 	ArrayList<ExamQuestion> b = (ArrayList<ExamQuestion>) request.getAttribute("list");
 	Collections.reverse(b);
 	out.println("<script>");
@@ -15,7 +14,6 @@
 	for (ExamQuestion list : b) {out.println("list.push(\"" + list.toString() + "\");");}
 	System.out.println("b.size() : " + b.size());
 	
-	/* out.println("\n console.log('list : '+list.pop(0));"); */
 	out.println("</script>");
 	Member m = (Member) session.getAttribute("member");
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
@@ -48,7 +46,8 @@
 			%>
 			<li><a href="view/member/semi_Login.jsp">로그인</a></li>
 			<li><span>|</span><a href="view/member/semi_SignupForm.jsp">회원가입</a></li>
-			<li><span>|</span><a href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
+			<li><span>|</span><a
+				href="<%= request.getContextPath()%>/fList.fa">고객센터</a></li>
 			<%
 				} else {
 			%>
@@ -121,52 +120,30 @@
 						<div>고객센터</div>
 					</dt>
 					<dd>
-                  <a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
-               </dd>
-               <dd>
-                  <a href="<%=request.getContextPath()%>/QnaBoardServlet.do">- 1:1문의</a>
-               </dd>
-               <dd>
-                  <a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
-               </dd>
+						<a href="<%= request.getContextPath()%>/fList.fa">- 자주 묻는 질문</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/QnaBoardServlet.do">-
+							1:1문의</a>
+					</dd>
+					<dd>
+						<a href="<%=request.getContextPath()%>/errorList.bo">- 신고</a>
+					</dd>
 				</dl>
 			</li>
 		</ul>
 	</div>
 
 	<div class="right-menu">
-		
-			<!-- 
-			<input style="width: 13px; height: 17px; position: absolute;"
-				type="radio" name="answer1" value="1">
-			<textarea disabled id="answer" name="answer">①IPSec  </textarea>
-			<br> <input
-				style="width: 13px; height: 17px; position: absolute;" type="radio"
-				name="answer1" value="2">
-			<textarea disabled id="answer" name="answer">②SMTP</textarea>
-			<br> <input
-				style="width: 13px; height: 17px; position: absolute;" type="radio"
-				name="answer1" value="3">
-			<textarea disabled id="answer" name="answer">③SSL</textarea>
-			<br> <input
-				style="width: 13px; height: 17px; position: absolute;" type="radio"
-				name="answer1" value="4">
-			<textarea disabled id="answer" name="answer">④S-HTTP</textarea> -->
-			<div id="paging"></div>
-			<script type="text/javascript">
-			<%-- var currentPage = <%=currentPage%>;
-		    var maxPage = <%=maxPage%>; --%>
-		    <%-- ArrayList<ExamQuestion> b = <%= b%>; --%>
-		    var oldArray0 = list.pop().split(',');
-    		var oldArray1 = list.pop().split(',');
-    		var oldArray2 = list.pop().split(',');
-    		var oldArray3 = list.pop().split(',');
-				function paging(currentPage,maxPage) {
-					/* var next = last+1;
-			        var prev = first-1; */
+		<div id="paging"></div>
+		<script type="text/javascript">
+		var oldArray0 = list.pop().split(',');
+		var oldArray1 = list.pop().split(',');
+		var oldArray2 = list.pop().split(',');
+		var oldArray3 = list.pop().split(',');
+		var anCountArray = new Array();
+				function paging(currentPage,maxPage,anCountArray) {
 					var $pingingView = $("#paging");
-			        
-	        		
 	        		
 	        		/* console.log("oldArray0 : " + oldArray0); */
 	        		
@@ -178,30 +155,34 @@
 			        console.log("qc[2] : " + oldArray0[2]);
 			        console.log("an[3] : " + oldArray0[3]);
 			        console.log("ac[4] : " + oldArray0[4]);
-			        console.log("po[5] : " + oldArray0[5]);
 			        
 			        console.log("ac0[4] : " + oldArray0[4]);
 			        console.log("ac1[4] : " + oldArray1[4]);
 			        console.log("ac2[4] : " + oldArray2[4]);
 			        console.log("ac3[4] : " + oldArray3[4]); */
-			        // tc qn qc ac po
+			        // tc qn qc ac
 			        
 					var html = "";
 					
 					html += "<div id=\"eaxm\"> <textarea id=\"eaxm\" name=\"eaxm\" disabled class=\"Nanum2\">"+ oldArray0[2] +" </textarea></div><div id=\"answer\">";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+ oldArray0[4] +"</textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"1\"><textarea disabled id=\"answer\" name=\"answer\">"+ oldArray0[4] +"</textarea><br> ";
 		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray1[4]+"</textarea><br> ";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray2[4]+" </textarea><br> ";
-		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"2\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray3[4]+" </textarea>";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"3\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray2[4]+" </textarea><br> ";
+		            html += "<input style=\"width: 13px; height: 17px; position: absolute;\" type=\"radio\"name=\"answer1\" value=\"4\"><textarea disabled id=\"answer\" name=\"answer\">"+oldArray3[4]+" </textarea>";
 		            html += "<div class='btnN'><button href=# id='next' type='button'>다음</button></div> ";
 					$("#paging").html(html); // 페이지 목록 생성
 					/* $("#paging div button").css("color", "red"); */
 					 $("#paging div button").click(function(){
 				            var $item = $(this);
 				            var $id = $item.attr("id");
-				            if($id == 'next'){
+				            var inputValue = $("input[name='answer1']:checked").val();
+				            if(typeof inputValue == 'undefined'){
+				            	alert("잘못입력하셨습니다.");
+				            }else if($id == 'next'){
 				            	if(currentPage+4<maxPage){
 				            		currentPage+=4;
+				            		anCountArray.push(inputValue);
+				            		console.log(anCountArray);
 				            		oldArray0 = list.pop().split(',');
 					        		oldArray1 = list.pop().split(',');
 					        		oldArray2 = list.pop().split(',');
@@ -210,18 +191,17 @@
 				            		console.log("오버남");
 				            	}
 				            }
-				            console.log("currentPage : " + currentPage);
-				            console.log("maxPage : " + maxPage);
-				            paging(currentPage,maxPage);
+				            /* console.log("currentPage : " + currentPage);
+				            console.log("maxPage : " + maxPage); */
+				            paging(currentPage,maxPage,anCountArray);
 				        });
 				}
 				$("document").ready(function() {
 					paging(
-							<%=currentPage%>,<%=maxPage%>
-				);
-				});
-			</script>
-		</div>
+							<%=currentPage%>,<%=maxPage%>,anCountArray);
+			});
+		</script>
+	</div>
 	</div>
 	<div id="main-footer">
 		<div class="main-footer-wrap">
