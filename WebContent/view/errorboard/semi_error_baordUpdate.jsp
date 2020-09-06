@@ -1,4 +1,4 @@
-<%@page import="com.kh.semi.comubaord.model.vo.ComuBoard"%>
+<%@page import="com.kh.semi.errorbaord.model.vo.ErrorBoard"%>
 <%@page import="com.kh.semi.comubaord.model.vo.PageInfo"%>
 <%@page import="com.kh.semi.comuboardComment.model.vo.comuboardComment"%>
 <%@page import="com.kh.semi.member.vo.Member"%>
@@ -8,7 +8,7 @@
 
 <%
    Member m = (Member)session.getAttribute("member");
-   ComuBoard b = (ComuBoard)request.getAttribute("board");
+   ErrorBoard b = (ErrorBoard)request.getAttribute("board");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -124,10 +124,10 @@
 				<div class="select-box">
 					<select id="category-name" name="category" required="required">
 						<option disabled="disabled" >게시판 선택</option>
-						<option value="1">공부팁</option>
-						<option value="2">합격수기</option>
-						<option value="3">수강후기</option>
-						<option value="4">무료인강추천</option>
+						<option value="1">문제오류</option>
+						<option value="2">첨부파일오류</option>
+						<option value="3">서버오류</option>
+						<option value="4">회원신고</option>
 					</select>
 				</div>
 
@@ -157,10 +157,10 @@
 		
 		function deleteBoard(){
 			// delete 는 예약어 이므로 deleteNotice 로 ...!
-			$("#submitForm").attr("action","<%=request.getContextPath() %>/cbDelete.bo");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/erDelete.bo");
 		}
 		function complete(){
-			$("#submitForm").attr("action","<%=request.getContextPath() %>/comuboardUpdate.bo");
+			$("#submitForm").attr("action","<%=request.getContextPath() %>/erUpdate.bo");
 			
 		}
 	

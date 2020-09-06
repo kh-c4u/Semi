@@ -91,11 +91,20 @@
            
     
     
-            <form action="<%=request.getContextPath()%>/comuinsert.bo" method="post" enctype="multipart/form-data">
+            <form action="<%=request.getContextPath()%>/erinsert.bo" method="post" enctype="multipart/form-data">
                 <div class="option-type">
     
                     <label>제목 :</label>
                     <input type="text" placeholder="제목을 입력하세요." name="title" style="padding:5px 100px 0px 10px;" required="required">
+					<div class="select-box">
+                        <select id="category-name" name="category" required="required">
+                            <option value="5" selected="selected">게시판 선택</option>
+                            <option value="1">문제오류</option>
+                            <option value="2">첨부파일오류</option>
+                            <option value="3">서버오류</option>
+                            <option value="4">회원신고</option>
+                        </select>
+                    </div>
 
     
                 </div>
@@ -122,7 +131,7 @@
     
     <script>
     	function cancle(){
-    		location.href="<%=request.getContextPath()%>/comuboardlist.bo";
+    		location.href="<%=request.getContextPath()%>/errorList.bo";
     		
     	}
     
